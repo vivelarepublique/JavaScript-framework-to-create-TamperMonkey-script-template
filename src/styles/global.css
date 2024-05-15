@@ -1,0 +1,16 @@
+/* Only used to test the loader's css rules, please choose your desired css preprocessor */
+.flex-div {
+    display: flex;
+}
+
+@keyframes animetop {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
