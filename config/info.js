@@ -11,7 +11,7 @@ const config = {
     namespace: 'http://tampermonkey.net/',
     description: 'try to take over the world!',
     author: 'vivelarepublique',
-    matchUrl: ['https://www..baidu.com/*'],
+    matchUrl: ['https://www.baidu.com/*'],
     grant: ['GM_xmlhttpRequest'],
     runtime: 'document-idle',
     connect: ['www.bytedance.com'],
