@@ -1,4 +1,3 @@
-
 type ActionFunction = (value: string) => void;
 
 interface MutationsOptions {

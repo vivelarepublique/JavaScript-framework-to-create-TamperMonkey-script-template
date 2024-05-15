@@ -3,7 +3,7 @@ import { getElement, createNewElement, removeElement, addElement } from '../pure
 
 import { httpRequestReturnXML } from '../pure/actions/tamperMonkeyFunction';
 
-const main = async () => {
+const someTestActions = async () => {
     const head = await WaitForTargetTFinishLoading('#head_wrapper');
     if (head) {
         replaceImg();
@@ -34,4 +34,4 @@ async function getResource() {
     return await httpRequestReturnXML('https://www.bytedance.com/', 'GET');
 }
 
-export { main };
+export { someTestActions };

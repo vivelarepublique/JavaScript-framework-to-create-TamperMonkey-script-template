@@ -1,16 +1,9 @@
 <template>
     <div>
         <h1>{{ msg }}</h1>
-        <h3 class="test-class">Essential Links</h3>
+        <h3 class="test-class">Vue</h3>
         <ul class="test-class">
             <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-            <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-            <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-            <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-            <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-        </ul>
-        <h3>Ecosystem</h3>
-        <ul class="test-class">
             <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
             <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
             <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>

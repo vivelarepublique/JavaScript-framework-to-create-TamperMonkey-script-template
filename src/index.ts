@@ -7,7 +7,7 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 
 import { createAppElement, ListeningForChangesInTarget } from './pure/actions/beforeMount';
-import { main } from './examples/testActions';
+import { someTestActions } from './examples/testActions';
 
 import { sharedStates } from './bridge/stores/sharedStates';
 
@@ -16,12 +16,12 @@ const pinia = createPinia();
 app.use(pinia);
 
 const beforeMountEvent = async () => {
-    if (!location.search) await main();
+    if (!location.search && !(location.pathname.length > 1)) await someTestActions();
 };
 
-createAppElement();
 beforeMountEvent();
 
+createAppElement();
 app.mount('#app');
 
 const afterMountEvent = () => {

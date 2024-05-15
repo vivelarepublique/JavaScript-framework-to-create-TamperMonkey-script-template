@@ -3,7 +3,7 @@
         <div class="modal-container">
             <span><button class="modal-close-button" @click="close">&times;</button></span>
             <div id="main-app" class="flex-div">
-                <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+                <HelloWorld msg="Welcome" />
                 <Counter />
                 <Bridge />
             </div>
