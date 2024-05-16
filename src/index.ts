@@ -6,7 +6,8 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
 
-import { createAppElement, ListeningForChangesInTarget } from './pure/actions/beforeMount';
+import { createNewElement } from './pure/actions/manipulatingDOM';
+import { listeningForChangesInTarget } from './pure/actions/monitoringDOM';
 import { someTestActions } from './examples/testActions';
 
 import { sharedStates } from './bridge/stores/sharedStates';
@@ -21,11 +22,15 @@ const beforeMountEvent = async () => {
 
 beforeMountEvent();
 
-createAppElement();
+const div = createNewElement({
+    name: 'div',
+    id: 'app',
+});
+document.body.insertBefore(div, null);
 app.mount('#app');
 
 const afterMountEvent = () => {
-    ListeningForChangesInTarget('#kw', value => (sharedStates.search = value), {
+    listeningForChangesInTarget('#kw', value => (sharedStates.search = value), {
         childList: false,
         subtree: false,
         attributes: true,

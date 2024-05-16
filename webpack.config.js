@@ -48,15 +48,15 @@ const config = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue', '.less'],
+        extensions: ['.ts', '.js', '.vue', '.less', '.sass', '.styl'],
     },
     mode: 'production',
     optimization: {
         minimize: false,
     },
     performance: {
-        maxAssetSize: 1024 * 1024 * 10,
-        maxEntrypointSize: 1024 * 1024 * 10,
+        maxAssetSize: 1024 * 1024 * 4,
+        maxEntrypointSize: 1024 * 1024 * 4,
     },
     plugins: [
         new BannerPlugin({

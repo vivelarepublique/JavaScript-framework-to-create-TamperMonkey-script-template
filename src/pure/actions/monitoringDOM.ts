@@ -1,15 +1,6 @@
-import { createNewElement } from './manipulateDom';
 import { ActionFunction, MutationsOptions } from '../entities/mutations';
 
-const createAppElement = () => {
-    const div = createNewElement({
-        name: 'div',
-        id: 'app',
-    });
-    document.body.insertBefore(div, null);
-};
-
-const ListeningForChangesInTarget = (target: string, action: ActionFunction, options: MutationsOptions = { childList: true, subtree: true, attributes: true }): boolean => {
+const listeningForChangesInTarget = (target: string, action: ActionFunction, options: MutationsOptions = { childList: true, subtree: true, attributes: true }): boolean => {
     const targetElement = document.querySelector(target);
 
     const targetObserver = new MutationObserver(mutations => {
@@ -28,7 +19,7 @@ const ListeningForChangesInTarget = (target: string, action: ActionFunction, opt
     return true;
 };
 
-const WaitForTargetTFinishLoading = (target: string): Promise<Element> => {
+const waitForTargetTFinishLoading = (target: string): Promise<Element> => {
     return new Promise(resolve => {
         const bodyObserver = new MutationObserver(_ => {
             const targetElement = document.querySelector(target);
@@ -44,4 +35,4 @@ const WaitForTargetTFinishLoading = (target: string): Promise<Element> => {
     });
 };
 
-export { createAppElement, ListeningForChangesInTarget, WaitForTargetTFinishLoading };
+export { listeningForChangesInTarget, waitForTargetTFinishLoading };
