@@ -1,10 +1,10 @@
-import { waitForTargetTFinishLoading } from '../pure/actions/monitoringDOM';
+import { waitForTargetFinishLoading } from '../pure/actions/monitoringDOM';
 import { getElement, createNewElement, removeElement, addElement } from '../pure/actions/manipulatingDOM';
 
 import { httpRequestReturnXML } from '../pure/actions/tamperMonkeyFunction';
 
 const someTestActions = async () => {
-    const head = await waitForTargetTFinishLoading('#head_wrapper');
+    const head = await waitForTargetFinishLoading('#head_wrapper');
     if (head) {
         replaceImg();
         replaceText();

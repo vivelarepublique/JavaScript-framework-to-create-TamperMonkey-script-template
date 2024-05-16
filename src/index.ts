@@ -30,11 +30,7 @@ document.body.insertBefore(div, null);
 app.mount('#app');
 
 const afterMountEvent = () => {
-    listeningForChangesInTarget('#kw', value => (sharedStates.search = value), {
-        childList: false,
-        subtree: false,
-        attributes: true,
-    });
+    listeningForChangesInTarget('#kw', value => (sharedStates.search = value || ''), 'value', { childList: false, subtree: false });
 };
 
 afterMountEvent();

@@ -1,7 +1,8 @@
-type ActionFunction = (value: string) => void;
+type ActionFunction = (value?: string) => void;
 
 interface MutationsOptions {
     childList?: boolean;
+    characterData?: boolean;
     subtree?: boolean;
     attributes?: boolean;
 }

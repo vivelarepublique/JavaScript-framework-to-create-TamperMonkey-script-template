@@ -1,28 +1,27 @@
 import { ActionFunction, MutationsOptions } from '../entities/mutations';
+import { RealElement } from '../entities/dom';
+import { getElement } from './manipulatingDOM';
 
-const listeningForChangesInTarget = (target: string, action: ActionFunction, options: MutationsOptions = { childList: true, subtree: true, attributes: true }): boolean => {
-    const targetElement = document.querySelector(target);
+const listeningForChangesInTarget = (target: string | Element, action: ActionFunction, valueOfConcern = 'value', options?: MutationsOptions) => {
+    const targetElement = target instanceof Element ? target : getElement(target);
 
-    const targetObserver = new MutationObserver(mutations => {
-        const mutation = mutations.find(el => el.target === targetElement);
-        if (mutation) {
-            const element = mutation.target as Element;
-            if ('value' in element) action((element.value as string) || '');
-        }
-    });
-    if (!targetElement) return false;
-    targetObserver.observe(targetElement, {
-        childList: options.childList,
-        subtree: options.subtree,
-        attributes: options.attributes,
-    });
-    return true;
+    if (targetElement) {
+        const targetObserver = new MutationObserver(mutations => {
+            const mutation = mutations.find(el => el.target === targetElement);
+            if (mutation) {
+                const element = mutation.target as RealElement;
+                if (valueOfConcern in element) action(element[valueOfConcern]);
+            }
+        });
+
+        targetObserver.observe(targetElement, { childList: true, characterData: true, subtree: true, attributes: true, ...options });
+    }
 };
 
-const waitForTargetTFinishLoading = (target: string): Promise<Element> => {
+const waitForTargetFinishLoading = (target: string): Promise<Element> => {
     return new Promise(resolve => {
         const bodyObserver = new MutationObserver(_ => {
-            const targetElement = document.querySelector(target);
+            const targetElement = getElement(target);
             if (targetElement) {
                 bodyObserver.disconnect();
                 resolve(targetElement);
@@ -35,4 +34,4 @@ const waitForTargetTFinishLoading = (target: string): Promise<Element> => {
     });
 };
 
-export { listeningForChangesInTarget, waitForTargetTFinishLoading };
+export { listeningForChangesInTarget, waitForTargetFinishLoading };

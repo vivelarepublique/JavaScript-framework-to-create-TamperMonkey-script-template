@@ -18,4 +18,8 @@ interface SelectorOptions {
     all: boolean;
 }
 
-export { NewElement, SelectorOptions };
+interface RealElement extends Element {
+    [key: string]: any;
+}
+
+export { NewElement, SelectorOptions, RealElement };
