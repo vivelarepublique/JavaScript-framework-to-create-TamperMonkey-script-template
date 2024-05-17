@@ -2,7 +2,7 @@ import { ActionFunction, MutationsOptions } from '../entities/mutations';
 import { RealElement } from '../entities/dom';
 import { getElement } from './manipulatingDOM';
 
-const listeningForChangesInTarget = (target: string | Element, action: ActionFunction, valueOfConcern = 'value', options?: MutationsOptions) => {
+const listeningForChangesInTarget = (target: string | Element, action: ActionFunction, options?: MutationsOptions, valueOfConcern?: string) => {
     const targetElement = target instanceof Element ? target : getElement(target);
 
     if (targetElement) {
@@ -10,7 +10,11 @@ const listeningForChangesInTarget = (target: string | Element, action: ActionFun
             const mutation = mutations.find(el => el.target === targetElement);
             if (mutation) {
                 const element = mutation.target as RealElement;
-                if (valueOfConcern in element) action(element[valueOfConcern]);
+                if (valueOfConcern && valueOfConcern in element) {
+                    action(element[valueOfConcern]);
+                } else {
+                    action();
+                }
             }
         });
 
