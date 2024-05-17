@@ -22,10 +22,7 @@ const beforeMountEvent = async () => {
 
 beforeMountEvent();
 
-const div = createNewElement({
-    name: 'div',
-    id: 'app',
-});
+const div = createNewElement('div', { id: 'app' });
 document.body.insertBefore(div, null);
 app.mount('#app');
 

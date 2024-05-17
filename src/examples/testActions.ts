@@ -21,7 +21,7 @@ function replaceImg() {
     if (element) {
         const parent = element.parentElement;
         removeElement(element);
-        if (parent) addElement(parent, createNewElement({ name: 'img', id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' }));
+        if (parent) addElement(parent, createNewElement('img', { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' }));
     }
 }
 

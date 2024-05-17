@@ -1,11 +1,9 @@
-interface NewElement {
-    name: string;
+interface ElementProperties {
     id?: string;
     alt?: string;
-    className?: string;
     type?: string;
-    styles?: string;
-    text?: string;
+    className?: string;
+    textContent?: string;
     html?: string;
     src?: string;
     href?: string;
@@ -14,12 +12,13 @@ interface NewElement {
     rel?: string;
 }
 
-interface SelectorOptions {
-    all: boolean;
-}
-
 interface RealElement extends Element {
     [key: string]: any;
 }
 
-export { NewElement, SelectorOptions, RealElement };
+interface customEvent {
+    name: string;
+    callback: () => void;
+}
+
+export { ElementProperties, RealElement, customEvent };
