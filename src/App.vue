@@ -13,7 +13,7 @@ const { open } = store;
     <Modal v-show="show"></Modal>
 </template>
 
-<style lang="less">
+<style>
 #show-modal {
     position: fixed;
     z-index: 9998;
