@@ -17,7 +17,7 @@ const addElement = (parent: Element, child: Element | string, refer?: Element) =
     refer ? parent.insertBefore(childNode, refer) : parent.appendChild(childNode);
 };
 
-const createNewElement = (name: string, props: ElementProperties = { id: '', alt: '', className: '', type: '', textContent: '', html: '', src: '', href: '', disabled: false, value: '', rel: '' }, styles?: Partial<CSSStyleDeclaration>, event?: customEvent) => {
+const createNewElement = (name: string, props: ElementProperties = { id: '', alt: '', className: '', type: '', textContent: '', html: '', src: '', href: '', disabled: false, value: '', rel: '' }, styles?: Partial<CSSStyleDeclaration>, event?: customEvent | customEvent[]) => {
     const node = document.createElement(name);
     if (props.id) node.id = props.id;
     if (props.alt) node.setAttribute('alt', props.alt);
@@ -33,7 +33,7 @@ const createNewElement = (name: string, props: ElementProperties = { id: '', alt
 
     if (styles) Object.assign(node.style, styles);
 
-    if (event) node.addEventListener(event.name, event.callback);
+    if (event) Array.isArray(event) ? event.forEach(el => node.addEventListener(el.name, el.callback)) : node.addEventListener(event.name, event.callback);
 
     return node;
 };
