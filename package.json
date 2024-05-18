@@ -10,8 +10,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.12.11",
     "@types/tampermonkey": "^5.0.2",
+    "@types/web": "^0.0.145",
     "css-loader": "^7.1.1",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",

@@ -1,7 +1,7 @@
-import { waitForTargetFinishLoading } from '../pure/actions/monitoringDOM';
-import { getElement, createNewElement, removeElement, addElement } from '../pure/actions/manipulatingDOM';
+import { waitForTargetFinishLoading } from '../pure/utils/monitoringElement';
+import { getElement, createNewElement, removeElement, addElement } from '../pure/utils/elementCRUD';
 
-import { httpRequestReturnXML } from '../pure/actions/tamperMonkeyFunction';
+import { httpRequestReturnXML } from '../pure/utils/tamperMonkeyFunction';
 
 const someTestActions = async () => {
     const head = await waitForTargetFinishLoading('#head_wrapper');

@@ -1,4 +1,5 @@
 type ActionFunction = (value?: string) => void;
+type DelayWay = 'debounce' | 'throttle';
 
 interface MutationsOptions {
     childList?: boolean;
@@ -7,4 +8,9 @@ interface MutationsOptions {
     attributes?: boolean;
 }
 
-export { ActionFunction, MutationsOptions };
+interface DelayOptions {
+    delay: number;
+    way: DelayWay;
+}
+
+export { ActionFunction, MutationsOptions, DelayOptions };

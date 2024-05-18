@@ -6,8 +6,8 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
 
-import { addElement, createNewElement } from './pure/actions/manipulatingDOM';
-import { listeningForChangesInTarget } from './pure/actions/monitoringDOM';
+import { addElement, createNewElement } from './pure/utils/elementCRUD';
+import { listeningForChangesInTarget } from './pure/utils/monitoringElement';
 import { someTestActions } from './examples/testActions';
 
 import { sharedStates } from './bridge/stores/sharedStates';
