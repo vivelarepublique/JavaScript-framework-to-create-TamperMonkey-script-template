@@ -3,37 +3,30 @@ import { RealElement } from '../entities/dom';
 import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 
-const listeningForChangesInTarget = (target: string | Element, action: ActionFunction, options?: MutationsOptions, valueOfConcern?: string, immediate?: boolean | DelayOptions) => {
-    if (immediate) {
-        if (typeof immediate === 'object') {
-            const { delay, way } = immediate;
-            if (way === 'debounce') {
-                debounce(action, delay);
-            } else if (way === 'throttle') {
-                throttle(action, delay);
-            }
-        } else {
-            action();
-        }
-    }
+const listeningForChangesInTarget = (target: string | Element, action: ActionFunction, options?: MutationsOptions, valueOfConcern?: string, immediate?: boolean, triggerLimitation?: DelayOptions) => {
+    const { delay, way } = triggerLimitation || { way: 'none', delay: 0 };
+    const finalAction = way === 'debounce' ? debounce(action, delay) : way === 'throttle' ? throttle(action, delay) : action;
 
     const targetElement = target instanceof Element ? target : getElement(target);
+    if (!targetElement) return;
 
-    if (targetElement) {
-        const targetObserver = new MutationObserver(mutations => {
-            const mutation = mutations.find(el => el.target === targetElement);
-            if (mutation) {
-                const element = mutation.target as RealElement;
-                if (valueOfConcern && valueOfConcern in element) {
-                    action(element[valueOfConcern]);
-                } else {
-                    action();
-                }
-            }
-        });
-
-        targetObserver.observe(targetElement, { childList: true, characterData: true, subtree: true, attributes: true, ...options });
+    if (immediate) {
+        valueOfConcern ? finalAction((targetElement as RealElement)[valueOfConcern]) : finalAction();
     }
+
+    const targetObserver = new MutationObserver(mutations => {
+        const mutation = mutations.find(el => el.target === targetElement);
+        if (mutation) {
+            const element = mutation.target as RealElement;
+            if (valueOfConcern && valueOfConcern in element) {
+                finalAction(element[valueOfConcern]);
+            } else {
+                finalAction();
+            }
+        }
+    });
+
+    targetObserver.observe(targetElement, { childList: true, characterData: true, subtree: true, attributes: true, ...options });
 };
 
 const waitForTargetFinishLoading = (target: string): Promise<Element> => {

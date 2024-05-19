@@ -1,5 +1,5 @@
 type ActionFunction = (value?: string) => void;
-type DelayWay = 'debounce' | 'throttle';
+type DelayWay = 'debounce' | 'throttle' | 'none';
 
 interface MutationsOptions {
     childList?: boolean;
