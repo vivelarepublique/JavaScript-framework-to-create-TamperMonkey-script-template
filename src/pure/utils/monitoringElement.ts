@@ -18,11 +18,7 @@ const listeningForChangesInTarget = (target: string | Element, action: ActionFun
         const mutation = mutations.find(el => el.target === targetElement);
         if (mutation) {
             const element = mutation.target as RealElement;
-            if (valueOfConcern && valueOfConcern in element) {
-                finalAction(element[valueOfConcern]);
-            } else {
-                finalAction();
-            }
+            valueOfConcern && valueOfConcern in element ? finalAction(element[valueOfConcern]) : finalAction();
         }
     });
 

@@ -6,7 +6,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
 
-import { addElement, createNewElement } from './pure/utils/elementCRUD';
+import { appendElement, createNewElement } from './pure/utils/elementCRUD';
 import { listeningForChangesInTarget } from './pure/utils/monitoringElement';
 import { someTestActions } from './examples/testActions';
 
@@ -23,7 +23,7 @@ const beforeMountEvent = async () => {
 beforeMountEvent();
 
 const div = createNewElement('div', { id: 'app' });
-addElement(document.body, div);
+appendElement(document.body, div);
 app.mount('#app');
 
 const afterMountEvent = () => {

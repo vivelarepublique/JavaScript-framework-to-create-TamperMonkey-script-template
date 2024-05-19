@@ -4,15 +4,15 @@ const getElement = (selector: string): Element | null => {
     return document.querySelector(selector);
 };
 
-const getMultiElement = (selector: string): NodeListOf<Element> => {
-    return document.querySelectorAll(selector);
+const getMultiElement = (selector: string): Element[] => {
+    return Array.from(document.querySelectorAll(selector));
 };
 
 const removeElement = (element: Element) => {
     element.remove();
 };
 
-const addElement = (parent: Element, child: Element | string, refer?: Element) => {
+const appendElement = (parent: Element, child: Element | string, refer?: Element) => {
     const childNode = typeof child === 'string' ? document.createTextNode(child) : child;
     refer ? parent.insertBefore(childNode, refer) : parent.appendChild(childNode);
 };
@@ -38,4 +38,4 @@ const createNewElement = (name: string, props: ElementProperties = { id: '', alt
     return node;
 };
 
-export { getElement, getMultiElement, removeElement, addElement, createNewElement };
+export { getElement, getMultiElement, removeElement, appendElement, createNewElement };

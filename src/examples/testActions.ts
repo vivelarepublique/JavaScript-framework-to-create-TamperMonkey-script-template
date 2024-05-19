@@ -1,5 +1,5 @@
 import { waitForTargetFinishLoading } from '../pure/utils/monitoringElement';
-import { getElement, createNewElement, removeElement, addElement } from '../pure/utils/elementCRUD';
+import { getElement, createNewElement, removeElement, appendElement } from '../pure/utils/elementCRUD';
 
 import { httpRequestReturnXML } from '../pure/utils/tamperMonkeyFunction';
 
@@ -21,7 +21,7 @@ function replaceImg() {
     if (element) {
         const parent = element.parentElement;
         removeElement(element);
-        if (parent) addElement(parent, createNewElement('img', { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' }));
+        if (parent) appendElement(parent, createNewElement('img', { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' }));
     }
 }
 
