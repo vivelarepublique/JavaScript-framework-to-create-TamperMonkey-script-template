@@ -12,7 +12,7 @@ const config = {
     description: 'try to take over the world!',
     author: 'vivelarepublique',
     matchUrl: ['https://www.baidu.com/*'],
-    grant: ['GM_xmlhttpRequest'],
+    grant: ['GM_xmlhttpRequest', 'unsafeWindow'],
     runtime: 'document-idle',
     connect: ['www.bytedance.com'],
 };

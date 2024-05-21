@@ -2,6 +2,7 @@ import { ActionFunction, DelayOptions, MutationsOptions } from '../entities/muta
 import { RealElement } from '../entities/dom';
 import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
+import { windowProxy } from './tamperMonkeyFunction';
 
 const listeningForChangesInTarget = (target: string | Element, action: ActionFunction, options?: MutationsOptions, valueOfConcern?: string, immediate?: boolean, triggerLimitation?: DelayOptions) => {
     const { delay, way } = triggerLimitation || { way: 'none', delay: 0 };
@@ -41,4 +42,14 @@ const waitForTargetFinishLoading = (target: string): Promise<Element> => {
     });
 };
 
-export { listeningForChangesInTarget, waitForTargetFinishLoading };
+const waitForWindowPropertiesFinishLoading = (target: string): Promise<any> => {
+    return new Promise(resolve => {
+        windowProxy.addEventListener('load', () => {
+            if (windowProxy[target as unknown as number]) {
+                resolve(windowProxy[target as unknown as number]);
+            }
+        });
+    });
+};
+
+export { listeningForChangesInTarget, waitForTargetFinishLoading, waitForWindowPropertiesFinishLoading };
