@@ -12,7 +12,7 @@ const listeningForChangesInTarget = (target: string | Element, action: ActionFun
     if (!targetElement) return;
 
     if (immediate) {
-        valueOfConcern ? finalAction((targetElement as RealElement)[valueOfConcern]) : finalAction();
+        valueOfConcern ? action((targetElement as RealElement)[valueOfConcern]) : action();
     }
 
     const targetObserver = new MutationObserver(mutations => {
