@@ -1,29 +1,37 @@
-import { ActionFunction, DelayOptions, MutationsOptions } from '../entities/mutations';
+import { ListenOptions } from '../entities/mutations';
 import { RealElement } from '../entities/dom';
 import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';
 
-const listeningForChangesInTarget = (target: string | Element, action: ActionFunction, options?: MutationsOptions, valueOfConcern?: string, immediate?: boolean, triggerLimitation?: DelayOptions) => {
-    const { delay, way } = triggerLimitation || { way: 'none', delay: 0 };
-    const finalAction = way === 'debounce' ? debounce(action, delay) : way === 'throttle' ? throttle(action, delay) : action;
+const listeningForChangesInTarget = (target: string | Element, options: ListenOptions): MutationObserver | undefined => {
+    const { callback, attributesConcern, childrenConcern = [], immediateImplementation = false, triggerLimitation = { way: 'none', delay: 0 }, manualSetupOptions } = options;
+
+    const { delay, way } = triggerLimitation;
+    const finalAction = way === 'debounce' ? debounce(callback, delay) : way === 'throttle' ? throttle(callback, delay) : callback;
 
     const targetElement = target instanceof Element ? target : getElement(target);
     if (!targetElement) return;
 
-    if (immediate) {
-        valueOfConcern ? action((targetElement as RealElement)[valueOfConcern]) : action();
+    if (immediateImplementation) {
+        attributesConcern ? callback((targetElement as RealElement)[attributesConcern]) : callback();
     }
 
     const targetObserver = new MutationObserver(mutations => {
-        const mutation = mutations.find(el => el.target === targetElement);
-        if (mutation) {
-            const element = mutation.target as RealElement;
-            valueOfConcern && valueOfConcern in element ? finalAction(element[valueOfConcern]) : finalAction();
+        childrenConcern.forEach(child => {
+            const childMutation = mutations.find(el => el.target === getElement(child));
+            if (childMutation) finalAction(childMutation);
+        });
+
+        const attributesMutation = mutations.find(el => el.target === targetElement);
+        if (attributesMutation) {
+            const element = attributesMutation.target as RealElement;
+            attributesConcern && attributesConcern in element ? finalAction(element[attributesConcern]) : finalAction();
         }
     });
 
-    targetObserver.observe(targetElement, { childList: true, characterData: true, subtree: true, attributes: true, ...options });
+    targetObserver.observe(targetElement, { childList: childrenConcern.length > 0, attributes: !!attributesConcern || childrenConcern.length > 0, subtree: childrenConcern.length > 0, ...manualSetupOptions });
+    return targetObserver;
 };
 
 const waitForTargetFinishLoading = (target: string): Promise<Element> => {

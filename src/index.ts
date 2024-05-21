@@ -27,7 +27,16 @@ appendElement(document.body, div);
 app.mount('#app');
 
 const afterMountEvent = () => {
-    listeningForChangesInTarget('#kw', value => (sharedStates.search = value || ''), { childList: false, subtree: false }, 'value');
+    listeningForChangesInTarget('#kw', {
+        callback: value => (sharedStates.search = value || ''),
+        attributesConcern: 'value',
+        immediateImplementation: true,
+    });
+    listeningForChangesInTarget('#form', {
+        callback: mutation => console.log(mutation, 'changed.', Math.round(Date.now() / 100)),
+        childrenConcern: ['#s_kw_wrap'],
+        triggerLimitation: { delay: 1000, way: 'debounce' },
+    });
 };
 
 afterMountEvent();
