@@ -7,7 +7,7 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 
 import { appendElement, createNewElement } from './pure/utils/elementCRUD';
-import { listeningForChangesInTarget } from './pure/utils/monitoringElement';
+import { listenElementChanges } from './pure/utils/monitoringElement';
 import { someTestActions } from './examples/testActions';
 
 import { sharedStates } from './bridge/stores/sharedStates';
@@ -27,14 +27,13 @@ appendElement(document.body, div);
 app.mount('#app');
 
 const afterMountEvent = () => {
-    listeningForChangesInTarget('#kw', {
+    listenElementChanges('#kw', {
         callback: value => (sharedStates.search = value || ''),
         attributesConcern: 'value',
         immediateImplementation: true,
     });
-    listeningForChangesInTarget('#form', {
-        callback: mutation => console.log(mutation, 'changed.', Math.round(Date.now() / 100)),
-        childrenConcern: ['#s_kw_wrap'],
+    listenElementChanges('#form', {
+        childrenConcern: [{ target: '#s_kw_wrap', action: target => console.log(target, 'changed.', Math.round(Date.now() / 100)) }],
         triggerLimitation: { delay: 1000, way: 'debounce' },
     });
 };

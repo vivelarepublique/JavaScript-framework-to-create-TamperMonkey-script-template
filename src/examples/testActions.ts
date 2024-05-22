@@ -1,12 +1,12 @@
-import { waitForTargetFinishLoading, waitForWindowPropertiesFinishLoading } from '../pure/utils/monitoringElement';
+import { waitElementFinishLoading, waitWindowProperties } from '../pure/utils/monitoringElement';
 import { getElement, createNewElement, removeElement, appendElement } from '../pure/utils/elementCRUD';
 
 import { httpRequestReturnXML } from '../pure/utils/tamperMonkeyFunction';
 
 const someTestActions = async () => {
-    console.log(await waitForWindowPropertiesFinishLoading('$'));
+    console.log(await waitWindowProperties('$'));
 
-    const head = await waitForTargetFinishLoading('#head_wrapper');
+    const head = await waitElementFinishLoading('#head_wrapper');
     if (head) {
         replaceImg();
         replaceText();

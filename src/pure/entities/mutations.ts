@@ -1,25 +1,20 @@
-type ActionFunction = (...args: any[]) => any;
-type DelayWay = 'debounce' | 'throttle' | 'none';
-
-interface MutationsOptions {
-    childList?: boolean;
-    characterData?: boolean;
-    subtree?: boolean;
-    attributes?: boolean;
-}
-
-interface DelayOptions {
-    delay: number;
-    way: DelayWay;
-}
-
 interface ListenOptions {
-    callback: ActionFunction;
+    callback?: (...args: any[]) => any;
     attributesConcern?: string;
-    childrenConcern?: string[];
+    childrenConcern?: {
+        action: (...args: any[]) => any;
+        target: string;
+    }[];
     immediateImplementation?: boolean;
-    triggerLimitation?: DelayOptions;
-    manualSetupOptions?: MutationsOptions;
+    triggerLimitation?: {
+        delay: number;
+        way: 'debounce' | 'throttle' | 'none';
+    };
+    manualSetupOptions?: {
+        childList?: boolean;
+        subtree?: boolean;
+        attributes?: boolean;
+    };
 }
 
 export { ListenOptions };
