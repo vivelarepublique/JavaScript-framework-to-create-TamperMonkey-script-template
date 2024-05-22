@@ -1,6 +1,27 @@
 /* Only used to test the loader's css rules, please choose your desired css preprocessor */
-.flex-div {
+
+.b4-col {
+    flex: 0 0 33%;
+    max-width: 33%;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.b4-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.b4-row {
     display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
 @keyframes animetop {
