@@ -5,6 +5,7 @@ interface ListenOptions {
         action: (...args: any[]) => any;
         target: string;
     }[];
+    noTarget?: boolean;
     immediateImplementation?: boolean;
     triggerLimitation?: {
         delay: number;

@@ -5,7 +5,7 @@ import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';
 
 const listenElementChanges = (target: string | Element, options: ListenOptions): MutationObserver | undefined => {
-    const { callback = () => {}, attributesConcern, childrenConcern = [], immediateImplementation = false, triggerLimitation = { way: 'none', delay: 0 }, manualSetupOptions } = options;
+    const { callback = () => {}, attributesConcern, childrenConcern = [], immediateImplementation = false, noTarget = false, triggerLimitation = { way: 'none', delay: 0 }, manualSetupOptions } = options;
 
     const { delay, way } = triggerLimitation;
     const finalAction = way === 'debounce' ? debounce(callback, delay) : way === 'throttle' ? throttle(callback, delay) : callback;
@@ -25,8 +25,12 @@ const listenElementChanges = (target: string | Element, options: ListenOptions):
 
     const targetObserver = new MutationObserver(mutations => {
         children.forEach(child => {
-            const childMutation = mutations.find(el => el.target === getElement(child.target));
-            if (childMutation) child.action(childMutation.target);
+            if (noTarget) {
+                child.action();
+            } else {
+                const childMutation = mutations.find(el => el.target === getElement(child.target));
+                if (childMutation) child.action(childMutation.target);
+            }
         });
 
         const attributesMutation = mutations.find(el => el.target === targetElement);
