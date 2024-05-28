@@ -1,4 +1,4 @@
-import { customEvent, ElementProperties } from '../entities/dom';
+import { customEvent, ElementProperties } from '../types/dom';
 
 const getElement = (selector: string): Element | null => {
     return document.querySelector(selector);
