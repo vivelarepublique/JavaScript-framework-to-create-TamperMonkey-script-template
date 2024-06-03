@@ -2,7 +2,7 @@
   "name": "use-vue-to-create-tampermonkey-script-template",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.ts",
+  "main": "./src/index.tsx",
   "scripts": {
     "build": "npx webpack"
   },
@@ -10,6 +10,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@reduxjs/toolkit": "^2.2.5",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@types/tampermonkey": "^5.0.2",
     "@types/web": "^0.0.145",
     "css-loader": "^7.1.1",
@@ -28,6 +31,10 @@
   },
   "dependencies": {
     "pinia": "^2.1.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "redux": "^5.0.1",
     "vue": "^3.4.27"
   }
 }

@@ -4,7 +4,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 const { banner, scriptFilename } = require('./config/info.js');
 
 const config = {
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'release'),
         filename: scriptFilename,
@@ -48,7 +48,7 @@ const config = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue', '.less', '.sass', '.styl'],
+        extensions: ['.ts', '.js', '.vue', '.tsx'],
     },
     mode: 'production',
     optimization: {

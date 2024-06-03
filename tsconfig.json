@@ -1,23 +1,23 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "strict": true,
-        "jsx": "preserve",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
         "importHelpers": true,
+        "jsx": "react-jsx",
+        "module": "esnext",
         "moduleResolution": "node",
         "skipLibCheck": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
-        "useDefineForClassFields": true,
+        "strict": true,
         "strictPropertyInitialization": false,
-        "baseUrl": ".",
+        "target": "esnext",
+        "useDefineForClassFields": true,
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
         "paths": {
             "@/*": ["src/*"]
-        },
-        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+        }
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"]
 }

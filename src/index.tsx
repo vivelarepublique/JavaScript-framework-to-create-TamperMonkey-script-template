@@ -1,20 +1,28 @@
+//styles
 import './styles/global.css';
 import './styles/test.less';
 import './styles/test.sass';
 import './styles/test.styl';
+
+//vue
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import App from './App.vue';
+import VueApp from './App.vue';
 
-import { appendElement, createNewElement } from './pure/utils/elementCRUD';
+//react
+import { createRoot } from 'react-dom/client';
+import ReactApp from './ReactApp';
+
+import { appendElement, createNewElement, getElement } from './pure/utils/elementCRUD';
 import { listenElementChanges } from './pure/utils/monitoringElement';
 import { someTestActions } from './examples/testActions';
 
 import { sharedStates } from './bridge/stores/sharedStates';
 
-const app = createApp(App);
+//vue
+const vueApp = createApp(VueApp);
 const pinia = createPinia();
-app.use(pinia);
+vueApp.use(pinia);
 
 const beforeMountEvent = async () => {
     if (!location.search && !(location.pathname.length > 1)) await someTestActions();
@@ -22,9 +30,14 @@ const beforeMountEvent = async () => {
 
 beforeMountEvent();
 
-const div = createNewElement('div', { id: 'app' });
-appendElement(document.body, div);
-app.mount('#app');
+const vueDiv = createNewElement('div', { id: 'vueApp' });
+appendElement(document.body, vueDiv);
+vueApp.mount('#vueApp');
+
+const reactDiv = createNewElement('div', { id: 'reactApp' });
+appendElement(document.body, reactDiv);
+const root = createRoot(getElement('#reactApp')!);
+root.render(<ReactApp />);
 
 const afterMountEvent = () => {
     listenElementChanges('#kw', {
