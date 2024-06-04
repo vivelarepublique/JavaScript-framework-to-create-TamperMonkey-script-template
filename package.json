@@ -22,6 +22,7 @@
     "style-loader": "^4.0.0",
     "stylus": "^0.63.0",
     "stylus-loader": "^8.1.0",
+    "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
     "vue-loader": "^17.4.2",

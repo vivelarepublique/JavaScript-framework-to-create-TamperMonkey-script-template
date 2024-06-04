@@ -1,12 +1,13 @@
-const path = require('path');
+const { resolve } = require('path');
 const { BannerPlugin } = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
+const TerserPlugin = require('terser-webpack-plugin');
 const { banner, scriptFilename } = require('./config/info.js');
 
 const config = {
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'release'),
+        path: resolve(__dirname, 'release'),
         filename: scriptFilename,
         pathinfo: false,
     },
@@ -52,7 +53,59 @@ const config = {
     },
     mode: 'production',
     optimization: {
-        minimize: false,
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                parallel: true,
+                extractComments: false,
+                terserOptions: {
+                    compress: true,
+                    mangle: true,
+                    format: {
+                        beautify: true,
+                        comments: (_, { value, type }) => {
+                            const isMatch = value => {
+                                const RegExpArray = [
+                                    /@name/,
+                                    /@namespace/,
+                                    /@copyright/,
+                                    /@version/,
+                                    /@description/,
+                                    /@icon/,
+                                    /@iconURL/,
+                                    /@defaulticon/,
+                                    /@icon64/,
+                                    /@icon64URL/,
+                                    /@grant/,
+                                    /@author/,
+                                    /@homepage/,
+                                    /@homepageURL/,
+                                    /@website/,
+                                    /@source/,
+                                    /@antifeature/,
+                                    /@require/,
+                                    /@resource/,
+                                    /@include/,
+                                    /@match/,
+                                    /@exclude/,
+                                    /@run-at/,
+                                    /@sandbox/,
+                                    /@connect/,
+                                    /@noframes/,
+                                    /@updateURL/,
+                                    /@downloadURL/,
+                                    /@supportURL/,
+                                    /@webRequest/,
+                                    /@unwrap/,
+                                ];
+                                return RegExpArray.some(reg => reg.test(value));
+                            };
+                            return value.includes('UserScript==') || (isMatch(value) && type === 'comment1');
+                        },
+                    },
+                },
+            }),
+        ],
     },
     performance: {
         maxAssetSize: 1024 * 1024 * 4,
