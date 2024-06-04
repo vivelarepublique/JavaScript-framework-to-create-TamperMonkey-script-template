@@ -7,7 +7,7 @@ function getMultiParameters(parameter, name) {
 }
 
 const config = {
-    name: 'use-vue-to-create-tampermonkey-script-template',
+    name: 'vue-or-react-create-tampermonkey-script-template',
     namespace: 'http://tampermonkey.net/',
     description: 'try to take over the world!',
     author: 'vivelarepublique',
