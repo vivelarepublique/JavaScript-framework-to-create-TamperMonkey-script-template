@@ -38,7 +38,7 @@
         min-width: 1200px;
         max-height: 95vh;
         animation: animetop 0.25s;
-        font-size: 2rem;
+        font-size: min(2vh, 2vw);
     }
 
     .modal-container {
