@@ -12,12 +12,15 @@ import VueApp from './App.vue';
 //react
 import { createRoot } from 'react-dom/client';
 import ReactApp from './ReactApp';
+import { Provider } from 'react-redux';
+import { store } from './react/store';
 
 import { appendElement, createNewElement, getElement } from './pure/utils/elementCRUD';
 import { listenElementChanges } from './pure/utils/monitoringElement';
 import { someTestActions } from './examples/testActions';
 
-import { sharedStates } from './bridge/stores/sharedStates';
+import { sharedState as vueShared } from './shared/vueState/sharedState';
+import { sharedState as reactShared } from './shared/reactState/sharedState';
 
 //vue
 const vueApp = createApp(VueApp);
@@ -37,11 +40,19 @@ vueApp.mount('#vueApp');
 const reactDiv = createNewElement('div', { id: 'reactApp' });
 appendElement(document.body, reactDiv);
 const root = createRoot(getElement('#reactApp')!);
-root.render(<ReactApp />);
+root.render(
+    <Provider store={store}>
+        <ReactApp />
+    </Provider>,
+);
 
 const afterMountEvent = () => {
     listenElementChanges('#kw', {
-        callback: value => (sharedStates.search = value || ''),
+        callback: value => {
+            vueShared.search = value || '';
+            reactShared.search = value || '';
+            window.dispatchEvent(new Event('stateChange'));
+        },
         attributesConcern: 'value',
         immediateImplementation: true,
     });

@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
 
-export const sharedStates = reactive({
+export const sharedState = reactive({
     search: '',
 });
