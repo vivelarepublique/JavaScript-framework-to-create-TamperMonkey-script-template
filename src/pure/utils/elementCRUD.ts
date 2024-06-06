@@ -1,11 +1,11 @@
 import { customEvent, ElementProperties } from '../types/dom';
 
-const getElement = (selector: string): Element | null => {
-    return document.querySelector(selector);
+const getElement = (selector: string, refer?: Element): Element | null => {
+    return refer ? refer.querySelector(selector) : document.querySelector(selector);
 };
 
-const getMultiElement = (selector: string): Element[] => {
-    return Array.from(document.querySelectorAll(selector));
+const getMultiElement = (selector: string, refer?: Element): Element[] => {
+    return Array.from(refer ? refer.querySelectorAll(selector) : document.querySelectorAll(selector));
 };
 
 const removeElement = (element: Element) => {

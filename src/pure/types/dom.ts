@@ -18,7 +18,7 @@ interface RealElement extends Element {
 
 interface customEvent {
     name: string;
-    callback: () => void;
+    callback: (...args: any[]) => any;
 }
 
 export { ElementProperties, RealElement, customEvent };

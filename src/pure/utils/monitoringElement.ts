@@ -4,43 +4,42 @@ import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';
 
-const listenElementChanges = (target: string | Element, options: ListenOptions): MutationObserver | undefined => {
-    const { callback = () => {}, attributesConcern, childrenConcern = [], immediateImplementation = false, noTarget = false, triggerLimitation = { way: 'none', delay: 0 }, manualSetupOptions } = options;
+const listenElementChanges = (selector: string, options: ListenOptions): MutationObserver => {
+    const { anyMutation = false, callback = () => console.log('No action.'), attributesConcern, childrenConcern = [], immediateImplementation = false, triggerLimitation = { way: 'none', delay: 0 }, manualSetupOptions = {} } = options;
 
+    if (anyMutation) Object.assign(manualSetupOptions, { childList: true, attributes: true, subtree: true });
     const { delay, way } = triggerLimitation;
-    const finalAction = way === 'debounce' ? debounce(callback, delay) : way === 'throttle' ? throttle(callback, delay) : callback;
+    const delayedCallback = way === 'debounce' ? debounce(callback, delay) : way === 'throttle' ? throttle(callback, delay) : callback;
 
-    const targetElement = target instanceof Element ? target : getElement(target);
-    if (!targetElement) return;
+    const selectorTargetElement = getElement(selector) || document.body;
 
     if (immediateImplementation) {
-        attributesConcern ? callback((targetElement as RealElement)[attributesConcern]) : callback();
+        attributesConcern ? callback((selectorTargetElement as RealElement)[attributesConcern]) : callback();
     }
-    const children = childrenConcern.map(({ target, action }) => {
+    const children = childrenConcern.map(({ selector, action }) => {
         return {
-            target,
-            action: way === 'debounce' ? debounce(action, delay) : way === 'throttle' ? throttle(action, delay) : action,
+            selector,
+            delayedAction: way === 'debounce' ? debounce(action, delay) : way === 'throttle' ? throttle(action, delay) : action,
         };
     });
 
     const targetObserver = new MutationObserver(mutations => {
-        children.forEach(child => {
-            if (noTarget) {
-                child.action();
-            } else {
-                const childMutation = mutations.find(el => el.target === getElement(child.target));
-                if (childMutation) child.action(childMutation.target);
-            }
-        });
+        if (anyMutation) {
+            delayedCallback();
+        } else {
+            children.forEach(child => {
+                const childMutation = mutations.find(el => (el.target as Element).matches(child.selector));
+                if (childMutation) child.delayedAction(childMutation.target);
+            });
 
-        const attributesMutation = mutations.find(el => el.target === targetElement);
-        if (attributesMutation) {
-            const element = attributesMutation.target as RealElement;
-            attributesConcern && attributesConcern in element ? finalAction(element[attributesConcern]) : finalAction();
+            if (attributesConcern) {
+                const attributesMutation = mutations.find(el => (el.target as Element).matches(selector));
+                attributesMutation && delayedCallback((attributesMutation.target as RealElement)[attributesConcern]);
+            }
         }
     });
 
-    targetObserver.observe(targetElement, { childList: childrenConcern.length > 0, attributes: !!attributesConcern, subtree: childrenConcern.length > 0, ...manualSetupOptions });
+    targetObserver.observe(selectorTargetElement, { childList: childrenConcern.length > 0, attributes: !!attributesConcern, subtree: childrenConcern.length > 0, ...manualSetupOptions });
     return targetObserver;
 };
 

@@ -1,11 +1,11 @@
 interface ListenOptions {
+    anyMutation?: boolean;
     callback?: (...args: any[]) => any;
     attributesConcern?: string;
     childrenConcern?: {
         action: (...args: any[]) => any;
-        target: string;
+        selector: string;
     }[];
-    noTarget?: boolean;
     immediateImplementation?: boolean;
     triggerLimitation?: {
         delay: number;

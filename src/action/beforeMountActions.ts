@@ -4,17 +4,20 @@ import { getElement, createNewElement, removeElement, appendElement } from '../p
 import { httpRequestReturnXML } from '../pure/utils/tamperMonkeyFunction';
 
 const someTestActions = async () => {
-    console.log(await waitWindowProperties('$'));
+    if (!location.search && !(location.pathname.length > 1)) {
+        const jQ = await waitWindowProperties('$');
+        console.log(jQ);
 
-    const head = await waitElementFinishLoading('#head_wrapper');
-    if (head) {
-        replaceImg();
-        replaceText();
-        const resource = await getResource();
-        const description = Array.from(resource?.head.children || [])
-            .find(el => el.outerHTML.includes('<meta name="description" content='))
-            ?.getAttribute('content');
-        document.title = description || '';
+        const head = await waitElementFinishLoading('#head_wrapper');
+        if (head) {
+            replaceImg();
+            replaceText();
+            const resource = await getResource();
+            const description = Array.from(resource?.head.children || [])
+                .find(el => el.outerHTML.includes('<meta name="description" content='))
+                ?.getAttribute('content');
+            document.title = description || '';
+        }
     }
 };
 
