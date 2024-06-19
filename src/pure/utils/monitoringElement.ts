@@ -43,30 +43,23 @@ const listenElementChanges = (selector: string, options: ListenOptions): Mutatio
     return targetObserver;
 };
 
-const waitElementFinishLoading = (target: string): Promise<Element> => {
+const waitElementFinishLoading = (selector: string, refer?: Element): Promise<Element> => {
     return new Promise(resolve => {
+        getElement(selector) && resolve(getElement(selector)!);
+
         const bodyObserver = new MutationObserver(_ => {
-            const targetElement = getElement(target);
+            const targetElement = getElement(selector);
             if (targetElement) {
                 bodyObserver.disconnect();
                 resolve(targetElement);
             }
         });
-        bodyObserver.observe(document.body, {
-            childList: true,
-            subtree: true,
-        });
+        bodyObserver.observe(refer || document.body, { childList: true, subtree: true });
     });
 };
 
-const waitWindowProperties = (target: string): Promise<any> => {
-    return new Promise(resolve => {
-        windowProxy.addEventListener('load', () => {
-            if (windowProxy[target as unknown as number]) {
-                resolve(windowProxy[target as unknown as number]);
-            }
-        });
-    });
+const DetermineWindowPropertyIsLoaded = (propertyName: string | string[]): Promise<boolean> => {
+    return new Promise(resolve => windowProxy.addEventListener('load', () => (Array.isArray(propertyName) ? resolve(propertyName.every(property => windowProxy.hasOwnProperty(property))) : resolve(windowProxy.hasOwnProperty(propertyName)))));
 };
 
-export { listenElementChanges, waitElementFinishLoading, waitWindowProperties };
+export { listenElementChanges, waitElementFinishLoading, DetermineWindowPropertyIsLoaded };

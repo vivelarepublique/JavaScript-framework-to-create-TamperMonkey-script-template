@@ -1,15 +1,14 @@
-import { waitElementFinishLoading, waitWindowProperties } from '../pure/utils/monitoringElement';
+import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../pure/utils/monitoringElement';
 import { getElement, createNewElement, removeElement, appendElement } from '../pure/utils/elementCRUD';
 
 import { httpRequestReturnXML } from '../pure/utils/tamperMonkeyFunction';
 
 const someTestActions = async () => {
     if (!location.search && !(location.pathname.length > 1)) {
-        const jQ = await waitWindowProperties('$');
-        console.log(jQ);
-
+        const isLoaded = await DetermineWindowPropertyIsLoaded('$');
         const head = await waitElementFinishLoading('#head_wrapper');
-        if (head) {
+
+        if (head && isLoaded) {
             replaceImg();
             replaceText();
             const resource = await getResource();
