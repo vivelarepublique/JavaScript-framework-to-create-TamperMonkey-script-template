@@ -4,12 +4,12 @@ const { VueLoaderPlugin } = require('vue-loader');
 const TerserPlugin = require('terser-webpack-plugin');
 const { banner, scriptFilename } = require('./config/info.js');
 
-const config = {
+module.exports = {
     entry: './src/index.tsx',
     output: {
         path: resolve(__dirname, 'release'),
         filename: scriptFilename,
-        pathinfo: false,
+        clean: true,
     },
     module: {
         rules: [
@@ -119,5 +119,3 @@ const config = {
         new VueLoaderPlugin(),
     ],
 };
-
-module.exports = config;

@@ -40,6 +40,6 @@ async function httpRequestReturnString(url: string, method: RequestMethods, data
     });
 }
 
-const windowProxy = unsafeWindow;
+const windowProxy = typeof unsafeWindow === 'object' ? unsafeWindow : window;
 
 export { httpRequestReturnXML, httpRequestReturnString, windowProxy };

@@ -4,6 +4,8 @@ import { sharedState as vueShared } from '../shared/vueState/sharedState';
 import { sharedState as reactShared } from '../shared/reactState/sharedState';
 
 const otherTestActions = () => {
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+
     listenElementChanges('#kw', {
         callback: value => {
             vueShared.search = value || '';
