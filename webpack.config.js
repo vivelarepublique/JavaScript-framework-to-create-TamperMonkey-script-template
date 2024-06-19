@@ -33,23 +33,23 @@ const config = {
             },
             {
                 test: /\.less$/,
-                use: ['style-loader', 'css-loader', 'less-loader'],
+                use: ['css-loader', 'less-loader'],
                 exclude: /node_modules/,
             },
             {
                 test: /\.sass$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: ['css-loader', 'sass-loader'],
                 exclude: /node_modules/,
             },
             {
                 test: /\.styl$/,
-                use: ['style-loader', 'css-loader', 'stylus-loader'],
+                use: ['css-loader', 'stylus-loader'],
                 exclude: /node_modules/,
             },
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue', '.tsx'],
+        extensions: ['.ts', '.js', '.jsx', '.vue', '.tsx'],
     },
     mode: 'production',
     optimization: {
