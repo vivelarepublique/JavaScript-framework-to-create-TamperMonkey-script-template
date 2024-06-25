@@ -7,7 +7,7 @@ import config from './config/info.js';
 export default {
     entry: './src/index.tsx',
     output: {
-        path: resolve('release'),
+        path: resolve('dist'),
         filename: config.scriptFilename,
         clean: true,
     },
