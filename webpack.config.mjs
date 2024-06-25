@@ -1,14 +1,14 @@
-const { resolve } = require('path');
-const { BannerPlugin } = require('webpack');
-const { VueLoaderPlugin } = require('vue-loader');
-const TerserPlugin = require('terser-webpack-plugin');
-const { banner, scriptFilename } = require('./config/info.js');
+import { resolve } from 'node:path';
+import webpack from 'webpack';
+import { VueLoaderPlugin } from 'vue-loader';
+import TerserPlugin from 'terser-webpack-plugin';
+import config from './config/info.js';
 
-module.exports = {
+export default {
     entry: './src/index.tsx',
     output: {
-        path: resolve(__dirname, 'release'),
-        filename: scriptFilename,
+        path: resolve('release'),
+        filename: config.scriptFilename,
         clean: true,
     },
     module: {
@@ -112,8 +112,8 @@ module.exports = {
         maxEntrypointSize: 1024 * 1024 * 4,
     },
     plugins: [
-        new BannerPlugin({
-            banner: banner,
+        new webpack.BannerPlugin({
+            banner: config.banner,
             raw: true,
         }),
         new VueLoaderPlugin(),

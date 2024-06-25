@@ -4,8 +4,8 @@
     "description": "",
     "main": "./src/index.tsx",
     "scripts": {
-        "dev": "npx webpack serve -c ./webpack.dev.js",
-        "build": "npx webpack"
+        "dev": "npx webpack serve -c ./webpack.dev.mjs",
+        "build": "npx webpack -c ./webpack.config.mjs"
     },
     "keywords": [
         "react",
@@ -13,6 +13,7 @@
         "tampermonkey"
     ],
     "author": "vivelarepublique",
+    "type": "module",
     "license": "MIT",
     "devDependencies": {
         "@types/react": "^18.3.3",

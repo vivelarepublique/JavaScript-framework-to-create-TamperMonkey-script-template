@@ -1,7 +1,7 @@
-const { VueLoaderPlugin } = require('vue-loader');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import { VueLoaderPlugin } from 'vue-loader';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export default {
     entry: './src/index.tsx',
     module: {
         rules: [

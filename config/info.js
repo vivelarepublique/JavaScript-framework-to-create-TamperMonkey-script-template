@@ -31,7 +31,7 @@ ${getMultiParameters(config.connect, 'connect')}
 `;
 
 const scriptFilename = `${config.name}.user.js`;
-module.exports = {
+export default {
     banner,
     scriptFilename,
 };
