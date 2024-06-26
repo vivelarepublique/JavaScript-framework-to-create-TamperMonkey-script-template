@@ -47,7 +47,7 @@ export default {
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: './test/index.html',
+            template: './index.html',
             filename: 'index.html',
             inject: 'body',
         }),

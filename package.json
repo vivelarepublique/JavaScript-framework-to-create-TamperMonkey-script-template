@@ -4,7 +4,8 @@
     "description": "",
     "main": "./src/index.tsx",
     "scripts": {
-        "dev": "npx webpack serve -c ./webpack.dev.mjs",
+        "dev": "npx vite --config ./vite.dev.js",
+        "dev:legacy": "npx webpack serve -c ./webpack.dev.mjs",
         "build": "npx vite build",
         "build:legacy": "npx webpack -c ./webpack.config.mjs"
     },
