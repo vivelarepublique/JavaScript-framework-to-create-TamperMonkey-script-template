@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import vue from '@vitejs/plugin-vue';
 import vitePluginTampermonkeyTemplate from './plugin/vite-plugin-tampermonkey-template.js';
-import config from './config/info.js';
+import config from './config/calculatedParameters.js';
 
 export default defineConfig({
     build: {
