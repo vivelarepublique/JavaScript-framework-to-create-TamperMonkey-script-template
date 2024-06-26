@@ -1,11 +1,12 @@
 import { resolve } from 'node:path';
+
 import webpack from 'webpack';
 import { VueLoaderPlugin } from 'vue-loader';
 import TerserPlugin from 'terser-webpack-plugin';
 import config from './config/calculatedParameters.js';
 
 export default {
-    entry: './src/index.tsx',
+    entry: './src/legacy-index.ts',
     output: {
         path: resolve('dist'),
         filename: config.scriptFilename,
@@ -18,6 +19,8 @@ export default {
                 loader: 'ts-loader',
                 options: {
                     appendTsSuffixTo: [/\.vue$/],
+                    configFile: 'tsconfig.app.json',
+                    onlyCompileBundledFiles: true,
                 },
                 exclude: /node_modules/,
             },

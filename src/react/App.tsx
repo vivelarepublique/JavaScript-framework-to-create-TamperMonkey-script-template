@@ -1,10 +1,10 @@
 import React from 'react';
-import Modal from './react/components/Modal';
+import Modal from './components/Modal';
 
-import { open, show } from './react/store/switcher';
+import { open, show } from './store/switcher';
 import { useDispatch, useSelector } from 'react-redux';
 
-import './react/css/modal.css';
+import './css/modal.css';
 
 export default function App() {
     const dispatch = useDispatch();

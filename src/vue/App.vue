@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    import Modal from './vue/components/Modal.vue';
+    import Modal from './components/Modal.vue';
     import { storeToRefs } from 'pinia';
-    import { useSwitcherStore } from './vue/store/switcher';
+    import { useSwitcherStore } from './store/switcher';
 
     const store = useSwitcherStore();
     const { show } = storeToRefs(store);
@@ -14,5 +14,5 @@
 </template>
 
 <style>
-    @import './vue/css/modal.css';
-</style>
+    @import './css/modal.css';
+</style>./store/switcher

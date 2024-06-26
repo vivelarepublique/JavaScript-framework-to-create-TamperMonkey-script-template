@@ -1,24 +1,7 @@
 {
-    "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "baseUrl": ".",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "importHelpers": true,
-        "jsx": "react-jsx",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "strictPropertyInitialization": false,
-        "target": "esnext",
-        "useDefineForClassFields": true,
-        "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
-        "paths": {
-            "@/*": ["src/*"]
-        }
-    },
-    "exclude": ["node_modules"],
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"]
-}
+    "files": [],
+    "references": [
+      { "path": "./tsconfig.app.json" },
+      { "path": "./tsconfig.preact.json" }
+    ]
+  }

@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+
 import vue from '@vitejs/plugin-vue';
+import react from '@vitejs/plugin-react';
+
 import vitePluginTampermonkeyTemplate from './plugin/vite-plugin-tampermonkey-template.js';
 import config from './config/calculatedParameters.js';
 
@@ -18,11 +20,11 @@ export default defineConfig({
             },
         },
         rollupOptions: {
-            input: './src/index.tsx',
+            input: './src/index.ts',
             output: {
                 entryFileNames: config.scriptFilename,
             },
         },
     },
-    plugins: [react(), vue(), vitePluginTampermonkeyTemplate({ banner: config.banner })],
+    plugins: [vue(), react(), vitePluginTampermonkeyTemplate({ banner: config.banner })],
 });

@@ -1,0 +1,8 @@
+{
+    "extends": "./tsconfig.app.json",
+    "compilerOptions": {
+        "jsxImportSource": "preact"
+    },
+    "include": ["src/preact/*.tsx", "src/preact/*.ts", "src/preact/**/*.tsx", "src/preact/**/*.ts"],
+    "exclude": ["node_modules"]
+}
