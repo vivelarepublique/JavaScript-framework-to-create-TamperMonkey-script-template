@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import vue from '@vitejs/plugin-vue';
-import ttPlugin from './plugin/tampermonkeyTemplate';
+import vitePluginTampermonkeyTemplate from './plugin/vite-plugin-tampermonkey-template.js';
 import config from './config/info.js';
 
 export default defineConfig({
@@ -24,5 +24,5 @@ export default defineConfig({
             },
         },
     },
-    plugins: [react(), vue(), ttPlugin({ banner: config.banner })],
+    plugins: [react(), vue(), vitePluginTampermonkeyTemplate({ banner: config.banner })],
 });
