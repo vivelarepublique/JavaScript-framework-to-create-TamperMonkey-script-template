@@ -1,5 +1,5 @@
 import React from 'react';
-import HelloWorld from './HelloWorld';
+import Test from './Test';
 import Counter from './Counter';
 import Bridge from './Bridge';
 
@@ -27,7 +27,7 @@ export default function Modal() {
                     </span>
                     <div className='b4-container'>
                         <div className='b4-row'>
-                            <HelloWorld msg='Welcome React' />
+                            <Test msg='Welcome React' />
                             <Counter />
                             <Bridge />
                         </div>

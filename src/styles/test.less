@@ -1,7 +1,13 @@
-@width: 10px;
-@height: @width + 10px;
+@keyframes rotate-less {
+    from {
+        transform: rotate(0deg);
+    }
 
-#less-test-header {
-    width: @width;
-    height: @height;
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+img.test-logo.less {
+    animation: rotate-less 5s linear infinite;
 }

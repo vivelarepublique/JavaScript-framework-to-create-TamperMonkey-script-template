@@ -20,6 +20,13 @@
     width: 100%;
 }
 
+ul.vue-test-class > li > div,
+ul.react-test-class > li > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 h3.vue-test-class,
 h3.react-test-class {
     margin: 40px 0 0;
@@ -36,39 +43,43 @@ ul.react-test-class > li {
     display: inline-block;
     margin: 0 10px;
 }
-ul.vue-test-class > li > a.vue-test-class-vue,
-ul.react-test-class > li > a.react-test-class-vue {
+a.vue-test-class-vue,
+a.react-test-class-vue {
     color: #42b883;
 }
 
-ul.vue-test-class > li > a.vue-test-class-pinia,
-ul.react-test-class > li > a.react-test-class-pinia {
+a.vue-test-class-pinia,
+a.react-test-class-pinia {
     color: #ffd859;
 }
 
-ul.vue-test-class > li > a.vue-test-class-react,
-ul.react-test-class > li > a.react-test-class-react {
+a.vue-test-class-react,
+a.react-test-class-react {
     color: #58c4dc;
 }
 
-ul.vue-test-class > li > a.vue-test-class-redux,
-ul.react-test-class > li > a.react-test-class-redux {
+a.vue-test-class-redux,
+a.react-test-class-redux {
     color: #764abc;
 }
 
-ul.vue-test-class > li > a.vue-test-class-less,
-ul.react-test-class > li > a.react-test-class-less {
+a.vue-test-class-less,
+a.react-test-class-less {
     color: #1d365d;
 }
 
-ul.vue-test-class > li > a.vue-test-class-sass,
-ul.react-test-class > li > a.react-test-class-sass {
+a.vue-test-class-sass,
+a.react-test-class-sass {
     color: #bf4080;
 }
 
-ul.vue-test-class > li > a.vue-test-class-stylus,
-ul.react-test-class > li > a.react-test-class-stylus {
+a.vue-test-class-stylus,
+a.react-test-class-stylus {
     color: #6da13f;
+}
+
+.test-logo {
+    height: 100px;
 }
 
 @keyframes animetop {

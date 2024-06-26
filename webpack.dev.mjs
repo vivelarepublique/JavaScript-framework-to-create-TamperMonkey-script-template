@@ -25,17 +25,22 @@ export default {
             },
             {
                 test: /\.less$/,
-                use: ['css-loader', 'less-loader'],
+                use: ['style-loader', 'css-loader', 'less-loader'],
                 exclude: /node_modules/,
             },
             {
                 test: /\.sass$/,
-                use: ['css-loader', 'sass-loader'],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
                 exclude: /node_modules/,
             },
             {
                 test: /\.styl$/,
-                use: ['css-loader', 'stylus-loader'],
+                use: ['style-loader', 'css-loader', 'stylus-loader'],
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.svg$/,
+                loader: 'url-loader',
                 exclude: /node_modules/,
             },
         ],

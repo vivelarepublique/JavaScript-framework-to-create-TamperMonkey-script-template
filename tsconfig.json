@@ -8,6 +8,7 @@
         "jsx": "react-jsx",
         "module": "esnext",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
         "skipLibCheck": true,
         "strict": true,
         "strictPropertyInitialization": false,
