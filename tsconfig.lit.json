@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "isolatedModules": true,
+        "module": "ESNext",
+        "moduleDetection": "force",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ESNext",
+        "useDefineForClassFields": false,
+        "lib": ["ESNext", "DOM", "DOM.Iterable"]
+    },
+    "exclude": ["node_modules"],
+    "include": ["src/lit/*.ts", "src/lit/**/*.ts"]
+}

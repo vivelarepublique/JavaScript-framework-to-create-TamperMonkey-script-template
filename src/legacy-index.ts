@@ -9,9 +9,9 @@ import { createReactApp } from './react';
 
 import { someTestActions } from './action/beforeMountActions';
 import { otherTestActions } from './action/afterMountActions';
-import { createMultiApp } from './action/createMultiApp';
+import { createDivAppElement } from './action/createMultiApp';
 
-createMultiApp(['vue', 'react']);
+createDivAppElement(['vue', 'react']);
 
 const beforeMountEvent = async () => await someTestActions();
 const afterMountEvent = () => otherTestActions();
