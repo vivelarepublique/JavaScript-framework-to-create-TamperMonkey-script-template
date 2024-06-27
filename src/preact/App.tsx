@@ -3,14 +3,21 @@ import { useState } from 'preact/hooks';
 
 import './css/modal.css';
 
+import Modal from './components/Modal';
+
+import ShowContext from './context/ShowContext';
+
 export function PreactApp() {
-    const [isShow, setIsShow] = useState(false);
+    const [show, setShow] = useState<boolean>(false);
 
     return (
         <Fragment>
-            <button id='preact-modal' onClick={() => setIsShow(true)}>
-                Show Preact Modal
-            </button>
+            <ShowContext.Provider value={{ show, setShow }}>
+                <button id='preact-modal' onClick={() => setShow(true)}>
+                    Show Preact Modal
+                </button>
+                {show && <Modal></Modal>}
+            </ShowContext.Provider>
         </Fragment>
     );
 }
