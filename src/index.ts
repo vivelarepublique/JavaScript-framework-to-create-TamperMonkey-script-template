@@ -12,12 +12,14 @@ import { createPreactApp } from './preact';
 import { LitApp } from './lit/lit-app';
 //@ts-ignore
 import SvelteApp from './svelte';
+//@ts-ignore
+import { createSolidApp } from './solid';
 
 import { someTestActions } from './action/beforeMountActions';
 import { otherTestActions } from './action/afterMountActions';
 import { createDivAppElement, createOtherAppElement } from './action/createMultiApp';
 
-createDivAppElement(['vue', 'react', 'preact', 'svelte']);
+createDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
 
 createOtherAppElement(['lit-app']);
 
@@ -34,5 +36,6 @@ new LitApp();
 export default new SvelteApp({
     target: document.querySelector('#svelteApp')!,
 });
+createSolidApp();
 
 afterMountEvent();

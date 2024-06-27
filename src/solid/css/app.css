@@ -1,0 +1,16 @@
+#solid-modal {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 60%;
+    transform: translateX(-50%);
+    animation: animetop 0.25s;
+    padding: 10px 20px;
+    margin: 5px 10px;
+    border: none;
+    background-color: #446b9e;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}

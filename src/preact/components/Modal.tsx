@@ -9,9 +9,9 @@ export default function Modal() {
         <Fragment>
             <div
                 class='modal-mask'
-                onClick={e => {
-                    e.stopPropagation();
-                    if (e.target === e.currentTarget) {
+                onClick={event => {
+                    event.stopPropagation();
+                    if (event.target === event.currentTarget) {
                         setShow(false);
                     }
                 }}

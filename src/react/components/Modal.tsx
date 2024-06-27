@@ -15,9 +15,9 @@ export default function Modal() {
         <React.Fragment>
             <div
                 className='modal-mask'
-                onClick={e => {
-                    e.stopPropagation();
-                    if (e.target === e.currentTarget) {
+                onClick={event => {
+                    event.stopPropagation();
+                    if (event.target === event.currentTarget) {
                         dispatch(close());
                     }
                 }}

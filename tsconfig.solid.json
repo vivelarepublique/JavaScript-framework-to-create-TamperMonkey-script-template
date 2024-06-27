@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "composite": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "module": "ESNext",
+        "moduleDetection": "force",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"]
+    },
+    "include": ["src/solid/*.tsx", "src/solid/*.ts", "src/solid/**/*.tsx", "src/solid/**/*.ts"],
+    "exclude": ["node_modules"]
+}

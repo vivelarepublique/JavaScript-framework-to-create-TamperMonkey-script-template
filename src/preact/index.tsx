@@ -1,6 +1,6 @@
 import { render } from 'preact';
-import { PreactApp } from './App';
+import { App } from './App';
 
 export function createPreactApp() {
-    render(<PreactApp />, document.getElementById('preactApp')!);
+    render(<App />, document.getElementById('preactApp')!);
 }

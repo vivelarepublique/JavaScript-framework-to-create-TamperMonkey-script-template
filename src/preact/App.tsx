@@ -7,7 +7,7 @@ import Modal from './components/Modal';
 
 import ShowContext from './context/ShowContext';
 
-export function PreactApp() {
+export function App() {
     const [show, setShow] = useState<boolean>(false);
 
     return (
