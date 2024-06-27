@@ -1,7 +1,9 @@
 {
     "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
         "composite": true,
-        "experimentalDecorators": true,
+        "esModuleInterop": true,
         "isolatedModules": true,
         "module": "ESNext",
         "moduleDetection": "force",
@@ -10,9 +12,9 @@
         "skipLibCheck": true,
         "strict": true,
         "target": "ESNext",
-        "useDefineForClassFields": false,
-        "lib": ["ESNext", "DOM", "DOM.Iterable"]
+        "useDefineForClassFields": true,
+        "verbatimModuleSyntax": true
     },
     "exclude": ["node_modules"],
-    "include": ["src/lit/*.ts", "src/lit/**/*.ts"]
+    "include": ["src/svelte/**/*.ts", "src/svelte/**/*.svelte", "src/*.d.ts"]
 }

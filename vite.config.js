@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 
 import vue from '@vitejs/plugin-vue';
 import react from '@vitejs/plugin-react';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 import vitePluginTampermonkeyTemplate from './plugin/vite-plugin-tampermonkey-template.js';
 import config from './config/calculatedParameters.js';
@@ -26,5 +27,5 @@ export default defineConfig({
             },
         },
     },
-    plugins: [vue(), react(), vitePluginTampermonkeyTemplate({ banner: config.banner })],
+    plugins: [vue(), react(), svelte(), vitePluginTampermonkeyTemplate({ banner: config.banner })],
 });
