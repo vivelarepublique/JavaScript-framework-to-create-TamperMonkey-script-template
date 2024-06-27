@@ -49,6 +49,18 @@ export class LitModal extends LitElement {
             width: 100%;
         }
 
+        @keyframes animetop {
+            0% {
+                top: -100px;
+                opacity: 0;
+            }
+
+            100% {
+                top: 0;
+                opacity: 1;
+            }
+        }
+
         .modal-mask {
             position: fixed;
             z-index: 9999;
@@ -80,18 +92,6 @@ export class LitModal extends LitElement {
             float: right;
             font-size: 24px;
             font-weight: bold;
-        }
-
-        @keyframes animetop {
-            0% {
-                top: -100px;
-                opacity: 0;
-            }
-
-            100% {
-                top: 0;
-                opacity: 1;
-            }
         }
     `;
 }

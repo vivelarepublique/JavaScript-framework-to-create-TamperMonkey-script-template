@@ -28,6 +28,7 @@ beforeMountEvent();
 
 createVueApp();
 createReactApp();
+
 createPreactApp();
 new LitApp();
 export default new SvelteApp({

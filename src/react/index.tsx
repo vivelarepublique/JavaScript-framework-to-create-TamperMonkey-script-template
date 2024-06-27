@@ -4,8 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 
 export function createReactApp() {
-    const root = createRoot(document.querySelector('#reactApp')!);
-    root.render(
+    createRoot(document.querySelector('#reactApp')!).render(
         <Provider store={store}>
             <App />
         </Provider>,

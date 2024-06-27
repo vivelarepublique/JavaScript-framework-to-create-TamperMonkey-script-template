@@ -1,4 +1,5 @@
 import React from 'react';
+
 import vueLogo from '../../assets/svg/vue.svg';
 import piniaLogo from '../../assets/svg/pinia.svg';
 import reactLogo from '../../assets/svg/react.svg';
@@ -6,6 +7,8 @@ import reduxLogo from '../../assets/svg/redux.svg';
 import lessLogo from '../../assets/svg/less.svg';
 import sassLogo from '../../assets/svg/sass.svg';
 import stylusLogo from '../../assets/svg/stylus.svg';
+
+import '../css/test.css';
 
 interface Props {
     msg: string;

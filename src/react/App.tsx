@@ -4,7 +4,7 @@ import Modal from './components/Modal';
 import { open, show } from './store/switcher';
 import { useDispatch, useSelector } from 'react-redux';
 
-import './css/modal.css';
+import './css/app.css';
 
 export default function App() {
     const dispatch = useDispatch();

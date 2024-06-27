@@ -1,7 +1,10 @@
 import React from 'react';
+
 import Test from './Test';
 import Counter from './Counter';
 import Bridge from './Bridge';
+
+import '../css/modal.css';
 
 import { close } from '../store/switcher';
 import { useDispatch } from 'react-redux';

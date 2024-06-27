@@ -1,0 +1,51 @@
+ul.react-test-class > li > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3.react-test-class {
+    margin: 40px 0 0;
+}
+
+ul.react-test-class {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.react-test-class > li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+a.react-test-class-vue {
+    color: #42b883;
+}
+
+a.react-test-class-pinia {
+    color: #ffd859;
+}
+
+a.react-test-class-react {
+    color: #58c4dc;
+}
+
+a.react-test-class-redux {
+    color: #764abc;
+}
+
+a.react-test-class-less {
+    color: #1d365d;
+}
+
+a.react-test-class-sass {
+    color: #bf4080;
+}
+
+a.react-test-class-stylus {
+    color: #6da13f;
+}
+
+.test-logo {
+    height: 100px;
+}

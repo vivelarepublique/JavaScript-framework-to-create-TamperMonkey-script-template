@@ -1,7 +1,7 @@
 import { Fragment } from 'preact';
 import { useState } from 'preact/hooks';
 
-import './css/modal.css';
+import './css/app.css';
 
 import Modal from './components/Modal';
 

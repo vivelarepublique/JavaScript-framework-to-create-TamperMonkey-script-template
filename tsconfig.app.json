@@ -21,10 +21,12 @@
             "@/*": ["src/*"]
         }
     },
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules",
+    "src/preact/*.ts", "src/preact/*.tsx", "src/preact/**/*.ts", "src/preact/**/*.tsx",
+    ],
     "include": ["src/*.ts",
     "src/react/*.ts", "src/react/*.tsx", "src/react/**/*.ts", "src/react/**/*.tsx",
     "src/vue/**/*.ts", "src/vue/**/*.vue", "src/vue/*.ts", "src/vue/*.vue",
-    "src/pure/**/*.ts", "src/action/*.ts", "src/shared/**/*.vue"
+    "src/pure/**/*.ts", "src/action/*.ts", "src/shared/**/*.ts"
     ]
 }

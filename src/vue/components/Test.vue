@@ -70,3 +70,56 @@
         msg: String,
     });
 </script>
+
+<style>
+    ul.vue-test-class > li > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h3.vue-test-class {
+        margin: 40px 0 0;
+    }
+
+    ul.vue-test-class {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul.vue-test-class > li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+    a.vue-test-class-vue {
+        color: #42b883;
+    }
+
+    a.vue-test-class-pinia {
+        color: #ffd859;
+    }
+
+    a.vue-test-class-react {
+        color: #58c4dc;
+    }
+
+    a.vue-test-class-redux {
+        color: #764abc;
+    }
+
+    a.vue-test-class-less {
+        color: #1d365d;
+    }
+
+    a.vue-test-class-sass {
+        color: #bf4080;
+    }
+
+    a.vue-test-class-stylus {
+        color: #6da13f;
+    }
+
+    .test-logo {
+        height: 100px;
+    }
+</style>
