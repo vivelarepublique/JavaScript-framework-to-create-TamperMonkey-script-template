@@ -1,24 +1,24 @@
-.b4-container {
+.react-b4-container {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
 
-.b4-row {
+.react-b4-row {
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
 }
 
-.b4-row > * {
+.react-b4-row > * {
     flex: 0 0 33%;
     max-width: 33%;
     position: relative;
     width: 100%;
 }
 
-@keyframes animetop {
+@keyframes anime-react {
     0% {
         top: -100px;
         opacity: 0;
@@ -30,7 +30,7 @@
     }
 }
 
-.modal-mask {
+.react-modal-mask {
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -43,11 +43,11 @@
     overflow: auto;
     min-width: 1200px;
     max-height: 95vh;
-    animation: animetop 0.25s;
-    font-size: min(2vh, 2vw);
+    animation: anime-react 0.25s;
+    font-size: min(4vh, 4vw);
 }
 
-.modal-container {
+.react-modal-container {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -56,7 +56,7 @@
     min-height: 80vh;
 }
 
-.modal-close-button {
+.react-modal-close-button {
     color: #aaa;
     float: right;
     font-size: 24px;

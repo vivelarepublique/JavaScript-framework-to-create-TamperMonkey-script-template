@@ -1,9 +1,9 @@
 <template>
-    <div class="modal-mask" @click.stop.self="close">
-        <div class="modal-container">
-            <span><button class="modal-close-button" @click="close">&times;</button></span>
-            <div class="b4-container">
-                <div class="b4-row">
+    <div class="vue-modal-mask" @click.stop.self="close">
+        <div class="vue-modal-container">
+            <span><button class="vue-modal-close-button" @click="close">&times;</button></span>
+            <div class="vue-b4-container">
+                <div class="vue-b4-row">
                     <Test msg="Welcome Vue" />
                     <Counter />
                     <Bridge />
@@ -24,27 +24,27 @@
 </script>
 
 <style>
-    .b4-container {
+    .vue-b4-container {
         width: 100%;
         margin-right: auto;
         margin-left: auto;
     }
 
-    .b4-row {
+    .vue-b4-row {
         display: flex;
         flex-wrap: wrap;
         margin-right: -15px;
         margin-left: -15px;
     }
 
-    .b4-row > * {
+    .vue-b4-row > * {
         flex: 0 0 33%;
         max-width: 33%;
         position: relative;
         width: 100%;
     }
 
-    @keyframes animetop {
+    @keyframes anime-vue {
         0% {
             top: -100px;
             opacity: 0;
@@ -56,7 +56,7 @@
         }
     }
 
-    .modal-mask {
+    .vue-modal-mask {
         position: fixed;
         z-index: 9999;
         top: 0;
@@ -69,11 +69,11 @@
         overflow: auto;
         min-width: 1200px;
         max-height: 95vh;
-        animation: animetop 0.25s;
-        font-size: min(2vh, 2vw);
+        animation: anime-vue 0.25s;
+        font-size: min(4vh, 4vw);
     }
 
-    .modal-container {
+    .vue-modal-container {
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
@@ -82,7 +82,7 @@
         min-height: 80vh;
     }
 
-    .modal-close-button {
+    .vue-modal-close-button {
         color: #aaa;
         float: right;
         font-size: 24px;

@@ -1,4 +1,9 @@
-ul.react-test-class > li > div {
+div.react-test-class {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.react-test-class > div > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,12 +13,12 @@ h3.react-test-class {
     margin: 40px 0 0;
 }
 
-ul.react-test-class {
+div.react-test-class {
     list-style-type: none;
     padding: 0;
 }
 
-ul.react-test-class > li {
+div.react-test-class > div {
     display: inline-block;
     margin: 0 10px;
 }
@@ -47,5 +52,20 @@ a.react-test-class-stylus {
 }
 
 .test-logo {
-    height: 100px;
+    height: 128px;
+}
+
+.test-large-logo.react {
+    height: 160px;
+    animation: rotate-react 8s linear infinite;
+}
+
+@keyframes rotate-react {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

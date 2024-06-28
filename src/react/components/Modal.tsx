@@ -14,7 +14,7 @@ export default function Modal() {
     return (
         <React.Fragment>
             <div
-                className='modal-mask'
+                className='react-modal-mask'
                 onClick={event => {
                     event.stopPropagation();
                     if (event.target === event.currentTarget) {
@@ -22,14 +22,14 @@ export default function Modal() {
                     }
                 }}
             >
-                <div className='modal-container'>
+                <div className='react-modal-container'>
                     <span>
-                        <button className='modal-close-button' onClick={() => dispatch(close())}>
+                        <button className='react-modal-close-button' onClick={() => dispatch(close())}>
                             &times;
                         </button>
                     </span>
-                    <div className='b4-container'>
-                        <div className='b4-row'>
+                    <div className='react-b4-container'>
+                        <div className='react-b4-row'>
                             <Test msg='Welcome React' />
                             <Counter />
                             <Bridge />

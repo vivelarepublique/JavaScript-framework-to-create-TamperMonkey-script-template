@@ -21,8 +21,17 @@ export default function Test(props: Props) {
             <div>
                 <h1>{msg}</h1>
                 <h3 className='react-test-class'>React Test Page</h3>
-                <ul className='react-test-class'>
-                    <li>
+                <div className='react-test-class'>
+                    <div></div>
+                    <div>
+                        <div>
+                            <img src={reactLogo} className='test-large-logo react' alt='React logo' />
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+                <div className='react-test-class'>
+                    <div>
                         <div>
                             <img src={vueLogo} className='test-logo' alt='Vue logo' />
                         </div>
@@ -31,8 +40,8 @@ export default function Test(props: Props) {
                                 Vue
                             </a>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div>
                             <img src={piniaLogo} className='test-logo' alt='Pinia logo' />
                         </div>
@@ -41,8 +50,8 @@ export default function Test(props: Props) {
                                 Pinia
                             </a>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div>
                             <img src={reactLogo} className='test-logo' alt='React logo' />
                         </div>
@@ -51,8 +60,8 @@ export default function Test(props: Props) {
                                 React
                             </a>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div>
                             <img src={reduxLogo} className='test-logo' alt='Redux logo' />
                         </div>
@@ -61,10 +70,10 @@ export default function Test(props: Props) {
                                 Redux
                             </a>
                         </div>
-                    </li>
-                </ul>
-                <ul className='react-test-class'>
-                    <li>
+                    </div>
+                </div>
+                <div className='react-test-class'>
+                    <div>
                         <div>
                             <img src={lessLogo} className='test-logo less' alt='Less logo' />
                         </div>
@@ -73,8 +82,8 @@ export default function Test(props: Props) {
                                 Less
                             </a>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div>
                             <img src={sassLogo} className='test-logo sass' alt='Sass logo' />
                         </div>
@@ -83,8 +92,8 @@ export default function Test(props: Props) {
                                 Sass
                             </a>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div>
                             <img src={stylusLogo} className='test-logo stylus' alt='Stylus logo' />
                         </div>
@@ -93,8 +102,8 @@ export default function Test(props: Props) {
                                 Stylus
                             </a>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </React.Fragment>
     );
