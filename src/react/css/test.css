@@ -51,6 +51,22 @@ a.react-test-class-stylus {
     color: #6da13f;
 }
 
+a.react-test-class-preact {
+    color: #673ab8;
+}
+
+a.react-test-class-lit {
+    color: #2843f6;
+}
+
+a.react-test-class-svelte {
+    color: #f96743;
+}
+
+a.react-test-class-solid {
+    color: #446b9e;
+}
+
 .test-logo {
     height: 128px;
 }

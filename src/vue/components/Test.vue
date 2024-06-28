@@ -69,6 +69,40 @@
                 </div>
             </div>
         </div>
+        <div className="vue-test-class">
+            <div>
+                <div>
+                    <img src="../../assets/svg/preact.svg" className="test-logo" alt="Preact logo" />
+                </div>
+                <div>
+                    <a className="vue-test-class-preact" href="https://preactjs.com" target="_blank" rel="noopener">Preact</a>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="../../assets/svg/lit.svg" className="test-logo" alt="Lit logo" />
+                </div>
+                <div>
+                    <a className="vue-test-class-lit" href="https://lit.dev" target="_blank" rel="noopener">Lit</a>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="../../assets/svg/svelte.svg" className="test-logo" alt="Svelte logo" />
+                </div>
+                <div>
+                    <a className="vue-test-class-svelte" href="https://svelte.dev" target="_blank" rel="noopener">Svelte</a>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="../../assets/svg/solid.svg" className="test-logo" alt="Solid logo" />
+                </div>
+                <div>
+                    <a className="vue-test-class-solid" href="https://www.solidjs.com" target="_blank" rel="noopener">Solid</a>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -130,6 +164,22 @@
 
     a.vue-test-class-stylus {
         color: #6da13f;
+    }
+
+    a.vue-test-class-preact {
+        color: #673ab8;
+    }
+
+    a.vue-test-class-lit {
+        color: #2843f6;
+    }
+
+    a.vue-test-class-svelte {
+        color: #f96743;
+    }
+
+    a.vue-test-class-solid {
+        color: #446b9e;
     }
 
     .test-logo {

@@ -4,9 +4,15 @@ import vueLogo from '../../assets/svg/vue.svg';
 import piniaLogo from '../../assets/svg/pinia.svg';
 import reactLogo from '../../assets/svg/react.svg';
 import reduxLogo from '../../assets/svg/redux.svg';
+
 import lessLogo from '../../assets/svg/less.svg';
 import sassLogo from '../../assets/svg/sass.svg';
 import stylusLogo from '../../assets/svg/stylus.svg';
+
+import preactLogo from '../../assets/svg/preact.svg';
+import litLogo from '../../assets/svg/lit.svg';
+import svelteLogo from '../../assets/svg/svelte.svg';
+import solidLogo from '../../assets/svg/solid.svg';
 
 import '../css/test.css';
 
@@ -98,6 +104,48 @@ export default function Test(props: Props) {
                         <div>
                             <a className='react-test-class-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
                                 Stylus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className='react-test-class'>
+                    <div>
+                        <div>
+                            <img src={preactLogo} className='test-logo' alt='Preact logo' />
+                        </div>
+                        <div>
+                            <a className='react-test-class-preact' href='https://preactjs.com' target='_blank' rel='noopener'>
+                                Preact
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src={litLogo} className='test-logo' alt='Lit logo' />
+                        </div>
+                        <div>
+                            <a className='react-test-class-lit' href='https://lit.dev' target='_blank' rel='noopener'>
+                                Lit
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src={svelteLogo} className='test-logo' alt='Svelte logo' />
+                        </div>
+                        <div>
+                            <a className='react-test-class-svelte' href='https://svelte.dev' target='_blank' rel='noopener'>
+                                Svelte
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src={solidLogo} className='test-logo' alt='Solid logo' />
+                        </div>
+                        <div>
+                            <a className='react-test-class-solid' href='https://www.solidjs.com' target='_blank' rel='noopener'>
+                                Solid
                             </a>
                         </div>
                     </div>
