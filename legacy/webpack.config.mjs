@@ -3,10 +3,10 @@ import { resolve } from 'node:path';
 import webpack from 'webpack';
 import { VueLoaderPlugin } from 'vue-loader';
 import TerserPlugin from 'terser-webpack-plugin';
-import config from './config/calculatedParameters.js';
+import config from '../config/calculatedParameters.js';
 
 export default {
-    entry: './src/legacy-index.ts',
+    entry: './legacy/index.ts',
     output: {
         path: resolve('dist'),
         filename: config.scriptFilename,

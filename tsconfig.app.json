@@ -27,6 +27,6 @@
     "include": ["src/*.ts",
     "src/react/*.ts", "src/react/*.tsx", "src/react/**/*.ts", "src/react/**/*.tsx",
     "src/vue/**/*.ts", "src/vue/**/*.vue", "src/vue/*.ts", "src/vue/*.vue",
-    "src/pure/**/*.ts", "src/action/*.ts", "src/shared/**/*.ts"
-    ]
+    "src/pure/**/*.ts", "src/action/*.ts", "src/shared/**/*.ts",
+    "legacy/*.ts"    ]
 }

@@ -2,7 +2,7 @@ import { VueLoaderPlugin } from 'vue-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-    entry: './src/legacy-index.ts',
+    entry: './legacy/index.ts',
     module: {
         rules: [
             {
@@ -54,7 +54,7 @@ export default {
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: './legacy/index.html',
+            template: 'index.html',
             filename: 'index.html',
             inject: 'body',
         }),
