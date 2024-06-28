@@ -1,6 +1,6 @@
 div.react-test-class {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 div.react-test-class > div > div {

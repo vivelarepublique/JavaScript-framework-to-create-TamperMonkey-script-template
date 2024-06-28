@@ -22,13 +22,11 @@ export default function Test(props: Props) {
                 <h1>{msg}</h1>
                 <h3 className='react-test-class'>React Test Page</h3>
                 <div className='react-test-class'>
-                    <div></div>
                     <div>
                         <div>
                             <img src={reactLogo} className='test-large-logo react' alt='React logo' />
                         </div>
                     </div>
-                    <div></div>
                 </div>
                 <div className='react-test-class'>
                     <div>

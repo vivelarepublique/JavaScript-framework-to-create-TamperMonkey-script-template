@@ -3,13 +3,11 @@
         <h1>{{ msg }}</h1>
         <h3 class="vue-test-class">Vue Test Page</h3>
         <div class="vue-test-class">
-            <div></div>
             <div>
                 <div>
                     <img src="../../assets/svg/vue.svg" class="test-large-logo vue" alt="Vue logo" />
                 </div>
             </div>
-            <div></div>
         </div>
         <div class="vue-test-class">
             <div>
@@ -83,7 +81,7 @@
 <style>
     div.vue-test-class {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 
     div.vue-test-class > div > div {
