@@ -44,18 +44,6 @@
         width: 100%;
     }
 
-    @keyframes anime-vue {
-        0% {
-            top: -100px;
-            opacity: 0;
-        }
-
-        100% {
-            top: 0;
-            opacity: 1;
-        }
-    }
-
     .vue-modal-mask {
         position: fixed;
         z-index: 9999;
