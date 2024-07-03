@@ -13,6 +13,5 @@
         "useDefineForClassFields": false,
         "lib": ["ESNext", "DOM", "DOM.Iterable"]
     },
-    "exclude": ["node_modules"],
-    "include": ["src/lit/*.ts", "src/lit/**/*.ts"]
+    "include": ["src/lit/*.ts", "src/lit/**/*.ts", "src/*.d.ts"]
 }
