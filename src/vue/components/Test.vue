@@ -69,37 +69,37 @@
                 </div>
             </div>
         </div>
-        <div className="vue-test-class">
+        <div class="vue-test-class">
             <div>
                 <div>
-                    <img src="../../assets/svg/preact.svg" className="test-logo" alt="Preact logo" />
+                    <img src="../../assets/svg/preact.svg" class="test-logo" alt="Preact logo" />
                 </div>
                 <div>
-                    <a className="vue-test-class-preact" href="https://preactjs.com" target="_blank" rel="noopener">Preact</a>
+                    <a class="vue-test-class-preact" href="https://preactjs.com" target="_blank" rel="noopener">Preact</a>
                 </div>
             </div>
             <div>
                 <div>
-                    <img src="../../assets/svg/lit.svg" className="test-logo" alt="Lit logo" />
+                    <img src="../../assets/svg/lit.svg" class="test-logo" alt="Lit logo" />
                 </div>
                 <div>
-                    <a className="vue-test-class-lit" href="https://lit.dev" target="_blank" rel="noopener">Lit</a>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <img src="../../assets/svg/svelte.svg" className="test-logo" alt="Svelte logo" />
-                </div>
-                <div>
-                    <a className="vue-test-class-svelte" href="https://svelte.dev" target="_blank" rel="noopener">Svelte</a>
+                    <a class="vue-test-class-lit" href="https://lit.dev" target="_blank" rel="noopener">Lit</a>
                 </div>
             </div>
             <div>
                 <div>
-                    <img src="../../assets/svg/solid.svg" className="test-logo" alt="Solid logo" />
+                    <img src="../../assets/svg/svelte.svg" class="test-logo" alt="Svelte logo" />
                 </div>
                 <div>
-                    <a className="vue-test-class-solid" href="https://www.solidjs.com" target="_blank" rel="noopener">Solid</a>
+                    <a class="vue-test-class-svelte" href="https://svelte.dev" target="_blank" rel="noopener">Svelte</a>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="../../assets/svg/solid.svg" class="test-logo" alt="Solid logo" />
+                </div>
+                <div>
+                    <a class="vue-test-class-solid" href="https://www.solidjs.com" target="_blank" rel="noopener">Solid</a>
                 </div>
             </div>
         </div>
