@@ -58,7 +58,7 @@
         min-width: 1200px;
         max-height: 95vh;
         animation: anime-vue 0.25s;
-        font-size: min(4vh, 4vw);
+        font-size: min(3.2vh, 3.2vw);
     }
 
     .vue-modal-container {

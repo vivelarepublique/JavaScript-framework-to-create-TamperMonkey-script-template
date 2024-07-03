@@ -1,69 +1,69 @@
-div.react-test-class {
+h3.react-test-div {
+    margin: 40px 0 0;
+}
+
+h1.react-test-h,
+h3.react-test-h {
+    color: #58c4dc;
+}
+
+div.react-test-div {
     display: flex;
     justify-content: space-evenly;
 }
 
-div.react-test-class > div > div {
+div.react-test-div > div {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+div.react-test-div > div > div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-h3.react-test-class {
-    margin: 40px 0 0;
-}
-
-div.react-test-class {
-    list-style-type: none;
-    padding: 0;
-}
-
-div.react-test-class > div {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a.react-test-class-vue {
+a.react-test-a-vue {
     color: #42b883;
 }
 
-a.react-test-class-pinia {
+a.react-test-a-pinia {
     color: #ffd859;
 }
 
-a.react-test-class-react {
+a.react-test-a-react {
     color: #58c4dc;
 }
 
-a.react-test-class-redux {
+a.react-test-a-redux {
     color: #764abc;
 }
 
-a.react-test-class-less {
+a.react-test-a-less {
     color: #1d365d;
 }
 
-a.react-test-class-sass {
+a.react-test-a-sass {
     color: #bf4080;
 }
 
-a.react-test-class-stylus {
+a.react-test-a-stylus {
     color: #6da13f;
 }
 
-a.react-test-class-preact {
+a.react-test-a-preact {
     color: #673ab8;
 }
 
-a.react-test-class-lit {
+a.react-test-a-lit {
     color: #2843f6;
 }
 
-a.react-test-class-svelte {
+a.react-test-a-svelte {
     color: #f96743;
 }
 
-a.react-test-class-solid {
+a.react-test-a-solid {
     color: #446b9e;
 }
 
