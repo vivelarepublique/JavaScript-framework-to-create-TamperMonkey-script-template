@@ -1,0 +1,87 @@
+h3.preact-test-h {
+    margin: 40px 0 0;
+}
+
+h1.preact-test-h,
+h3.preact-test-h {
+    color: #764abc;
+}
+
+div.preact-test-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+div.preact-test-div > div {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+div.preact-test-div > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a.preact-test-a-vue {
+    color: #42b883;
+}
+
+a.preact-test-a-pinia {
+    color: #ffd859;
+}
+
+a.preact-test-a-react {
+    color: #58c4dc;
+}
+
+a.preact-test-a-redux {
+    color: #764abc;
+}
+
+a.preact-test-a-less {
+    color: #1d365d;
+}
+
+a.preact-test-a-sass {
+    color: #bf4080;
+}
+
+a.preact-test-a-stylus {
+    color: #6da13f;
+}
+
+a.preact-test-a-preact {
+    color: #673ab8;
+}
+
+a.preact-test-a-lit {
+    color: #2843f6;
+}
+
+a.preact-test-a-svelte {
+    color: #f96743;
+}
+
+a.preact-test-a-solid {
+    color: #446b9e;
+}
+
+.test-logo {
+    height: 128px;
+}
+
+.test-large-logo.preact {
+    height: 160px;
+    animation: rotate-preact 8s linear infinite;
+}
+
+@keyframes rotate-preact {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -8,6 +8,9 @@ export class LitApp extends LitElement {
     @property({ type: Boolean })
     show = false;
 
+    @property({ type: Number })
+    count = 0;
+
     render() {
         return html`
             <button id="lit-modal" @click=${this._open} part="button">Show Lit Modal</button>
@@ -16,7 +19,7 @@ export class LitApp extends LitElement {
     }
 
     handleShowChanged(event: CustomEvent) {
-        this.show = event.detail.value;
+        this.show = event.detail;
     }
 
     private _open() {
@@ -30,7 +33,7 @@ export class LitApp extends LitElement {
             top: 0;
             left: 40%;
             transform: translateX(-50%);
-            animation: animetop 0.25s;
+            animation: anime-lit 0.25s;
             padding: 10px 20px;
             margin: 5px 10px;
             border: none;
@@ -39,6 +42,18 @@ export class LitApp extends LitElement {
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        @keyframes anime-lit {
+            0% {
+                top: -100px;
+                opacity: 0;
+            }
+
+            100% {
+                top: 0;
+                opacity: 1;
+            }
         }
     `;
 }

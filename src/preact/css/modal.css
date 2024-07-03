@@ -1,24 +1,24 @@
-.solid-b4-container {
+.preact-b4-container {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
 
-.solid-b4-row {
+.preact-b4-row {
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
 }
 
-.solid-b4-row > * {
+.preact-b4-row > * {
     flex: 0 0 33%;
     max-width: 33%;
     position: relative;
     width: 100%;
 }
 
-.solid-modal-mask {
+.preact-modal-mask {
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -31,11 +31,11 @@
     overflow: auto;
     min-width: 1200px;
     max-height: 95vh;
-    animation: anime-solid 0.25s;
+    animation: anime-preact 0.25s;
     font-size: min(3.2vh, 3.2vw);
 }
 
-.solid-modal-container {
+.preact-modal-container {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -44,7 +44,7 @@
     min-height: 80vh;
 }
 
-.solid-modal-close-button {
+.preact-modal-close-button {
     color: #aaa;
     float: right;
     font-size: 24px;

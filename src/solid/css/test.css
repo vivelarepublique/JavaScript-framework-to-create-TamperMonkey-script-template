@@ -1,0 +1,87 @@
+h3.solid-test-h {
+    margin: 40px 0 0;
+}
+
+h1.solid-test-h,
+h3.solid-test-h {
+    color: #446b9e;
+}
+
+div.solid-test-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+div.solid-test-div > div {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+div.solid-test-div > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a.solid-test-a-vue {
+    color: #42b883;
+}
+
+a.solid-test-a-pinia {
+    color: #ffd859;
+}
+
+a.solid-test-a-react {
+    color: #58c4dc;
+}
+
+a.solid-test-a-redux {
+    color: #764abc;
+}
+
+a.solid-test-a-less {
+    color: #1d365d;
+}
+
+a.solid-test-a-sass {
+    color: #bf4080;
+}
+
+a.solid-test-a-stylus {
+    color: #6da13f;
+}
+
+a.solid-test-a-preact {
+    color: #673ab8;
+}
+
+a.solid-test-a-lit {
+    color: #2843f6;
+}
+
+a.solid-test-a-svelte {
+    color: #f96743;
+}
+
+a.solid-test-a-solid {
+    color: #446b9e;
+}
+
+.test-logo {
+    height: 128px;
+}
+
+.test-large-logo.solid {
+    height: 160px;
+    animation: rotate-solid 8s linear infinite;
+}
+
+@keyframes rotate-solid {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

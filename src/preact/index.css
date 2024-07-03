@@ -1,0 +1,11 @@
+@keyframes anime-preact {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}

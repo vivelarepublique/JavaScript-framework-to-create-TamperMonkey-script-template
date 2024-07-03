@@ -1,19 +1,13 @@
-import { createSignal } from 'solid-js';
-import { Accessor, Setter } from 'solid-js';
+import Test from './Test';
+import Counter from './Counter';
+import { setShow } from '../signal/showSignal';
 
 import '../css/modal.css';
 
-interface Props {
-    show: Accessor<boolean>;
-    setShow: Setter<boolean>;
-}
-
-export default function Modal(props: Props) {
-    const { setShow } = props;
-
+export default function Modal() {
     return (
         <div
-            class='modal-mask'
+            class='solid-modal-mask'
             onClick={event => {
                 event.stopPropagation();
                 if (event.target === event.currentTarget) {
@@ -21,14 +15,17 @@ export default function Modal(props: Props) {
                 }
             }}
         >
-            <div class='modal-container'>
+            <div class='solid-modal-container'>
                 <span>
-                    <button class='modal-close-button' onClick={() => setShow(false)}>
+                    <button class='solid-modal-close-button' onClick={() => setShow(false)}>
                         &times;
                     </button>
                 </span>
-                <div class='b4-container'>
-                    <div class='b4-row'></div>
+                <div class='solid-b4-container'>
+                    <div class='solid-b4-row'>
+                        <Test msg='Welcome Solid' />
+                        <Counter />
+                    </div>
                 </div>
             </div>
         </div>
