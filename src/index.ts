@@ -9,7 +9,7 @@ import { createReactApp } from './react';
 //@ts-ignore
 import { createPreactApp } from './preact';
 //@ts-ignore
-import { LitApp } from './lit/lit-app';
+import { createLitApp } from './lit';
 //@ts-ignore
 import SvelteApp from './svelte';
 //@ts-ignore
@@ -32,7 +32,7 @@ createVueApp();
 createReactApp();
 
 createPreactApp();
-new LitApp();
+createLitApp();
 export default new SvelteApp({
     target: document.querySelector('#svelteApp')!,
 });
