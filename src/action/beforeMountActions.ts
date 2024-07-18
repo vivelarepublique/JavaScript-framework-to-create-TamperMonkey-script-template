@@ -1,7 +1,7 @@
-import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../pure/utils/monitoringElement';
-import { getElement, createNewElement, removeElement, appendElement } from '../pure/utils/elementCRUD';
+import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../native/utils/monitoringElement';
+import { getElement, createNewElement, removeElement, appendElement } from '../native/utils/elementCRUD';
 
-import { httpRequestReturnXML } from '../pure/utils/tamperMonkeyFunction';
+import { httpRequestReturnXML } from '../native/utils/tamperMonkeyFunction';
 
 const someTestActions = async () => {
     if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;

@@ -21,15 +21,9 @@
             "@/*": ["src/*"]
         }
     },
-    "exclude": ["node_modules",
-    "src/preact/*.ts", "src/preact/*.tsx", "src/preact/**/*.ts", "src/preact/**/*.tsx",
-    "src/lit/*.ts",  "src/lit/**/*.ts",
-    "src/svelte/*.ts", "src/svelte/*.svelte", "src/svelte/**/*.ts", "src/svelte/**/*.svelte",
-    "src/solid/*.ts", "src/solid/*.tsx", "src/solid/**/*.ts", "src/solid/**/*.tsx",
-    ],
     "include": ["src/*.ts",
     "src/react/*.ts", "src/react/*.tsx", "src/react/**/*.ts", "src/react/**/*.tsx",
     "src/vue/**/*.ts", "src/vue/**/*.vue", "src/vue/*.ts", "src/vue/*.vue",
-    "src/pure/**/*.ts", "src/action/*.ts", "src/shared/**/*.ts",
-    "legacy/*.ts"    ]
+    "src/native/**/*.ts", "src/action/*.ts", "src/shared/**/*.ts",
+    "src/types/*.d.ts"]
 }

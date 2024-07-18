@@ -1,4 +1,4 @@
-import { appendElement, createNewElement } from '../pure/utils/elementCRUD';
+import { appendElement, createNewElement } from '../native/utils/elementCRUD';
 
 export function createDivAppElement(id: string[]) {
     id.forEach(el => {

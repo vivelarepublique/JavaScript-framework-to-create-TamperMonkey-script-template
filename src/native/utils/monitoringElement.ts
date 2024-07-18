@@ -1,5 +1,5 @@
-import { ListenOptions } from '../types/mutations';
-import { RealElement } from '../types/dom';
+import { ListenOptions } from '../interface/mutations';
+import { RealElement } from '../interface/dom';
 import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';

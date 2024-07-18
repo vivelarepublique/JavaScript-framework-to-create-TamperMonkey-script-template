@@ -1,4 +1,4 @@
-import { listenElementChanges } from '../pure/utils/monitoringElement';
+import { listenElementChanges } from '../native/utils/monitoringElement';
 
 import { sharedState as vueShared } from '../shared/vueState/sharedState';
 import { sharedState as reactShared } from '../shared/reactState/sharedState';

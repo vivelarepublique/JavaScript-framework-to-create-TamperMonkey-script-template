@@ -1,6 +1,6 @@
-/// <reference path="../declaration/custom-tampermonkey.d.ts" />
+/// <reference path="../../types/tampermonkey.d.ts" />
 
-import { NewRequest, RequestMethods } from '../types/request';
+import { NewRequest, RequestMethods } from '../interface/request';
 
 async function httpRequestReturnXML(url: string, method: RequestMethods, data?: any, headers?: any): Promise<Document | null> {
     return new Promise(resolve => {

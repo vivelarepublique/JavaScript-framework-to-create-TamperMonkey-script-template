@@ -1,4 +1,4 @@
-import { customEvent, ElementProperties } from '../types/dom';
+import { customEvent, ElementProperties } from '../interface/dom';
 
 const getElement = (selector: string, refer?: Element): Element | null => {
     return refer ? refer.querySelector(selector) : document.querySelector(selector);
