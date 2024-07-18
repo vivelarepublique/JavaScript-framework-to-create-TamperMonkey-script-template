@@ -7,7 +7,7 @@ import preact from '@preact/preset-vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import solid from 'vite-plugin-solid';
 
-import vitePluginTampermonkeyTemplate from './plugin/vite-plugin-tampermonkey-template.js';
+import vitePluginTampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection.js';
 import config from './config/calculatedParameters.js';
 
 export default defineConfig({
@@ -44,6 +44,6 @@ export default defineConfig({
         solid({
             include: ['src/solid/*.{tsx,ts,jsx,js}', 'src/solid/**/*.{tsx,ts,jsx,js}'],
         }),
-        vitePluginTampermonkeyTemplate({ banner: config.banner }),
+        vitePluginTampermonkeyBannerAdditionAndCssInjection({ banner: config.banner }),
     ],
 });

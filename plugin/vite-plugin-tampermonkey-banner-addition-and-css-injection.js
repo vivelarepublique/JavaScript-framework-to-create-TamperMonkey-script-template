@@ -1,7 +1,7 @@
 
-export default function vitePluginTampermonkeyTemplate({ banner }) {
+export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ banner }) {
     return {
-        name: 'vite-plugin-tampermonkey-template',
+        name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
         apply: 'build',
         enforce: 'post',
         generateBundle(options, bundle) {
@@ -18,7 +18,7 @@ export default function vitePluginTampermonkeyTemplate({ banner }) {
 
             if (cssCode.length === 0) return null;
 
-            const injectCss = cssCode => /*javascript*/ `const otherCss = document.createElement('style');${'\n'}otherCss.appendChild(document.createTextNode(${JSON.stringify(cssCode.trim())}));${'\n'}document.head.appendChild(otherCss);`;
+            const injectCss = cssCode => /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');${'\n'}vitePluginTampermonkeyTemplateCssInjection.appendChild(document.createTextNode(${JSON.stringify(cssCode.trim())}));${'\n'}document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
 
             jsBundleNames.forEach(js => {
                 bundle[js].code = /*javascript*/ `${banner}${'\n'}(function () {${'\n'}'use strict';${'\n'}${injectCss(cssCode)}${'\n'}${bundle[js].code}${'\n'}})();`;
