@@ -1,4 +1,26 @@
 {
     "files": [],
-    "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.preact.json" }, { "path": "./tsconfig.lit.json" }, { "path": "./tsconfig.svelte.json" }, { "path": "./tsconfig.solid.json" }]
+    "references": [
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.vue.json"
+        },
+        {
+            "path": "./tsconfig.react.json"
+        },
+        {
+            "path": "./tsconfig.preact.json"
+        },
+        {
+            "path": "./tsconfig.lit.json"
+        },
+        {
+            "path": "./tsconfig.svelte.json"
+        },
+        {
+            "path": "./tsconfig.solid.json"
+        }
+    ]
 }

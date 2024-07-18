@@ -2,6 +2,7 @@
     "compilerOptions": {
         "composite": true,
         "isolatedModules": true,
+        "jsx": "preserve",
         "module": "ESNext",
         "moduleDetection": "force",
         "moduleResolution": "bundler",
@@ -15,5 +16,6 @@
         "useDefineForClassFields": true,
         "lib": ["ES2020", "DOM", "DOM.Iterable"]
     },
-    "include": ["src/*.ts", "src/native/**/*.ts", "src/action/*.ts", "src/shared/**/*.ts"]
+    "include": ["src/vue/*.ts","src/vue/**/*.ts", "src/vue/*.vue", "src/vue/**/*.vue",
+    "src/types/*.d.ts"]
 }
