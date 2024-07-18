@@ -1,15 +1,22 @@
-import '../src/styles/global.css';
+//@ts-ignore
+import './src/styles/global.css';
+//@ts-ignore
+import './src/styles/test.less';
+//@ts-ignore
+import './src/styles/test.sass';
+//@ts-ignore
+import './src/styles/test.styl';
 
-import '../src/styles/test.less';
-import '../src/styles/test.sass';
-import '../src/styles/test.styl';
-
-import { createVueApp } from '../src/vue';
-import { createReactApp } from '../src/react';
-
-import { someTestActions } from '../src/action/beforeMountActions';
-import { otherTestActions } from '../src/action/afterMountActions';
-import { createDivAppElement } from '../src/action/createMultiApp';
+//@ts-ignore
+import { createVueApp } from './src/vue';
+//@ts-ignore
+import { createReactApp } from './src/react';
+//@ts-ignore
+import { someTestActions } from './src/action/beforeMountActions';
+//@ts-ignore
+import { otherTestActions } from './src/action/afterMountActions';
+//@ts-ignore
+import { createDivAppElement } from './src/action/createMultiApp';
 
 createDivAppElement(['vue', 'react']);
 

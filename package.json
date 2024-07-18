@@ -5,9 +5,7 @@
     "main": "./src/index.tsx",
     "scripts": {
         "dev": "npx vite --config ./vite.dev.js",
-        "dev:legacy": "npx webpack serve -c ./legacy/webpack.dev.mjs",
-        "build": "npx vite build",
-        "build:legacy": "npx webpack -c ./legacy/webpack.config.mjs"
+        "build": "npx vite build"
     },
     "keywords": [
         "react",
@@ -26,27 +24,14 @@
         "@types/web": "^0.0.145",
         "@vitejs/plugin-react": "^4.3.1",
         "@vitejs/plugin-vue": "^5.0.5",
-        "css-loader": "^7.1.2",
-        "html-webpack-plugin": "^5.6.0",
         "less": "^4.2.0",
-        "less-loader": "^12.2.0",
         "sass": "^1.77.4",
-        "sass-loader": "^14.2.1",
-        "style-loader": "^4.0.0",
         "stylus": "^0.63.0",
-        "stylus-loader": "^8.1.0",
         "svelte": "^4.2.18",
         "terser": "^5.31.1",
-        "terser-webpack-plugin": "^5.3.10",
-        "ts-loader": "^9.5.1",
         "typescript": "^5.4.5",
-        "url-loader": "^4.1.1",
         "vite": "^5.3.1",
-        "vite-plugin-solid": "^2.10.2",
-        "vue-loader": "^17.4.2",
-        "webpack": "^5.91.0",
-        "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^5.0.4"
+        "vite-plugin-solid": "^2.10.2"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^2.2.5",

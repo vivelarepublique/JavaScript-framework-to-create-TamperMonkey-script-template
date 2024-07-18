@@ -2,7 +2,7 @@ import { VueLoaderPlugin } from 'vue-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-    entry: './legacy/index.ts',
+    entry: './src/index.ts',
     module: {
         rules: [
             {
@@ -10,7 +10,7 @@ export default {
                 loader: 'ts-loader',
                 options: {
                     appendTsSuffixTo: [/\.vue$/],
-                    configFile: 'tsconfig.app.json',
+                    configFile: 'tsconfig.json',
                     onlyCompileBundledFiles: true,
                 },
                 exclude: /node_modules/,
