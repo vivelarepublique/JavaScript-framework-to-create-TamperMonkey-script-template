@@ -16,7 +16,7 @@
     "type": "module",
     "license": "MIT",
     "devDependencies": {
-        "@preact/preset-vite": "^2.8.3",
+        "@preact/preset-vite": "^2.9.0",
         "@sveltejs/vite-plugin-svelte": "^3.1.1",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
@@ -25,24 +25,24 @@
         "@vitejs/plugin-react": "^4.3.1",
         "@vitejs/plugin-vue": "^5.0.5",
         "less": "^4.2.0",
-        "sass": "^1.77.4",
+        "sass": "^1.77.8",
         "stylus": "^0.63.0",
         "svelte": "^4.2.18",
-        "terser": "^5.31.1",
-        "typescript": "^5.4.5",
-        "vite": "^5.3.1",
+        "terser": "^5.31.3",
+        "typescript": "^5.5.3",
+        "vite": "^5.3.4",
         "vite-plugin-solid": "^2.10.2"
     },
     "dependencies": {
-        "@reduxjs/toolkit": "^2.2.5",
+        "@reduxjs/toolkit": "^2.2.6",
         "lit": "^3.1.4",
         "pinia": "^2.1.7",
-        "preact": "^10.22.0",
+        "preact": "^10.22.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-redux": "^9.1.2",
         "redux": "^5.0.1",
-        "solid-js": "^1.8.17",
-        "vue": "^3.4.27"
+        "solid-js": "^1.8.18",
+        "vue": "^3.4.33"
     }
 }
