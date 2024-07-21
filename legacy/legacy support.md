@@ -47,6 +47,7 @@ webpack.dev.mjs
 Move the following files from the current directory to the `src` directory (replacing existing file)
 
 ```bash
+custom.d.ts
 index.ts
 ```
 
