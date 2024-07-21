@@ -4,7 +4,9 @@ import './styles/test.less';
 import './styles/test.sass';
 import './styles/test.styl';
 
+//@ts-ignore
 import { createVueApp } from './vue';
+//@ts-ignore
 import { createReactApp } from './react';
 //@ts-ignore
 import { createPreactApp } from './preact';
