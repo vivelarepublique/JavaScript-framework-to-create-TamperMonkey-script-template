@@ -18,7 +18,7 @@ export default defineConfig({
         minify: 'terser',
         terserOptions: {
             compress: true,
-            mangle: true,
+            mangle: false,
             format: {
                 beautify: true,
             },
