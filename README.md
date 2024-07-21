@@ -1,25 +1,26 @@
 # Javascript framework to create Tampermonkey script template
 
-- This is a Javascript framework to create Tampermonkey script template.
-- No longer need to use native js or jQuery to write Tampermonkey scripts.
+- A Javascript framework to create Tampermonkey script template.
+- No longer need to use native JavaScript or jQuery to write Tampermonkey script.
+- Use TypeScript with any framework you like.
 
 ## Native JS Content
 
-- All runtime functions are written in [Typescript](https://github.com/microsoft/TypeScript).
+- All runtime functions are written in [TypeScript](https://github.com/microsoft/TypeScript).
 - Extended some DOM manipulation methods.
 - Wraps some Tampermonkey-specific APIs.
 - Some common utility functions (refer to [lodash](https://github.com/lodash/lodash)).
 
 ## Supported framework
 
-- [Vue](https://github.com/vuejs/vue)
-- [React](https://github.com/facebook/react)
+- [Vue](https://github.com/vuejs/vue) and [Pinia](https://github.com/vuejs/pinia)
+- [React](https://github.com/facebook/react) and [Redux](https://github.com/reduxjs/redux)
 - [Preact](https://github.com/preactjs/preact)
 - [Lit](https://github.com/lit/lit)
 - [Svelte](https://github.com/sveltejs/svelte)
 - [Solid](https://github.com/solidjs/solid)
 
-## Building Tools
+## Building Tool
 
 - [Vite](https://github.com/vitejs/vite)
 - [Webpack](https://github.com/webpack/webpack) ([deprecated](https://github.com/vivelarepublique/vue-or-react-create-tampermonkey-script-template/blob/main/legacy/legacy%20support.md))
@@ -35,11 +36,11 @@ npm run dev
 
 ## Future plans
 
-- [ ] Add more framework support
-    - [Angular](https://github.com/angular/angular)
-    - [Astro](https://github.com/withastro/astro)
-- [ ] Add more features
-- [ ] Add more documentation
+- [ ] More framework support
+  - [Angular](https://github.com/angular/angular)
+  - [Astro](https://github.com/withastro/astro)
+- [ ] More packaged native JavaScript function
+- [ ] More detailed documentation
 
 ## License
 
