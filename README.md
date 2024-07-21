@@ -22,7 +22,7 @@
 ## Building Tools
 
 - [Vite](https://github.com/vitejs/vite)
-- [Webpack](https://github.com/webpack/webpack) (deprecated)
+- [Webpack](https://github.com/webpack/webpack) ([deprecated](https://github.com/vivelarepublique/vue-or-react-create-tampermonkey-script-template/blob/main/legacy/legacy%20support.md))
 
 ## Usage
 

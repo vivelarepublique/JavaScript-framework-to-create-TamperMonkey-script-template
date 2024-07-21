@@ -90,16 +90,16 @@ index.ts
 }
 ```
 
-8. **Execute the command to test**
+8. **Test**
 
 ```bash
 npm run dev
 ```
 
-```bash
-npm run build
-```
-
 ### Note
 
-Using Webpack only supports packaging Vue or React projects, and theoretically svelte, but I didn't experiment with that.
+Using Webpack only supports packaging `Vue` or `React` projects, and theoretically `svelte`, but I didn't experiment with that.
+
+### Known issues
+
+1. When using the `<style scoped>` keyword in .vue file, webpack will throw an “**Error: TS7006: Parameter ‘n’ implicitly has an ‘any’ type**” error. For detailed information, please check: [Scoped style leads to error: TS7006: Parameter 'n' implicitly has an 'any' type #1915](https://github.com/vuejs/vue-loader/issues/1915)
