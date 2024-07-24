@@ -37,10 +37,17 @@ npm run dev
 ## Future plans
 
 - [ ] More framework support
+  - [Preact](https://github.com/preactjs/preact)✅
+  - [Lit](https://github.com/lit/lit)✅
+  - [Svelte](https://github.com/sveltejs/svelte)✅
+  - [Solid](https://github.com/solidjs/solid)✅
   - [Angular](https://github.com/angular/angular)
+    > Compiling Angular projects can only be done with Angular's own compiler, not with Vite or Webpack, so combining Angular code with code from other projects can be a pain.
   - [Astro](https://github.com/withastro/astro)
+    > Astro is using a self-contained build tool based on Vite, so combining Astro with code from other projects isn't simple.
 - [ ] More packaged native JavaScript function
-- [ ] More detailed documentation
+- [ ] Detailed documentation
+- [ ] Performance testing and comparison
 
 ## License
 
