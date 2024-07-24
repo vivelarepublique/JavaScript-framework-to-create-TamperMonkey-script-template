@@ -13,8 +13,8 @@
 
 ## Supported framework
 
-- [Vue](https://github.com/vuejs/vue) and [Pinia](https://github.com/vuejs/pinia)
-- [React](https://github.com/facebook/react) and [Redux](https://github.com/reduxjs/redux)
+- [Vue](https://github.com/vuejs/vue) ( Include [Pinia](https://github.com/vuejs/pinia) )
+- [React](https://github.com/facebook/react) ( Include [Redux](https://github.com/reduxjs/redux) )
 - [Preact](https://github.com/preactjs/preact)
 - [Lit](https://github.com/lit/lit)
 - [Svelte](https://github.com/sveltejs/svelte)
@@ -23,7 +23,8 @@
 ## Building Tool
 
 - [Vite](https://github.com/vitejs/vite)
-- [Webpack](https://github.com/webpack/webpack) ([deprecated](https://github.com/vivelarepublique/vue-or-react-create-tampermonkey-script-template/blob/main/legacy/legacy%20support.md))
+- [Webpack](https://github.com/webpack/webpack)
+  > Deprecated, for more information please see [this](https://github.com/vivelarepublique/vue-or-react-create-tampermonkey-script-template/blob/main/legacy/legacy%20support.md).
 
 ## Usage
 
@@ -59,8 +60,8 @@ MIT
 
 <!-- ## Contributing
 
-Contributions are welcome! Please read the [contribution guidelines](https://github.com/vivelarepublique/vue-or-react-create-tampermonkey-script-template/blob/main/CONTRIBUTING.md) first
+Contributions are welcome! Please read the [contribution guidelines](https://github.com/vivelarepublique/vue-or-react-create-tampermonkey-script-template/blob/main/CONTRIBUTING.md) first -->
 
-## Show your support
+## Your support
 
-Give a ⭐️ if you like this project! -->
+Give a ⭐️ if you like this project!
