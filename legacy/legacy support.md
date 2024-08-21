@@ -36,7 +36,7 @@ npm install html-webpack-plugin terser-webpack-plugin -D
 
 4. **Rename and move files**
 
-**_Rename and move_** the following files from the current directory to the root directory (replacing existing file)
+##### **_Rename and move_** the following files from the current directory to the root directory (replacing existing file)
 
 ```txt
 index.html.txt -> index.html
@@ -44,11 +44,17 @@ webpack.config.mjs.txt -> webpack.config.mjs
 webpack.dev.mjs.txt -> webpack.dev.mjs
 ```
 
-**_Rename and move_** the following files from the current directory to the `src` directory (replacing existing file)
+##### **_Rename and move_** the following files from the current directory to the `src` directory (replacing existing file)
 
 ```txt
 custom.d.ts.txt -> custom.d.ts
 index.ts.txt -> index.ts
+```
+
+##### **_Rename and move_** the following files from the current directory to the `config` directory
+
+```txt
+calculatedParameters.js.txt -> calculatedParameters.js
 ```
 
 5. **Modify the contents of `package.json`**
