@@ -8,7 +8,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import solid from 'vite-plugin-solid';
 
 import vitePluginTampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection.js';
-import config from './config/calculatedParameters.js';
+import { bannerConfig } from './config/getParameters.js';
 
 export default defineConfig({
     build: {
@@ -26,7 +26,7 @@ export default defineConfig({
         rollupOptions: {
             input: './src/index.ts',
             output: {
-                entryFileNames: config.scriptFilename,
+                entryFileNames: bannerConfig.scriptFilename,
             },
         },
     },
@@ -44,6 +44,6 @@ export default defineConfig({
         solid({
             include: ['src/solid/*.{tsx,ts,jsx,js}', 'src/solid/**/*.{tsx,ts,jsx,js}'],
         }),
-        vitePluginTampermonkeyBannerAdditionAndCssInjection({ banner: config.banner }),
+        vitePluginTampermonkeyBannerAdditionAndCssInjection(),
     ],
 });

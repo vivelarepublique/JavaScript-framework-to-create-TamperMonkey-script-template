@@ -1,5 +1,7 @@
+import { getAllUniqueHostname, getAllUniqueGrant, getMultiParameters, getNewVersionId } from '../tools/banner.js';
+import { bannerConfig } from '../config/getParameters.js';
 
-export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ banner }) {
+export default function vitePluginTampermonkeyBannerAdditionAndCssInjection() {
     return {
         name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
         apply: 'build',
@@ -21,6 +23,18 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ ba
             const injectCss = cssCode => /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');${'\n'}vitePluginTampermonkeyTemplateCssInjection.appendChild(document.createTextNode(${JSON.stringify(cssCode.trim())}));${'\n'}document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
 
             jsBundleNames.forEach(js => {
+                const banner = `// ==UserScript==
+// @name         ${bannerConfig.name}
+// @namespace    ${bannerConfig.namespace}
+// @version      ${getNewVersionId()}
+// @description  ${bannerConfig.description}
+// @author       ${bannerConfig.author}
+// @run-at       ${bannerConfig.runtime}
+${getMultiParameters(bannerConfig.matchUrl, 'match')}
+${getMultiParameters(getAllUniqueGrant(bundle[js].code), 'grant')}
+${getMultiParameters(getAllUniqueHostname(bundle[js].code), 'connect')}
+// ==/UserScript==
+`;
                 bundle[js].code = /*javascript*/ `${banner}${'\n'}(function () {${'\n'}'use strict';${'\n'}${injectCss(cssCode)}${'\n'}${bundle[js].code}${'\n'}})();`;
             });
         },
