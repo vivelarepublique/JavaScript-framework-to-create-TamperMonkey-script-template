@@ -14,13 +14,13 @@ npm install webpack webpack-cli webpack-dev-server -D
 npm install ts-loader css-loader style-loader url-loader -D
 ```
 
-For Vue, you also need
+##### For Vue, you also need
 
 ```bash
 npm install vue-loader -D
 ```
 
-For the CSS preprocessor, you also need(***choose as needed***)
+##### For the CSS preprocessor, you also need(**_choose as needed_**)
 
 ```bash
 npm install less-loader -D
@@ -34,21 +34,21 @@ npm install stylus-loader -D
 npm install html-webpack-plugin terser-webpack-plugin -D
 ```
 
-4. **Move some files**
+4. **Rename and move files**
 
-Move the following files from the current directory to the root directory (replacing existing file)
+**_Rename and move_** the following files from the current directory to the root directory (replacing existing file)
 
-```bash
-index.html
-webpack.config.mjs
-webpack.dev.mjs
+```txt
+index.html.txt -> index.html
+webpack.config.mjs.txt -> webpack.config.mjs
+webpack.dev.mjs.txt -> webpack.dev.mjs
 ```
 
-Move the following files from the current directory to the `src` directory (replacing existing file)
+**_Rename and move_** the following files from the current directory to the `src` directory (replacing existing file)
 
-```bash
-custom.d.ts
-index.ts
+```txt
+custom.d.ts.txt -> custom.d.ts
+index.ts.txt -> index.ts
 ```
 
 5. **Modify the contents of `package.json`**
@@ -87,7 +87,7 @@ index.ts
         "paths": {
             "@/*": ["src/*"]
         }
-    },
+    }
 }
 ```
 
