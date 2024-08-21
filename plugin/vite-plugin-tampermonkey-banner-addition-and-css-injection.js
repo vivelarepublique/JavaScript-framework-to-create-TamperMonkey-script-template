@@ -11,6 +11,7 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection() {
             const jsBundleNames = Object.keys(bundle).filter(e => bundle[e].type == 'chunk' && bundle[e].fileName.endsWith('.js'));
 
             if (jsBundleNames.length != 1) throw new Error('There should be exactly one js bundle');
+            const js = jsBundleNames[0];
 
             const cssCode = cssBundleNames.reduce((accumulator, currentValue) => {
                 const cssSource = bundle[currentValue].source instanceof Uint8Array ? new TextDecoder().decode(bundle[currentValue].source) : `${bundle[currentValue].source}`;
@@ -18,12 +19,9 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection() {
                 return accumulator + cssSource;
             }, '');
 
-            if (cssCode.length === 0) return null;
+            const injectCss = css => /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');${'\n'}vitePluginTampermonkeyTemplateCssInjection.appendChild(document.createTextNode(${JSON.stringify(css.trim())}));${'\n'}document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
 
-            const injectCss = cssCode => /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');${'\n'}vitePluginTampermonkeyTemplateCssInjection.appendChild(document.createTextNode(${JSON.stringify(cssCode.trim())}));${'\n'}document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
-
-            jsBundleNames.forEach(js => {
-                const banner = `// ==UserScript==
+            const banner = `// ==UserScript==
 // @name         ${bannerConfig.name}
 // @namespace    ${bannerConfig.namespace}
 // @version      ${getNewVersionId()}
@@ -35,8 +33,7 @@ ${getMultiParameters(getAllUniqueGrant(bundle[js].code), 'grant')}
 ${getMultiParameters(getAllUniqueHostname(bundle[js].code), 'connect')}
 // ==/UserScript==
 `;
-                bundle[js].code = /*javascript*/ `${banner}${'\n'}(function () {${'\n'}'use strict';${'\n'}${injectCss(cssCode)}${'\n'}${bundle[js].code}${'\n'}})();`;
-            });
+            bundle[js].code = /*javascript*/ `${banner}${'\n'}(function () {${'\n'}'use strict';${'\n'}${cssCode.length === 0 ? '' : injectCss(cssCode)}${'\n'}${bundle[js].code}${'\n'}})();`;
         },
     };
 }
