@@ -7,4 +7,6 @@ export const bannerConfig = {
     author: parameters.author,
     matchUrl: parameters.matchUrl,
     runtime: parameters.runtime,
+    grant: parameters.grant,
+    connect: parameters.connect,
 };

@@ -21,6 +21,8 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection() {
 
             const injectCss = css => /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');${'\n'}vitePluginTampermonkeyTemplateCssInjection.appendChild(document.createTextNode(${JSON.stringify(css.trim())}));${'\n'}document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
 
+            const grants = Array.from(new Set(getAllUniqueGrant(bundle[js].code).concat(bannerConfig.grant)));
+            const connects = Array.from(new Set(getAllUniqueHostname(bundle[js].code).concat(bannerConfig.connect)));
             const banner = `// ==UserScript==
 // @name         ${bannerConfig.name}
 // @namespace    ${bannerConfig.namespace}
@@ -29,8 +31,8 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection() {
 // @author       ${bannerConfig.author}
 // @run-at       ${bannerConfig.runtime}
 ${getMultiParameters(bannerConfig.matchUrl, 'match')}
-${getMultiParameters(getAllUniqueGrant(bundle[js].code), 'grant')}
-${getMultiParameters(getAllUniqueHostname(bundle[js].code), 'connect')}
+${getMultiParameters(grants, 'grant')}
+${getMultiParameters(connects, 'connect')}
 // ==/UserScript==
 `;
             bundle[js].code = /*javascript*/ `${banner}${'\n'}(function () {${'\n'}'use strict';${'\n'}${cssCode.length === 0 ? '' : injectCss(cssCode)}${'\n'}${bundle[js].code}${'\n'}})();`;
