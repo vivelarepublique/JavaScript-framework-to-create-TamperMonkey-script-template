@@ -44,6 +44,6 @@ export default defineConfig({
         solid({
             include: ['src/solid/*.{tsx,ts,jsx,js}', 'src/solid/**/*.{tsx,ts,jsx,js}'],
         }),
-        vitePluginTampermonkeyBannerAdditionAndCssInjection(),
+        vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
     ],
 });

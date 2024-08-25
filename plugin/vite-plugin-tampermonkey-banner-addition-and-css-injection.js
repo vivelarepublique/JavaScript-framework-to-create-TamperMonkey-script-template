@@ -1,7 +1,6 @@
 import { getAllUniqueHostname, getAllUniqueGrant, getMultiParameters, getNewVersionId } from '../tools/banner.js';
-import { bannerConfig } from '../config/getParameters.js';
 
-export default function vitePluginTampermonkeyBannerAdditionAndCssInjection() {
+export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }) {
     return {
         name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
         apply: 'build',
