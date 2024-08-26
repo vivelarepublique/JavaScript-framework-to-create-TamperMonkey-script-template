@@ -7,4 +7,4 @@ interface NewRequest {
     headers?: any;
 }
 
-export { RequestMethods, NewRequest };
+export type { RequestMethods, NewRequest };

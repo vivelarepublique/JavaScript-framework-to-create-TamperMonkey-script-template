@@ -18,4 +18,4 @@ interface ListenOptions {
     };
 }
 
-export { ListenOptions };
+export type { ListenOptions };

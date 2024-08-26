@@ -21,4 +21,4 @@ interface customEvent {
     callback: (...args: any[]) => any;
 }
 
-export { ElementProperties, RealElement, customEvent };
+export type { ElementProperties, RealElement, customEvent };
