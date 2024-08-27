@@ -1,16 +1,13 @@
 import { listenElementChanges } from '../native/utils/monitoringElement';
 
-import { sharedState as vueShared } from '../shared/vueState/sharedState';
-import { sharedState as reactShared } from '../shared/reactState/sharedState';
-
 const otherTestActions = () => {
     if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
 
     listenElementChanges('#kw', {
         callback: value => {
-            vueShared.search = value || '';
-            reactShared.search = value || '';
-            window.dispatchEvent(new Event('stateChange'));
+            Object.assign(unsafeWindow, { scriptTemplate: { search: value || '' } });
+            unsafeWindow.dispatchEvent(new Event('kwChangedForVue'));
+            unsafeWindow.dispatchEvent(new Event('kwChangedForReact'));
         },
         attributesConcern: 'value',
         immediateImplementation: true,
