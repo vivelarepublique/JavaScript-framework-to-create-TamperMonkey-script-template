@@ -12,13 +12,19 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ ba
             if (jsBundleNames.length != 1) throw new Error('There should be exactly one js bundle');
             const js = jsBundleNames[0];
 
-            const cssCode = cssBundleNames.reduce((accumulator, currentValue) => {
-                const cssSource = bundle[currentValue].source instanceof Uint8Array ? new TextDecoder().decode(bundle[currentValue].source) : `${bundle[currentValue].source}`;
-                delete bundle[currentValue];
+            const cssCode = cssBundleNames.reduce((accumulator, current) => {
+                const cssSource = bundle[current].source;
+                delete bundle[current];
                 return accumulator + cssSource;
             }, '');
 
-            const injectCss = css => /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');${'\n'}vitePluginTampermonkeyTemplateCssInjection.appendChild(document.createTextNode(${JSON.stringify(css.trim())}));${'\n'}document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
+            const injectCss = css => {
+                const cssCode = '/*css*/`\n' + css + '`';
+                return /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');
+const vitePluginTampermonkeyTemplateCssInjectionCode = document.createTextNode(${cssCode});
+vitePluginTampermonkeyTemplateCssInjection.appendChild(vitePluginTampermonkeyTemplateCssInjectionCode);
+document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
+            };
 
             const grants = Array.from(new Set(getAllUniqueGrant(bundle[js].code).concat(bannerConfig.grant)));
             const connects = Array.from(new Set(getAllUniqueHostname(bundle[js].code).concat(bannerConfig.connect)));
