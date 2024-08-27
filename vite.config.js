@@ -26,7 +26,7 @@ export default defineConfig({
         rollupOptions: {
             input: './src/index.ts',
             output: {
-                entryFileNames: bannerConfig.scriptFilename,
+                entryFileNames: `${bannerConfig.name}.user.js`,
             },
         },
     },
