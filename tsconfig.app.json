@@ -15,5 +15,5 @@
         "useDefineForClassFields": true,
         "lib": ["ES2020", "DOM", "DOM.Iterable"]
     },
-    "include": ["src/*.ts", "src/native/**/*.ts", "src/action/*.ts", "src/shared/**/*.ts", "src/types/*.d.ts"]
+    "include": ["src/*.ts", "src/native/**/*.ts", "src/action/*.ts", "src/types/*.d.ts"]
 }
