@@ -15,5 +15,5 @@
         "useDefineForClassFields": true,
         "verbatimModuleSyntax": true
     },
-    "include": ["src/svelte/*.ts", "src/svelte/*.svelte", "src/svelte/**/*.ts", "src/svelte/**/*.svelte", "src/types/*.d.ts"]
+    "include": ["src/svelte/**/*.ts", "src/svelte/**/*.svelte", "src/types/*.d.ts"]
 }

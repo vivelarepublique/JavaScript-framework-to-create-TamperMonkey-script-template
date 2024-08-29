@@ -14,5 +14,5 @@
         "useDefineForClassFields": true,
         "lib": ["ES2020", "DOM", "DOM.Iterable"]
     },
-    "include": ["src/solid/*.tsx", "src/solid/*.ts", "src/solid/**/*.tsx", "src/solid/**/*.ts", "src/types/*.d.ts"]
+    "include": ["src/solid/**/*.ts", "src/solid/**/*.tsx", "src/types/*.d.ts"]
 }
