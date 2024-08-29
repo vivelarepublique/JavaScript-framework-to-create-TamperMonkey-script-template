@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import './lit-test';
 import './lit-counter';
+import './lit-bridge';
 
 @customElement('lit-modal')
 export class LitModal extends LitElement {
@@ -34,6 +35,7 @@ export class LitModal extends LitElement {
                         <div class="lit-b4-row">
                             <lit-test .msg="${'Welcome Lit'}"></lit-test>
                             <lit-counter .count="${this.count}" @count-updated=${this.handleCountChanged}></lit-counter>
+                            <lit-bridge></lit-bridge>
                         </div>
                     </div>
                 </div>

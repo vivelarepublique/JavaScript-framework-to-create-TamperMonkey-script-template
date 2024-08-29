@@ -3,6 +3,7 @@ import { useContext, useState } from 'preact/hooks';
 
 import Test from './Test';
 import Counter from './Counter';
+import Bridge from './Bridge';
 
 import '../css/modal.css';
 
@@ -37,6 +38,7 @@ export default function Modal() {
                             <CounterContext.Provider value={{ count, increment: setCount, decrement: setCount }}>
                                 <Counter />
                             </CounterContext.Provider>
+                            <Bridge></Bridge>
                         </div>
                     </div>
                 </div>

@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import { createSignal, onMount } from 'solid-js';
 
 export default function Bridge() {
-    const [sharedState, setSharedState] = useState({
+    const [sharedState, setSharedState] = createSignal({
         //@ts-ignore
         search: unsafeWindow.scriptTemplate?.search || '',
     });
-    useEffect(() => {
+
+    onMount(() => {
         unsafeWindow.addEventListener('kwChanged', () => {
             //@ts-ignore
             setSharedState({ search: unsafeWindow.scriptTemplate?.search || '' });
         });
-    }, []);
+    });
+
     return (
-        <React.Fragment>
+        <>
             <div>
                 <h1>Bridge</h1>
-                <p>Value: {sharedState.search}</p>
+                <p>Value: {sharedState().search}</p>
             </div>
-        </React.Fragment>
+        </>
     );
 }

@@ -1,5 +1,7 @@
 import Test from './Test';
 import Counter from './Counter';
+import Bridge from './Bridge';
+
 import { setShow } from '../signal/showSignal';
 
 import '../css/modal.css';
@@ -25,6 +27,7 @@ export default function Modal() {
                     <div class='solid-b4-row'>
                         <Test msg='Welcome Solid' />
                         <Counter />
+                        <Bridge />
                     </div>
                 </div>
             </div>

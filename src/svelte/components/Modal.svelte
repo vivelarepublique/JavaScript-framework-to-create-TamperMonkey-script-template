@@ -1,6 +1,8 @@
 <script lang="ts">
     import Test from './Test.svelte';
     import Counter from './Counter.svelte';
+    import Bridge from './Bridge.svelte';
+
     import { show } from '../store';
     function close() {
         show.update(_ => false);
@@ -8,6 +10,8 @@
 </script>
 
 <main>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div class="svelte-modal-mask" on:click|self|stopPropagation={close}>
         <div class="svelte-modal-container">
             <span><button class="svelte-modal-close-button" on:click={close}>&times;</button></span>
@@ -18,6 +22,9 @@
                     </div>
                     <div>
                         <Counter />
+                    </div>
+                    <div>
+                        <Bridge />
                     </div>
                 </div>
             </div>

@@ -1,21 +1,18 @@
-<template>
-    <div>
-        <h1>Bridge</h1>
-        <p>Value: {{ sharedState.search }}</p>
-    </div>
-</template>
-
-<script setup lang="ts">
-    import { reactive, onMounted } from 'vue';
-
-    const sharedState = reactive({
+<script lang="ts">
+    import { onMount } from 'svelte';
+    const sharedState = {
         //@ts-ignore
         search: unsafeWindow.scriptTemplate?.search || '',
-    });
-    onMounted(() => {
+    };
+    onMount(() => {
         unsafeWindow.addEventListener('kwChanged', () => {
             //@ts-ignore
             sharedState.search = unsafeWindow.scriptTemplate?.search || '';
         });
     });
 </script>
+
+<div>
+    <h1>Bridge</h1>
+    <p>Value: {sharedState.search}</p>
+</div>

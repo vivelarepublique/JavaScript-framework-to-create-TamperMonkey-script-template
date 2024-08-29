@@ -6,8 +6,7 @@ const otherTestActions = () => {
     listenElementChanges('#kw', {
         callback: value => {
             Object.assign(unsafeWindow, { scriptTemplate: { search: value || '' } });
-            unsafeWindow.dispatchEvent(new Event('kwChangedForVue'));
-            unsafeWindow.dispatchEvent(new Event('kwChangedForReact'));
+            unsafeWindow.dispatchEvent(new Event('kwChanged'));
         },
         attributesConcern: 'value',
         immediateImplementation: true,
