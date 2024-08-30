@@ -15,15 +15,15 @@
     <div class="svelte-modal-mask" on:click|self|stopPropagation={close}>
         <div class="svelte-modal-container">
             <span><button class="svelte-modal-close-button" on:click={close}>&times;</button></span>
-            <div class="svelte-b4-container">
-                <div class="svelte-b4-row">
-                    <div>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-5">
                         <Test msg={'Welcome Svelte'} />
                     </div>
-                    <div>
+                    <div class="col-3">
                         <Counter />
                     </div>
-                    <div>
+                    <div class="col-2">
                         <Bridge />
                     </div>
                 </div>
@@ -33,26 +33,6 @@
 </main>
 
 <style>
-    .svelte-b4-container {
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .svelte-b4-row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-    }
-
-    .svelte-b4-row > * {
-        flex: 0 0 33%;
-        max-width: 33%;
-        position: relative;
-        width: 100%;
-    }
-
     .svelte-modal-mask {
         position: fixed;
         z-index: 9999;

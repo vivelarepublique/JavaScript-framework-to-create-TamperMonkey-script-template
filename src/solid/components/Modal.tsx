@@ -23,11 +23,17 @@ export default function Modal() {
                         &times;
                     </button>
                 </span>
-                <div class='solid-b4-container'>
-                    <div class='solid-b4-row'>
-                        <Test msg='Welcome Solid' />
-                        <Counter />
-                        <Bridge />
+                <div class='container text-center'>
+                    <div class='row'>
+                        <div class='col-5'>
+                            <Test msg='Welcome Solid' />
+                        </div>
+                        <div class='col-3'>
+                            <Counter />
+                        </div>
+                        <div class='col-2'>
+                            <Bridge />
+                        </div>
                     </div>
                 </div>
             </div>

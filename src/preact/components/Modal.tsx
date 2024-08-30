@@ -32,13 +32,19 @@ export default function Modal() {
                             &times;
                         </button>
                     </span>
-                    <div class='preact-b4-container'>
-                        <div class='preact-b4-row'>
-                            <Test msg='Welcome Preact' />
-                            <CounterContext.Provider value={{ count, increment: setCount, decrement: setCount }}>
-                                <Counter />
-                            </CounterContext.Provider>
-                            <Bridge></Bridge>
+                    <div class='container text-center'>
+                        <div class='row'>
+                            <div class='col-5'>
+                                <Test msg='Welcome Preact' />
+                            </div>
+                            <div class='col-3'>
+                                <CounterContext.Provider value={{ count, increment: setCount, decrement: setCount }}>
+                                    <Counter />
+                                </CounterContext.Provider>
+                            </div>
+                            <div class='col-2'>
+                                <Bridge></Bridge>
+                            </div>
                         </div>
                     </div>
                 </div>

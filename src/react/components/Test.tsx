@@ -26,7 +26,7 @@ export default function Test(props: Props) {
         <React.Fragment>
             <div>
                 <h1 className='test-h-react'>{msg}</h1>
-                <h3 className='test-h-react'>React Test Page</h3>
+                <h3 className='test-h3 test-h-react'>React Test Page</h3>
                 <div className='test-div'>
                     <div>
                         <div>

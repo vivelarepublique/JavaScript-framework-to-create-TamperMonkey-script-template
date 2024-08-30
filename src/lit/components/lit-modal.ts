@@ -31,11 +31,11 @@ export class LitModal extends LitElement {
                     <span>
                         <button class="lit-modal-close-button" @click=${this._close}>&times;</button>
                     </span>
-                    <div class="lit-b4-container">
-                        <div class="lit-b4-row">
-                            <lit-test .msg="${'Welcome Lit'}"></lit-test>
-                            <lit-counter .count="${this.count}" @count-updated=${this.handleCountChanged}></lit-counter>
-                            <lit-bridge></lit-bridge>
+                    <div class="container text-center">
+                        <div class="row">
+                            <lit-test .msg="${'Welcome Lit'}" class="col-5"></lit-test>
+                            <lit-counter .count="${this.count}" @count-updated=${this.handleCountChanged} class="col-3"></lit-counter>
+                            <lit-bridge class="col-2"></lit-bridge>
                         </div>
                     </div>
                 </div>
@@ -44,24 +44,58 @@ export class LitModal extends LitElement {
     }
 
     static styles = css`
-        .lit-b4-container {
+        .container,
+        .container-fluid,
+        .container-xxl,
+        .container-xl,
+        .container-lg,
+        .container-md,
+        .container-sm {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
             width: 100%;
+            padding-right: calc(var(--bs-gutter-x) * 0.5);
+            padding-left: calc(var(--bs-gutter-x) * 0.5);
             margin-right: auto;
             margin-left: auto;
         }
 
-        .lit-b4-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
+        .text-center {
+            text-align: center !important;
         }
 
-        .lit-b4-row > * {
-            flex: 0 0 33%;
-            max-width: 33%;
-            position: relative;
+        .row {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: calc(-1 * var(--bs-gutter-y));
+            margin-right: calc(-0.5 * var(--bs-gutter-x));
+            margin-left: calc(-0.5 * var(--bs-gutter-x));
+        }
+
+        .row > * {
+            flex-shrink: 0;
             width: 100%;
+            max-width: 100%;
+            padding-right: calc(var(--bs-gutter-x) * 0.5);
+            padding-left: calc(var(--bs-gutter-x) * 0.5);
+            margin-top: var(--bs-gutter-y);
+        }
+
+        .col-2 {
+            flex: 0 0 auto;
+            width: 16.66666667%;
+        }
+
+        .col-3 {
+            flex: 0 0 auto;
+            width: 25%;
+        }
+
+        .col-5 {
+            flex: 0 0 auto;
+            width: 41.66666667%;
         }
 
         @keyframes anime-lit {

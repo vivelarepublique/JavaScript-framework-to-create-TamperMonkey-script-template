@@ -1,69 +1,69 @@
-h3.preact-test-h {
+h3.test-h3 {
     margin: 40px 0 0;
 }
 
-h1.preact-test-h,
-h3.preact-test-h {
+h1.test-h-preact,
+h3.test-h-preact {
     color: #764abc;
 }
 
-div.preact-test-div {
+div.test-div {
     display: flex;
     justify-content: space-evenly;
 }
 
-div.preact-test-div > div {
+div.test-div > div {
     display: inline-block;
     margin: 0 10px;
 }
 
-div.preact-test-div > div > div {
+div.test-div > div > div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-a.preact-test-a-vue {
+a.test-a-vue {
     color: #42b883;
 }
 
-a.preact-test-a-pinia {
+a.test-a-pinia {
     color: #ffd859;
 }
 
-a.preact-test-a-react {
+a.test-a-react {
     color: #58c4dc;
 }
 
-a.preact-test-a-redux {
+a.test-a-redux {
     color: #764abc;
 }
 
-a.preact-test-a-less {
+a.test-a-less {
     color: #1d365d;
 }
 
-a.preact-test-a-sass {
+a.test-a-sass {
     color: #bf4080;
 }
 
-a.preact-test-a-stylus {
+a.test-a-stylus {
     color: #6da13f;
 }
 
-a.preact-test-a-preact {
+a.test-a-preact {
     color: #673ab8;
 }
 
-a.preact-test-a-lit {
+a.test-a-lit {
     color: #2843f6;
 }
 
-a.preact-test-a-svelte {
+a.test-a-svelte {
     color: #f96743;
 }
 
-a.preact-test-a-solid {
+a.test-a-solid {
     color: #446b9e;
 }
 

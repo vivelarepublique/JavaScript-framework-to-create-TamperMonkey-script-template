@@ -18,15 +18,7 @@ export default function vitePluginCssBeautificationAndExternalCssTreeShaking(con
             cssBundleNames.forEach(css => {
                 const beautifulCss = [...cssSplitAndReorganize(bundle[css].source), ...minExternalCss];
 
-                bundle[css].source = [
-                    ...new Set(
-                        beautifulCss
-                            .filter(e => e && e.length > 1)
-                            .map(e => e.trim())
-                            .sort()
-                            .reverse(),
-                    ),
-                ].join('\n');
+                bundle[css].source = [...new Set(beautifulCss.filter(e => e && e.length > 1).map(e => e.trim()))].join('\n');
             });
         },
     };

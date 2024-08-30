@@ -23,22 +23,22 @@ export default function Test(props: Props) {
 
     return (
         <div>
-            <h1 class='solid-test-h'>{msg}</h1>
-            <h3 class='solid-test-h'>Solid Test Page</h3>
-            <div class='solid-test-div'>
+            <h1 class='test-h-solid'>{msg}</h1>
+            <h3 class='test-h3 test-h-solid'>Solid Test Page</h3>
+            <div class='test-div'>
                 <div>
                     <div>
                         <img src={solidLogo} class='test-large-logo solid' alt='Solid logo' />
                     </div>
                 </div>
             </div>
-            <div class='solid-test-div'>
+            <div class='test-div'>
                 <div>
                     <div>
                         <img src={vueLogo} class='test-logo' alt='Vue logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-vue' href='https://vuejs.org' target='_blank' rel='noopener'>
+                        <a class='test-a-vue' href='https://vuejs.org' target='_blank' rel='noopener'>
                             Vue
                         </a>
                     </div>
@@ -48,7 +48,7 @@ export default function Test(props: Props) {
                         <img src={piniaLogo} class='test-logo' alt='Pinia logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-pinia' href='https://pinia.vuejs.org' target='_blank' rel='noopener'>
+                        <a class='test-a-pinia' href='https://pinia.vuejs.org' target='_blank' rel='noopener'>
                             Pinia
                         </a>
                     </div>
@@ -58,7 +58,7 @@ export default function Test(props: Props) {
                         <img src={reactLogo} class='test-logo' alt='React logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
+                        <a class='test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
                             React
                         </a>
                     </div>
@@ -68,19 +68,19 @@ export default function Test(props: Props) {
                         <img src={reduxLogo} class='test-logo' alt='Redux logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-redux' href='https://redux.js.org' target='_blank' rel='noopener'>
+                        <a class='test-a-redux' href='https://redux.js.org' target='_blank' rel='noopener'>
                             Redux
                         </a>
                     </div>
                 </div>
             </div>
-            <div class='solid-test-div'>
+            <div class='test-div'>
                 <div>
                     <div>
                         <img src={lessLogo} class='test-logo less' alt='Less logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
+                        <a class='test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
                             Less
                         </a>
                     </div>
@@ -90,7 +90,7 @@ export default function Test(props: Props) {
                         <img src={sassLogo} class='test-logo sass' alt='Sass logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
+                        <a class='test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
                             Sass
                         </a>
                     </div>
@@ -100,19 +100,19 @@ export default function Test(props: Props) {
                         <img src={stylusLogo} class='test-logo stylus' alt='Stylus logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
+                        <a class='test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
                             Stylus
                         </a>
                     </div>
                 </div>
             </div>
-            <div class='solid-test-div'>
+            <div class='test-div'>
                 <div>
                     <div>
                         <img src={preactLogo} class='test-logo' alt='Preact logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-preact' href='https://preactjs.com' target='_blank' rel='noopener'>
+                        <a class='test-a-preact' href='https://preactjs.com' target='_blank' rel='noopener'>
                             Preact
                         </a>
                     </div>
@@ -122,7 +122,7 @@ export default function Test(props: Props) {
                         <img src={litLogo} class='test-logo' alt='Lit logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-lit' href='https://lit.dev' target='_blank' rel='noopener'>
+                        <a class='test-a-lit' href='https://lit.dev' target='_blank' rel='noopener'>
                             Lit
                         </a>
                     </div>
@@ -132,7 +132,7 @@ export default function Test(props: Props) {
                         <img src={svelteLogo} class='test-logo' alt='Svelte logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-svelte' href='https://svelte.dev' target='_blank' rel='noopener'>
+                        <a class='test-a-svelte' href='https://svelte.dev' target='_blank' rel='noopener'>
                             Svelte
                         </a>
                     </div>
@@ -142,7 +142,7 @@ export default function Test(props: Props) {
                         <img src={solidLogo} class='test-logo' alt='Solid logo' />
                     </div>
                     <div>
-                        <a class='solid-test-a-solid' href='https://www.solidjs.com' target='_blank' rel='noopener'>
+                        <a class='test-a-solid' href='https://www.solidjs.com' target='_blank' rel='noopener'>
                             Solid
                         </a>
                     </div>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="test-h-vue">{{ msg }}</h1>
-        <h3 class="test-h-vue">Vue Test Page</h3>
+        <h3 class="test-h3 test-h-vue">Vue Test Page</h3>
         <div class="test-div">
             <div>
                 <div>
@@ -113,7 +113,7 @@
 </script>
 
 <style>
-    h3.test-h {
+    h3.test-h3 {
         margin: 40px 0 0;
     }
 
