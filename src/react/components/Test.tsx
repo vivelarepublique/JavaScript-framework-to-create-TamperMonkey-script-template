@@ -25,22 +25,22 @@ export default function Test(props: Props) {
     return (
         <React.Fragment>
             <div>
-                <h1 className='react-test-h'>{msg}</h1>
-                <h3 className='react-test-h'>React Test Page</h3>
-                <div className='react-test-div'>
+                <h1 className='test-h-react'>{msg}</h1>
+                <h3 className='test-h-react'>React Test Page</h3>
+                <div className='test-div'>
                     <div>
                         <div>
                             <img src={reactLogo} className='test-large-logo react' alt='React logo' />
                         </div>
                     </div>
                 </div>
-                <div className='react-test-div'>
+                <div className='test-div'>
                     <div>
                         <div>
                             <img src={vueLogo} className='test-logo' alt='Vue logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-vue' href='https://vuejs.org' target='_blank' rel='noopener'>
+                            <a className='test-a-vue' href='https://vuejs.org' target='_blank' rel='noopener'>
                                 Vue
                             </a>
                         </div>
@@ -50,7 +50,7 @@ export default function Test(props: Props) {
                             <img src={piniaLogo} className='test-logo' alt='Pinia logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-pinia' href='https://pinia.vuejs.org' target='_blank' rel='noopener'>
+                            <a className='test-a-pinia' href='https://pinia.vuejs.org' target='_blank' rel='noopener'>
                                 Pinia
                             </a>
                         </div>
@@ -60,7 +60,7 @@ export default function Test(props: Props) {
                             <img src={reactLogo} className='test-logo' alt='React logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
+                            <a className='test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
                                 React
                             </a>
                         </div>
@@ -70,19 +70,19 @@ export default function Test(props: Props) {
                             <img src={reduxLogo} className='test-logo' alt='Redux logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-redux' href='https://redux.js.org' target='_blank' rel='noopener'>
+                            <a className='test-a-redux' href='https://redux.js.org' target='_blank' rel='noopener'>
                                 Redux
                             </a>
                         </div>
                     </div>
                 </div>
-                <div className='react-test-div'>
+                <div className='test-div'>
                     <div>
                         <div>
                             <img src={lessLogo} className='test-logo less' alt='Less logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
+                            <a className='test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
                                 Less
                             </a>
                         </div>
@@ -92,7 +92,7 @@ export default function Test(props: Props) {
                             <img src={sassLogo} className='test-logo sass' alt='Sass logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
+                            <a className='test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
                                 Sass
                             </a>
                         </div>
@@ -102,19 +102,19 @@ export default function Test(props: Props) {
                             <img src={stylusLogo} className='test-logo stylus' alt='Stylus logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
+                            <a className='test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
                                 Stylus
                             </a>
                         </div>
                     </div>
                 </div>
-                <div className='react-test-div'>
+                <div className='test-div'>
                     <div>
                         <div>
                             <img src={preactLogo} className='test-logo' alt='Preact logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-preact' href='https://preactjs.com' target='_blank' rel='noopener'>
+                            <a className='test-a-preact' href='https://preactjs.com' target='_blank' rel='noopener'>
                                 Preact
                             </a>
                         </div>
@@ -124,7 +124,7 @@ export default function Test(props: Props) {
                             <img src={litLogo} className='test-logo' alt='Lit logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-lit' href='https://lit.dev' target='_blank' rel='noopener'>
+                            <a className='test-a-lit' href='https://lit.dev' target='_blank' rel='noopener'>
                                 Lit
                             </a>
                         </div>
@@ -134,7 +134,7 @@ export default function Test(props: Props) {
                             <img src={svelteLogo} className='test-logo' alt='Svelte logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-svelte' href='https://svelte.dev' target='_blank' rel='noopener'>
+                            <a className='test-a-svelte' href='https://svelte.dev' target='_blank' rel='noopener'>
                                 Svelte
                             </a>
                         </div>
@@ -144,7 +144,7 @@ export default function Test(props: Props) {
                             <img src={solidLogo} className='test-logo' alt='Solid logo' />
                         </div>
                         <div>
-                            <a className='react-test-a-solid' href='https://www.solidjs.com' target='_blank' rel='noopener'>
+                            <a className='test-a-solid' href='https://www.solidjs.com' target='_blank' rel='noopener'>
                                 Solid
                             </a>
                         </div>

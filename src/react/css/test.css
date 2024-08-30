@@ -1,69 +1,69 @@
-h3.react-test-div {
+h3.test-div {
     margin: 40px 0 0;
 }
 
-h1.react-test-h,
-h3.react-test-h {
+h1.test-h-react,
+h3.test-h-react {
     color: #58c4dc;
 }
 
-div.react-test-div {
+div.test-div {
     display: flex;
     justify-content: space-evenly;
 }
 
-div.react-test-div > div {
+div.test-div > div {
     display: inline-block;
     margin: 0 10px;
 }
 
-div.react-test-div > div > div {
+div.test-div > div > div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-a.react-test-a-vue {
+a.test-a-vue {
     color: #42b883;
 }
 
-a.react-test-a-pinia {
+a.test-a-pinia {
     color: #ffd859;
 }
 
-a.react-test-a-react {
+a.test-a-react {
     color: #58c4dc;
 }
 
-a.react-test-a-redux {
+a.test-a-redux {
     color: #764abc;
 }
 
-a.react-test-a-less {
+a.test-a-less {
     color: #1d365d;
 }
 
-a.react-test-a-sass {
+a.test-a-sass {
     color: #bf4080;
 }
 
-a.react-test-a-stylus {
+a.test-a-stylus {
     color: #6da13f;
 }
 
-a.react-test-a-preact {
+a.test-a-preact {
     color: #673ab8;
 }
 
-a.react-test-a-lit {
+a.test-a-lit {
     color: #2843f6;
 }
 
-a.react-test-a-svelte {
+a.test-a-svelte {
     color: #f96743;
 }
 
-a.react-test-a-solid {
+a.test-a-solid {
     color: #446b9e;
 }
 

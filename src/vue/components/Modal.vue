@@ -2,11 +2,11 @@
     <div class="vue-modal-mask" @click.stop.self="close">
         <div class="vue-modal-container">
             <span><button class="vue-modal-close-button" @click="close">&times;</button></span>
-            <div class="vue-b4-container">
-                <div class="vue-b4-row">
-                    <Test msg="Welcome Vue" />
-                    <Counter />
-                    <Bridge />
+            <div class="container text-center">
+                <div class="row">
+                    <Test msg="Welcome Vue" class="col-5" />
+                    <Counter class="col-3" />
+                    <Bridge class="col-2" />
                 </div>
             </div>
         </div>
@@ -24,26 +24,6 @@
 </script>
 
 <style>
-    .vue-b4-container {
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .vue-b4-row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-    }
-
-    .vue-b4-row > * {
-        flex: 0 0 33%;
-        max-width: 33%;
-        position: relative;
-        width: 100%;
-    }
-
     .vue-modal-mask {
         position: fixed;
         z-index: 9999;

@@ -28,11 +28,17 @@ export default function Modal() {
                             &times;
                         </button>
                     </span>
-                    <div className='react-b4-container'>
-                        <div className='react-b4-row'>
-                            <Test msg='Welcome React' />
-                            <Counter />
-                            <Bridge />
+                    <div className='container text-center'>
+                        <div className='row'>
+                            <div className='col-5'>
+                                <Test msg='Welcome React' />
+                            </div>
+                            <div className='col-3'>
+                                <Counter />
+                            </div>
+                            <div className='col-2'>
+                                <Bridge />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,8 @@ export default function vitePluginCssBeautificationAndExternalCssTreeShaking(con
                         beautifulCss
                             .filter(e => e && e.length > 1)
                             .map(e => e.trim())
-                            .sort(),
+                            .sort()
+                            .reverse(),
                     ),
                 ].join('\n');
             });
