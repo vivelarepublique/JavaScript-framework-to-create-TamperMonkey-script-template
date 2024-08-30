@@ -1,29 +1,32 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+import { consume } from '@lit/context';
+import { CounterStore, counterContext } from '../context/counter-context';
+
 @customElement('lit-counter')
 export class LitCounter extends LitElement {
-    @property({ type: Number })
-    count = 0;
+    @consume({ context: counterContext, subscribe: true })
+    public counterStore?: CounterStore;
 
-    private _increment() {
-        this.count = this.count + 1;
-        this.dispatchEvent(new CustomEvent('count-updated', { detail: this.count, bubbles: false, composed: true }));
+    _increment() {
+        this.counterStore?.increment();
+        this.requestUpdate();
     }
 
-    private _decrement() {
-        this.count = this.count - 1;
-        this.dispatchEvent(new CustomEvent('count-updated', { detail: this.count, bubbles: false, composed: true }));
+    _decrement() {
+        this.counterStore?.decrement();
+        this.requestUpdate();
     }
 
     render() {
         return html`
             <div>
                 <h1>Counter</h1>
-                <p>Count: ${this.count}</p>
+                <p>Count: ${this.counterStore?.count}</p>
                 <div class="lit-counter-row">
-                    <button class="lit-counter-button" @click=${this._increment}>Increment</button>
-                    <button class="lit-counter-button" @click=${this._decrement}>Decrement</button>
+                    <button class="lit-counter-button" @click="${this._increment}">Increment</button>
+                    <button class="lit-counter-button" @click="${this._decrement}">Decrement</button>
                 </div>
             </div>
         `;

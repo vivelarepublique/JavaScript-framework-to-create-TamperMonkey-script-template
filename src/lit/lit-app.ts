@@ -1,29 +1,35 @@
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+import { provide } from '@lit/context';
+import { showStore, showContext } from './context/show-context';
+import { CounterStore, counterContext } from './context/counter-context';
+
 import './components/lit-modal';
 
 @customElement('lit-app')
 export class LitApp extends LitElement {
-    @property({ type: Boolean })
-    show = false;
+    @provide({ context: showContext })
+    showStore: showStore = new showStore();
 
-    @property({ type: Number })
-    count = 0;
+    @provide({ context: counterContext })
+    counterStore: CounterStore = new CounterStore();
+
+    _open() {
+        this.showStore.open();
+        this.requestUpdate();
+    }
+
+    handleShowChanged(event: CustomEvent) {
+        if (!event.detail) this.showStore.close();
+        this.requestUpdate();
+    }
 
     render() {
         return html`
             <button id="lit-modal" @click=${this._open} part="button">Show Lit Modal</button>
-            ${this.show ? html`<lit-modal .isShow=${this.show} @show-changed=${this.handleShowChanged}></lit-modal>` : nothing}
+            ${this.showStore.show ? html`<lit-modal @show-changed=${this.handleShowChanged}></lit-modal>` : nothing}
         `;
-    }
-
-    handleShowChanged(event: CustomEvent) {
-        this.show = event.detail;
-    }
-
-    private _open() {
-        this.show = true;
     }
 
     static styles = css`

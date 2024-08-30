@@ -18,7 +18,7 @@ import solidLogo from '../../assets/svg/solid.svg';
 @customElement('lit-test')
 export class LitTest extends LitElement {
     @property({ type: String })
-    msg = '';
+    msg!: string;
 
     @property({ type: Number })
     count = 0;
