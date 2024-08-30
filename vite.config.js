@@ -7,7 +7,7 @@ import preact from '@preact/preset-vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import solid from 'vite-plugin-solid';
 
-import vitePluginCssBeautificationAndSort from './plugin/vite-plugin-css-beautification-and-sort.js';
+import vitePluginCssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking.js';
 import vitePluginTampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection.js';
 
 import { bannerConfig } from './config/getParameters.js';
@@ -46,7 +46,7 @@ export default defineConfig({
         solid({
             include: ['src/solid/*.{tsx,ts,jsx,js}', 'src/solid/**/*.{tsx,ts,jsx,js}'],
         }),
-        vitePluginCssBeautificationAndSort(),
+        vitePluginCssBeautificationAndExternalCssTreeShaking(),
         vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
     ],
 });
