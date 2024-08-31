@@ -31,4 +31,3 @@
         cursor: pointer;
     }
 </style>
-./store/showStore

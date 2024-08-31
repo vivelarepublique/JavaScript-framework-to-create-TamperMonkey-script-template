@@ -49,4 +49,3 @@
         background-color: #42b88333;
     }
 </style>
-../store/counterStore

@@ -57,4 +57,3 @@
         font-weight: bold;
     }
 </style>
-../store/showStore
