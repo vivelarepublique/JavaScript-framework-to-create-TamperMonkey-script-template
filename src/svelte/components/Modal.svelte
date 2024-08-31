@@ -3,7 +3,7 @@
     import Counter from './Counter.svelte';
     import Bridge from './Bridge.svelte';
 
-    import { show } from '../store';
+    import { show } from '../store/showStore';
     function close() {
         show.set(false);
     }

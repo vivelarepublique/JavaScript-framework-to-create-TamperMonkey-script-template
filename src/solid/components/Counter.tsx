@@ -1,4 +1,4 @@
-import { count, setCount } from '../signal/countSignal';
+import { count, setCount } from '../signal/counterSignal';
 
 import '../css/counter.css';
 

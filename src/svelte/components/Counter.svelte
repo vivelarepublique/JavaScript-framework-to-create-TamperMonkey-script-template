@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { count } from '../store';
+    import { count } from '../store/counterStore';
     function increment() {
         count.update(n => n + 1);
     }
