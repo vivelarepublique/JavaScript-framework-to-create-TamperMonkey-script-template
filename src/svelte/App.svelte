@@ -3,7 +3,7 @@
     import { show } from './store';
 
     function open() {
-        show.update(_ => true);
+        show.set(true);
     }
 </script>
 

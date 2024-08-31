@@ -5,7 +5,7 @@
 
     import { show } from '../store';
     function close() {
-        show.update(_ => false);
+        show.set(false);
     }
 </script>
 
