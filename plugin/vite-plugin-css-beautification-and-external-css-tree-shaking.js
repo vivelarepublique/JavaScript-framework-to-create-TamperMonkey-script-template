@@ -11,7 +11,6 @@ export default function vitePluginCssBeautificationAndExternalCssTreeShaking(con
             const filesData = componentsAnalysis(componentsPaths);
             const tags = extractFileContentTagName(filesData);
             const classes = extractFileContentClassName(filesData);
-
             const minExternalCss = extractCssOnDemand(cssPath, tags, classes);
 
             const cssBundleNames = Object.keys(bundle).filter(e => bundle[e].type === 'asset' && bundle[e].fileName.endsWith('.css'));
@@ -120,10 +119,9 @@ function extractFileContentClassName(filesData) {
                     current
                         .match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g)
                         ?.map(e => e.split(' '))
-                        .flat()
-                        .filter(e => e.length > 1),
+                        .flat(),
                 );
             }, []),
         ),
-    ];
+    ].filter(e => e && e.length > 1);
 }
