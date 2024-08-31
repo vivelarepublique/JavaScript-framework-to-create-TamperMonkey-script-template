@@ -7,6 +7,8 @@ import preact from '@preact/preset-vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import solid from 'vite-plugin-solid';
 
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
 import vitePluginCssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking.js';
 import vitePluginTampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection.js';
 
@@ -42,6 +44,7 @@ export default defineConfig({
         }),
         svelte({
             include: ['src/svelte/*.{tsx,ts,jsx,js,svelte}', 'src/svelte/**/*.{tsx,ts,jsx,js,svelte}'],
+            preprocess: vitePreprocess(),
         }),
         solid({
             include: ['src/solid/*.{tsx,ts,jsx,js}', 'src/solid/**/*.{tsx,ts,jsx,js}'],
