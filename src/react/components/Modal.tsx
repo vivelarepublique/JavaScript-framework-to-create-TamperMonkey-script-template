@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import Test from './Test';
 import Counter from './Counter';
@@ -6,22 +6,24 @@ import Bridge from './Bridge';
 
 import '../css/modal.css';
 
-import { close } from '../store/switcher';
+import { close } from '../store/showStore';
 import { useDispatch } from 'react-redux';
 
 export default function Modal() {
     const dispatch = useDispatch();
+
+    const _close = useCallback(
+        (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+            event.stopPropagation();
+            if (event.target === event.currentTarget) {
+                dispatch(close());
+            }
+        },
+        [dispatch],
+    );
     return (
         <React.Fragment>
-            <div
-                className='react-modal-mask'
-                onClick={event => {
-                    event.stopPropagation();
-                    if (event.target === event.currentTarget) {
-                        dispatch(close());
-                    }
-                }}
-            >
+            <div className='react-modal-mask' onClick={_close}>
                 <div className='react-modal-container'>
                     <span>
                         <button className='react-modal-close-button' onClick={() => dispatch(close())}>

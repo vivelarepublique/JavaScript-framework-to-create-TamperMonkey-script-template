@@ -11,10 +11,11 @@
 
 <script setup lang="ts">
     import { storeToRefs } from 'pinia';
-    import { useCounterStore } from '../store/counter';
-    const counter = useCounterStore();
-    const { count } = storeToRefs(counter);
-    const { increment, decrement } = counter;
+    import { useCounterStore } from '../store/counterStore';
+
+    const counterStore = useCounterStore();
+    const { count } = storeToRefs(counterStore);
+    const { increment, decrement } = counterStore;
 </script>
 
 <style>
@@ -48,3 +49,4 @@
         background-color: #42b88333;
     }
 </style>
+../store/counterStore

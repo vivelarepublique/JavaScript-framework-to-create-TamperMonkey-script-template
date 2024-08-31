@@ -1,16 +1,16 @@
 <script setup lang="ts">
     import Modal from './components/Modal.vue';
     import { storeToRefs } from 'pinia';
-    import { useSwitcherStore } from './store/switcher';
+    import { useShowStore } from './store/showStore';
 
-    const store = useSwitcherStore();
-    const { show } = storeToRefs(store);
-    const { open } = store;
+    const showStore = useShowStore();
+    const { show } = storeToRefs(showStore);
+    const { open } = showStore;
 </script>
 
 <template>
     <button id="vue-modal" @click="open">Show Vue Modal</button>
-    <Modal v-show="show"></Modal>
+    <Modal v-if="show"></Modal>
 </template>
 
 <style>
@@ -31,3 +31,4 @@
         cursor: pointer;
     }
 </style>
+./store/showStore

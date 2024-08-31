@@ -18,9 +18,9 @@
     import Counter from './Counter.vue';
     import Bridge from './Bridge.vue';
 
-    import { useSwitcherStore } from '../store/switcher';
-    const switcher = useSwitcherStore();
-    const { close } = switcher;
+    import { useShowStore } from '../store/showStore';
+    const showStore = useShowStore();
+    const { close } = showStore;
 </script>
 
 <style>
@@ -57,3 +57,4 @@
         font-weight: bold;
     }
 </style>
+../store/showStore

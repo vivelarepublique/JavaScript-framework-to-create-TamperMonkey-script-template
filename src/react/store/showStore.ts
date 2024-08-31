@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../store';
+import { RootState } from './store';
 
-const switcherSlice = createSlice({
-    name: 'switcher',
+const showSlice = createSlice({
+    name: 'show',
     initialState: {
         value: false,
     },
@@ -16,7 +16,7 @@ const switcherSlice = createSlice({
     },
 });
 
-export const { open, close } = switcherSlice.actions;
-export const show = (state: RootState) => state.switcher.value;
+export const { open, close } = showSlice.actions;
+export const show = (state: RootState) => state.show.value;
 
-export default switcherSlice.reducer;
+export default showSlice.reducer;

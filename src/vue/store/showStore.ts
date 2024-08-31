@@ -1,8 +1,9 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 
-export const useSwitcherStore = defineStore('switcher', () => {
+export const useShowStore = defineStore('show', () => {
     const show = ref(false);
+
     function open() {
         show.value = true;
     }
