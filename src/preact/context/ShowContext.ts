@@ -1,8 +1,15 @@
 import { createContext } from 'preact';
 
-const ShowContext = createContext<{ show: boolean; setShow: (...args: any[]) => any }>({
+interface ShowContextType {
+    show: boolean;
+    open: () => void;
+    close: () => void;
+}
+
+const ShowContext = createContext<ShowContextType>({
     show: false,
-    setShow: () => {},
+    open: () => {},
+    close: () => {},
 });
 
 export default ShowContext;

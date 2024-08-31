@@ -1,6 +1,12 @@
 import { createContext } from 'preact';
 
-const counterContext = createContext<{ count: number; increment: (...args: any[]) => any; decrement: (...args: any[]) => any }>({
+interface CounterContextType {
+    count: number;
+    increment: () => void;
+    decrement: () => void;
+}
+
+const counterContext = createContext<CounterContextType>({
     count: 0,
     increment: () => {},
     decrement: () => {},
