@@ -71,7 +71,7 @@ a.test-a-solid {
     height: 128px;
 }
 
-.test-large-logo.preact {
+.test-large-logo.preact-logo {
     height: 160px;
     animation: rotate-preact 8s linear infinite;
 }

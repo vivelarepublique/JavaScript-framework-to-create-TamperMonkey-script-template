@@ -46,60 +46,6 @@ export class LitModal extends BaseComponent {
     }
 
     static styles = css`
-        .container,
-        .container-fluid,
-        .container-xxl,
-        .container-xl,
-        .container-lg,
-        .container-md,
-        .container-sm {
-            --bs-gutter-x: 1.5rem;
-            --bs-gutter-y: 0;
-            width: 100%;
-            padding-right: calc(var(--bs-gutter-x) * 0.5);
-            padding-left: calc(var(--bs-gutter-x) * 0.5);
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        .text-center {
-            text-align: center !important;
-        }
-
-        .row {
-            --bs-gutter-x: 1.5rem;
-            --bs-gutter-y: 0;
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: calc(-1 * var(--bs-gutter-y));
-            margin-right: calc(-0.5 * var(--bs-gutter-x));
-            margin-left: calc(-0.5 * var(--bs-gutter-x));
-        }
-
-        .row > * {
-            flex-shrink: 0;
-            width: 100%;
-            max-width: 100%;
-            padding-right: calc(var(--bs-gutter-x) * 0.5);
-            padding-left: calc(var(--bs-gutter-x) * 0.5);
-            margin-top: var(--bs-gutter-y);
-        }
-
-        .col-2 {
-            flex: 0 0 auto;
-            width: 16.66666667%;
-        }
-
-        .col-3 {
-            flex: 0 0 auto;
-            width: 25%;
-        }
-
-        .col-5 {
-            flex: 0 0 auto;
-            width: 41.66666667%;
-        }
-
         @keyframes anime-lit {
             0% {
                 top: -100px;

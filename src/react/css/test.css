@@ -71,7 +71,7 @@ a.test-a-solid {
     height: 128px;
 }
 
-.test-large-logo.react {
+.test-large-logo.react-logo {
     height: 160px;
     animation: rotate-react 8s linear infinite;
 }

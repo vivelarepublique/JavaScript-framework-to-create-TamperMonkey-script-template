@@ -5,7 +5,7 @@
         <div class="test-div">
             <div>
                 <div>
-                    <img src="../../assets/svg/vue.svg" class="test-large-logo vue" alt="Vue logo" />
+                    <img src="../../assets/svg/vue.svg" class="test-large-logo vue-logo" alt="Vue logo" />
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
         <div class="test-div">
             <div>
                 <div>
-                    <img src="../../assets/svg/less.svg" class="test-logo less" alt="Less logo" />
+                    <img src="../../assets/svg/less.svg" class="test-logo less-logo" alt="Less logo" />
                 </div>
                 <div>
                     <a class="test-a-less" href="https://lesscss.org" target="_blank" rel="noopener">Less</a>
@@ -54,7 +54,7 @@
             </div>
             <div>
                 <div>
-                    <img src="../../assets/svg/sass.svg" class="test-logo sass" alt="Sass logo" />
+                    <img src="../../assets/svg/sass.svg" class="test-logo sass-logo" alt="Sass logo" />
                 </div>
                 <div>
                     <a class="test-a-sass" href="https://sass-lang.com" target="_blank" rel="noopener">Sass</a>
@@ -62,7 +62,7 @@
             </div>
             <div>
                 <div>
-                    <img src="../../assets/svg/stylus.svg" class="test-logo stylus" alt="Stylus logo" />
+                    <img src="../../assets/svg/stylus.svg" class="test-logo stylus-logo" alt="Stylus logo" />
                 </div>
                 <div>
                     <a class="test-a-stylus" href="https://stylus-lang.com" target="_blank" rel="noopener">Stylus</a>
@@ -186,7 +186,7 @@
         height: 128px;
     }
 
-    .test-large-logo.vue {
+    .test-large-logo.vue-logo {
         height: 160px;
         animation: rotate-vue 8s linear infinite;
     }

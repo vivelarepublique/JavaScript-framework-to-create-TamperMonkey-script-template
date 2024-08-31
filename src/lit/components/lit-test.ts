@@ -29,7 +29,7 @@ export class LitTest extends BaseComponent {
                 <div class="test-div">
                     <div>
                         <div>
-                            <img src=${litLogo} class="test-large-logo lit" alt="Lit logo" />
+                            <img src=${litLogo} class="test-large-logo lit-logo" alt="Lit logo" />
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ export class LitTest extends BaseComponent {
                 <div class="test-div">
                     <div>
                         <div>
-                            <img src=${lessLogo} class="test-logo less" alt="Less logo" />
+                            <img src=${lessLogo} class="test-logo less-logo" alt="Less logo" />
                         </div>
                         <div>
                             <a class="test-a-less" href="https://lesscss.org" target="_blank" rel="noopener"> Less </a>
@@ -78,7 +78,7 @@ export class LitTest extends BaseComponent {
                     </div>
                     <div>
                         <div>
-                            <img src=${sassLogo} class="test-logo sass" alt="Sass logo" />
+                            <img src=${sassLogo} class="test-logo sass-logo" alt="Sass logo" />
                         </div>
                         <div>
                             <a class="test-a-sass" href="https://sass-lang.com" target="_blank" rel="noopener"> Sass </a>
@@ -86,7 +86,7 @@ export class LitTest extends BaseComponent {
                     </div>
                     <div>
                         <div>
-                            <img src=${stylusLogo} class="test-logo stylus" alt="Stylus logo" />
+                            <img src=${stylusLogo} class="test-logo stylus-logo" alt="Stylus logo" />
                         </div>
                         <div>
                             <a class="test-a-stylus" href="https://stylus-lang.com" target="_blank" rel="noopener"> Stylus </a>
@@ -205,7 +205,7 @@ export class LitTest extends BaseComponent {
             height: 128px;
         }
 
-        .test-large-logo.lit {
+        .test-large-logo.lit-logo {
             height: 160px;
             animation: rotate-lit 8s linear infinite;
         }

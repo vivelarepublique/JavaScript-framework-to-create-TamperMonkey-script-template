@@ -30,7 +30,7 @@ export default function Test(props: Props) {
                 <div className='test-div'>
                     <div>
                         <div>
-                            <img src={reactLogo} className='test-large-logo react' alt='React logo' />
+                            <img src={reactLogo} className='test-large-logo react-logo' alt='React logo' />
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ export default function Test(props: Props) {
                 <div className='test-div'>
                     <div>
                         <div>
-                            <img src={lessLogo} className='test-logo less' alt='Less logo' />
+                            <img src={lessLogo} className='test-logo less-logo' alt='Less logo' />
                         </div>
                         <div>
                             <a className='test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
@@ -89,7 +89,7 @@ export default function Test(props: Props) {
                     </div>
                     <div>
                         <div>
-                            <img src={sassLogo} className='test-logo sass' alt='Sass logo' />
+                            <img src={sassLogo} className='test-logo sass-logo' alt='Sass logo' />
                         </div>
                         <div>
                             <a className='test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
@@ -99,7 +99,7 @@ export default function Test(props: Props) {
                     </div>
                     <div>
                         <div>
-                            <img src={stylusLogo} className='test-logo stylus' alt='Stylus logo' />
+                            <img src={stylusLogo} className='test-logo stylus-logo' alt='Stylus logo' />
                         </div>
                         <div>
                             <a className='test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>

@@ -28,7 +28,7 @@ export default function Test(props: Props) {
             <div class='test-div'>
                 <div>
                     <div>
-                        <img src={solidLogo} class='test-large-logo solid' alt='Solid logo' />
+                        <img src={solidLogo} class='test-large-logo solid-logo' alt='Solid logo' />
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@ export default function Test(props: Props) {
             <div class='test-div'>
                 <div>
                     <div>
-                        <img src={lessLogo} class='test-logo less' alt='Less logo' />
+                        <img src={lessLogo} class='test-logo less-logo' alt='Less logo' />
                     </div>
                     <div>
                         <a class='test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
@@ -87,7 +87,7 @@ export default function Test(props: Props) {
                 </div>
                 <div>
                     <div>
-                        <img src={sassLogo} class='test-logo sass' alt='Sass logo' />
+                        <img src={sassLogo} class='test-logo sass-logo' alt='Sass logo' />
                     </div>
                     <div>
                         <a class='test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
@@ -97,7 +97,7 @@ export default function Test(props: Props) {
                 </div>
                 <div>
                     <div>
-                        <img src={stylusLogo} class='test-logo stylus' alt='Stylus logo' />
+                        <img src={stylusLogo} class='test-logo stylus-logo' alt='Stylus logo' />
                     </div>
                     <div>
                         <a class='test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
