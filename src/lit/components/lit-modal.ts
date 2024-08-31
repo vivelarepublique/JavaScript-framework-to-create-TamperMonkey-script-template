@@ -1,5 +1,7 @@
-import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+import { BaseComponent } from '../extends/baseComponents';
 
 import { consume } from '@lit/context';
 import { showContext, showStore } from '../context/show-context';
@@ -9,7 +11,7 @@ import './lit-counter';
 import './lit-bridge';
 
 @customElement('lit-modal')
-export class LitModal extends LitElement {
+export class LitModal extends BaseComponent {
     @consume({ context: showContext, subscribe: true })
     public showStore?: showStore;
 

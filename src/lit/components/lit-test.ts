@@ -1,5 +1,6 @@
-import { LitElement, html, css } from 'lit';
+import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { BaseComponent } from '../extends/baseComponents';
 
 import vueLogo from '../../assets/svg/vue.svg';
 import piniaLogo from '../../assets/svg/pinia.svg';
@@ -16,12 +17,9 @@ import svelteLogo from '../../assets/svg/svelte.svg';
 import solidLogo from '../../assets/svg/solid.svg';
 
 @customElement('lit-test')
-export class LitTest extends LitElement {
+export class LitTest extends BaseComponent {
     @property({ type: String })
     msg!: string;
-
-    @property({ type: Number })
-    count = 0;
 
     render() {
         return html`

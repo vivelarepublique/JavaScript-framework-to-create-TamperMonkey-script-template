@@ -1,5 +1,6 @@
-import { LitElement, css, html, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { css, html, nothing } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { BaseComponent } from './extends/baseComponents';
 
 import { provide } from '@lit/context';
 import { showStore, showContext } from './context/show-context';
@@ -8,7 +9,7 @@ import { CounterStore, counterContext } from './context/counter-context';
 import './components/lit-modal';
 
 @customElement('lit-app')
-export class LitApp extends LitElement {
+export class LitApp extends BaseComponent {
     @provide({ context: showContext })
     showStore: showStore = new showStore();
 
@@ -21,8 +22,10 @@ export class LitApp extends LitElement {
     }
 
     handleShowChanged(event: CustomEvent) {
-        if (!event.detail) this.showStore.close();
-        this.requestUpdate();
+        if (!event.detail) {
+            this.showStore.close();
+            this.requestUpdate();
+        }
     }
 
     render() {

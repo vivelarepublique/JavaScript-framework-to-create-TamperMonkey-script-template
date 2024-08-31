@@ -1,8 +1,10 @@
-import { LitElement, html } from 'lit';
+import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+import { BaseComponent } from '../extends/baseComponents';
+
 @customElement('lit-bridge')
-export class LitBridge extends LitElement {
+export class LitBridge extends BaseComponent {
     constructor() {
         super();
         unsafeWindow.addEventListener('kwChanged', () => {
