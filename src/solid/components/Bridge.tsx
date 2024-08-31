@@ -1,15 +1,17 @@
 import { createSignal, onMount } from 'solid-js';
 
+import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+
 export default function Bridge() {
     const [sharedState, setSharedState] = createSignal({
         //@ts-ignore
-        search: unsafeWindow.scriptTemplate?.search || '',
+        search: windowProxy.scriptTemplate?.search || '',
     });
 
     onMount(() => {
-        unsafeWindow.addEventListener('kwChanged', () => {
+        windowProxy.addEventListener('kwChanged', () => {
             //@ts-ignore
-            setSharedState({ search: unsafeWindow.scriptTemplate?.search || '' });
+            setSharedState({ search: windowProxy.scriptTemplate?.search || '' });
         });
     });
 

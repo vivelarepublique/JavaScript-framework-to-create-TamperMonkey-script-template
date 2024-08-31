@@ -16,5 +16,5 @@
         "useDefineForClassFields": true,
         "lib": ["ES2020", "DOM", "DOM.Iterable"]
     },
-    "include": ["src/vue/**/*.ts", "src/vue/**/*.vue", "src/types/*.d.ts"]
+    "include": ["src/vue/**/*.ts", "src/vue/**/*.vue", "src/types/*.d.ts", "src/native/**/*.ts"]
 }

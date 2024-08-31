@@ -3,20 +3,22 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { BaseComponent } from '../extends/baseComponents';
 
+import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+
 @customElement('lit-bridge')
 export class LitBridge extends BaseComponent {
     constructor() {
         super();
-        unsafeWindow.addEventListener('kwChanged', () => {
+        windowProxy.addEventListener('kwChanged', () => {
             //@ts-ignore
-            this.sharedState.search = unsafeWindow.scriptTemplate?.search || '';
+            this.sharedState.search = windowProxy.scriptTemplate?.search || '';
         });
     }
 
     @property({ type: { search: String } })
     sharedState = {
         // @ts-ignore
-        search: unsafeWindow.scriptTemplate?.search || '',
+        search: windowProxy.scriptTemplate?.search || '',
     };
 
     render() {

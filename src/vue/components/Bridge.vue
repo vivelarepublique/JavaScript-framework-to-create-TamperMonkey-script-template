@@ -8,14 +8,16 @@
 <script setup lang="ts">
     import { reactive, onMounted } from 'vue';
 
+    import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+
     const sharedState = reactive({
         //@ts-ignore
-        search: unsafeWindow.scriptTemplate?.search || '',
+        search: windowProxy.scriptTemplate?.search || '',
     });
     onMounted(() => {
-        unsafeWindow.addEventListener('kwChanged', () => {
+        windowProxy.addEventListener('kwChanged', () => {
             //@ts-ignore
-            sharedState.search = unsafeWindow.scriptTemplate?.search || '';
+            sharedState.search = windowProxy.scriptTemplate?.search || '';
         });
     });
 </script>
