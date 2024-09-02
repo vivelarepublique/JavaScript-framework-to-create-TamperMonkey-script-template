@@ -40,7 +40,12 @@ ${getMultiParameters(grants, 'grant')}
 ${getMultiParameters(connects, 'connect')}
 // ==/UserScript==
 `;
-            bundle[js].code = /*javascript*/ `${banner}${'\n'}(function () {${'\n'}'use strict';${'\n'}${cssCode.length === 0 ? '' : injectCss(cssCode)}${'\n'}${bundle[js].code}${'\n'}})();`;
+            bundle[js].code = /*javascript*/ `${banner}
+(function () {
+'use strict';
+${cssCode.length === 0 ? '' : injectCss(cssCode)}
+${bundle[js].code.replace(/(\/\*[\s\S]*?\*\/)/g, '')}
+})();`;
         },
     };
 }
