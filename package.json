@@ -10,6 +10,10 @@
     "keywords": [
         "react",
         "vue",
+        "preact",
+        "lit",
+        "svelte",
+        "sold",
         "tampermonkey"
     ],
     "author": "vivelarepublique",
