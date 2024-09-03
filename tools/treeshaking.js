@@ -43,18 +43,33 @@ export function extractCssOnDemand(path, tags, classes) {
             minResult.push(rule);
         } else {
             tags.forEach(tag => {
-                if (selector === tag) {
-                    minResult.push(rule);
+                if (selector.includes(',')) {
+                    const selectors = selector.split(',').map(s => s.trim());
+                    if (selectors.includes(tag)) {
+                        minResult.push(rule);
+                    }
+                } else {
+                    const selectors = selector
+                        .split(' ')
+                        .map(s => s.trim())
+                        .filter(s => s);
+                    if (selectors.includes(tag)) {
+                        minResult.push(rule);
+                    }
                 }
             });
             classes.forEach(className => {
-                if (selector.includes(className)) {
+                const selectors = selector
+                    .replaceAll(/[:\+\>\*\.]|\[.*?\]/g, '')
+                    .split(',')
+                    .map(s => s.trim());
+                if (selectors.every(s => className.includes(s))) {
                     minResult.push(rule);
                 }
             });
         }
     });
-    return minResult;
+    return [...new Set(minResult)];
 }
 
 export function componentsAnalysis(paths) {
