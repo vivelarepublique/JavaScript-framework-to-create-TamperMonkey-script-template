@@ -6,13 +6,12 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ ba
         apply: 'build',
         enforce: 'post',
         generateBundle(options, bundle) {
-            const cssBundleNames = Object.keys(bundle).filter(e => bundle[e].type === 'asset' && bundle[e].fileName.endsWith('.css'));
             const jsBundleNames = Object.keys(bundle).filter(e => bundle[e].type == 'chunk' && bundle[e].fileName.endsWith('.js'));
-
             if (jsBundleNames.length != 1) throw new Error('There should be exactly one js bundle');
-            const js = jsBundleNames[0];
+            const firstJsBundleName = jsBundleNames[0];
 
-            const cssCode = cssBundleNames.reduce((accumulator, current) => {
+            const cssBundleNames = Object.keys(bundle).filter(e => bundle[e].type === 'asset' && bundle[e].fileName.endsWith('.css'));
+            const allCssCode = cssBundleNames.reduce((accumulator, current) => {
                 const cssSource = bundle[current].source;
                 delete bundle[current];
                 return accumulator + cssSource;
@@ -26,8 +25,8 @@ vitePluginTampermonkeyTemplateCssInjection.appendChild(vitePluginTampermonkeyTem
 document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
             };
 
-            const grants = Array.from(new Set(getAllUniqueGrant(bundle[js].code).concat(bannerConfig.grant)));
-            const connects = Array.from(new Set(getAllUniqueHostname(bundle[js].code).concat(bannerConfig.connect)));
+            const grants = Array.from(new Set(getAllUniqueGrant(bundle[firstJsBundleName].code).concat(bannerConfig.grant)));
+            const connects = Array.from(new Set(getAllUniqueHostname(bundle[firstJsBundleName].code).concat(bannerConfig.connect)));
             const banner = `// ==UserScript==
 // @name         ${bannerConfig.name}
 // @namespace    ${bannerConfig.namespace}
@@ -40,11 +39,11 @@ ${getMultiParameters(grants, 'grant')}
 ${getMultiParameters(connects, 'connect')}
 // ==/UserScript==
 `;
-            bundle[js].code = /*javascript*/ `${banner}
+            bundle[firstJsBundleName].code = /*javascript*/ `${banner}
 (function () {
 'use strict';
-${cssCode.length === 0 ? '' : injectCss(cssCode)}
-${bundle[js].code.replace(/(\/\*[\s\S]*?\*\/)/g, '')}
+${allCssCode.length === 0 ? '' : injectCss(allCssCode)}
+${bundle[firstJsBundleName].code.replace(/(\/\*[\s\S]*?\*\/)/g, '')}
 })();`;
         },
     };
