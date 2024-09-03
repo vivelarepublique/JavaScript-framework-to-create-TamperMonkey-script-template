@@ -1,4 +1,5 @@
 import './styles/global.css';
+import '../node_modules/ress/dist/ress.min.css';
 
 import './styles/test.less';
 import './styles/test.sass';
