@@ -29,8 +29,8 @@
 ## Usage
 
 ```bash
-git clone https://github.com/vivelarepublique/vue-or-react-create-tampermonkey-script-template
-cd vue-or-react-create-tampermonkey-script-template
+git clone https://github.com/vivelarepublique/JavaScript-framework-to-create-TamperMonkey-script-template
+cd JavaScript-framework-to-create-TamperMonkey-script-template
 npm install
 npm run dev
 ```
