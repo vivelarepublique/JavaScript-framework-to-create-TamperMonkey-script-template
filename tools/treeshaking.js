@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-export function cssSplitAndReorganize(cssContent) {
+export function cssSplitAndReorganize(cssContent, sortByOrder = false) {
     const cssArray = cssContent.split('}');
     const cssResult = [];
 
@@ -19,7 +19,7 @@ export function cssSplitAndReorganize(cssContent) {
             finishFlag ? cssResult.push(cssArray[i] + '}') : tempArray.push(cssArray[i] + '}');
         }
     }
-    return cssResult;
+    return sortByOrder ? cssResult.sort() : cssResult;
 }
 
 function externalCssTransformation(cssPath) {
@@ -33,7 +33,7 @@ function externalCssTransformation(cssPath) {
     }
 }
 
-export function extractCssOnDemand(path, tags, classes) {
+export function extractCssOnDemand(path, tags, classes, excludeClassNameKeywords = 'framework-test') {
     const minResult = [];
     const allCss = externalCssTransformation(path);
     allCss.forEach(rule => {
@@ -58,15 +58,17 @@ export function extractCssOnDemand(path, tags, classes) {
                     }
                 }
             });
-            classes.forEach(className => {
-                const selectors = selector
-                    .replaceAll(/[:\+\>\*\.]|\[.*?\]/g, '')
-                    .split(',')
-                    .map(s => s.trim());
-                if (selectors.every(s => className.includes(s))) {
-                    minResult.push(rule);
-                }
-            });
+            classes
+                .filter(name => !name.includes(excludeClassNameKeywords))
+                .forEach(className => {
+                    const selectors = selector
+                        .replaceAll(/[:\+\>\*\.]|\[.*?\]/g, '')
+                        .split(',')
+                        .map(s => s.trim());
+                    if (selectors.every(s => className.includes(s))) {
+                        minResult.push(rule);
+                    }
+                });
         }
     });
     return [...new Set(minResult)];

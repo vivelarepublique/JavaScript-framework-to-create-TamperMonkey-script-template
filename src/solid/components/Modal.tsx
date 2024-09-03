@@ -15,10 +15,10 @@ export default function Modal() {
     }
 
     return (
-        <div class='solid-modal-mask' onClick={_close}>
-            <div class='solid-modal-container'>
+        <div class='framework-test-modal-mask' onClick={_close}>
+            <div class='framework-test-modal-container'>
                 <span>
-                    <button class='solid-modal-close-button' onClick={() => setShow(false)}>
+                    <button class='framework-test-modal-close-button' onClick={() => setShow(false)}>
                         &times;
                     </button>
                 </span>

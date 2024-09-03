@@ -26,9 +26,9 @@ export class LitCounter extends BaseComponent {
             <div>
                 <h1>Counter</h1>
                 <p>Count: ${this.counterStore?.count}</p>
-                <div class="lit-counter-row">
-                    <button class="lit-counter-button" @click="${this._increment}">Increment</button>
-                    <button class="lit-counter-button" @click="${this._decrement}">Decrement</button>
+                <div class="framework-test-counter-row">
+                    <button class="framework-test-counter-button lit-counter-button" @click="${this._increment}">Increment</button>
+                    <button class="framework-test-counter-button lit-counter-button" @click="${this._decrement}">Decrement</button>
                 </div>
             </div>
         `;
@@ -36,24 +36,25 @@ export class LitCounter extends BaseComponent {
 
     static styles = css`
         .lit-counter-button {
+            color: #2843f6;
+        }
+
+        .framework-test-counter-button {
             appearance: none;
             background: none;
             font-size: 32px;
-            padding-left: 12px;
-            padding-right: 12px;
+            padding: 0 12px;
             outline: none;
             border: 2px solid transparent;
-            color: #2843f6;
+            border-radius: 8px;
             padding-bottom: 4px;
             cursor: pointer;
             background-color: rgba(112, 76, 182, 0.1);
-            border-radius: 2px;
             transition: all 0.15s;
         }
 
-        .lit-counter-row > .lit-counter-button {
-            margin-left: 4px;
-            margin-right: 8px;
+        .framework-test-counter-row > .framework-test-counter-button {
+            margin: 0 8px 0 4px;
         }
 
         .lit-counter-button:hover,

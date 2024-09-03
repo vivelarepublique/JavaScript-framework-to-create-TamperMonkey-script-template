@@ -11,32 +11,33 @@
 <div>
     <h1>Counter</h1>
     <p>Count: {$count}</p>
-    <div class="svelte-counter-row">
-        <button class="svelte-counter-button" on:click={increment}>Increment</button>
-        <button class="svelte-counter-button" on:click={decrement}>Decrement</button>
+    <div class="framework-test-counter-row">
+        <button class="framework-test-counter-button svelte-counter-button" on:click={increment}>Increment</button>
+        <button class="framework-test-counter-button svelte-counter-button" on:click={decrement}>Decrement</button>
     </div>
 </div>
 
 <style>
     .svelte-counter-button {
+        color: #f96743;
+    }
+
+    .framework-test-counter-button {
         appearance: none;
         background: none;
         font-size: 32px;
-        padding-left: 12px;
-        padding-right: 12px;
+        padding: 0 12px;
         outline: none;
         border: 2px solid transparent;
-        color: #f96743;
+        border-radius: 8px;
         padding-bottom: 4px;
         cursor: pointer;
         background-color: rgba(112, 76, 182, 0.1);
-        border-radius: 2px;
         transition: all 0.15s;
     }
 
-    .svelte-counter-row > .svelte-counter-button {
-        margin-left: 4px;
-        margin-right: 8px;
+    .framework-test-counter-row > .framework-test-counter-button {
+        margin: 0 8px 0 4px;
     }
 
     .svelte-counter-button:hover,

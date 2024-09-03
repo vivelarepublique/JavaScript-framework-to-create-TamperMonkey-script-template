@@ -1,22 +1,23 @@
 .preact-counter-button {
+    color: #764abc;
+}
+
+.framework-test-counter-button {
     appearance: none;
     background: none;
     font-size: 32px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 0 12px;
     outline: none;
     border: 2px solid transparent;
-    color: #764abc;
+    border-radius: 8px;
     padding-bottom: 4px;
     cursor: pointer;
     background-color: rgba(112, 76, 182, 0.1);
-    border-radius: 2px;
     transition: all 0.15s;
 }
 
-.preact-counter-row > .preact-counter-button {
-    margin-left: 4px;
-    margin-right: 8px;
+.framework-test-counter-row > .framework-test-counter-button {
+    margin: 0 8px 0 4px;
 }
 
 .preact-counter-button:hover,

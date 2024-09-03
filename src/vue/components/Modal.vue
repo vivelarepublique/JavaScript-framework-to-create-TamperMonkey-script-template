@@ -1,7 +1,7 @@
 <template>
-    <div class="vue-modal-mask" @click.stop.self="close">
-        <div class="vue-modal-container">
-            <span><button class="vue-modal-close-button" @click="close">&times;</button></span>
+    <div class="framework-test-modal-mask" @click.stop.self="close">
+        <div class="framework-test-modal-container">
+            <span><button class="framework-test-modal-close-button" @click="close">&times;</button></span>
             <div class="container text-center">
                 <div class="row">
                     <Test msg="Welcome Vue" class="col-5" />
@@ -24,7 +24,7 @@
 </script>
 
 <style>
-    .vue-modal-mask {
+    .framework-test-modal-mask {
         position: fixed;
         z-index: 9999;
         top: 0;
@@ -37,11 +37,11 @@
         overflow: auto;
         min-width: 1200px;
         max-height: 95vh;
-        animation: anime-vue 0.25s;
+        animation: anime-framework-test 0.25s;
         font-size: min(3.2vh, 3.2vw);
     }
 
-    .vue-modal-container {
+    .framework-test-modal-container {
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
@@ -50,7 +50,7 @@
         min-height: 80vh;
     }
 
-    .vue-modal-close-button {
+    .framework-test-modal-close-button {
         color: #aaa;
         float: right;
         font-size: 24px;

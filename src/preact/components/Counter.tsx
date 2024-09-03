@@ -12,11 +12,11 @@ export default function Counter() {
             <div>
                 <h1>Counter</h1>
                 <p>Count: {count}</p>
-                <div className='preact-counter-row'>
-                    <button className='preact-counter-button' onClick={() => increment()}>
+                <div className='framework-test-counter-row'>
+                    <button className='framework-test-counter-button preact-counter-button' onClick={() => increment()}>
                         Increment
                     </button>
-                    <button className='preact-counter-button' onClick={() => decrement()}>
+                    <button className='framework-test-counter-button preact-counter-button' onClick={() => decrement()}>
                         Decrement
                     </button>
                 </div>

@@ -25,126 +25,126 @@ export default function Test(props: Props) {
     return (
         <React.Fragment>
             <div>
-                <h1 className='test-h-react'>{msg}</h1>
-                <h3 className='test-h3 test-h-react'>React Test Page</h3>
-                <div className='test-div'>
+                <h1 className='framework-test-h-react'>{msg}</h1>
+                <h3 className='framework-test-h3 framework-test-h-react'>React Test Page</h3>
+                <div className='framework-test-div'>
                     <div>
                         <div>
-                            <img src={reactLogo} className='test-large-logo react-logo' alt='React logo' />
+                            <img src={reactLogo} className='framework-test-large-logo framework-test-rotate-logo' alt='React logo' />
                         </div>
                     </div>
                 </div>
-                <div className='test-div'>
+                <div className='framework-test-div'>
                     <div>
                         <div>
-                            <img src={vueLogo} className='test-logo' alt='Vue logo' />
+                            <img src={vueLogo} className='framework-test-logo' alt='Vue logo' />
                         </div>
                         <div>
-                            <a className='test-a-vue' href='https://vuejs.org' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-vue' href='https://vuejs.org' target='_blank' rel='noopener'>
                                 Vue
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={piniaLogo} className='test-logo' alt='Pinia logo' />
+                            <img src={piniaLogo} className='framework-test-logo' alt='Pinia logo' />
                         </div>
                         <div>
-                            <a className='test-a-pinia' href='https://pinia.vuejs.org' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-pinia' href='https://pinia.vuejs.org' target='_blank' rel='noopener'>
                                 Pinia
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={reactLogo} className='test-logo' alt='React logo' />
+                            <img src={reactLogo} className='framework-test-logo' alt='React logo' />
                         </div>
                         <div>
-                            <a className='test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
                                 React
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={reduxLogo} className='test-logo' alt='Redux logo' />
+                            <img src={reduxLogo} className='framework-test-logo' alt='Redux logo' />
                         </div>
                         <div>
-                            <a className='test-a-redux' href='https://redux.js.org' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-redux' href='https://redux.js.org' target='_blank' rel='noopener'>
                                 Redux
                             </a>
                         </div>
                     </div>
                 </div>
-                <div className='test-div'>
+                <div className='framework-test-div'>
                     <div>
                         <div>
-                            <img src={lessLogo} className='test-logo less-logo' alt='Less logo' />
+                            <img src={lessLogo} className='framework-test-logo less-logo' alt='Less logo' />
                         </div>
                         <div>
-                            <a className='test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
                                 Less
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={sassLogo} className='test-logo sass-logo' alt='Sass logo' />
+                            <img src={sassLogo} className='framework-test-logo sass-logo' alt='Sass logo' />
                         </div>
                         <div>
-                            <a className='test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
                                 Sass
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={stylusLogo} className='test-logo stylus-logo' alt='Stylus logo' />
+                            <img src={stylusLogo} className='framework-test-logo stylus-logo' alt='Stylus logo' />
                         </div>
                         <div>
-                            <a className='test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>
                                 Stylus
                             </a>
                         </div>
                     </div>
                 </div>
-                <div className='test-div'>
+                <div className='framework-test-div'>
                     <div>
                         <div>
-                            <img src={preactLogo} className='test-logo' alt='Preact logo' />
+                            <img src={preactLogo} className='framework-test-logo' alt='Preact logo' />
                         </div>
                         <div>
-                            <a className='test-a-preact' href='https://preactjs.com' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-preact' href='https://preactjs.com' target='_blank' rel='noopener'>
                                 Preact
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={litLogo} className='test-logo' alt='Lit logo' />
+                            <img src={litLogo} className='framework-test-logo' alt='Lit logo' />
                         </div>
                         <div>
-                            <a className='test-a-lit' href='https://lit.dev' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-lit' href='https://lit.dev' target='_blank' rel='noopener'>
                                 Lit
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={svelteLogo} className='test-logo' alt='Svelte logo' />
+                            <img src={svelteLogo} className='framework-test-logo' alt='Svelte logo' />
                         </div>
                         <div>
-                            <a className='test-a-svelte' href='https://svelte.dev' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-svelte' href='https://svelte.dev' target='_blank' rel='noopener'>
                                 Svelte
                             </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src={solidLogo} className='test-logo' alt='Solid logo' />
+                            <img src={solidLogo} className='framework-test-logo' alt='Solid logo' />
                         </div>
                         <div>
-                            <a className='test-a-solid' href='https://www.solidjs.com' target='_blank' rel='noopener'>
+                            <a className='framework-test-a-solid' href='https://www.solidjs.com' target='_blank' rel='noopener'>
                                 Solid
                             </a>
                         </div>

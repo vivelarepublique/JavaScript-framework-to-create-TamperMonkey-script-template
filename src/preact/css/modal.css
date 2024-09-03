@@ -1,4 +1,4 @@
-.preact-modal-mask {
+.framework-test-modal-mask {
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -11,11 +11,11 @@
     overflow: auto;
     min-width: 1200px;
     max-height: 95vh;
-    animation: anime-preact 0.25s;
+    animation: anime-framework-test 0.25s;
     font-size: min(3.2vh, 3.2vw);
 }
 
-.preact-modal-container {
+.framework-test-modal-container {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -24,7 +24,7 @@
     min-height: 80vh;
 }
 
-.preact-modal-close-button {
+.framework-test-modal-close-button {
     color: #aaa;
     float: right;
     font-size: 24px;

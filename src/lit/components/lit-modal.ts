@@ -28,10 +28,10 @@ export class LitModal extends BaseComponent {
 
     render() {
         return html`
-            <div class="lit-modal-mask" @click="${this._close}">
-                <div class="lit-modal-container">
+            <div class="framework-test-modal-mask" @click="${this._close}">
+                <div class="framework-test-modal-container">
                     <span>
-                        <button class="lit-modal-close-button" @click="${this.close}">&times;</button>
+                        <button class="framework-test-modal-close-button" @click="${this.close}">&times;</button>
                     </span>
                     <div class="container text-center">
                         <div class="row">
@@ -46,7 +46,7 @@ export class LitModal extends BaseComponent {
     }
 
     static styles = css`
-        @keyframes anime-lit {
+        @keyframes anime-framework-test {
             0% {
                 top: -100px;
                 opacity: 0;
@@ -58,7 +58,7 @@ export class LitModal extends BaseComponent {
             }
         }
 
-        .lit-modal-mask {
+        .framework-test-modal-mask {
             position: fixed;
             z-index: 9999;
             top: 0;
@@ -71,11 +71,11 @@ export class LitModal extends BaseComponent {
             overflow: auto;
             min-width: 1200px;
             max-height: 95vh;
-            animation: anime-lit 0.25s;
+            animation: anime-framework-test 0.25s;
             font-size: min(3.2vh, 3.2vw);
         }
 
-        .lit-modal-container {
+        .framework-test-modal-container {
             background-color: #fefefe;
             margin: auto;
             padding: 20px;
@@ -84,7 +84,7 @@ export class LitModal extends BaseComponent {
             min-height: 80vh;
         }
 
-        .lit-modal-close-button {
+        .framework-test-modal-close-button {
             color: #aaa;
             float: right;
             font-size: 24px;

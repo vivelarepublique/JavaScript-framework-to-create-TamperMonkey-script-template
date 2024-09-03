@@ -23,10 +23,10 @@ export default function Modal() {
     );
     return (
         <React.Fragment>
-            <div className='react-modal-mask' onClick={_close}>
-                <div className='react-modal-container'>
+            <div className='framework-test-modal-mask' onClick={_close}>
+                <div className='framework-test-modal-container'>
                     <span>
-                        <button className='react-modal-close-button' onClick={() => dispatch(close())}>
+                        <button className='framework-test-modal-close-button' onClick={() => dispatch(close())}>
                             &times;
                         </button>
                     </span>

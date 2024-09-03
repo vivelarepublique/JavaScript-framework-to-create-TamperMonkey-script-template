@@ -24,106 +24,106 @@ export class LitTest extends BaseComponent {
     render() {
         return html`
             <div>
-                <h1 class="test-h-lit">${this.msg}</h1>
-                <h3 class="test-h3 test-h-lit">Lit Test Page</h3>
-                <div class="test-div">
+                <h1 class="framework-test-h-lit">${this.msg}</h1>
+                <h3 class="framework-test-h3 framework-test-h-lit">Lit Test Page</h3>
+                <div class="framework-test-div">
                     <div>
                         <div>
-                            <img src=${litLogo} class="test-large-logo lit-logo" alt="Lit logo" />
+                            <img src=${litLogo} class="framework-test-large-logo framework-test-rotate-logo" alt="Lit logo" />
                         </div>
                     </div>
                 </div>
-                <div class="test-div">
+                <div class="framework-test-div">
                     <div>
                         <div>
-                            <img src=${vueLogo} class="test-logo" alt="Vue logo" />
+                            <img src=${vueLogo} class="framework-test-logo" alt="Vue logo" />
                         </div>
                         <div>
-                            <a class="test-a-vue" href="https://vuejs.org" target="_blank" rel="noopener"> Vue </a>
+                            <a class="framework-test-a-vue" href="https://vuejs.org" target="_blank" rel="noopener"> Vue </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src=${piniaLogo} class="test-logo" alt="Pinia logo" />
+                            <img src=${piniaLogo} class="framework-test-logo" alt="Pinia logo" />
                         </div>
                         <div>
-                            <a class="test-a-pinia" href="https://pinia.vuejs.org" target="_blank" rel="noopener"> Pinia </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <img src=${reactLogo} class="test-logo" alt="React logo" />
-                        </div>
-                        <div>
-                            <a class="test-a-react" href="https://react.dev" target="_blank" rel="noopener"> React </a>
+                            <a class="framework-test-a-pinia" href="https://pinia.vuejs.org" target="_blank" rel="noopener"> Pinia </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src=${reduxLogo} class="test-logo" alt="Redux logo" />
+                            <img src=${reactLogo} class="framework-test-logo" alt="React logo" />
                         </div>
                         <div>
-                            <a class="test-a-redux" href="https://redux.js.org" target="_blank" rel="noopener"> Redux </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="test-div">
-                    <div>
-                        <div>
-                            <img src=${lessLogo} class="test-logo less-logo" alt="Less logo" />
-                        </div>
-                        <div>
-                            <a class="test-a-less" href="https://lesscss.org" target="_blank" rel="noopener"> Less </a>
+                            <a class="framework-test-a-react" href="https://react.dev" target="_blank" rel="noopener"> React </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src=${sassLogo} class="test-logo sass-logo" alt="Sass logo" />
+                            <img src=${reduxLogo} class="framework-test-logo" alt="Redux logo" />
                         </div>
                         <div>
-                            <a class="test-a-sass" href="https://sass-lang.com" target="_blank" rel="noopener"> Sass </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <img src=${stylusLogo} class="test-logo stylus-logo" alt="Stylus logo" />
-                        </div>
-                        <div>
-                            <a class="test-a-stylus" href="https://stylus-lang.com" target="_blank" rel="noopener"> Stylus </a>
+                            <a class="framework-test-a-redux" href="https://redux.js.org" target="_blank" rel="noopener"> Redux </a>
                         </div>
                     </div>
                 </div>
-                <div class="test-div">
+                <div class="framework-test-div">
                     <div>
                         <div>
-                            <img src=${preactLogo} class="test-logo" alt="Preact logo" />
+                            <img src=${lessLogo} class="framework-test-logo less-logo" alt="Less logo" />
                         </div>
                         <div>
-                            <a class="test-a-preact" href="https://preactjs.com" target="_blank" rel="noopener"> Preact </a>
+                            <a class="framework-test-a-less" href="https://lesscss.org" target="_blank" rel="noopener"> Less </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src=${litLogo} class="test-logo" alt="Lit logo" />
+                            <img src=${sassLogo} class="framework-test-logo sass-logo" alt="Sass logo" />
                         </div>
                         <div>
-                            <a class="test-a-lit" href="https://lit.dev" target="_blank" rel="noopener"> Lit </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <img src=${svelteLogo} class="test-logo" alt="Svelte logo" />
-                        </div>
-                        <div>
-                            <a class="test-a-svelte" href="https://svelte.dev" target="_blank" rel="noopener"> Svelte </a>
+                            <a class="framework-test-a-sass" href="https://sass-lang.com" target="_blank" rel="noopener"> Sass </a>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <img src=${solidLogo} class="test-logo" alt="Solid logo" />
+                            <img src=${stylusLogo} class="framework-test-logo stylus-logo" alt="Stylus logo" />
                         </div>
                         <div>
-                            <a class="test-a-solid" href="https://www.solidjs.com" target="_blank" rel="noopener"> Solid </a>
+                            <a class="framework-test-a-stylus" href="https://stylus-lang.com" target="_blank" rel="noopener"> Stylus </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="framework-test-div">
+                    <div>
+                        <div>
+                            <img src=${preactLogo} class="framework-test-logo" alt="Preact logo" />
+                        </div>
+                        <div>
+                            <a class="framework-test-a-preact" href="https://preactjs.com" target="_blank" rel="noopener"> Preact </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src=${litLogo} class="framework-test-logo" alt="Lit logo" />
+                        </div>
+                        <div>
+                            <a class="framework-test-a-lit" href="https://lit.dev" target="_blank" rel="noopener"> Lit </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src=${svelteLogo} class="framework-test-logo" alt="Svelte logo" />
+                        </div>
+                        <div>
+                            <a class="framework-test-a-svelte" href="https://svelte.dev" target="_blank" rel="noopener"> Svelte </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src=${solidLogo} class="framework-test-logo" alt="Solid logo" />
+                        </div>
+                        <div>
+                            <a class="framework-test-a-solid" href="https://www.solidjs.com" target="_blank" rel="noopener"> Solid </a>
                         </div>
                     </div>
                 </div>
@@ -132,85 +132,85 @@ export class LitTest extends BaseComponent {
     }
 
     static styles = css`
-        h3.test-h {
+        h3.framework-test-h {
             margin: 40px 0 0;
         }
 
-        h1.test-h-lit,
-        h3.test-h-lit {
+        h1.framework-test-h-lit,
+        h3.framework-test-h-lit {
             color: #2843f6;
         }
 
-        div.test-div {
+        div.framework-test-div {
             display: flex;
             justify-content: space-evenly;
         }
 
-        div.test-div > div {
+        div.framework-test-div > div {
             display: inline-block;
             margin: 0 10px;
         }
 
-        div.test-div > div > div {
+        div.framework-test-div > div > div {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        a.test-a-vue {
+        a.framework-test-a-vue {
             color: #42b883;
         }
 
-        a.test-a-pinia {
+        a.framework-test-a-pinia {
             color: #ffd859;
         }
 
-        a.test-a-react {
+        a.framework-test-a-react {
             color: #58c4dc;
         }
 
-        a.test-a-redux {
+        a.framework-test-a-redux {
             color: #764abc;
         }
 
-        a.test-a-less {
+        a.framework-test-a-less {
             color: #1d365d;
         }
 
-        a.test-a-sass {
+        a.framework-test-a-sass {
             color: #bf4080;
         }
 
-        a.test-a-stylus {
+        a.framework-test-a-stylus {
             color: #6da13f;
         }
 
-        a.test-a-preact {
+        a.framework-test-a-preact {
             color: #673ab8;
         }
 
-        a.test-a-lit {
+        a.framework-test-a-lit {
             color: #2843f6;
         }
 
-        a.test-a-svelte {
+        a.framework-test-a-svelte {
             color: #f96743;
         }
 
-        a.test-a-solid {
+        a.framework-test-a-solid {
             color: #446b9e;
         }
 
-        .test-logo {
+        .framework-test-logo {
             height: 128px;
         }
 
-        .test-large-logo.lit-logo {
+        .framework-test-large-logo.framework-test-rotate-logo {
             height: 160px;
-            animation: rotate-lit 8s linear infinite;
+            animation: rotate-framework-test 8s linear infinite;
         }
 
-        @keyframes rotate-lit {
+        @keyframes rotate-framework-test {
             from {
                 transform: rotate(0deg);
             }

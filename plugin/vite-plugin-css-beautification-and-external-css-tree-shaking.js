@@ -14,7 +14,7 @@ export default function vitePluginCssBeautificationAndExternalCssTreeShaking(con
 
             const cssBundleNames = Object.keys(bundle).filter(e => bundle[e].type === 'asset' && bundle[e].fileName.endsWith('.css'));
             cssBundleNames.forEach(css => {
-                const beautifulCss = [...cssSplitAndReorganize(bundle[css].source), ...minExternalCss];
+                const beautifulCss = [...cssSplitAndReorganize(bundle[css].source, true), ...minExternalCss];
 
                 bundle[css].source = [...new Set(beautifulCss.filter(e => e && e.length > 1).map(e => e.trim()))].join('\n');
             });

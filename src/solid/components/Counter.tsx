@@ -7,11 +7,11 @@ export default function Counter() {
         <div>
             <h1>Counter</h1>
             <p>Count: {count()}</p>
-            <div class='solid-counter-row'>
-                <button class='solid-counter-button' onClick={() => setCount(count() + 1)}>
+            <div class='framework-test-counter-row'>
+                <button class='framework-test-counter-button solid-counter-button' onClick={() => setCount(count() + 1)}>
                     Increment
                 </button>
-                <button class='solid-counter-button' onClick={() => setCount(count() - 1)}>
+                <button class='framework-test-counter-button solid-counter-button' onClick={() => setCount(count() - 1)}>
                     Decrement
                 </button>
             </div>

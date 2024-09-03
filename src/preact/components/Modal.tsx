@@ -24,10 +24,10 @@ export default function Modal() {
 
     return (
         <Fragment>
-            <div class='preact-modal-mask' onClick={_close}>
-                <div class='preact-modal-container'>
+            <div class='framework-test-modal-mask' onClick={_close}>
+                <div class='framework-test-modal-container'>
                     <span>
-                        <button class='preact-modal-close-button' onClick={() => close()}>
+                        <button class='framework-test-modal-close-button' onClick={() => close()}>
                             &times;
                         </button>
                     </span>

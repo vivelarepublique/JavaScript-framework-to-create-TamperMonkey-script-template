@@ -42,7 +42,7 @@ export class LitApp extends BaseComponent {
             top: 0;
             left: 40%;
             transform: translateX(-50%);
-            animation: anime-lit 0.25s;
+            animation: anime-framework-test 0.25s;
             padding: 10px 20px;
             margin: 5px 10px;
             border: none;
@@ -53,7 +53,7 @@ export class LitApp extends BaseComponent {
             cursor: pointer;
         }
 
-        @keyframes anime-lit {
+        @keyframes anime-framework-test {
             0% {
                 top: -100px;
                 opacity: 0;
