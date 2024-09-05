@@ -110,8 +110,8 @@ export function extractFileContentClassName(filesData: string[]): string[] {
     return [
         ...new Set(
             filesData.reduce((accumulator: string[], current: string) => {
-                return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(e => e.split(' ')).flat());
+                return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(c => c.split(' ')).flat());
             }, []),
         ),
-    ].filter(e => e && e.length > 1);
+    ].filter(c => c && c.length > 1);
 }

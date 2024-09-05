@@ -13,11 +13,11 @@ export default function vitePluginCssBeautificationAndExternalCssTreeShaking(con
             const minExternalCss = extractCssOnDemand(cssPath, extractFileContentTagName(filesData), extractFileContentClassName(filesData));
             if (minExternalCss.length === 0) return;
 
-            const cssBundleNames = Object.keys(bundle).filter(e => bundle[e].type === 'asset' && bundle[e].fileName.endsWith('.css'));
+            const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
             const lastCssBundleName = cssBundleNames[cssBundleNames.length - 1];
 
             const finalCss = [...cssSplitAndReorganize((bundle[lastCssBundleName] as Rollup.OutputAsset).source as string, true), ...minExternalCss];
-            ((bundle[lastCssBundleName] as Rollup.OutputAsset).source as string) = [...new Set(finalCss.filter(e => e && e.length > 1).map(e => e.trim()))].join('\n');
+            ((bundle[lastCssBundleName] as Rollup.OutputAsset).source as string) = [...new Set(finalCss.filter(c => c && c.length > 1).map(c => c.trim()))].join('\n');
         },
     };
 }

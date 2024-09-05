@@ -8,11 +8,11 @@ export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ ba
         apply: 'build',
         enforce: 'post',
         generateBundle(_: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
-            const jsBundleNames = Object.keys(bundle).filter(e => bundle[e].type == 'chunk' && bundle[e].fileName.endsWith('.js'));
+            const jsBundleNames = Object.keys(bundle).filter(b => bundle[b].type == 'chunk' && bundle[b].fileName.endsWith('.js'));
             if (jsBundleNames.length != 1) throw new Error('There should be exactly one js bundle');
             const firstJsBundleName = jsBundleNames[0];
 
-            const cssBundleNames = Object.keys(bundle).filter(e => bundle[e].type === 'asset' && bundle[e].fileName.endsWith('.css'));
+            const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
             const allCssCode = cssBundleNames.reduce((accumulator, current) => {
                 const cssSource = (bundle[current] as Rollup.OutputAsset).source;
                 delete bundle[current];
