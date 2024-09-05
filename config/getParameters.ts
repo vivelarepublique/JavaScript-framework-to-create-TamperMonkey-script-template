@@ -1,13 +1,13 @@
 import parameters from './parameters.json';
-import { Parameters } from '../types';
+import { ScriptInformationParameters } from '../types';
 
-export const bannerConfig: Parameters = {
-    name: parameters.name || 'New Test TamperMonkey Script',
-    namespace: parameters.namespace || '',
-    description: parameters.description || '',
-    author: parameters.author || '',
-    matchUrl: parameters.matchUrl || [],
-    runtime: parameters.runtime || '',
-    grant: parameters.grant || [],
+export const bannerConfig: ScriptInformationParameters = {
+    name: parameters.name || 'New-UserScript',
+    namespace: parameters.namespace || 'http://tampermonkey.net/',
+    description: parameters.description || 'try to take over the world!',
+    author: parameters.author || 'You',
+    matchUrl: parameters.matchUrl || ['http://*/*'],
+    runtime: parameters.runtime || 'document-idle',
+    grant: parameters.grant || ['none'],
     connect: parameters.connect || [],
 };
