@@ -1,17 +1,11 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-/**
- *
- * @param {string} cssContent
- * @param {boolean} sortByOrder
- * @returns {string[]}
- */
-export function cssSplitAndReorganize(cssContent, sortByOrder = false) {
+export function cssSplitAndReorganize(cssContent: string, sortByOrder: boolean = false): string[] {
     const cssArray = cssContent.split('}');
-    const cssResult = [];
+    const cssResult: string[] = [];
 
-    const tempArray = [];
+    const tempArray: string[] = [];
     let finishFlag = true;
     for (let i = 0; i < cssArray.length; i++) {
         if (cssArray[i].includes('@')) {
@@ -28,12 +22,7 @@ export function cssSplitAndReorganize(cssContent, sortByOrder = false) {
     return sortByOrder ? cssResult.sort() : cssResult;
 }
 
-/**
- *
- * @param {string} cssPath
- * @returns {string[]}
- */
-function externalCssTransformation(cssPath) {
+function externalCssTransformation(cssPath: string): string[] {
     try {
         const file = readFileSync(cssPath, 'utf-8');
         const css = file.replaceAll(/(@charset "UTF-8";)|(\/\*[\s\S]*?\*\/)/g, '');
@@ -44,16 +33,8 @@ function externalCssTransformation(cssPath) {
     }
 }
 
-/**
- *
- * @param {string} path
- * @param {string[]} tags
- * @param {string[]} classes
- * @param {string} excludeClassNameKeywords
- * @returns {string[]}
- */
-export function extractCssOnDemand(path, tags, classes, excludeClassNameKeywords = 'framework-test') {
-    const minResult = [];
+export function extractCssOnDemand(path: string, tags: string[], classes: string[], excludeClassNameKeywords: string = 'framework-test'): string[] {
+    const minResult: string[] = [];
     const allCss = externalCssTransformation(path);
     allCss.forEach(rule => {
         const css = rule.split('{');
@@ -93,13 +74,8 @@ export function extractCssOnDemand(path, tags, classes, excludeClassNameKeywords
     return [...new Set(minResult)];
 }
 
-/**
- *
- * @param {string[]} paths
- * @returns {string[]}
- */
-export function componentsAnalysis(paths) {
-    const result = [];
+export function componentsAnalysis(paths: string[]): string[] {
+    const result: string[] = [];
     try {
         paths
             .map(framework => `src/${framework}/components`)
@@ -120,30 +96,20 @@ export function componentsAnalysis(paths) {
     }
 }
 
-/**
- *
- * @param {string[]} filesData
- * @returns {string[]}
- */
-export function extractFileContentTagName(filesData) {
+export function extractFileContentTagName(filesData: string[]): string[] {
     return [
         ...new Set(
-            filesData.reduce((accumulator, current) => {
+            filesData.reduce((accumulator: string[], current: string) => {
                 return accumulator.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g) || []);
             }, []),
         ),
     ];
 }
 
-/**
- *
- * @param {string[]} filesData
- * @returns {string[]}
- */
-export function extractFileContentClassName(filesData) {
+export function extractFileContentClassName(filesData: string[]): string[] {
     return [
         ...new Set(
-            filesData.reduce((accumulator, current) => {
+            filesData.reduce((accumulator: string[], current: string) => {
                 return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(e => e.split(' ')).flat());
             }, []),
         ),

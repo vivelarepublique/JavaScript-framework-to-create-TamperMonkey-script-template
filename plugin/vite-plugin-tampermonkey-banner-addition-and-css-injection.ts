@@ -1,23 +1,25 @@
+import { Rollup, Plugin } from 'vite';
 import { getAllUniqueHostname, getAllUniqueGrant, getMultiParameters, getNewVersionId } from '../tools/banner.js';
+import { Parameters } from '../types';
 
-export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }) {
+export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }: { bannerConfig: Parameters }): Plugin {
     return {
         name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
         apply: 'build',
         enforce: 'post',
-        generateBundle(options, bundle) {
+        generateBundle(_: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
             const jsBundleNames = Object.keys(bundle).filter(e => bundle[e].type == 'chunk' && bundle[e].fileName.endsWith('.js'));
             if (jsBundleNames.length != 1) throw new Error('There should be exactly one js bundle');
             const firstJsBundleName = jsBundleNames[0];
 
             const cssBundleNames = Object.keys(bundle).filter(e => bundle[e].type === 'asset' && bundle[e].fileName.endsWith('.css'));
             const allCssCode = cssBundleNames.reduce((accumulator, current) => {
-                const cssSource = bundle[current].source;
+                const cssSource = (bundle[current] as Rollup.OutputAsset).source;
                 delete bundle[current];
                 return accumulator + cssSource;
             }, '');
 
-            const injectCss = css => {
+            const injectCss = (css: string) => {
                 const cssCode = '/*css*/`\n' + css + '`';
                 return /*javascript*/ `const vitePluginTampermonkeyTemplateCssInjection = document.createElement('style');
 const vitePluginTampermonkeyTemplateCssInjectionCode = document.createTextNode(${cssCode});
@@ -25,8 +27,8 @@ vitePluginTampermonkeyTemplateCssInjection.appendChild(vitePluginTampermonkeyTem
 document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
             };
 
-            const grants = Array.from(new Set(getAllUniqueGrant(bundle[firstJsBundleName].code).concat(bannerConfig.grant)));
-            const connects = Array.from(new Set(getAllUniqueHostname(bundle[firstJsBundleName].code).concat(bannerConfig.connect)));
+            const grants = Array.from(new Set(getAllUniqueGrant((bundle[firstJsBundleName] as Rollup.OutputChunk).code).concat(bannerConfig.grant)));
+            const connects = Array.from(new Set(getAllUniqueHostname((bundle[firstJsBundleName] as Rollup.OutputChunk).code).concat(bannerConfig.connect)));
             const banner = `// ==UserScript==
 // @name         ${bannerConfig.name}
 // @namespace    ${bannerConfig.namespace}
@@ -39,11 +41,11 @@ ${getMultiParameters(grants, 'grant')}
 ${getMultiParameters(connects, 'connect')}
 // ==/UserScript==
 `;
-            bundle[firstJsBundleName].code = /*javascript*/ `${banner}
+            (bundle[firstJsBundleName] as Rollup.OutputChunk).code = /*javascript*/ `${banner}
 (function () {
 'use strict';
 ${allCssCode.length === 0 ? '' : injectCss(allCssCode)}
-${bundle[firstJsBundleName].code.replace(/(\/\*[\s\S]*?\*\/)/g, '')}
+${(bundle[firstJsBundleName] as Rollup.OutputChunk).code.replace(/(\/\*[\s\S]*?\*\/)/g, '')}
 })();`;
         },
     };

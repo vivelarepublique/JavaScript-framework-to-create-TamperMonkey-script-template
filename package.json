@@ -4,8 +4,8 @@
     "description": "",
     "main": "./src/index.ts",
     "scripts": {
-        "dev": "npx vite --config ./vite.dev.js",
-        "build": "npx vite build"
+        "dev": "vite --config ./vite.dev.ts",
+        "build": "vite build"
     },
     "keywords": [
         "react",

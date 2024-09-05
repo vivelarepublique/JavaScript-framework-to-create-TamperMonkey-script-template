@@ -1,40 +1,19 @@
-/**
- *
- * @param {string} code
- * @returns {string[]}
- */
-export function getAllUniqueHostname(code) {
+export function getAllUniqueHostname(code: string): string[] {
     const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
     const urls = code.match(urlRegex);
     return urls ? [...new Set(urls.map(url => new URL(url).hostname))] : [];
 }
 
-/**
- *
- * @param {string} code
- * @returns {string[]}
- */
-export function getAllUniqueGrant(code) {
+export function getAllUniqueGrant(code: string): string[] {
     const grantRegex = /(GM_[a-zA-Z]+)|unsafeWindow/gm;
     const grants = code.match(grantRegex);
     return grants ? [...new Set(grants)] : [];
 }
 
-/**
- *
- * @param {string[]} parameter
- * @param {string} name
- * @returns {string}
- */
-export function getMultiParameters(parameter, name) {
+export function getMultiParameters(parameter: string[], name: string): string {
     return parameter.reduce((accelerator, current, index, self) => accelerator + '// @' + name + ' '.repeat(13 - name.length) + current + (index === self.length - 1 ? '' : '\n'), '');
 }
 
-/**
- *
- * @param {Date} date
- * @returns {string}
- */
-export function getNewVersionId(date = new Date()) {
+export function getNewVersionId(date: Date = new Date()): string {
     return date.getFullYear() - 2023 + '.' + date.getMonth() + '.' + (date.getDate() - 1);
 }

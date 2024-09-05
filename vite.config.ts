@@ -9,10 +9,10 @@ import solid from 'vite-plugin-solid';
 
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-import vitePluginCssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking.js';
-import vitePluginTampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection.js';
+import vitePluginCssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking';
+import vitePluginTampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection';
 
-import { bannerConfig } from './config/getParameters.js';
+import { bannerConfig } from './config/getParameters';
 
 export default defineConfig({
     build: {
