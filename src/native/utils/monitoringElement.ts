@@ -43,9 +43,9 @@ const listenElementChanges = (selector: string, options: ListenOptions): Mutatio
     return targetObserver;
 };
 
-const waitElementFinishLoading = (selector: string, refer?: Element): Promise<Element> => {
+const waitElementFinishLoading = (selector: string, refer?: Element): Promise<Element | null> => {
     return new Promise(resolve => {
-        getElement(selector) && resolve(getElement(selector)!);
+        if (!getElement(selector)) resolve(null);
 
         const bodyObserver = new MutationObserver(_ => {
             const targetElement = getElement(selector);

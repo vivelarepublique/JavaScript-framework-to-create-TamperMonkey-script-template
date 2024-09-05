@@ -4,9 +4,7 @@ import { getElement, createNewElement, removeElement, appendElement } from '../n
 import { httpRequestReturnXML } from '../native/utils/tamperMonkeyFunction';
 
 const someTestActions = async () => {
-    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
-
-    if (!location.search && !(location.pathname.length > 1)) {
+    if (!location.search && location.pathname.length <= 1) {
         const isLoaded = await DetermineWindowPropertyIsLoaded('$');
         const head = await waitElementFinishLoading('#head_wrapper');
 
