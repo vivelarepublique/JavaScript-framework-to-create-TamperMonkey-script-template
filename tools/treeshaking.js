@@ -1,6 +1,12 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+/**
+ *
+ * @param {string} cssContent
+ * @param {boolean} sortByOrder
+ * @returns {string[]}
+ */
 export function cssSplitAndReorganize(cssContent, sortByOrder = false) {
     const cssArray = cssContent.split('}');
     const cssResult = [];
@@ -22,6 +28,11 @@ export function cssSplitAndReorganize(cssContent, sortByOrder = false) {
     return sortByOrder ? cssResult.sort() : cssResult;
 }
 
+/**
+ *
+ * @param {string} cssPath
+ * @returns {string[]}
+ */
 function externalCssTransformation(cssPath) {
     try {
         const file = readFileSync(cssPath, 'utf-8');
@@ -33,6 +44,14 @@ function externalCssTransformation(cssPath) {
     }
 }
 
+/**
+ *
+ * @param {string} path
+ * @param {string[]} tags
+ * @param {string[]} classes
+ * @param {string} excludeClassNameKeywords
+ * @returns {string[]}
+ */
 export function extractCssOnDemand(path, tags, classes, excludeClassNameKeywords = 'framework-test') {
     const minResult = [];
     const allCss = externalCssTransformation(path);
@@ -74,6 +93,11 @@ export function extractCssOnDemand(path, tags, classes, excludeClassNameKeywords
     return [...new Set(minResult)];
 }
 
+/**
+ *
+ * @param {string[]} paths
+ * @returns {string[]}
+ */
 export function componentsAnalysis(paths) {
     const result = [];
     try {
@@ -96,26 +120,31 @@ export function componentsAnalysis(paths) {
     }
 }
 
+/**
+ *
+ * @param {string[]} filesData
+ * @returns {string[]}
+ */
 export function extractFileContentTagName(filesData) {
     return [
         ...new Set(
             filesData.reduce((accumulator, current) => {
-                return accumulator.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g));
+                return accumulator.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g) || []);
             }, []),
         ),
     ];
 }
 
+/**
+ *
+ * @param {string[]} filesData
+ * @returns {string[]}
+ */
 export function extractFileContentClassName(filesData) {
     return [
         ...new Set(
             filesData.reduce((accumulator, current) => {
-                return accumulator.concat(
-                    current
-                        .match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g)
-                        ?.map(e => e.split(' '))
-                        .flat(),
-                );
+                return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(e => e.split(' ')).flat());
             }, []),
         ),
     ].filter(e => e && e.length > 1);
