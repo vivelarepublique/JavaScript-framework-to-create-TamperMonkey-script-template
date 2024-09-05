@@ -3,6 +3,7 @@
         "composite": true,
         "isolatedModules": true,
         "jsx": "react-jsx",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
         "module": "ESNext",
         "moduleDetection": "force",
         "moduleResolution": "bundler",
@@ -13,8 +14,7 @@
         "skipLibCheck": true,
         "strict": true,
         "target": "ESNext",
-        "useDefineForClassFields": true,
-        "lib": ["ES2020", "DOM", "DOM.Iterable"]
+        "useDefineForClassFields": true
     },
     "include": ["src/react/**/*.ts", "src/react/**/*.tsx", "src/types/*.d.ts", "src/native/**/*.ts"]
 }

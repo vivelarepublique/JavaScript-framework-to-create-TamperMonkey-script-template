@@ -2,6 +2,7 @@
     "compilerOptions": {
         "composite": true,
         "isolatedModules": true,
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
         "module": "ESNext",
         "moduleDetection": "force",
         "moduleResolution": "bundler",
@@ -12,8 +13,7 @@
         "skipLibCheck": true,
         "strict": true,
         "target": "ESNext",
-        "useDefineForClassFields": true,
-        "lib": ["ES2020", "DOM", "DOM.Iterable"]
+        "useDefineForClassFields": true
     },
     "include": ["src/native/**/*.ts", "src/action/*.ts"]
 }
