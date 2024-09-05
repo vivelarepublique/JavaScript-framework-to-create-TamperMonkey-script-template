@@ -1,6 +1,7 @@
 {
     "name": "JavaScript-framework-to-create-TamperMonkey-script-template",
     "namespace": "http://tampermonkey.net/",
+    "version": "",
     "description": "try to take over the world!",
     "author": "vivelarepublique",
     "matchUrl": ["https://www.baidu.com/*"],

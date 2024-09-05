@@ -32,7 +32,7 @@ document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
             const banner = `// ==UserScript==
 // @name         ${bannerConfig.name}
 // @namespace    ${bannerConfig.namespace}
-// @version      ${getNewVersionId()}
+// @version      ${bannerConfig.version || getNewVersionId()}
 // @description  ${bannerConfig.description}
 // @author       ${bannerConfig.author}
 // @run-at       ${bannerConfig.runtime}
