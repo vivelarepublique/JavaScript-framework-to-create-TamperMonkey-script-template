@@ -2,8 +2,8 @@ import { Rollup, Plugin } from 'vite';
 import { cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking.js';
 import { TreeShakingConfig } from '../types';
 
-export default function vitePluginCssBeautificationAndExternalCssTreeShaking(config?: TreeShakingConfig): Plugin {
-    const { cssPath = 'node_modules/bootstrap/dist/css/bootstrap.min.css', componentsPaths = ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] } = config || {};
+export default function vitePluginCssBeautificationAndExternalCssTreeShaking(config: TreeShakingConfig): Plugin {
+    const { cssPath, componentsPaths = ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] } = config;
     return {
         name: 'vite-plugin-css-beautification-and-external-css-tree-shaking',
         apply: 'build',

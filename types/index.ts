@@ -1,4 +1,4 @@
-export interface Parameters {
+export interface ScriptInformationParameters {
     name: string;
     namespace: string;
     description: string;
@@ -10,6 +10,6 @@ export interface Parameters {
 }
 
 export interface TreeShakingConfig {
-    cssPath?: string;
+    cssPath: string;
     componentsPaths?: string[];
 }

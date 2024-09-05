@@ -49,7 +49,7 @@ export default defineConfig({
         solid({
             include: ['src/solid/*.{tsx,ts,jsx,js}', 'src/solid/**/*.{tsx,ts,jsx,js}'],
         }),
-        vitePluginCssBeautificationAndExternalCssTreeShaking(),
+        vitePluginCssBeautificationAndExternalCssTreeShaking({ cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css' }),
         vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
     ],
 });

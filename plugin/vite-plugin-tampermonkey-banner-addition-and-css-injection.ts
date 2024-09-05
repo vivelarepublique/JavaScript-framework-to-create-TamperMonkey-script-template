@@ -1,8 +1,8 @@
 import { Rollup, Plugin } from 'vite';
 import { getAllUniqueHostname, getAllUniqueGrant, getMultiParameters, getNewVersionId } from '../tools/banner.js';
-import { Parameters } from '../types';
+import { ScriptInformationParameters } from '../types';
 
-export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }: { bannerConfig: Parameters }): Plugin {
+export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }: { bannerConfig: ScriptInformationParameters }): Plugin {
     return {
         name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
         apply: 'build',
