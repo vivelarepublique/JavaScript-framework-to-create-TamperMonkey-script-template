@@ -4,8 +4,6 @@ import Bridge from './Bridge';
 
 import { setShow } from '../signal/showSignal';
 
-import '../css/modal.css';
-
 export default function Modal() {
     function _close(event: Event) {
         event.stopPropagation();

@@ -4,8 +4,6 @@ import Test from './Test';
 import Counter from './Counter';
 import Bridge from './Bridge';
 
-import '../css/modal.css';
-
 import { close } from '../store/showStore';
 import { useDispatch } from 'react-redux';
 

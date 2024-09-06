@@ -1,4 +1,4 @@
-import { html, css } from 'lit';
+import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import { BaseComponent } from '../extends/baseComponents';
@@ -44,41 +44,6 @@ export class LitModal extends BaseComponent {
             </div>
         `;
     }
-
-    static styles = css`
-        .framework-test-modal-mask {
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            padding-top: 20px;
-            overflow: auto;
-            min-width: 1200px;
-            max-height: 95vh;
-            animation: anime-framework-test 0.25s;
-            font-size: min(3.2vh, 3.2vw);
-        }
-
-        .framework-test-modal-container {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 95%;
-            min-height: 80vh;
-        }
-
-        .framework-test-modal-close-button {
-            color: #aaa;
-            float: right;
-            font-size: 24px;
-            font-weight: bold;
-        }
-    `;
 }
 
 declare global {

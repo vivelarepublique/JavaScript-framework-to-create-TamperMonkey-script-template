@@ -5,8 +5,6 @@ import Test from './Test';
 import Counter from './Counter';
 import Bridge from './Bridge';
 
-import '../css/modal.css';
-
 import ShowContext from '../context/ShowContext';
 
 export default function Modal() {
