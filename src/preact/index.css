@@ -1,11 +1,9 @@
-@keyframes anime-framework-test {
-    0% {
-        top: -100px;
-        opacity: 0;
+@keyframes global-preact-css-rule-test {
+    from {
+        transform: rotate(0deg);
     }
 
-    100% {
-        top: 0;
-        opacity: 1;
+    to {
+        transform: rotate(360deg);
     }
 }

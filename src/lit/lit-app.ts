@@ -30,39 +30,15 @@ export class LitApp extends BaseComponent {
 
     render() {
         return html`
-            <button id="lit-modal" @click=${this._open} part="button">Show Lit Modal</button>
+            <button id="framework-test-lit-modal" class="framework-test-modal-switch" @click=${this._open} part="button">Show Lit Modal</button>
             ${this.showStore.show ? html`<lit-modal @show-changed=${this.handleShowChanged}></lit-modal>` : nothing}
         `;
     }
 
     static styles = css`
-        #lit-modal {
-            position: fixed;
-            z-index: 9998;
-            top: 0;
+        #framework-test-lit-modal {
             left: 40%;
-            transform: translateX(-50%);
-            animation: anime-framework-test 0.25s;
-            padding: 10px 20px;
-            margin: 5px 10px;
-            border: none;
             background-color: #2843f6;
-            color: white;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        @keyframes anime-framework-test {
-            0% {
-                top: -100px;
-                opacity: 0;
-            }
-
-            100% {
-                top: 0;
-                opacity: 1;
-            }
         }
     `;
 }

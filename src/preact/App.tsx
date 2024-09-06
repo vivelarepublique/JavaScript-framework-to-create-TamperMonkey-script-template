@@ -1,7 +1,7 @@
 import { Fragment } from 'preact';
 import { useState } from 'preact/hooks';
 
-import './css/app.css';
+import './app.css';
 
 import Modal from './components/Modal';
 
@@ -16,7 +16,7 @@ export function App() {
         <Fragment>
             <CounterContext.Provider value={{ count, increment: () => setCount(count + 1), decrement: () => setCount(count - 1) }}>
                 <ShowContext.Provider value={{ show, open: () => setShow(true), close: () => setShow(false) }}>
-                    <button id='preact-modal' onClick={() => setShow(true)}>
+                    <button id='framework-test-preact-modal' class='framework-test-modal-switch' onClick={() => setShow(true)}>
                         Show Preact Modal
                     </button>
                     {show && <Modal></Modal>}

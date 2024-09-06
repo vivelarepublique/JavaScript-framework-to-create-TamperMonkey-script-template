@@ -9,25 +9,13 @@
 </script>
 
 <template>
-    <button id="vue-modal" @click="open">Show Vue Modal</button>
+    <button id="framework-test-vue-modal" class="framework-test-modal-switch" @click="open">Show Vue Modal</button>
     <Modal v-if="show"></Modal>
 </template>
 
 <style>
-    #vue-modal {
-        position: fixed;
-        z-index: 9998;
-        top: 0;
+    #framework-test-vue-modal {
         left: 10%;
-        transform: translateX(-50%);
-        animation: anime-framework-test 0.25s;
-        padding: 10px 20px;
-        margin: 5px 10px;
-        border: none;
         background-color: #42b883;
-        color: white;
-        font-weight: bold;
-        border-radius: 5px;
-        cursor: pointer;
     }
 </style>

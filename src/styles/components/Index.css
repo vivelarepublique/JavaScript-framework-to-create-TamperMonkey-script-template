@@ -1,14 +1,13 @@
-#react-modal {
+.framework-test-modal-switch {
     position: fixed;
     z-index: 9998;
     top: 0;
-    left: 20%;
+    left: 0;
     transform: translateX(-50%);
     animation: anime-framework-test 0.25s;
     padding: 10px 20px;
     margin: 5px 10px;
     border: none;
-    background-color: #58c4dc;
     color: white;
     font-weight: bold;
     border-radius: 5px;
