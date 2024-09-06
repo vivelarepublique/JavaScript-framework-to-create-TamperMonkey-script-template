@@ -46,18 +46,6 @@ export class LitModal extends BaseComponent {
     }
 
     static styles = css`
-        @keyframes anime-framework-test {
-            0% {
-                top: -100px;
-                opacity: 0;
-            }
-
-            100% {
-                top: 0;
-                opacity: 1;
-            }
-        }
-
         .framework-test-modal-mask {
             position: fixed;
             z-index: 9999;

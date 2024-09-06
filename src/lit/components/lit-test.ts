@@ -209,16 +209,6 @@ export class LitTest extends BaseComponent {
             height: 160px;
             animation: rotate-framework-test 8s linear infinite;
         }
-
-        @keyframes rotate-framework-test {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
     `;
 }
 
