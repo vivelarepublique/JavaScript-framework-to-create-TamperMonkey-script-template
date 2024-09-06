@@ -10,7 +10,7 @@ export default function vitePluginCssBeautificationAndExternalCssTreeShaking(con
         enforce: 'post',
         generateBundle(_: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
             const filesData = componentsAnalysis(componentsPaths);
-            const minExternalCss = extractCssOnDemand(cssPath, extractFileContentTagName(filesData), extractFileContentClassName(filesData));
+            const minExternalCss = extractCssOnDemand(cssPath, extractFileContentTagName(filesData), extractFileContentClassName(filesData, 'framework-test'));
             if (minExternalCss.length === 0) return;
 
             const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));

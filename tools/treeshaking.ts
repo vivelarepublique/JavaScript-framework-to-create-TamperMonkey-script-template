@@ -33,44 +33,82 @@ function externalCssTransformation(cssPath: string): string[] {
     }
 }
 
-export function extractCssOnDemand(path: string, tags: string[], classes: string[], excludeClassNameKeywords: string = 'framework-test'): string[] {
+export function extractCssOnDemand(path: string, tagArray: string[], classArray: string[]): string[] {
     const minResult: string[] = [];
     const allCss = externalCssTransformation(path);
+
+    const mediaQueryTemp: string[] = [];
+    const keyFramesTemp: string[] = [];
+
     allCss.forEach(rule => {
         const css = rule.split('{');
         const selector = css[0].trim();
-        if (selector === 'body' || selector.includes(':root')) {
+        if (selector === 'html' || selector === 'body' || selector.includes(':root')) {
             minResult.push(rule);
         } else {
-            tags.forEach(tag => {
-                if (selector.includes(',')) {
-                    const selectors = selector.split(',').map(s => s.trim());
-                    if (selectors.includes(tag)) {
-                        minResult.push(rule);
-                    }
-                } else {
-                    const selectors = selector
-                        .split(' ')
-                        .map(s => s.trim())
-                        .filter(s => s);
-                    if (selectors.includes(tag)) {
-                        minResult.push(rule);
-                    }
+            if (selector.includes('@keyframes') || selector.includes('@media')) {
+                if (selector.includes('@keyframes')) {
+                    keyFramesTemp.push(rule);
                 }
-            });
-            classes
-                .filter(name => !name.includes(excludeClassNameKeywords))
-                .forEach(className => {
-                    const selectors = selector
-                        .replaceAll(/[:\+\>\*\.]|\[.*?\]/g, '')
-                        .split(',')
-                        .map(s => s.trim());
-                    if (selectors.every(s => className.includes(s))) {
-                        minResult.push(rule);
+                if (selector.includes('@media')) {
+                    mediaQueryTemp.push(rule);
+                }
+            } else {
+                tagArray.forEach(tag => {
+                    if (selector.includes(',')) {
+                        const selectors = selector.split(',').map(s => s.trim());
+                        if (selectors.includes(tag)) {
+                            minResult.push(rule);
+                        }
+                    } else {
+                        const selectors = selector
+                            .split(' ')
+                            .filter(s => s)
+                            .map(s => s.trim());
+                        if (selectors.includes(tag)) {
+                            minResult.push(rule);
+                        }
                     }
                 });
+                classArray.forEach(className => {
+                    if (selector.includes('.')) {
+                        const selectors = selector
+                            .replaceAll(/[\+\>\*]|\[.*?\]|:{1,2}[a-z]+((\(.*?\)))?/g, ' ')
+                            .split(',')
+                            .filter(s => s)
+                            .map(s => s.trim());
+                        if (selectors.some(s => className === s.substring(1))) {
+                            minResult.push(rule);
+                        }
+                    }
+                });
+            }
         }
     });
+
+    if (keyFramesTemp.length > 0) {
+        const tempResult = minResult.join('');
+        keyFramesTemp.forEach(rule => {
+            const css = rule.split('{');
+            const name = css[1].split(' ')[1];
+            if (tempResult.includes(name)) {
+                minResult.push(rule);
+            }
+        });
+    }
+
+    if (mediaQueryTemp.length > 0) {
+        mediaQueryTemp.forEach(rule => {
+            const css = rule.split('{');
+            const content = css[1];
+            classArray.forEach(className => {
+                if (content.includes(className)) {
+                    minResult.push(rule);
+                }
+            });
+        });
+    }
+
     return [...new Set(minResult)];
 }
 
@@ -96,22 +134,22 @@ export function componentsAnalysis(paths: string[]): string[] {
     }
 }
 
-export function extractFileContentTagName(filesData: string[]): string[] {
+export function extractFileContentTagName(filesData: string[], excludeTags: string[] = []): string[] {
     return [
         ...new Set(
             filesData.reduce((accumulator: string[], current: string) => {
                 return accumulator.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g) || []);
             }, []),
         ),
-    ];
+    ].filter(t => !excludeTags.includes(t));
 }
 
-export function extractFileContentClassName(filesData: string[]): string[] {
+export function extractFileContentClassName(filesData: string[], excludeClassNameKeywords: string = 'framework-test'): string[] {
     return [
         ...new Set(
             filesData.reduce((accumulator: string[], current: string) => {
                 return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(c => c.split(' ')).flat());
             }, []),
         ),
-    ].filter(c => c && c.length > 1);
+    ].filter(c => c && c.length > 1 && !c.includes(excludeClassNameKeywords));
 }
