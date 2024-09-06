@@ -8,10 +8,10 @@ export default function Counter() {
             <h1>Counter</h1>
             <p>Count: {count()}</p>
             <div class='framework-test-counter-row'>
-                <button class='framework-test-counter-button solid-counter-button' onClick={() => setCount(count() + 1)}>
+                <button class='framework-test-counter-button framework-test-counter-button-solid' onClick={() => setCount(count() + 1)}>
                     Increment
                 </button>
-                <button class='framework-test-counter-button solid-counter-button' onClick={() => setCount(count() - 1)}>
+                <button class='framework-test-counter-button framework-test-counter-button-solid' onClick={() => setCount(count() - 1)}>
                     Decrement
                 </button>
             </div>

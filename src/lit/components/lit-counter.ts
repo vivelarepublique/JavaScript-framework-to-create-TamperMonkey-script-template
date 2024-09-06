@@ -27,42 +27,24 @@ export class LitCounter extends BaseComponent {
                 <h1>Counter</h1>
                 <p>Count: ${this.counterStore?.count}</p>
                 <div class="framework-test-counter-row">
-                    <button class="framework-test-counter-button lit-counter-button" @click="${this._increment}">Increment</button>
-                    <button class="framework-test-counter-button lit-counter-button" @click="${this._decrement}">Decrement</button>
+                    <button class="framework-test-counter-button framework-test-counter-button-lit" @click="${this._increment}">Increment</button>
+                    <button class="framework-test-counter-button framework-test-counter-button-lit" @click="${this._decrement}">Decrement</button>
                 </div>
             </div>
         `;
     }
 
     static styles = css`
-        .lit-counter-button {
+        .framework-test-counter-button-lit {
             color: #2843f6;
         }
 
-        .framework-test-counter-button {
-            appearance: none;
-            background: none;
-            font-size: 32px;
-            padding: 0 12px;
-            outline: none;
-            border: 2px solid transparent;
-            border-radius: 8px;
-            padding-bottom: 4px;
-            cursor: pointer;
-            background-color: rgba(112, 76, 182, 0.1);
-            transition: all 0.15s;
-        }
-
-        .framework-test-counter-row > .framework-test-counter-button {
-            margin: 0 8px 0 4px;
-        }
-
-        .lit-counter-button:hover,
-        .lit-counter-button:focus {
+        .framework-test-counter-button-lit:hover,
+        .framework-test-counter-button-lit:focus {
             border: 2px solid #2843f666;
         }
 
-        .lit-counter-button:active {
+        .framework-test-counter-button-lit:active {
             background-color: #2843f633;
         }
     `;

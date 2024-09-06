@@ -14,10 +14,10 @@ export default function Counter() {
                 <h1>Counter</h1>
                 <p>Count: {_count}</p>
                 <div className='framework-test-counter-row'>
-                    <button className='framework-test-counter-button react-counter-button' onClick={() => dispatch(increment())}>
+                    <button className='framework-test-counter-button framework-test-counter-button-react' onClick={() => dispatch(increment())}>
                         Increment
                     </button>
-                    <button className='framework-test-counter-button react-counter-button' onClick={() => dispatch(decrement())}>
+                    <button className='framework-test-counter-button framework-test-counter-button-react' onClick={() => dispatch(decrement())}>
                         Decrement
                     </button>
                 </div>

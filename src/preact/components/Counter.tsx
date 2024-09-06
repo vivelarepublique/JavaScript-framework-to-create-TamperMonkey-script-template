@@ -13,10 +13,10 @@ export default function Counter() {
                 <h1>Counter</h1>
                 <p>Count: {count}</p>
                 <div className='framework-test-counter-row'>
-                    <button className='framework-test-counter-button preact-counter-button' onClick={() => increment()}>
+                    <button className='framework-test-counter-button framework-test-counter-button-preact' onClick={() => increment()}>
                         Increment
                     </button>
-                    <button className='framework-test-counter-button preact-counter-button' onClick={() => decrement()}>
+                    <button className='framework-test-counter-button framework-test-counter-button-preact' onClick={() => decrement()}>
                         Decrement
                     </button>
                 </div>

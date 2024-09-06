@@ -1,30 +1,12 @@
-.solid-counter-button {
+.framework-test-counter-button-solid {
     color: #446b9e;
 }
 
-.framework-test-counter-button {
-    appearance: none;
-    background: none;
-    font-size: 32px;
-    padding: 0 12px;
-    outline: none;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    padding-bottom: 4px;
-    cursor: pointer;
-    background-color: rgba(112, 76, 182, 0.1);
-    transition: all 0.15s;
-}
-
-.framework-test-counter-row > .framework-test-counter-button {
-    margin: 0 8px 0 4px;
-}
-
-.solid-counter-button:hover,
-.solid-counter-button:focus {
+.framework-test-counter-button-solid:hover,
+.framework-test-counter-button-solid:focus {
     border: 2px solid #446b9e66;
 }
 
-.solid-counter-button:active {
+.framework-test-counter-button-solid:active {
     background-color: #446b9e33;
 }
