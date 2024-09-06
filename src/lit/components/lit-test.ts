@@ -24,8 +24,8 @@ export class LitTest extends BaseComponent {
     render() {
         return html`
             <div>
-                <h1 class="framework-test-h-lit">${this.msg}</h1>
-                <h3 class="framework-test-h3 framework-test-h-lit">Lit Test Page</h3>
+                <p class="framework-test-header-lit framework-test-heavy">${this.msg}</p>
+                <p class="framework-test-header-lit">Lit Test Page</p>
                 <div class="framework-test-div">
                     <div>
                         <div>
@@ -132,82 +132,8 @@ export class LitTest extends BaseComponent {
     }
 
     static styles = css`
-        h3.framework-test-h {
-            margin: 40px 0 0;
-        }
-
-        h1.framework-test-h-lit,
-        h3.framework-test-h-lit {
+        .framework-test-header-lit {
             color: #2843f6;
-        }
-
-        div.framework-test-div {
-            display: flex;
-            justify-content: space-evenly;
-        }
-
-        div.framework-test-div > div {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        div.framework-test-div > div > div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        a.framework-test-a-vue {
-            color: #42b883;
-        }
-
-        a.framework-test-a-pinia {
-            color: #ffd859;
-        }
-
-        a.framework-test-a-react {
-            color: #58c4dc;
-        }
-
-        a.framework-test-a-redux {
-            color: #764abc;
-        }
-
-        a.framework-test-a-less {
-            color: #1d365d;
-        }
-
-        a.framework-test-a-sass {
-            color: #bf4080;
-        }
-
-        a.framework-test-a-stylus {
-            color: #6da13f;
-        }
-
-        a.framework-test-a-preact {
-            color: #673ab8;
-        }
-
-        a.framework-test-a-lit {
-            color: #2843f6;
-        }
-
-        a.framework-test-a-svelte {
-            color: #f96743;
-        }
-
-        a.framework-test-a-solid {
-            color: #446b9e;
-        }
-
-        .framework-test-logo {
-            height: 128px;
-        }
-
-        .framework-test-large-logo.framework-test-rotate-logo {
-            height: 160px;
-            animation: rotate-framework-test 8s linear infinite;
         }
     `;
 }

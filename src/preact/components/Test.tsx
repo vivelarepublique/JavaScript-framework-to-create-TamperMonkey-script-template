@@ -25,8 +25,8 @@ export default function Test(props: Props) {
     return (
         <Fragment>
             <div>
-                <h1 class='framework-test-h-preact'>{msg}</h1>
-                <h3 class='framework-test-h3 framework-test-h-preact'>Preact Test Page</h3>
+                <p class='framework-test-header-preact framework-test-heavy'>{msg}</p>
+                <p class='framework-test-header-preact'>Preact Test Page</p>
                 <div class='framework-test-div'>
                     <div>
                         <div>

@@ -23,8 +23,8 @@ export default function Test(props: Props) {
 
     return (
         <div>
-            <h1 class='framework-test-h-solid'>{msg}</h1>
-            <h3 class='framework-test-h3 framework-test-h-solid'>Solid Test Page</h3>
+            <p class='framework-test-header-solid framework-test-heavy'>{msg}</p>
+            <p class='framework-test-header-solid'>Solid Test Page</p>
             <div class='framework-test-div'>
                 <div>
                     <div>
