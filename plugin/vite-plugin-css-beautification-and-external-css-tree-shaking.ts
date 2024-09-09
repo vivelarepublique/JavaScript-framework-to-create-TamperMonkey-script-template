@@ -1,5 +1,5 @@
 import { Rollup, Plugin } from 'vite';
-import { readFileInformation, cssFileTransformation, cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking.js';
+import { readFileInformation, cssFileTransformation, cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking';
 import { TreeShakingConfig } from '../types';
 
 export default function vitePluginCssBeautificationAndExternalCssTreeShaking(config: TreeShakingConfig): Plugin {
