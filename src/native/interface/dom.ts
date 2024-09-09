@@ -1,4 +1,4 @@
-export interface RealElement extends Element {
+export interface IndexedByStringElement extends HTMLElement {
     [key: string]: any;
 }
 

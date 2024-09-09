@@ -1,5 +1,5 @@
 import { ListenOptions } from '../interface/mutations';
-import { RealElement } from '../interface/dom';
+import { IndexedByStringElement } from '../interface/dom';
 import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';
@@ -11,10 +11,10 @@ export function listenElementChanges(selector: string, options: ListenOptions): 
     const { delay, way } = triggerLimitation;
     const delayedCallback = way === 'debounce' ? debounce(callback, delay) : way === 'throttle' ? throttle(callback, delay) : callback;
 
-    const selectorTargetElement = getElement(selector) || document.body;
+    const selectorTargetElement = (getElement(selector) || document.body) as IndexedByStringElement;
 
     if (immediateImplementation) {
-        attributesConcern ? callback((selectorTargetElement as RealElement)[attributesConcern]) : callback();
+        attributesConcern ? callback(selectorTargetElement[attributesConcern]) : callback();
     }
     const children = childrenConcern.map(({ selector, action }) => {
         return {
@@ -28,13 +28,13 @@ export function listenElementChanges(selector: string, options: ListenOptions): 
             delayedCallback();
         } else {
             children.forEach(child => {
-                const childMutation = mutations.find(el => (el.target as Element).matches(child.selector));
+                const childMutation = mutations.find(el => (el.target as HTMLElement).matches(child.selector));
                 if (childMutation) child.delayedAction(childMutation.target);
             });
 
             if (attributesConcern) {
-                const attributesMutation = mutations.find(el => (el.target as Element).matches(selector));
-                attributesMutation && delayedCallback((attributesMutation.target as RealElement)[attributesConcern]);
+                const attributesMutation = mutations.find(el => (el.target as HTMLElement).matches(selector));
+                attributesMutation && delayedCallback((attributesMutation.target as IndexedByStringElement)[attributesConcern]);
             }
         }
     });
@@ -43,7 +43,7 @@ export function listenElementChanges(selector: string, options: ListenOptions): 
     return targetObserver;
 }
 
-export function waitElementFinishLoading(selector: string, refer?: Element): Promise<Element | null> {
+export function waitElementFinishLoading(selector: string, refer?: HTMLElement): Promise<HTMLElement | null> {
     return new Promise(resolve => {
         if (!getElement(selector)) resolve(null);
 
