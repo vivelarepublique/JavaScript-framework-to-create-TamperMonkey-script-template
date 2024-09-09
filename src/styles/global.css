@@ -2,3 +2,15 @@
 @import './components/ScalableVectorGraphics.css';
 @import './components/Counter.css';
 @import './components/MainModal.css';
+
+@keyframes anime-framework-test {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
