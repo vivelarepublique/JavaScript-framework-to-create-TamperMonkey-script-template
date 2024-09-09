@@ -1,4 +1,4 @@
-interface ListenOptions {
+export interface ListenOptions {
     anyMutation?: boolean;
     callback?: (...args: any[]) => any;
     attributesConcern?: string;
@@ -17,5 +17,3 @@ interface ListenOptions {
         attributes?: boolean;
     };
 }
-
-export type { ListenOptions };

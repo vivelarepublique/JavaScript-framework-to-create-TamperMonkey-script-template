@@ -1,10 +1,8 @@
-type RequestMethods = 'GET' | 'HEAD' | 'POST';
+export type RequestMethods = 'GET' | 'HEAD' | 'POST';
 
-interface NewRequest {
+export interface TampermonkeyWebRequestParameters {
     url: string;
     method: RequestMethods;
     data?: any;
     headers?: any;
 }
-
-export type { RequestMethods, NewRequest };

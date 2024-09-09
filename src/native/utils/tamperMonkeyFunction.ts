@@ -1,15 +1,16 @@
 /// <reference path="../../types/tampermonkey.d.ts" />
 
-import { NewRequest, RequestMethods } from '../interface/request';
+import { TampermonkeyWebRequestParameters, RequestMethods } from '../interface/request';
 
-async function httpRequestReturnXML(url: string, method: RequestMethods, data?: any, headers?: any): Promise<Document | null> {
+export async function httpRequestReturnXML(url: string, method: RequestMethods, data?: any, headers?: any): Promise<Document | null> {
     return new Promise(resolve => {
-        const request: NewRequest = {
-            url: url,
-            method: method,
-        };
-        if (data) request.data = data;
-        if (headers) request.headers = headers;
+        const request: TampermonkeyWebRequestParameters = { url, method };
+        if (data) {
+            Object.assign(request, data);
+        }
+        if (headers) {
+            Object.assign(request, headers);
+        }
 
         GM_xmlhttpRequest({
             ...request,
@@ -21,14 +22,15 @@ async function httpRequestReturnXML(url: string, method: RequestMethods, data?: 
     });
 }
 
-async function httpRequestReturnString(url: string, method: RequestMethods, data?: any, headers?: any): Promise<string | null> {
+export async function httpRequestReturnString(url: string, method: RequestMethods, data?: any, headers?: any): Promise<string | null> {
     return new Promise(resolve => {
-        const request: NewRequest = {
-            url: url,
-            method: method,
-        };
-        if (data) request.data = data;
-        if (headers) request.headers = headers;
+        const request: TampermonkeyWebRequestParameters = { url, method };
+        if (data) {
+            Object.assign(request, data);
+        }
+        if (headers) {
+            Object.assign(request, headers);
+        }
 
         GM_xmlhttpRequest({
             ...request,
@@ -40,6 +42,4 @@ async function httpRequestReturnString(url: string, method: RequestMethods, data
     });
 }
 
-const windowProxy = typeof unsafeWindow === 'object' ? unsafeWindow : window;
-
-export { httpRequestReturnXML, httpRequestReturnString, windowProxy };
+export const windowProxy = typeof unsafeWindow === 'object' ? unsafeWindow : window;

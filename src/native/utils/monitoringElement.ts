@@ -4,7 +4,7 @@ import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';
 
-const listenElementChanges = (selector: string, options: ListenOptions): MutationObserver => {
+export function listenElementChanges(selector: string, options: ListenOptions): MutationObserver {
     const { anyMutation = false, callback = () => console.log('No action.'), attributesConcern, childrenConcern = [], immediateImplementation = false, triggerLimitation = { way: 'none', delay: 0 }, manualSetupOptions = {} } = options;
 
     if (anyMutation) Object.assign(manualSetupOptions, { childList: true, attributes: true, subtree: true });
@@ -41,9 +41,9 @@ const listenElementChanges = (selector: string, options: ListenOptions): Mutatio
 
     targetObserver.observe(selectorTargetElement, { childList: childrenConcern.length > 0, attributes: !!attributesConcern, subtree: childrenConcern.length > 0, ...manualSetupOptions });
     return targetObserver;
-};
+}
 
-const waitElementFinishLoading = (selector: string, refer?: Element): Promise<Element | null> => {
+export function waitElementFinishLoading(selector: string, refer?: Element): Promise<Element | null> {
     return new Promise(resolve => {
         if (!getElement(selector)) resolve(null);
 
@@ -56,10 +56,8 @@ const waitElementFinishLoading = (selector: string, refer?: Element): Promise<El
         });
         bodyObserver.observe(refer || document.body, { childList: true, subtree: true });
     });
-};
+}
 
-const DetermineWindowPropertyIsLoaded = (propertyName: string | string[]): Promise<boolean> => {
+export function DetermineWindowPropertyIsLoaded(propertyName: string | string[]): Promise<boolean> {
     return new Promise(resolve => windowProxy.addEventListener('load', () => (Array.isArray(propertyName) ? resolve(propertyName.every(property => windowProxy.hasOwnProperty(property))) : resolve(windowProxy.hasOwnProperty(propertyName)))));
-};
-
-export { listenElementChanges, waitElementFinishLoading, DetermineWindowPropertyIsLoaded };
+}
