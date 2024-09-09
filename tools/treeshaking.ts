@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 export function cssSplitAndReorganize(cssContent: string, sortByOrder: boolean = false): string[] {
@@ -22,25 +22,25 @@ export function cssSplitAndReorganize(cssContent: string, sortByOrder: boolean =
     return sortByOrder ? cssResult.sort() : cssResult;
 }
 
-function externalCssTransformation(cssPath: string): string[] {
-    try {
-        const file = readFileSync(cssPath, 'utf-8');
-        const css = file.replaceAll(/(@charset "UTF-8";)|(\/\*[\s\S]*?\*\/)/g, '');
-        return cssSplitAndReorganize(css);
-    } catch (error) {
-        console.log(error);
-        return [];
+export function readFileInformation(filePath: string): string {
+    if (existsSync(filePath)) {
+        return readFileSync(filePath, 'utf-8');
+    } else {
+        throw new Error(`File ${filePath} not found`);
     }
 }
 
-export function extractCssOnDemand(path: string, tagArray: string[], classArray: string[]): string[] {
+export function cssFileTransformation(fileContent: string): string[] {
+    return cssSplitAndReorganize(fileContent.replaceAll(/(@charset "UTF-8";)|(\/\*[\s\S]*?\*\/)/g, ''));
+}
+
+export function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray: string[]): string[] {
     const minResult: string[] = [];
-    const allCss = externalCssTransformation(path);
 
     const mediaQueryTemp: string[] = [];
     const keyFramesTemp: string[] = [];
 
-    allCss.forEach(rule => {
+    cssContent.forEach(rule => {
         const css = rule.split('{');
         const selector = css[0].trim();
         if (selector === 'html' || selector === 'body' || selector.includes(':root')) {

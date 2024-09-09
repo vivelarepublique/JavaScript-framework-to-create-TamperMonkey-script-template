@@ -1,5 +1,5 @@
 import { Rollup, Plugin } from 'vite';
-import { cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking.js';
+import { readFileInformation, cssFileTransformation, cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking.js';
 import { TreeShakingConfig } from '../types';
 
 export default function vitePluginCssBeautificationAndExternalCssTreeShaking(config: TreeShakingConfig): Plugin {
@@ -8,16 +8,23 @@ export default function vitePluginCssBeautificationAndExternalCssTreeShaking(con
         name: 'vite-plugin-css-beautification-and-external-css-tree-shaking',
         apply: 'build',
         enforce: 'post',
-        generateBundle(_: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
-            const filesData = componentsAnalysis(componentsPaths);
-            const minExternalCss = extractCssOnDemand(cssPath, extractFileContentTagName(filesData), extractFileContentClassName(filesData, 'framework-test'));
-            if (minExternalCss.length === 0) return;
+        generateBundle(_options: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
+            try {
+                const file = readFileInformation(cssPath);
+                const fileInformation = cssFileTransformation(file);
+                if (fileInformation.length === 0) return;
 
-            const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
-            const lastCssBundleName = cssBundleNames[cssBundleNames.length - 1];
+                const filesData = componentsAnalysis(componentsPaths);
+                const minExternalCss = extractCssOnDemand(fileInformation, extractFileContentTagName(filesData), extractFileContentClassName(filesData, 'framework-test'));
 
-            const finalCss = [...cssSplitAndReorganize((bundle[lastCssBundleName] as Rollup.OutputAsset).source as string, true), ...minExternalCss];
-            ((bundle[lastCssBundleName] as Rollup.OutputAsset).source as string) = [...new Set(finalCss.filter(c => c && c.length > 1).map(c => c.trim()))].join('\n');
+                const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
+                const lastCssBundleName = cssBundleNames[cssBundleNames.length - 1];
+
+                const finalCss = [...cssSplitAndReorganize((bundle[lastCssBundleName] as Rollup.OutputAsset).source as string, true), ...minExternalCss];
+                ((bundle[lastCssBundleName] as Rollup.OutputAsset).source as string) = [...new Set(finalCss.filter(c => c && c.length > 1).map(c => c.trim()))].join('\n');
+            } catch (error) {
+                console.log(`Plugin [vite-plugin-css-beautification-and-external-css-tree-shaking] Error: ${error}`);
+            }
         },
     };
 }
