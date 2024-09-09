@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { removeDuplicates } from './utils';
 
 export function cssSplitAndReorganize(cssContent: string, sortByOrder: boolean = false): string[] {
     const cssArray = cssContent.split('}');
@@ -109,7 +110,7 @@ export function extractCssOnDemand(cssContent: string[], tagArray: string[], cla
         });
     }
 
-    return [...new Set(minResult)];
+    return removeDuplicates(minResult);
 }
 
 export function componentsAnalysis(paths: string[]): string[] {
@@ -135,21 +136,17 @@ export function componentsAnalysis(paths: string[]): string[] {
 }
 
 export function extractFileContentTagName(filesData: string[], excludeTags: string[] = []): string[] {
-    return [
-        ...new Set(
-            filesData.reduce((accumulator: string[], current: string) => {
-                return accumulator.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g) || []);
-            }, []),
-        ),
-    ].filter(t => !excludeTags.includes(t));
+    return removeDuplicates(
+        filesData.reduce((accumulator: string[], current: string) => {
+            return accumulator.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g) || []);
+        }, []),
+    ).filter(t => !excludeTags.includes(t));
 }
 
 export function extractFileContentClassName(filesData: string[], excludeClassNameKeywords: string = 'framework-test'): string[] {
-    return [
-        ...new Set(
-            filesData.reduce((accumulator: string[], current: string) => {
-                return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(c => c.split(' ')).flat());
-            }, []),
-        ),
-    ].filter(c => c && c.length > 1 && !c.includes(excludeClassNameKeywords));
+    return removeDuplicates(
+        filesData.reduce((accumulator: string[], current: string) => {
+            return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(c => c.split(' ')).flat());
+        }, []),
+    ).filter(c => c && c.length > 1 && !c.includes(excludeClassNameKeywords));
 }

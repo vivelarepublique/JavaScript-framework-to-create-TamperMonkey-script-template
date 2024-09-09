@@ -1,13 +1,15 @@
+import { removeDuplicates } from './utils';
+
 export function countAllUniqueHostnames(code: string): string[] {
     const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
     const urls = code.match(urlRegex);
-    return urls ? [...new Set(urls.map(url => new URL(url).hostname))] : [];
+    return urls ? removeDuplicates(urls.map(url => new URL(url).hostname)) : [];
 }
 
 export function countAllUniqueGrants(code: string): string[] {
     const grantRegex = /(GM_[a-zA-Z]+)|unsafeWindow/gm;
     const grants = code.match(grantRegex);
-    return grants ? [...new Set(grants)] : [];
+    return grants ? removeDuplicates(grants) : [];
 }
 
 export function returnUniformLengthParameter(parameter: string[], name: string): string {

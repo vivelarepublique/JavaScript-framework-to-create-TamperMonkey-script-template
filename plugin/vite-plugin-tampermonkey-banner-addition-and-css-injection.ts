@@ -1,5 +1,6 @@
 import { Rollup, Plugin } from 'vite';
 import { countAllUniqueHostnames, countAllUniqueGrants, returnUniformLengthParameter, generateNewVersionId } from '../tools/banner';
+import { removeDuplicates } from '../tools/utils';
 import { ScriptInformationParameters } from '../types';
 
 export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }: { bannerConfig: ScriptInformationParameters }): Plugin {
@@ -27,8 +28,8 @@ vitePluginTampermonkeyTemplateCssInjection.appendChild(vitePluginTampermonkeyTem
 document.head.appendChild(vitePluginTampermonkeyTemplateCssInjection);`;
             };
 
-            const grants = Array.from(new Set(countAllUniqueGrants(entry.code).concat(bannerConfig.grant)));
-            const connects = Array.from(new Set(countAllUniqueHostnames(entry.code).concat(bannerConfig.connect)));
+            const grants = removeDuplicates(countAllUniqueGrants(entry.code).concat(bannerConfig.grant));
+            const connects = removeDuplicates(countAllUniqueHostnames(entry.code).concat(bannerConfig.connect));
             const banner = `// ==UserScript==
 // @name         ${bannerConfig.name}
 // @namespace    ${bannerConfig.namespace}
