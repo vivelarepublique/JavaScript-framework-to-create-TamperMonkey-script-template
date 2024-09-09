@@ -2,9 +2,9 @@ import { appendElement, updateElementAttributes } from '../native/utils/elementC
 
 export function createDivAppElement(id: string[]) {
     id.forEach(el => {
-        const element = document.createElement('div');
-        const div = updateElementAttributes(element, { id: `${el}App` });
-        appendElement(document.body, div);
+        const div = document.createElement('div');
+        const element = updateElementAttributes(div, { props: { id: `${el}App` } });
+        appendElement(document.body, element);
     });
 }
 
@@ -19,7 +19,7 @@ export function createOtherAppElement(name: string[]) {
 export function createScriptElement(path: string[], module?: boolean) {
     path.forEach(el => {
         const script = document.createElement('script');
-        const app = updateElementAttributes(script, { src: el, type: module ? 'module' : 'text/javascript' });
+        const app = updateElementAttributes(script, { props: { src: el, type: module ? 'module' : 'text/javascript' } });
         appendElement(document.head, app);
     });
 }

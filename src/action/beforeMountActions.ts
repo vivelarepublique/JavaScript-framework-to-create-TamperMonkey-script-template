@@ -26,8 +26,18 @@ function replaceImg() {
         const parent = element.parentElement;
         removeElement(element);
 
-        const img = document.createElement('img');
-        if (parent) appendElement(parent, updateElementAttributes(img, { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' }));
+        if (parent) {
+            const img = document.createElement('img');
+            const element = updateElementAttributes(img, {
+                props: { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' },
+                styles: { width: '336px', height: '44px' },
+                event: {
+                    type: 'click',
+                    listener: () => console.log('click'),
+                },
+            });
+            appendElement(parent, element);
+        }
     }
 }
 
