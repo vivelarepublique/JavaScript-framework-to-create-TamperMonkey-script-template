@@ -1,41 +1,34 @@
-import { customEvent, ElementProperties } from '../interface/dom';
+import { customEvent } from '../interface/dom';
 
-const getElement = (selector: string, refer?: Element): Element | null => {
+export function getElement(selector: string, refer?: HTMLElement): HTMLElement | null {
     return refer ? refer.querySelector(selector) : document.querySelector(selector);
-};
+}
 
-const getMultiElement = (selector: string, refer?: Element): Element[] => {
+export function getMultiElement(selector: string, refer?: HTMLElement): HTMLElement[] {
     return Array.from(refer ? refer.querySelectorAll(selector) : document.querySelectorAll(selector));
-};
+}
 
-const removeElement = (element: Element) => {
+export function removeElement(element: HTMLElement) {
     element.remove();
-};
+}
 
-const appendElement = (parent: Element, child: Element | string, refer?: Element) => {
+export function appendElement(parent: HTMLElement, child: HTMLElement | string, refer?: HTMLElement) {
     const childNode = typeof child === 'string' ? document.createTextNode(child) : child;
     refer ? parent.insertBefore(childNode, refer) : parent.appendChild(childNode);
-};
+}
 
-const createNewElement = (name: string, props: ElementProperties = { id: '', alt: '', className: '', type: '', textContent: '', html: '', src: '', href: '', disabled: false, value: '', rel: '' }, styles?: Partial<CSSStyleDeclaration>, event?: customEvent | customEvent[]) => {
-    const node = document.createElement(name);
-    if (props.id) node.id = props.id;
-    if (props.alt) node.setAttribute('alt', props.alt);
-    if (props.className) node.className = props.className;
-    if (props.type) node.setAttribute('type', props.type);
-    if (props.textContent) node.textContent = props.textContent;
-    if (props.html) node.innerHTML = props.html;
-    if (props.disabled) node.setAttribute('disabled', props.disabled.toString());
-    if (props.src) node.setAttribute('src', props.src);
-    if (props.href) node.setAttribute('href', props.href);
-    if (props.value) node.setAttribute('value', props.value);
-    if (props.rel) node.setAttribute('rel', props.rel);
+export function updateElementAttributes<T extends HTMLElement>(element: T, props?: Partial<T>, styles?: Partial<CSSStyleDeclaration>, event?: customEvent | customEvent[]): T {
+    if (props) {
+        Object.assign(element, props);
+    }
 
-    if (styles) Object.assign(node.style, styles);
+    if (styles) {
+        Object.assign(element.style, styles);
+    }
 
-    if (event) Array.isArray(event) ? event.forEach(el => node.addEventListener(el.name, el.callback)) : node.addEventListener(event.name, event.callback);
+    if (event) {
+        Array.isArray(event) ? event.forEach(e => element.addEventListener(e.name, e.callback)) : element.addEventListener(event.name, event.callback);
+    }
 
-    return node;
-};
-
-export { getElement, getMultiElement, removeElement, appendElement, createNewElement };
+    return element;
+}

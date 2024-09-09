@@ -1,5 +1,5 @@
 import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../native/utils/monitoringElement';
-import { getElement, createNewElement, removeElement, appendElement } from '../native/utils/elementCRUD';
+import { getElement, updateElementAttributes, removeElement, appendElement } from '../native/utils/elementCRUD';
 
 import { httpRequestReturnXML } from '../native/utils/tamperMonkeyFunction';
 
@@ -25,7 +25,9 @@ function replaceImg() {
     if (element) {
         const parent = element.parentElement;
         removeElement(element);
-        if (parent) appendElement(parent, createNewElement('img', { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' }));
+
+        const img = document.createElement('img');
+        if (parent) appendElement(parent, updateElementAttributes(img, { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' }));
     }
 }
 
