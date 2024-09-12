@@ -8,10 +8,13 @@ const someTestActions = async () => {
         const isLoaded = await DetermineWindowPropertyIsLoaded('$');
         const head = await waitElementFinishLoading('#head_wrapper');
 
+        const resource = await getResource();
+        console.log(resource);
+
         if (head && isLoaded) {
             replaceImg();
             replaceText();
-            const resource = await getResource();
+
             const description = Array.from(resource?.head.children || [])
                 .find(el => el.outerHTML.includes('<meta name="description" content='))
                 ?.getAttribute('content');
@@ -47,7 +50,7 @@ function replaceText() {
 }
 
 async function getResource() {
-    return await httpRequestReturnXML('https://www.bytedance.com/', 'GET');
+    return await httpRequestReturnXML({ url: 'https://www.bytedance.com/', method: 'GET' });
 }
 
 export { someTestActions };

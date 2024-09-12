@@ -11,13 +11,9 @@ declare namespace Tampermonkey {
 
     interface ResponseBase {
         readonly responseHeaders: string;
-
         readonly readyState: ReadyState;
-
         readonly response: any;
-
         readonly responseText: string;
-
         readonly responseXML: Document | null;
         readonly status: number;
         readonly statusText: string;
@@ -51,11 +47,14 @@ declare namespace Tampermonkey {
 
     interface Request<TContext = object> {
         method?: 'GET' | 'HEAD' | 'POST';
-        url: string;
+        url: string | URL;
         headers?: RequestHeaders;
-        data?: string;
+        data?: string | Blob | File | object | any[] | FormData | URLSearchParams;
         redirect?: 'follow' | 'error' | 'manual';
         cookie?: string;
+        cookiePartition?: {
+            topLevelSite?: string;
+        };
         binary?: boolean;
         nocache?: boolean;
         revalidate?: boolean;
@@ -312,6 +311,9 @@ declare namespace Tampermonkey {
     interface Cookie {
         domain: string;
         firstPartyDomain?: string;
+        partitionKey?: {
+            topLevelSite?: string;
+        };
         hostOnly: boolean;
         httpOnly: boolean;
         name: string;
@@ -328,6 +330,9 @@ declare namespace Tampermonkey {
         domain?: string;
         name?: string;
         path?: string;
+        partitionKey?: {
+            topLevelSite?: string;
+        };
     }
 
     type ListCookiesCallback = (cookies: Cookie[], error: string | null) => void;
@@ -338,6 +343,9 @@ declare namespace Tampermonkey {
         value: string;
         domain?: string;
         firstPartyDomain?: string;
+        partitionKey?: {
+            topLevelSite?: string;
+        };
         path?: string;
         secure?: boolean;
         httpOnly?: boolean;
@@ -348,6 +356,9 @@ declare namespace Tampermonkey {
         url: string;
         name: string;
         firstPartyDomain: string;
+        partitionKey: {
+            topLevelSite?: string;
+        };
     }
 }
 
@@ -412,7 +423,7 @@ declare function GM_registerMenuCommand(
     optionsOrAccessKey?:
         | string
         | {
-              id?: number;
+              id?: number | string;
               accessKey?: string;
               autoClose?: boolean;
               title?: string;
@@ -426,7 +437,7 @@ declare function GM_xmlhttpRequest<TContext = any>(details: Tampermonkey.Request
 declare function GM_download(details: Tampermonkey.DownloadRequest): Tampermonkey.AbortHandle<boolean>;
 declare function GM_download(url: string, name: string): Tampermonkey.AbortHandle<boolean>;
 
-declare function GM_saveTab(tab: object): void;
+declare function GM_saveTab(tab: object, callback?: () => void): void;
 
 declare function GM_getTab(callback: (obj: any) => void): void;
 
@@ -442,7 +453,7 @@ declare function GM_notification(details: Tampermonkey.NotificationDetails, ondo
 
 declare function GM_notification(text: string, title?: string, image?: string, onClick?: Tampermonkey.NotificationOnClick): void;
 
-declare function GM_setClipboard(data: string, info?: Tampermonkey.ContentType): void;
+declare function GM_setClipboard(data: string, info?: Tampermonkey.ContentType, callback?: () => void): void;
 
 declare function GM_webRequest(rules: Tampermonkey.WebRequestRuleParam[], listener?: Tampermonkey.WebRequestListener): Tampermonkey.AbortHandle<void>;
 
