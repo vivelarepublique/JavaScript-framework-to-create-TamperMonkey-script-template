@@ -18,7 +18,7 @@ import { otherTestActions } from './action/afterMountActions';
 import { createDivAppElement, createAppElement, getMultiDivAppElement } from './action/createMultiApp';
 
 createDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
-createAppElement(['lit']);
+createAppElement('lit');
 const [vue, react, preact, svelte, solid] = getMultiDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
 
 const beforeMountEvent = async () => await someTestActions();

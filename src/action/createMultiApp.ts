@@ -1,24 +1,20 @@
 import { appendElement, createElementWithAttributes, getElement } from '../native/utils/elementCRUD';
+import { ScriptOptions, LinkOptions } from '../native/interface/element';
 
-export function createDivAppElement(id: string[]) {
-    id.forEach(el => {
-        const element = createElementWithAttributes('div', { props: { id: `${el}App` } });
-        appendElement(document.body, element);
-    });
+export function createDivAppElement(id: string | string[]): void {
+    Array.isArray(id) ? id.forEach(i => appendElement(document.body, createElementWithAttributes('div', { props: { id: `${i}App` } }))) : appendElement(document.body, createElementWithAttributes('div', { props: { id: `${id}App` } }));
 }
 
-export function createAppElement(name: string[]) {
-    name.forEach(el => {
-        const app = createElementWithAttributes(`${el}-app`);
-        appendElement(document.body, app);
-    });
+export function createAppElement(name: string | string[]): void {
+    Array.isArray(name) ? name.forEach(n => appendElement(document.body, createElementWithAttributes(`${n}-app`))) : appendElement(document.body, createElementWithAttributes(`${name}-app`));
 }
 
-export function createScriptElement(path: string[], module?: boolean) {
-    path.forEach(el => {
-        const app = createElementWithAttributes('script', { props: { src: el, type: module ? 'module' : 'text/javascript' } });
-        appendElement(document.head, app);
-    });
+export function createScriptElement(options: ScriptOptions | ScriptOptions[]): void {
+    Array.isArray(options) ? options.forEach(o => appendElement(document.head, createElementWithAttributes('script', { props: o }))) : appendElement(document.head, createElementWithAttributes('script', { props: options }));
+}
+
+export function createLinkElement(options: LinkOptions | LinkOptions[]): void {
+    Array.isArray(options) ? options.forEach(o => appendElement(document.head, createElementWithAttributes('link', { props: o }))) : appendElement(document.head, createElementWithAttributes('link', { props: options }));
 }
 
 export function getMultiDivAppElement(id: string[]): HTMLElement[] {
