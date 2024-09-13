@@ -3,7 +3,7 @@ import { getElement, createElementWithAttributes, removeElement, appendElement }
 
 import { httpRequestReturnXML } from '../native/utils/tamperMonkeyFunction';
 
-const someTestActions = async () => {
+export async function someTestActions() {
     if (!location.search && location.pathname.length <= 1) {
         const isLoaded = await DetermineWindowPropertyIsLoaded('$');
         const head = await waitElementFinishLoading('#head_wrapper');
@@ -21,7 +21,7 @@ const someTestActions = async () => {
             document.title = description || '';
         }
     }
-};
+}
 
 function replaceImg() {
     const element = getElement('#s_lg_img');
@@ -51,5 +51,3 @@ function replaceText() {
 async function getResource() {
     return await httpRequestReturnXML({ url: 'https://www.bytedance.com/', method: 'GET' });
 }
-
-export { someTestActions };
