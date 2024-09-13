@@ -1,6 +1,6 @@
 import VectorImage from './VectorImage';
 import Counter from './Counter';
-import Bridge from './Bridge';
+import WindowEvent from './WindowEvent';
 
 import { setShow } from '../signal/showSignal';
 
@@ -29,7 +29,7 @@ export default function Modal() {
                             <Counter />
                         </div>
                         <div class='col-2'>
-                            <Bridge />
+                            <WindowEvent />
                         </div>
                     </div>
                 </div>

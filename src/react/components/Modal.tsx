@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import VectorImage from './VectorImage';
 import Counter from './Counter';
-import Bridge from './Bridge';
+import WindowEvent from './WindowEvent';
 
 import { close } from '../store/showStore';
 import { useDispatch } from 'react-redux';
@@ -37,7 +37,7 @@ export default function Modal() {
                                 <Counter />
                             </div>
                             <div className='col-2'>
-                                <Bridge />
+                                <WindowEvent />
                             </div>
                         </div>
                     </div>

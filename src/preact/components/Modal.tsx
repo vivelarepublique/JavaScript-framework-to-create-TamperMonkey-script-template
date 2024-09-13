@@ -3,7 +3,7 @@ import { useContext, useCallback } from 'preact/hooks';
 
 import VectorImage from './VectorImage';
 import Counter from './Counter';
-import Bridge from './Bridge';
+import WindowEvent from './WindowEvent';
 
 import ShowContext from '../context/ShowContext';
 
@@ -38,7 +38,7 @@ export default function Modal() {
                                 <Counter />
                             </div>
                             <div class='col-2'>
-                                <Bridge />
+                                <WindowEvent />
                             </div>
                         </div>
                     </div>

@@ -1,20 +1,21 @@
-<script lang="ts">
-    import { onMount } from 'svelte';
+<template>
+    <div>
+        <h1>Window Event Test</h1>
+        <p>Value: {{ sharedState.search }}</p>
+    </div>
+</template>
+
+<script setup lang="ts">
+    import { reactive, onMounted } from 'vue';
 
     import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
-    const sharedState = {
-        //@ts-ignore
+
+    const sharedState = reactive({
         search: windowProxy.scriptTemplate?.search || '',
-    };
-    onMount(() => {
+    });
+    onMounted(() => {
         windowProxy.addEventListener('kwChanged', () => {
-            //@ts-ignore
             sharedState.search = windowProxy.scriptTemplate?.search || '';
         });
     });
 </script>
-
-<div>
-    <h1>Bridge</h1>
-    <p>Value: {sharedState.search}</p>
-</div>

@@ -8,7 +8,7 @@ import { showContext, showStore } from '../context/show-context';
 
 import './lit-vector-image';
 import './lit-counter';
-import './lit-bridge';
+import './lit-window-event';
 
 @customElement('lit-modal')
 export class LitModal extends BaseComponent {
@@ -37,7 +37,7 @@ export class LitModal extends BaseComponent {
                         <div class="row">
                             <lit-vector-image .msg="${'Welcome Lit'}" class="col-5"></lit-vector-image>
                             <lit-counter class="col-3"></lit-counter>
-                            <lit-bridge class="col-2"></lit-bridge>
+                            <lit-window-event class="col-2"></lit-window-event>
                         </div>
                     </div>
                 </div>

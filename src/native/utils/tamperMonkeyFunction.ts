@@ -78,4 +78,6 @@ export async function httpRequestReturnJSON(request: TampermonkeyWebRequestParam
     });
 }
 
-export const windowProxy = typeof unsafeWindow === 'object' ? unsafeWindow : window;
+export const windowProxy: {
+    [key: string]: any;
+} = typeof unsafeWindow === 'object' ? unsafeWindow : window;

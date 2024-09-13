@@ -1,26 +1,25 @@
-import { createSignal, onMount } from 'solid-js';
+import { Fragment } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 
 import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
 
-export default function Bridge() {
-    const [sharedState, setSharedState] = createSignal({
-        //@ts-ignore
+export default function WindowEvent() {
+    const [sharedState, setSharedState] = useState({
         search: windowProxy.scriptTemplate?.search || '',
     });
 
-    onMount(() => {
+    useEffect(() => {
         windowProxy.addEventListener('kwChanged', () => {
-            //@ts-ignore
             setSharedState({ search: windowProxy.scriptTemplate?.search || '' });
         });
-    });
+    }, []);
 
     return (
-        <>
+        <Fragment>
             <div>
-                <h1>Bridge</h1>
-                <p>Value: {sharedState().search}</p>
+                <h1>Window Event Test</h1>
+                <p>Value: {sharedState.search}</p>
             </div>
-        </>
+        </Fragment>
     );
 }

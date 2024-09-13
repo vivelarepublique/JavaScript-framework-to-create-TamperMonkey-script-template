@@ -5,25 +5,23 @@ import { BaseComponent } from '../extends/baseComponents';
 
 import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
 
-@customElement('lit-bridge')
-export class LitBridge extends BaseComponent {
+@customElement('lit-window-event')
+export class LitWindowEvent extends BaseComponent {
     constructor() {
         super();
         windowProxy.addEventListener('kwChanged', () => {
-            //@ts-ignore
             this.sharedState.search = windowProxy.scriptTemplate?.search || '';
         });
     }
 
     @property({ type: { search: String } })
     sharedState = {
-        // @ts-ignore
         search: windowProxy.scriptTemplate?.search || '',
     };
 
     render() {
         return html` <div>
-            <h1>Bridge</h1>
+            <h1>Window Event Test</h1>
             <p>Value: ${this.sharedState.search}</p>
         </div>`;
     }
@@ -31,6 +29,6 @@ export class LitBridge extends BaseComponent {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'lit-bridge': LitBridge;
+        'lit-window-event': LitWindowEvent;
     }
 }

@@ -1,27 +1,22 @@
-import { Fragment } from 'preact';
-import { useState, useEffect } from 'preact/hooks';
+import React, { useState, useEffect } from 'react';
 
 import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
 
-export default function Bridge() {
+export default function WindowEvent() {
     const [sharedState, setSharedState] = useState({
-        //@ts-ignore
         search: windowProxy.scriptTemplate?.search || '',
     });
-
     useEffect(() => {
         windowProxy.addEventListener('kwChanged', () => {
-            //@ts-ignore
             setSharedState({ search: windowProxy.scriptTemplate?.search || '' });
         });
     }, []);
-
     return (
-        <Fragment>
+        <React.Fragment>
             <div>
-                <h1>Bridge</h1>
+                <h1>Window Event Test</h1>
                 <p>Value: {sharedState.search}</p>
             </div>
-        </Fragment>
+        </React.Fragment>
     );
 }

@@ -6,7 +6,7 @@
                 <div class="row">
                     <VectorImage msg="Welcome Vue" class="col-5" />
                     <Counter class="col-3" />
-                    <Bridge class="col-2" />
+                    <WindowEvent class="col-2" />
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
 <script setup lang="ts">
     import VectorImage from './VectorImage.vue';
     import Counter from './Counter.vue';
-    import Bridge from './Bridge.vue';
+    import WindowEvent from './WindowEvent.vue';
 
     import { useShowStore } from '../store/showStore';
     const showStore = useShowStore();

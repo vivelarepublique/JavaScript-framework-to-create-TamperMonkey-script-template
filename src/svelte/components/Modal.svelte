@@ -1,7 +1,7 @@
 <script lang="ts">
     import VectorImage from './VectorImage.svelte';
     import Counter from './Counter.svelte';
-    import Bridge from './Bridge.svelte';
+    import WindowEvent from './WindowEvent.svelte';
 
     import { show } from '../store/showStore';
     function close() {
@@ -24,7 +24,7 @@
                         <Counter />
                     </div>
                     <div class="col-2">
-                        <Bridge />
+                        <WindowEvent />
                     </div>
                 </div>
             </div>
