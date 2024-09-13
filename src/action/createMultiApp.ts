@@ -1,4 +1,4 @@
-import { appendElement, createElementWithAttributes } from '../native/utils/elementCRUD';
+import { appendElement, createElementWithAttributes, getElement } from '../native/utils/elementCRUD';
 
 export function createDivAppElement(id: string[]) {
     id.forEach(el => {
@@ -7,9 +7,9 @@ export function createDivAppElement(id: string[]) {
     });
 }
 
-export function createOtherAppElement(name: string[]) {
+export function createAppElement(name: string[]) {
     name.forEach(el => {
-        const app = createElementWithAttributes(el);
+        const app = createElementWithAttributes(`${el}-app`);
         appendElement(document.body, app);
     });
 }
@@ -19,4 +19,8 @@ export function createScriptElement(path: string[], module?: boolean) {
         const app = createElementWithAttributes('script', { props: { src: el, type: module ? 'module' : 'text/javascript' } });
         appendElement(document.head, app);
     });
+}
+
+export function getMultiDivAppElement(id: string[]): HTMLElement[] {
+    return id.map(i => getElement(`div#${i}App`)!);
 }

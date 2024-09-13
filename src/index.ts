@@ -5,34 +5,33 @@ import './styles/test.less';
 import './styles/test.sass';
 import './styles/test.styl';
 
-import { createVueApp } from './vue';
-import { createReactApp } from './react';
-import { createPreactApp } from './preact';
-import { createLitApp } from './lit';
-import SvelteApp from './svelte';
-import { createSolidApp } from './solid';
+import { createVue } from './vue';
+import { createReact } from './react';
+
+import { createPreact } from './preact';
+import { createLit } from './lit';
+import { createSvelte } from './svelte';
+import { createSolid } from './solid';
 
 import { someTestActions } from './action/beforeMountActions';
 import { otherTestActions } from './action/afterMountActions';
-import { createDivAppElement, createOtherAppElement } from './action/createMultiApp';
+import { createDivAppElement, createAppElement, getMultiDivAppElement } from './action/createMultiApp';
 
 createDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
-
-createOtherAppElement(['lit-app']);
+createAppElement(['lit']);
+const [vue, react, preact, svelte, solid] = getMultiDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
 
 const beforeMountEvent = async () => await someTestActions();
 const afterMountEvent = () => otherTestActions();
 
 beforeMountEvent();
 
-createVueApp();
-createReactApp();
+createVue(vue);
+createReact(react);
 
-createPreactApp();
-createLitApp();
-export default new SvelteApp({
-    target: document.querySelector('#svelteApp')!,
-});
-createSolidApp();
+createPreact(preact);
+createLit();
+createSvelte(svelte);
+createSolid(solid);
 
 afterMountEvent();

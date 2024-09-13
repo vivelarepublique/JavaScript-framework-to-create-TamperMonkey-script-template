@@ -5,8 +5,8 @@ import { store } from './store/store';
 
 import './index.css';
 
-export function createReactApp() {
-    createRoot(document.querySelector('#reactApp')!).render(
+export function createReact(target: HTMLElement) {
+    createRoot(target).render(
         <Provider store={store}>
             <App />
         </Provider>,

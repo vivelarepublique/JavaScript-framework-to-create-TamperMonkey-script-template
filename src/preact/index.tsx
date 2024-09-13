@@ -3,6 +3,6 @@ import { App } from './App';
 
 import './index.css';
 
-export function createPreactApp() {
-    render(<App />, document.getElementById('preactApp')!);
+export function createPreact(target: HTMLElement) {
+    render(<App />, target);
 }

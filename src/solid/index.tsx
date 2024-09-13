@@ -3,6 +3,6 @@ import './index.css';
 
 import App from './App';
 
-export function createSolidApp() {
-    render(() => <App />, document.querySelector('#solidApp')!);
+export function createSolid(target: HTMLElement) {
+    render(() => <App />, target);
 }
