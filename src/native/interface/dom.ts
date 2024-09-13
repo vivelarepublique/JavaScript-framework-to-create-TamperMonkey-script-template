@@ -5,4 +5,5 @@ export interface IndexedByStringElement extends HTMLElement {
 export interface customEventListener<K extends keyof HTMLElementEventMap> {
     type: string | K;
     listener: ((this: HTMLElement, ev: HTMLElementEventMap[K]) => any) | EventListenerOrEventListenerObject;
+    options?: boolean | AddEventListenerOptions;
 }

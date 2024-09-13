@@ -1,5 +1,5 @@
 import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../native/utils/monitoringElement';
-import { getElement, updateElementAttributes, removeElement, appendElement } from '../native/utils/elementCRUD';
+import { getElement, createElementWithAttributes, removeElement, appendElement } from '../native/utils/elementCRUD';
 
 import { httpRequestReturnXML } from '../native/utils/tamperMonkeyFunction';
 
@@ -30,8 +30,7 @@ function replaceImg() {
         removeElement(element);
 
         if (parent) {
-            const img = document.createElement('img');
-            const element = updateElementAttributes(img, {
+            const element = createElementWithAttributes('img', {
                 props: { id: 's_lg_img', src: 'https://www.tencent.com/img/index/tencent_logo.png' },
                 styles: { width: '336px', height: '44px' },
                 event: {

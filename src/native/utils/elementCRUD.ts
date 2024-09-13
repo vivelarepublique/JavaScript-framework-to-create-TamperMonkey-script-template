@@ -17,7 +17,11 @@ export function appendElement(parent: HTMLElement, child: HTMLElement | string, 
     refer ? parent.insertBefore(childNode, refer) : parent.appendChild(childNode);
 }
 
-export function updateElementAttributes<T extends HTMLElement>(element: T, options?: { props?: Partial<T>; styles?: Partial<CSSStyleDeclaration>; event?: customEventListener<any> | customEventListener<any>[] }): T {
+export function createElementWithAttributes<T extends keyof HTMLElementTagNameMap, U extends keyof HTMLElementDeprecatedTagNameMap>(
+    tagName: T | U | string,
+    options?: { props?: Partial<HTMLElementTagNameMap[T] | HTMLElementDeprecatedTagNameMap[U] | HTMLElement>; styles?: Partial<CSSStyleDeclaration>; event?: customEventListener<keyof HTMLElementEventMap> | customEventListener<keyof HTMLElementEventMap>[] },
+): HTMLElementTagNameMap[T] | HTMLElementDeprecatedTagNameMap[U] | HTMLElement {
+    const element = document.createElement(tagName);
     const { props, styles, event } = options || {};
     if (props) {
         Object.assign(element, props);
@@ -28,7 +32,7 @@ export function updateElementAttributes<T extends HTMLElement>(element: T, optio
     }
 
     if (event) {
-        Array.isArray(event) ? event.forEach(e => element.addEventListener(e.type, e.listener)) : element.addEventListener(event.type, event.listener);
+        Array.isArray(event) ? event.forEach(e => element.addEventListener(e.type, e.listener, e.options)) : element.addEventListener(event.type, event.listener, event.options);
     }
 
     return element;
