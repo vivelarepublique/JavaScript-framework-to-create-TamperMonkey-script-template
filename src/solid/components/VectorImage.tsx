@@ -18,7 +18,7 @@ interface Props {
     msg: string;
 }
 
-export default function Test(props: Props) {
+export default function VectorImage(props: Props) {
     const { msg } = props;
 
     return (
