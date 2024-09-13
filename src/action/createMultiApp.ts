@@ -1,20 +1,24 @@
 import { appendElement, createElementWithAttributes, getElement } from '../native/utils/elementCRUD';
 import { ScriptOptions, LinkOptions } from '../native/interface/element';
 
+const body = document.body;
+const head = document.head;
+const isArr = Array.isArray;
+
 export function createDivAppElement(id: string | string[]): void {
-    Array.isArray(id) ? id.forEach(i => appendElement(document.body, createElementWithAttributes('div', { props: { id: `${i}App` } }))) : appendElement(document.body, createElementWithAttributes('div', { props: { id: `${id}App` } }));
+    isArr(id) ? id.forEach(i => appendElement(body, createElementWithAttributes('div', { props: { id: `${i}App` } }))) : appendElement(body, createElementWithAttributes('div', { props: { id: `${id}App` } }));
 }
 
 export function createAppElement(name: string | string[]): void {
-    Array.isArray(name) ? name.forEach(n => appendElement(document.body, createElementWithAttributes(`${n}-app`))) : appendElement(document.body, createElementWithAttributes(`${name}-app`));
+    isArr(name) ? name.forEach(n => appendElement(body, createElementWithAttributes(`${n}-app`))) : appendElement(body, createElementWithAttributes(`${name}-app`));
 }
 
 export function createScriptElement(options: ScriptOptions | ScriptOptions[]): void {
-    Array.isArray(options) ? options.forEach(o => appendElement(document.head, createElementWithAttributes('script', { props: o }))) : appendElement(document.head, createElementWithAttributes('script', { props: options }));
+    isArr(options) ? options.forEach(o => appendElement(head, createElementWithAttributes('script', { props: o }))) : appendElement(head, createElementWithAttributes('script', { props: options }));
 }
 
 export function createLinkElement(options: LinkOptions | LinkOptions[]): void {
-    Array.isArray(options) ? options.forEach(o => appendElement(document.head, createElementWithAttributes('link', { props: o }))) : appendElement(document.head, createElementWithAttributes('link', { props: options }));
+    isArr(options) ? options.forEach(o => appendElement(head, createElementWithAttributes('link', { props: o }))) : appendElement(head, createElementWithAttributes('link', { props: options }));
 }
 
 export function getMultiDivAppElement(id: string[]): HTMLElement[] {
