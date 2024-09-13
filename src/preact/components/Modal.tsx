@@ -1,7 +1,7 @@
 import { Fragment } from 'preact';
 import { useContext, useCallback } from 'preact/hooks';
 
-import Test from './Test';
+import VectorImage from './VectorImage';
 import Counter from './Counter';
 import Bridge from './Bridge';
 
@@ -32,7 +32,7 @@ export default function Modal() {
                     <div class='container text-center'>
                         <div class='row'>
                             <div class='col-5'>
-                                <Test msg='Welcome Preact' />
+                                <VectorImage msg='Welcome Preact' />
                             </div>
                             <div class='col-3'>
                                 <Counter />

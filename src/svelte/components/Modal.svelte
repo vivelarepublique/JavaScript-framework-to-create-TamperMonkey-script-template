@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Test from './Test.svelte';
+    import VectorImage from './VectorImage.svelte';
     import Counter from './Counter.svelte';
     import Bridge from './Bridge.svelte';
 
@@ -18,7 +18,7 @@
             <div class="container text-center">
                 <div class="row">
                     <div class="col-5">
-                        <Test msg={'Welcome Svelte'} />
+                        <VectorImage msg={'Welcome Svelte'} />
                     </div>
                     <div class="col-3">
                         <Counter />

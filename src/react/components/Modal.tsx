@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import Test from './Test';
+import VectorImage from './VectorImage';
 import Counter from './Counter';
 import Bridge from './Bridge';
 
@@ -31,7 +31,7 @@ export default function Modal() {
                     <div className='container text-center'>
                         <div className='row'>
                             <div className='col-5'>
-                                <Test msg='Welcome React' />
+                                <VectorImage msg='Welcome React' />
                             </div>
                             <div className='col-3'>
                                 <Counter />

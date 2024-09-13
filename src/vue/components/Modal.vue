@@ -4,7 +4,7 @@
             <span><button class="framework-test-modal-close-button" @click="close">&times;</button></span>
             <div class="container text-center">
                 <div class="row">
-                    <Test msg="Welcome Vue" class="col-5" />
+                    <VectorImage msg="Welcome Vue" class="col-5" />
                     <Counter class="col-3" />
                     <Bridge class="col-2" />
                 </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-    import Test from './Test.vue';
+    import VectorImage from './VectorImage.vue';
     import Counter from './Counter.vue';
     import Bridge from './Bridge.vue';
 

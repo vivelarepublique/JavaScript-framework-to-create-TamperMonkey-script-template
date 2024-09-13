@@ -16,8 +16,8 @@ import litLogo from '../../assets/svg/lit.svg';
 import svelteLogo from '../../assets/svg/svelte.svg';
 import solidLogo from '../../assets/svg/solid.svg';
 
-@customElement('lit-test')
-export class LitTest extends BaseComponent {
+@customElement('lit-vector-image')
+export class LitVectorImage extends BaseComponent {
     @property({ type: String })
     msg!: string;
 
@@ -140,6 +140,6 @@ export class LitTest extends BaseComponent {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'lit-test': LitTest;
+        'lit-vector-image': LitVectorImage;
     }
 }

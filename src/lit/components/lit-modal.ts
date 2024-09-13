@@ -6,7 +6,7 @@ import { BaseComponent } from '../extends/baseComponents';
 import { consume } from '@lit/context';
 import { showContext, showStore } from '../context/show-context';
 
-import './lit-test';
+import './lit-vector-image';
 import './lit-counter';
 import './lit-bridge';
 
@@ -35,7 +35,7 @@ export class LitModal extends BaseComponent {
                     </span>
                     <div class="container text-center">
                         <div class="row">
-                            <lit-test .msg="${'Welcome Lit'}" class="col-5"></lit-test>
+                            <lit-vector-image .msg="${'Welcome Lit'}" class="col-5"></lit-vector-image>
                             <lit-counter class="col-3"></lit-counter>
                             <lit-bridge class="col-2"></lit-bridge>
                         </div>

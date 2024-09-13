@@ -12,7 +12,7 @@ import litLogo from '../../assets/svg/lit.svg';
 import svelteLogo from '../../assets/svg/svelte.svg';
 import solidLogo from '../../assets/svg/solid.svg';
 
-import '../css/test.css';
+import '../css/vectorImage.css';
 
 interface Props {
     msg: string;
