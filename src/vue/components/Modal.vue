@@ -49,6 +49,7 @@
         background-color: #42b883 !important;
         border-color: #42b883 !important;
     }
+
     .btn-framework-test-vue:hover,
     .btn-framework-test-vue:active {
         color: #fff !important;
