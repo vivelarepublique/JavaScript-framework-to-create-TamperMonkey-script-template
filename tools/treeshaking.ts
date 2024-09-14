@@ -158,7 +158,7 @@ export function extractFileContentClassName(filesData: string[], excludeClassNam
     }, []);
 
     const jsxClasses = filesData.reduce((accumulator: string[], current: string) => {
-        const jsxClassContent = current.match(/(?<=classN?a?m?e?=\{).*?(?=\})/g) || [];
+        const jsxClassContent = current.match(/(?<=classN?a?m?e?=\$?\{).*?(?=\})/g) || [];
         if (jsxClassContent.length > 0) {
             return accumulator.concat(
                 removeDuplicates(
