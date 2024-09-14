@@ -1,7 +1,6 @@
 <template>
     <div>
-        <p class="framework-test-header-vue framework-test-heavy">{{ msg }}</p>
-        <p class="framework-test-header-vue">Vue Test Page</p>
+        <p class="framework-test-header-vue">Vue Test Vector Image</p>
         <div class="framework-test-div">
             <div>
                 <div>
@@ -105,15 +104,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-    defineProps({
-        msg: String,
-    });
-</script>
-
-<style>
-    .framework-test-header-vue {
-        color: #42b883;
-    }
-</style>

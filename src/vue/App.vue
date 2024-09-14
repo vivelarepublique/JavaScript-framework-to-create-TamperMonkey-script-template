@@ -10,7 +10,7 @@
 
 <template>
     <button id="framework-test-vue-modal" class="framework-test-modal-switch" @click="open">Show Vue Modal</button>
-    <Modal v-if="show"></Modal>
+    <Modal v-if="show" msg="Welcome Vue"></Modal>
 </template>
 
 <style>

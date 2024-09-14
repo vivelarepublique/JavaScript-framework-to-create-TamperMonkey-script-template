@@ -14,19 +14,11 @@ import litLogo from '../../assets/svg/lit.svg';
 import svelteLogo from '../../assets/svg/svelte.svg';
 import solidLogo from '../../assets/svg/solid.svg';
 
-import '../css/vectorImage.css';
-
-interface Props {
-    msg: string;
-}
-
-export default function VectorImage(props: Props) {
-    const { msg } = props;
+export default function VectorImage() {
     return (
         <React.Fragment>
             <div>
-                <p className='framework-test-header-react framework-test-heavy'>{msg}</p>
-                <p className='framework-test-header-react'>React Test Page</p>
+                <p className='framework-test-header-react'>React Test Vector Image</p>
                 <div className='framework-test-div'>
                     <div>
                         <div>

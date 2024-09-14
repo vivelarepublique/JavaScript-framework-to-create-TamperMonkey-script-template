@@ -14,7 +14,7 @@ export default function App() {
             <button id='framework-test-react-modal' className='framework-test-modal-switch' onClick={() => dispatch(open())}>
                 Show React Modal
             </button>
-            {_show && <Modal></Modal>}
+            {_show && <Modal msg='Welcome React'></Modal>}
         </React.Fragment>
     );
 }
