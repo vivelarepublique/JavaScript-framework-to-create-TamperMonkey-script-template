@@ -1,27 +1,24 @@
 import { Fragment } from 'preact';
-import { useState } from 'preact/hooks';
-
-import './app.css';
 
 import Modal from './components/Modal';
 
-import ShowContext from './context/ShowContext';
-import CounterContext from './context/CounterContext';
+import { show } from './signal/showSignal';
+
+import './app.css';
 
 export function App() {
-    const [show, setShow] = useState<boolean>(false);
-    const [count, setCount] = useState<number>(0);
+    const _show = show.value;
+
+    function _open() {
+        show.value = true;
+    }
 
     return (
         <Fragment>
-            <CounterContext.Provider value={{ count, increment: () => setCount(count + 1), decrement: () => setCount(count - 1) }}>
-                <ShowContext.Provider value={{ show, open: () => setShow(true), close: () => setShow(false) }}>
-                    <button id='framework-test-preact-modal' class='framework-test-modal-switch' onClick={() => setShow(true)}>
-                        Show Preact Modal
-                    </button>
-                    {show && <Modal msg='Welcome Preact'></Modal>}
-                </ShowContext.Provider>
-            </CounterContext.Provider>
+            <button id='framework-test-preact-modal' class='framework-test-modal-switch' onClick={() => _open()}>
+                Show Preact Modal
+            </button>
+            {_show && <Modal msg='Welcome Preact'></Modal>}
         </Fragment>
     );
 }

@@ -1,22 +1,30 @@
 import { Fragment } from 'preact';
-import { useContext } from 'preact/hooks';
+
+import { count } from '../signal/counterSignal';
 
 import '../css/counter.css';
 
-import CounterContext from '../context/CounterContext';
-
 export default function Counter() {
-    const { count, increment, decrement } = useContext(CounterContext);
+    const _count = count.value;
+
+    function _increment() {
+        count.value++;
+    }
+
+    function _decrement() {
+        count.value--;
+    }
+
     return (
         <Fragment>
             <div>
                 <h1>Counter</h1>
-                <p>Count: {count}</p>
+                <p>Count: {_count}</p>
                 <div className='framework-test-counter-row'>
-                    <button className='framework-test-counter-button framework-test-counter-button-preact' onClick={() => increment()}>
+                    <button className='framework-test-counter-button framework-test-counter-button-preact' onClick={() => _increment()}>
                         Increment
                     </button>
-                    <button className='framework-test-counter-button framework-test-counter-button-preact' onClick={() => decrement()}>
+                    <button className='framework-test-counter-button framework-test-counter-button-preact' onClick={() => _decrement()}>
                         Decrement
                     </button>
                 </div>

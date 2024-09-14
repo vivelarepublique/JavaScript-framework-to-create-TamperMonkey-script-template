@@ -1,12 +1,12 @@
 import { Fragment } from 'preact';
 import type { JSX } from 'preact';
-import { useState, useContext, useCallback } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks';
 
 import VectorImage from './VectorImage';
 import Counter from './Counter';
 import WindowEvent from './WindowEvent';
 
-import ShowContext from '../context/ShowContext';
+import { show } from '../signal/showSignal';
 
 const componentsMap: Record<string, () => JSX.Element> = {
     VectorImage,
@@ -24,24 +24,20 @@ export default function Modal(props: Props) {
     const [currentView, setCurrentView] = useState('VectorImage');
     const ComponentToRender = componentsMap[currentView];
     const { msg } = props;
-    const { close } = useContext(ShowContext);
 
-    const _close = useCallback(
-        (event: Event) => {
-            event.stopPropagation();
-            if (event.target === event.currentTarget) {
-                close();
-            }
-        },
-        [close],
-    );
+    const _close = useCallback((event: Event) => {
+        event.stopPropagation();
+        if (event.target === event.currentTarget) {
+            show.value = false;
+        }
+    }, []);
 
     return (
         <Fragment>
             <div class='framework-test-modal-mask' onClick={_close}>
                 <div class='framework-test-modal-container'>
                     <span>
-                        <button class='framework-test-modal-close-button' onClick={() => close()}>
+                        <button class='framework-test-modal-close-button' onClick={_close}>
                             &times;
                         </button>
                     </span>
