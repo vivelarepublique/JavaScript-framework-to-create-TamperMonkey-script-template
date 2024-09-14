@@ -45,15 +45,15 @@
 
 <style>
     .btn-framework-test-vue {
-        color: #fff;
-        background-color: #42b883;
-        border-color: #42b883;
+        color: #fff !important;
+        background-color: #42b883 !important;
+        border-color: #42b883 !important;
     }
     .btn-framework-test-vue:hover,
     .btn-framework-test-vue:active {
-        color: #fff;
-        background-color: #42b88366;
-        border-color: #42b88333;
-        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        color: #fff !important;
+        background-color: #42b88366 !important;
+        border-color: #42b88333 !important;
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
     }
 </style>
