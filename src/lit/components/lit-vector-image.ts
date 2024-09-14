@@ -1,5 +1,5 @@
-import { html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import { BaseComponent } from '../extends/baseComponents';
 
 import vueLogo from '../../assets/svg/vue.svg';
@@ -18,14 +18,10 @@ import solidLogo from '../../assets/svg/solid.svg';
 
 @customElement('lit-vector-image')
 export class LitVectorImage extends BaseComponent {
-    @property({ type: String })
-    msg!: string;
-
     render() {
         return html`
             <div>
-                <p class="framework-test-header-lit framework-test-heavy">${this.msg}</p>
-                <p class="framework-test-header-lit">Lit Test Page</p>
+                <p class="framework-test-header-lit">Lit Test Vector Image</p>
                 <div class="framework-test-div">
                     <div>
                         <div>
@@ -130,12 +126,6 @@ export class LitVectorImage extends BaseComponent {
             </div>
         `;
     }
-
-    static styles = css`
-        .framework-test-header-lit {
-            color: #2843f6;
-        }
-    `;
 }
 
 declare global {

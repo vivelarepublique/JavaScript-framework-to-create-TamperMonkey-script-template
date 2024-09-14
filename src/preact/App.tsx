@@ -19,7 +19,7 @@ export function App() {
                     <button id='framework-test-preact-modal' class='framework-test-modal-switch' onClick={() => setShow(true)}>
                         Show Preact Modal
                     </button>
-                    {show && <Modal></Modal>}
+                    {show && <Modal msg='Welcome Preact'></Modal>}
                 </ShowContext.Provider>
             </CounterContext.Provider>
         </Fragment>

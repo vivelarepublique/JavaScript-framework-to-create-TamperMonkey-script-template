@@ -1,0 +1,13 @@
+.btn-framework-test-solid {
+    color: #fff !important;
+    background-color: #446b9e !important;
+    border-color: #446b9e !important;
+}
+
+.btn-framework-test-solid:hover,
+.btn-framework-test-solid:active {
+    color: #fff !important;
+    background-color: #446b9e66 !important;
+    border-color: #446b9e33 !important;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+}

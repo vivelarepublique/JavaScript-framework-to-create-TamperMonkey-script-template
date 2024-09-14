@@ -1,10 +1,29 @@
+import { createSignal } from 'solid-js';
+import type { JSX } from 'solid-js';
+
 import VectorImage from './VectorImage';
 import Counter from './Counter';
 import WindowEvent from './WindowEvent';
 
 import { setShow } from '../signal/showSignal';
 
-export default function Modal() {
+const componentsMap: Record<string, () => JSX.Element> = {
+    VectorImage,
+    Counter,
+    WindowEvent,
+};
+
+import '../css/modal.css';
+
+interface Props {
+    msg: string;
+}
+
+export default function Modal(props: Props) {
+    const [currentView, setCurrentView] = createSignal<string>('VectorImage');
+
+    const { msg } = props;
+
     function _close(event: Event) {
         event.stopPropagation();
         if (event.target === event.currentTarget) {
@@ -20,17 +39,23 @@ export default function Modal() {
                         &times;
                     </button>
                 </span>
-                <div class='container text-center'>
+                <div class='container-fluid text-center'>
                     <div class='row'>
-                        <div class='col-5'>
-                            <VectorImage msg='Welcome Solid' />
-                        </div>
-                        <div class='col-3'>
-                            <Counter />
-                        </div>
                         <div class='col-2'>
-                            <WindowEvent />
+                            <p class='framework-test-header-solid framework-test-heavy'>{msg}</p>
+                            <div class='btn-group-vertical' role='group'>
+                                <button type='button' class={currentView() === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('VectorImage')}>
+                                    Vector Image
+                                </button>
+                                <button type='button' class={currentView() === 'Counter' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('Counter')}>
+                                    Counter
+                                </button>
+                                <button type='button' class={currentView() === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('WindowEvent')}>
+                                    Window Event
+                                </button>
+                            </div>
                         </div>
+                        <div class='col-8'>{componentsMap[currentView()]()}</div>
                     </div>
                 </div>
             </div>

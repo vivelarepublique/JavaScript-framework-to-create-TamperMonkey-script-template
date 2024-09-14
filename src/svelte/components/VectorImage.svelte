@@ -12,12 +12,10 @@
     import litLogo from '../../assets/svg/lit.svg';
     import svelteLogo from '../../assets/svg/svelte.svg';
     import solidLogo from '../../assets/svg/solid.svg';
-    export let msg = '';
 </script>
 
 <div>
-    <p class="framework-test-header-svelte framework-test-heavy">{msg}</p>
-    <p class="framework-test-header-svelte">Svelte Test Page</p>
+    <p class="framework-test-header-svelte">Svelte Test Vector Image</p>
     <div class="framework-test-div">
         <div>
             <div>
@@ -120,9 +118,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .framework-test-header-svelte {
-        color: #f96743;
-    }
-</style>

@@ -10,7 +10,7 @@
 <main>
     <button id="framework-test-svelte-modal" class="framework-test-modal-switch" on:click={open}> Show Svelte Modal</button>
     {#if $show}
-        <Modal />
+        <Modal msg={'Welcome Svelte'} />
     {/if}
 </main>
 

@@ -12,19 +12,10 @@ import litLogo from '../../assets/svg/lit.svg';
 import svelteLogo from '../../assets/svg/svelte.svg';
 import solidLogo from '../../assets/svg/solid.svg';
 
-import '../css/vectorImage.css';
-
-interface Props {
-    msg: string;
-}
-
-export default function VectorImage(props: Props) {
-    const { msg } = props;
-
+export default function VectorImage() {
     return (
         <div>
-            <p class='framework-test-header-solid framework-test-heavy'>{msg}</p>
-            <p class='framework-test-header-solid'>Solid Test Page</p>
+            <p class='framework-test-header-solid'>Solid Test Vector Image</p>
             <div class='framework-test-div'>
                 <div>
                     <div>

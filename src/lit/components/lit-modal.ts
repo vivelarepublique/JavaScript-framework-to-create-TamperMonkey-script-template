@@ -1,5 +1,6 @@
-import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { html, css } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 
 import { BaseComponent } from '../extends/baseComponents';
 
@@ -12,6 +13,20 @@ import './lit-window-event';
 
 @customElement('lit-modal')
 export class LitModal extends BaseComponent {
+    componentsMap: Record<string, string> = {
+        VectorImage: 'lit-vector-image',
+        Counter: 'lit-counter',
+        WindowEvent: 'lit-window-event',
+    };
+
+    @property({ type: String })
+    msg!: string;
+
+    @property({ type: String })
+    currentView = 'VectorImage';
+
+    tag = this.componentsMap[this.currentView];
+
     @consume({ context: showContext, subscribe: true })
     public showStore?: showStore;
 
@@ -27,23 +42,46 @@ export class LitModal extends BaseComponent {
     }
 
     render() {
+        const componentTag = unsafeStatic(this.componentsMap[this.currentView]);
         return html`
             <div class="framework-test-modal-mask" @click="${this._close}">
                 <div class="framework-test-modal-container">
                     <span>
                         <button class="framework-test-modal-close-button" @click="${this.close}">&times;</button>
                     </span>
-                    <div class="container text-center">
+                    <div class="container-fluid text-center">
                         <div class="row">
-                            <lit-vector-image .msg="${'Welcome Lit'}" class="col-5"></lit-vector-image>
-                            <lit-counter class="col-3"></lit-counter>
-                            <lit-window-event class="col-2"></lit-window-event>
+                            <div class="col-2">
+                                <p class="framework-test-header-lit framework-test-heavy">${this.msg}</p>
+                                <div class="btn-group-vertical" role="group">
+                                    <button type="button" class=${this.currentView === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'VectorImage')}>Vector Image</button>
+                                    <button type="button" class=${this.currentView === 'Counter' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'Counter')}>Counter</button>
+                                    <button type="button" class=${this.currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'WindowEvent')}>Window Event</button>
+                                </div>
+                            </div>
+                            <div class="col-8">${staticHtml`<${componentTag}></${componentTag}>`}</div>
                         </div>
                     </div>
                 </div>
             </div>
         `;
     }
+
+    static styles = css`
+        .btn-framework-test-lit {
+            color: #fff !important;
+            background-color: #2843f6 !important;
+            border-color: #2843f6 !important;
+        }
+
+        .btn-framework-test-lit:hover,
+        .btn-framework-test-lit:active {
+            color: #fff !important;
+            background-color: #2843f666 !important;
+            border-color: #2843f633 !important;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+        }
+    `;
 }
 
 declare global {

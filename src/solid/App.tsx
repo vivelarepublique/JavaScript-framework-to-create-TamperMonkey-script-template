@@ -10,7 +10,7 @@ function App() {
             <button id='framework-test-solid-modal' class='framework-test-modal-switch' onClick={() => setShow(true)}>
                 Show Solid Modal
             </button>
-            {show() && <Modal />}
+            {show() && <Modal msg='Welcome Solid' />}
         </div>
     );
 }

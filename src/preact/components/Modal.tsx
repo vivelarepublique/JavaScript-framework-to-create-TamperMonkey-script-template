@@ -1,5 +1,6 @@
 import { Fragment } from 'preact';
-import { useContext, useCallback } from 'preact/hooks';
+import type { JSX } from 'preact';
+import { useState, useContext, useCallback } from 'preact/hooks';
 
 import VectorImage from './VectorImage';
 import Counter from './Counter';
@@ -7,7 +8,22 @@ import WindowEvent from './WindowEvent';
 
 import ShowContext from '../context/ShowContext';
 
-export default function Modal() {
+const componentsMap: Record<string, () => JSX.Element> = {
+    VectorImage,
+    Counter,
+    WindowEvent,
+};
+
+interface Props {
+    msg: string;
+}
+
+import '../css/modal.css';
+
+export default function Modal(props: Props) {
+    const [currentView, setCurrentView] = useState('VectorImage');
+    const ComponentToRender = componentsMap[currentView];
+    const { msg } = props;
     const { close } = useContext(ShowContext);
 
     const _close = useCallback(
@@ -29,16 +45,24 @@ export default function Modal() {
                             &times;
                         </button>
                     </span>
-                    <div class='container text-center'>
+                    <div class='container-fluid text-center'>
                         <div class='row'>
-                            <div class='col-5'>
-                                <VectorImage msg='Welcome Preact' />
-                            </div>
-                            <div class='col-3'>
-                                <Counter />
-                            </div>
                             <div class='col-2'>
-                                <WindowEvent />
+                                <p class='framework-test-header-preact framework-test-heavy'>{msg}</p>
+                                <div class='btn-group-vertical' role='group'>
+                                    <button type='button' class={currentView === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-preact' : 'btn btn-framework-test'} onClick={() => setCurrentView('VectorImage')}>
+                                        Vector Image
+                                    </button>
+                                    <button type='button' class={currentView === 'Counter' ? 'btn btn-framework-test btn-framework-test-preact' : 'btn btn-framework-test'} onClick={() => setCurrentView('Counter')}>
+                                        Counter
+                                    </button>
+                                    <button type='button' class={currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-preact' : 'btn btn-framework-test'} onClick={() => setCurrentView('WindowEvent')}>
+                                        Window Event
+                                    </button>
+                                </div>
+                            </div>
+                            <div class='col-8'>
+                                <ComponentToRender />
                             </div>
                         </div>
                     </div>

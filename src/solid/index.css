@@ -1,9 +1,3 @@
-@keyframes global-solid-css-rule-test {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+.framework-test-header-solid {
+    color: #446b9e;
 }

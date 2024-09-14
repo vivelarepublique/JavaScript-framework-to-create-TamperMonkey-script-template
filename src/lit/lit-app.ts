@@ -31,7 +31,7 @@ export class LitApp extends BaseComponent {
     render() {
         return html`
             <button id="framework-test-lit-modal" class="framework-test-modal-switch" @click=${this._open} part="button">Show Lit Modal</button>
-            ${this.showStore.show ? html`<lit-modal @show-changed=${this.handleShowChanged}></lit-modal>` : nothing}
+            ${this.showStore.show ? html`<lit-modal @show-changed=${this.handleShowChanged} .msg="${'Welcome Lit'}"></lit-modal>` : nothing}
         `;
     }
 
