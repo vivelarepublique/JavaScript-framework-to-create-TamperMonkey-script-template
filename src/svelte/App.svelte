@@ -17,6 +17,6 @@
 <style>
     #framework-test-svelte-modal {
         left: 50%;
-        background-color: #f96743;
+        background-color: var(--ft-color-svelte);
     }
 </style>

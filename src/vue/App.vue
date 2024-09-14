@@ -16,6 +16,6 @@
 <style>
     #framework-test-vue-modal {
         left: 10%;
-        background-color: #42b883;
+        background-color: var(--ft-color-vue);
     }
 </style>

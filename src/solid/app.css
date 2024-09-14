@@ -1,4 +1,4 @@
 #framework-test-solid-modal {
     left: 60%;
-    background-color: #446b9e;
+    background-color: var(--ft-color-solid);
 }

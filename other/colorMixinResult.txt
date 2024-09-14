@@ -1,0 +1,13 @@
+angular.svg: #e53935
+astro.svg: #7c4dff
+less.svg: #0277bd
+lit.svg: #1e78dd
+preact.svg: #673ab8
+react.svg: #00d8ff
+sass.svg: #ec407a
+solid.svg: #76b3e1
+stylus.svg: #c0ca33
+svelte.svg: #ff3e00
+typescript.svg: #007acc
+vite.svg: #ccb18b
+vue.svg: #41b883

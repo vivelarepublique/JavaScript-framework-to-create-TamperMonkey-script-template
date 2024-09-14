@@ -1,37 +1,53 @@
 a.framework-test-a-vue {
-    color: #42b883;
+    color: var(--ft-color-vue);
 }
 
 a.framework-test-a-react {
-    color: #58c4dc;
+    color: var(--ft-color-react);
+}
+
+a.framework-test-a-angular {
+    color: var(--ft-color-angular);
+}
+
+a.framework-test-a-astro {
+    color: var(--ft-color-astro);
 }
 
 a.framework-test-a-preact {
-    color: #673ab8;
+    color: var(--ft-color-preact);
 }
 
 a.framework-test-a-lit {
-    color: #2843f6;
+    color: var(--ft-color-lit);
 }
 
 a.framework-test-a-svelte {
-    color: #f96743;
+    color: var(--ft-color-svelte);
 }
 
 a.framework-test-a-solid {
-    color: #446b9e;
+    color: var(--ft-color-solid);
 }
 
 a.framework-test-a-less {
-    color: #1d365d;
+    color: var(--ft-color-less);
 }
 
 a.framework-test-a-sass {
-    color: #bf4080;
+    color: var(--ft-color-sass);
 }
 
 a.framework-test-a-stylus {
-    color: #6da13f;
+    color: var(--ft-color-stylus);
+}
+
+a.framework-test-a-typescript {
+    color: var(--ft-color-typescript);
+}
+
+a.framework-test-a-vite {
+    color: var(--ft-color-vite);
 }
 
 .framework-test-logo {

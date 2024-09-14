@@ -1,3 +1,3 @@
 .framework-test-header-svelte {
-    color: #f96743;
+    color: var(--ft-color-svelte);
 }

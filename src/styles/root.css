@@ -1,0 +1,15 @@
+:root {
+    --ft-color-vue: #41b883;
+    --ft-color-react: #00d8ff;
+    --ft-color-angular: #e53935;
+    --ft-color-astro: #7c4dff;
+    --ft-color-preact: #673ab8;
+    --ft-color-lit: #1e78dd;
+    --ft-color-svelte: #ff3e00;
+    --ft-color-solid: #76b3e1;
+    --ft-color-less: #0277bd;
+    --ft-color-sass: #ec407a;
+    --ft-color-stylus: #c0ca33;
+    --ft-color-typescript: #007acc;
+    --ft-color-vite: #ccb18b;
+}

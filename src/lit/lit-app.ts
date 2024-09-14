@@ -38,7 +38,7 @@ export class LitApp extends BaseComponent {
     static styles = css`
         #framework-test-lit-modal {
             left: 40%;
-            background-color: #2843f6;
+            background-color: var(--ft-color-lit);
         }
     `;
 }
