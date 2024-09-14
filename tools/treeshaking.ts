@@ -74,11 +74,11 @@ export function extractCssOnDemand(cssContent: string[], tagArray: string[], cla
                 classArray.forEach(className => {
                     if (selector.includes('.')) {
                         const selectors = selector
-                            .replaceAll(/[\+\>\*]|\[.*?\]|:{1,2}[a-z]+((\(.*?\)))?/g, ' ')
+                            .replaceAll(/[\+\>\*]|\[.*?\]|:{1,2}[a-z]+((\(.*?\)))?/g, ',')
                             .split(',')
                             .filter(s => s)
                             .map(s => s.trim());
-                        if (selectors.some(s => className === s.substring(1))) {
+                        if (selectors.some(s => `.${className}` === s)) {
                             minResult.push(rule);
                         }
                     }
@@ -144,9 +144,37 @@ export function extractFileContentTagName(filesData: string[], excludeTags: stri
 }
 
 export function extractFileContentClassName(filesData: string[], excludeClassNameKeywords: string = 'framework-test'): string[] {
-    return removeDuplicates(
-        filesData.reduce((accumulator: string[], current: string) => {
-            return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(c => c.split(' ')).flat());
-        }, []),
-    ).filter(c => c && c.length > 1 && !c.includes(excludeClassNameKeywords));
+    const nativeClasses = filesData.reduce((accumulator: string[], current: string) => {
+        return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(c => c.split(' ')).flat());
+    }, []);
+
+    const vueClasses = filesData.reduce((accumulator: string[], current: string) => {
+        const vueClassContent = current.match(/(?<=:classN?a?m?e?="\{).*?(?=\}")/g) || [];
+        if (vueClassContent.length > 0) {
+            return accumulator.concat(removeDuplicates(vueClassContent.map(v => v.match(/(?<=')[a-z0-9-]+(?=')/g) || []).flat()));
+        } else {
+            return accumulator;
+        }
+    }, []);
+
+    const jsxClasses = filesData.reduce((accumulator: string[], current: string) => {
+        const jsxClassContent = current.match(/(?<=classN?a?m?e?=\{).*?(?=\})/g) || [];
+        if (jsxClassContent.length > 0) {
+            return accumulator.concat(
+                removeDuplicates(
+                    jsxClassContent
+                        .map(j => j.match(/(?<=')[a-z0-9-\s]+(?=')/g) || [])
+                        .flat()
+                        .map(i => i.split(' '))
+                        .flat(),
+                ),
+            );
+        } else {
+            return accumulator;
+        }
+    }, []);
+
+    const AllClasses = [...nativeClasses, ...vueClasses, ...jsxClasses];
+
+    return removeDuplicates(AllClasses).filter(c => c && c.length > 1 && !c.includes(excludeClassNameKeywords));
 }
