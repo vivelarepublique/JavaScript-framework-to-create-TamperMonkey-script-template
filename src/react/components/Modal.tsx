@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { Fragment, useState, useCallback } from 'react';
+import type { ComponentType } from 'react';
 
 import VectorImage from './VectorImage';
 import Counter from './Counter';
@@ -9,7 +10,7 @@ import { useDispatch } from 'react-redux';
 
 import '../css/modal.css';
 
-const componentsMap: Record<string, React.ComponentType> = {
+const componentsMap: Record<string, ComponentType> = {
     VectorImage,
     Counter,
     WindowEvent,
@@ -35,7 +36,7 @@ export default function Modal(props: Props) {
         [dispatch],
     );
     return (
-        <React.Fragment>
+        <Fragment>
             <div className='framework-test-modal-mask' onClick={_close}>
                 <div className='framework-test-modal-container'>
                     <span>
@@ -67,6 +68,6 @@ export default function Modal(props: Props) {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     );
 }
