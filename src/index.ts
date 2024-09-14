@@ -3,7 +3,7 @@ import '../node_modules/ress/dist/ress.min.css';
 
 import './styles/test.less';
 import './styles/test.sass';
-import './styles/test.styl';
+import './styles/test.stylus';
 
 import { createVue } from './vue';
 import { createReact } from './react';
