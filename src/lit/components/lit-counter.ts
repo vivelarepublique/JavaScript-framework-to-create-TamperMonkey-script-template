@@ -1,4 +1,4 @@
-import { html, css } from 'lit';
+import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import { BaseComponent } from '../extends/baseComponents';
@@ -26,28 +26,21 @@ export class LitCounter extends BaseComponent {
             <div>
                 <h1>Counter</h1>
                 <p>Count: ${this.counterStore?.count}</p>
-                <div class="framework-test-counter-row">
-                    <button class="framework-test-counter-button framework-test-counter-button-lit" @click="${this._increment}">Increment</button>
-                    <button class="framework-test-counter-button framework-test-counter-button-lit" @click="${this._decrement}">Decrement</button>
+                <div class="container text-center">
+                    <div class="row align-items-center">
+                        <div class="col-4"></div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-lg btn-framework-test-lit" @click="${this._increment}">Increment</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-lg btn-framework-test-lit" @click="${this._decrement}">Decrement</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
                 </div>
             </div>
         `;
     }
-
-    static styles = css`
-        .framework-test-counter-button-lit {
-            color: #2843f6;
-        }
-
-        .framework-test-counter-button-lit:hover,
-        .framework-test-counter-button-lit:focus {
-            border: 2px solid #2843f666;
-        }
-
-        .framework-test-counter-button-lit:active {
-            background-color: #2843f633;
-        }
-    `;
 }
 
 declare global {

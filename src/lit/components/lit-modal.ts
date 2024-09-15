@@ -1,4 +1,4 @@
-import { html, css } from 'lit';
+import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 
@@ -66,22 +66,6 @@ export class LitModal extends BaseComponent {
             </div>
         `;
     }
-
-    static styles = css`
-        .btn-framework-test-lit {
-            color: #fff !important;
-            background-color: #2843f6 !important;
-            border-color: #2843f6 !important;
-        }
-
-        .btn-framework-test-lit:hover,
-        .btn-framework-test-lit:active {
-            color: #fff !important;
-            background-color: #2843f666 !important;
-            border-color: #2843f633 !important;
-            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-        }
-    `;
 }
 
 declare global {

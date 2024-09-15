@@ -42,19 +42,3 @@
         WindowEvent,
     };
 </script>
-
-<style>
-    .btn-framework-test-vue {
-        color: #fff !important;
-        background-color: #42b883 !important;
-        border-color: #42b883 !important;
-    }
-
-    .btn-framework-test-vue:hover,
-    .btn-framework-test-vue:active {
-        color: #fff !important;
-        background-color: #42b88366 !important;
-        border-color: #42b88333 !important;
-        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-    }
-</style>

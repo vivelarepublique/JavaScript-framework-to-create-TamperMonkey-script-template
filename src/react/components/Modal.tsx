@@ -8,8 +8,6 @@ import WindowEvent from './WindowEvent';
 import { close } from '../store/showStore';
 import { useDispatch } from 'react-redux';
 
-import '../css/modal.css';
-
 const componentsMap: Record<string, ComponentType> = {
     VectorImage,
     Counter,

@@ -43,19 +43,3 @@
         </div>
     </div>
 </main>
-
-<style>
-    .btn-framework-test-svelte {
-        color: #fff !important;
-        background-color: #f96743 !important;
-        border-color: #f96743 !important;
-    }
-
-    .btn-framework-test-svelte:hover,
-    .btn-framework-test-svelte:active {
-        color: #fff !important;
-        background-color: #f9674366 !important;
-        border-color: #f9674333 !important;
-        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-    }
-</style>

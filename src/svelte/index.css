@@ -1,3 +1,22 @@
 .framework-test-header-svelte {
     color: var(--ft-color-svelte);
 }
+
+.btn-framework-test-svelte {
+    color: #fff !important;
+    background-color: var(--ft-color-svelte) !important;
+    border-color: var(--ft-color-svelte) !important;
+}
+
+.btn-framework-test-svelte:hover {
+    color: #fff !important;
+    background-color: var(--ft-background-color-svelte) !important;
+    border-color: var(--ft-border-color-svelte) !important;
+}
+
+.btn-framework-test-svelte:focus {
+    color: #fff !important;
+    background-color: var(--ft-background-color-svelte) !important;
+    border-color: var(--ft-border-color-svelte) !important;
+    box-shadow: 0 0 0 0.2rem var(--ft-shadow-color-svelte) !important;
+}

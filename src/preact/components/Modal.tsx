@@ -18,8 +18,6 @@ interface Props {
     msg: string;
 }
 
-import '../css/modal.css';
-
 export default function Modal(props: Props) {
     const [currentView, setCurrentView] = useState('VectorImage');
     const ComponentToRender = componentsMap[currentView];

@@ -13,8 +13,6 @@ const componentsMap: Record<string, () => JSX.Element> = {
     WindowEvent,
 };
 
-import '../css/modal.css';
-
 interface Props {
     msg: string;
 }
