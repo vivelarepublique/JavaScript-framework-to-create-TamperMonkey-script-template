@@ -24,7 +24,7 @@
 
 - [Vite](https://github.com/vitejs/vite)
 - [Webpack](https://github.com/webpack/webpack)
-  > Deprecated, for more information please see [this](https://github.com/vivelarepublique/JavaScript-framework-to-create-TamperMonkey-script-template/blob/main/legacy/legacy%20support.md).
+  > Deprecated, for more information please see [Legacy Build Support](https://github.com/vivelarepublique/JavaScript-framework-to-create-TamperMonkey-script-template/blob/main/archive/Legacy%20Build%20Support.md).
 
 ## Usage
 
