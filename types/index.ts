@@ -12,5 +12,5 @@ export interface ScriptInformationParameters {
 
 export interface TreeShakingConfig {
     cssPath: string;
-    componentsPaths?: string[];
+    framework: string | string[];
 }

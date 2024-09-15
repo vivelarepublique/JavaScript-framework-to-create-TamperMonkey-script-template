@@ -113,21 +113,32 @@ export function extractCssOnDemand(cssContent: string[], tagArray: string[], cla
     return removeDuplicates(minResult);
 }
 
-export function componentsAnalysis(paths: string[]): string[] {
+export function componentsAnalysis(frameworkPath: string | string[]): string[] {
     const result: string[] = [];
     try {
-        paths
-            .map(framework => `src/${framework}/components`)
-            .forEach(path => {
-                const files = readdirSync(path);
-                files.forEach(file => {
-                    if (file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.vue') || file.endsWith('.svelte')) {
-                        const filePath = join(path, file);
-                        const data = readFileSync(filePath, 'utf-8');
-                        result.push(data);
-                    }
+        if (Array.isArray(frameworkPath)) {
+            frameworkPath
+                .map(framework => `src/${framework}/components`)
+                .forEach(path => {
+                    const files = readdirSync(path);
+                    files.forEach(file => {
+                        if (file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.vue') || file.endsWith('.svelte')) {
+                            const filePath = join(path, file);
+                            const data = readFileSync(filePath, 'utf-8');
+                            result.push(data);
+                        }
+                    });
                 });
+        } else {
+            const files = readdirSync(`src/${frameworkPath}/components`);
+            files.forEach(file => {
+                if (file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.vue') || file.endsWith('.svelte')) {
+                    const filePath = join(`src/${frameworkPath}/components`, file);
+                    const data = readFileSync(filePath, 'utf-8');
+                    result.push(data);
+                }
             });
+        }
     } catch (error) {
         console.log(error);
     } finally {

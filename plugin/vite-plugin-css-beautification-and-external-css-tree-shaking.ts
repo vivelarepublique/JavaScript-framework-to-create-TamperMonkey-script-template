@@ -1,20 +1,20 @@
 import { Rollup, Plugin } from 'vite';
 import { readFileInformation, cssFileTransformation, cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking';
-import { TreeShakingConfig } from '../types';
+import type { TreeShakingConfig } from '../types';
 
 export default function vitePluginCssBeautificationAndExternalCssTreeShaking(config: TreeShakingConfig): Plugin {
-    const { cssPath, componentsPaths = ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] } = config;
+    const { cssPath, framework } = config;
     return {
         name: 'vite-plugin-css-beautification-and-external-css-tree-shaking',
         apply: 'build',
         enforce: 'post',
-        generateBundle(_options: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
+        generateBundle(_: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
             try {
                 const file = readFileInformation(cssPath);
                 const fileInformation = cssFileTransformation(file);
                 if (fileInformation.length === 0) return;
 
-                const filesData = componentsAnalysis(componentsPaths);
+                const filesData = componentsAnalysis(framework);
                 const minExternalCss = extractCssOnDemand(fileInformation, extractFileContentTagName(filesData), extractFileContentClassName(filesData, 'framework-test'));
 
                 const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
