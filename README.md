@@ -35,9 +35,11 @@ npm install
 npm run dev
 ```
 
-## Future plans
+## Ongoing plans
 
-- [ ] More framework support
+- [ ] Framework support
+  - [Vue](https://github.com/vuejs/vue)✅
+  - [React](https://github.com/facebook/react)✅
   - [Preact](https://github.com/preactjs/preact)✅
   - [Lit](https://github.com/lit/lit)✅
   - [Svelte](https://github.com/sveltejs/svelte)✅
@@ -46,7 +48,7 @@ npm run dev
     > Compiling Angular projects can only be done with Angular's own compiler, not with Vite or Webpack, so combining Angular code with code from other projects can be a pain.
   - [Astro](https://github.com/withastro/astro)
     > Astro is using a self-contained build tool based on Vite, so combining Astro with code from other projects isn't simple.
-- [ ] More packaged native JavaScript function
+- [ ] Repackaged JavaScript Functions
 - [ ] Detailed documentation
 - [ ] Performance testing and comparison
 

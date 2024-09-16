@@ -37,17 +37,17 @@ export default defineConfig({
     plugins: [
         vue(),
         react({
-            include: ['src/react/*.{tsx,ts,jsx,js}', 'src/react/**/*.{tsx,ts,jsx,js}'],
+            include: ['src/react/**/*.{tsx,ts,jsx,js}'],
         }),
         preact({
-            include: ['src/preact/*.{tsx,ts,jsx,js}', 'src/preact/**/*.{tsx,ts,jsx,js}'],
+            include: ['src/preact/**/*.{tsx,ts,jsx,js}'],
         }),
         svelte({
-            include: ['src/svelte/*.{tsx,ts,jsx,js,svelte}', 'src/svelte/**/*.{tsx,ts,jsx,js,svelte}'],
+            include: ['src/svelte/**/*.{tsx,ts,jsx,js,svelte}'],
             preprocess: vitePreprocess(),
         }),
         solid({
-            include: ['src/solid/*.{tsx,ts,jsx,js}', 'src/solid/**/*.{tsx,ts,jsx,js}'],
+            include: ['src/solid/**/*.{tsx,ts,jsx,js}'],
         }),
         vitePluginCssBeautificationAndExternalCssTreeShaking({ cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css', framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] }),
         vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
