@@ -1,5 +1,5 @@
 import parameters from './parameters.json';
-import { ScriptInformationParameters } from '../types';
+import type { ScriptInformationParameters } from '../types';
 
 export const bannerConfig: ScriptInformationParameters = {
     name: parameters.name || 'New-UserScript',

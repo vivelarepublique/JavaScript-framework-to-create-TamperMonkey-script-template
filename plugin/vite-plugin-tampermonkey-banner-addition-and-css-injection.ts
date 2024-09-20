@@ -1,7 +1,7 @@
 import { Rollup, Plugin } from 'vite';
 import { countAllUniqueHostnames, countAllUniqueGrants, returnUniformLengthParameter, generateNewVersionId } from '../tools/banner';
 import { removeDuplicates } from '../tools/utils';
-import { ScriptInformationParameters } from '../types';
+import type { ScriptInformationParameters } from '../types';
 
 export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }: { bannerConfig: ScriptInformationParameters }): Plugin {
     return {
