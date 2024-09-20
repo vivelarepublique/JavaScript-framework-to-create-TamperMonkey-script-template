@@ -11,10 +11,8 @@
         WindowEvent,
     };
 
-    import { show } from '../store/showStore';
-    function close() {
-        show.set(false);
-    }
+    import { close } from '../store/showStore';
+
     export let msg;
 </script>
 

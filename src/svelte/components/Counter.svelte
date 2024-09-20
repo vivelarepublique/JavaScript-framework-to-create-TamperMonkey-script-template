@@ -1,11 +1,5 @@
 <script lang="ts">
-    import { count } from '../store/counterStore';
-    function increment() {
-        count.update(n => n + 1);
-    }
-    function decrement() {
-        count.update(n => n - 1);
-    }
+    import { count, increment, decrement } from '../store/counterStore';
 </script>
 
 <div>

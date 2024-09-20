@@ -1,10 +1,6 @@
 <script lang="ts">
     import Modal from './components/Modal.svelte';
-    import { show } from './store/showStore';
-
-    function open() {
-        show.set(true);
-    }
+    import { show, open } from './store/showStore';
 </script>
 
 <main>
