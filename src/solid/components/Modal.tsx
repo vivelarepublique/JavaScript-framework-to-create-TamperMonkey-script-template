@@ -5,7 +5,7 @@ import VectorImage from './VectorImage';
 import Counter from './Counter';
 import WindowEvent from './WindowEvent';
 
-import { setShow } from '../signal/showSignal';
+import { close } from '../signal/showSignal';
 
 const componentsMap: Record<string, () => JSX.Element> = {
     VectorImage,
@@ -25,7 +25,7 @@ export default function Modal(props: Props) {
     function _close(event: Event) {
         event.stopPropagation();
         if (event.target === event.currentTarget) {
-            setShow(false);
+            close();
         }
     }
 
@@ -33,7 +33,7 @@ export default function Modal(props: Props) {
         <div class='framework-test-modal-mask' onClick={_close}>
             <div class='framework-test-modal-container'>
                 <span>
-                    <button class='framework-test-modal-close-button' onClick={() => setShow(false)}>
+                    <button class='framework-test-modal-close-button' onClick={close}>
                         &times;
                     </button>
                 </span>
