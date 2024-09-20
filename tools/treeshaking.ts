@@ -161,28 +161,26 @@ export function extractFileContentClassName(filesData: string[], excludeClassNam
 
     const vueClasses = filesData.reduce((accumulator: string[], current: string) => {
         const vueClassContent = current.match(/(?<=:classN?a?m?e?="\{).*?(?=\}")/g) || [];
-        if (vueClassContent.length > 0) {
-            return accumulator.concat(removeDuplicates(vueClassContent.map(v => v.match(/(?<=')[a-z0-9-]+(?=')/g) || []).flat()));
-        } else {
+        if (vueClassContent.length === 0) {
             return accumulator;
         }
+        return accumulator.concat(removeDuplicates(vueClassContent.map(v => v.match(/(?<=')[a-z0-9-]+(?=')/g) || []).flat()));
     }, []);
 
     const jsxClasses = filesData.reduce((accumulator: string[], current: string) => {
         const jsxClassContent = current.match(/(?<=classN?a?m?e?=\$?\{).*?(?=\})/g) || [];
-        if (jsxClassContent.length > 0) {
-            return accumulator.concat(
-                removeDuplicates(
-                    jsxClassContent
-                        .map(j => j.match(/(?<=')[a-z0-9-\s]+(?=')/g) || [])
-                        .flat()
-                        .map(i => i.split(' '))
-                        .flat(),
-                ),
-            );
-        } else {
+        if (jsxClassContent.length === 0) {
             return accumulator;
         }
+        return accumulator.concat(
+            removeDuplicates(
+                jsxClassContent
+                    .map(j => j.match(/(?<=')[a-z0-9-\s]+(?=')/g) || [])
+                    .flat()
+                    .map(i => i.split(' '))
+                    .flat(),
+            ),
+        );
     }, []);
 
     const AllClasses = [...nativeClasses, ...vueClasses, ...jsxClasses];
