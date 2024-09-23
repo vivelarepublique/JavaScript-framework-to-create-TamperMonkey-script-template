@@ -11,6 +11,7 @@
                             <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'VectorImage' }" @click="currentView = 'VectorImage'" class="btn btn-framework-test">Vector Image</button>
                             <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'Counter' }" @click="currentView = 'Counter'" class="btn btn-framework-test">Counter</button>
                             <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'WindowEvent' }" @click="currentView = 'WindowEvent'" class="btn btn-framework-test">Window Event</button>
+                            <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'Benchmark' }" @click="currentView = 'Benchmark'" class="btn btn-framework-test">Benchmark</button>
                         </div>
                     </div>
                     <component :is="componentsMap[currentView]" class="col-8" />
@@ -30,6 +31,7 @@
     import VectorImage from './VectorImage.vue';
     import Counter from './Counter.vue';
     import WindowEvent from './WindowEvent.vue';
+    import Benchmark from './Benchmark.vue';
 
     import { useShowStore } from '../store/showStore';
     const showStore = useShowStore();
@@ -40,5 +42,6 @@
         VectorImage,
         Counter,
         WindowEvent,
+        Benchmark,
     };
 </script>

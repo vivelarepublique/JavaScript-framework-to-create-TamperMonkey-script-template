@@ -4,6 +4,7 @@ import type { ComponentType } from 'react';
 import VectorImage from './VectorImage';
 import Counter from './Counter';
 import WindowEvent from './WindowEvent';
+import Benchmark from './Benchmark';
 
 import { close } from '../store/showStore';
 import { useDispatch } from 'react-redux';
@@ -12,6 +13,7 @@ const componentsMap: Record<string, ComponentType> = {
     VectorImage,
     Counter,
     WindowEvent,
+    Benchmark,
 };
 
 interface Props {
@@ -55,6 +57,9 @@ export default function Modal(props: Props) {
                                     </button>
                                     <button type='button' className={currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-react' : 'btn btn-framework-test'} onClick={() => setCurrentView('WindowEvent')}>
                                         Window Event
+                                    </button>
+                                    <button type='button' className={currentView === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-react' : 'btn btn-framework-test'} onClick={() => setCurrentView('Benchmark')}>
+                                        Benchmark
                                     </button>
                                 </div>
                             </div>
