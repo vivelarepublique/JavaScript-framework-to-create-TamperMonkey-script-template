@@ -3,12 +3,12 @@ import { countAllUniqueHostnames, countAllUniqueGrants, returnUniformLengthParam
 import { removeDuplicates } from '../tools/utils';
 import type { ScriptInformationParameters } from '../types';
 
-export default function vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }: { bannerConfig: ScriptInformationParameters }): Plugin {
+export default function tampermonkeyBannerAdditionAndCssInjectionPlugin({ bannerConfig }: { bannerConfig: ScriptInformationParameters }): Plugin {
     return {
         name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
         apply: 'build',
         enforce: 'post',
-        generateBundle(_: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
+        generateBundle(_options, bundle) {
             const jsBundleNames = Object.keys(bundle).filter(b => bundle[b].type == 'chunk' && bundle[b].fileName.endsWith('.js'));
             if (jsBundleNames.length != 1) throw new Error('There should be exactly one js bundle');
             const entry = bundle[jsBundleNames[0]] as Rollup.OutputChunk;

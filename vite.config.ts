@@ -9,8 +9,8 @@ import solid from 'vite-plugin-solid';
 
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-import vitePluginCssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking';
-import vitePluginTampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection';
+import cssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking';
+import tampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection';
 
 import { bannerConfig } from './config/getParameters';
 
@@ -49,7 +49,7 @@ export default defineConfig({
         solid({
             include: ['src/solid/**/*.{tsx,ts,jsx,js}'],
         }),
-        vitePluginCssBeautificationAndExternalCssTreeShaking({ cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css', framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] }),
-        vitePluginTampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
+        cssBeautificationAndExternalCssTreeShaking({ cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css', framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] }),
+        tampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
     ],
 });

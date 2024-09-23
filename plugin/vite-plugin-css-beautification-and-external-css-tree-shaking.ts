@@ -2,13 +2,13 @@ import { Rollup, Plugin } from 'vite';
 import { readFileInformation, cssFileTransformation, cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking';
 import type { TreeShakingConfig } from '../types';
 
-export default function vitePluginCssBeautificationAndExternalCssTreeShaking(config: TreeShakingConfig): Plugin {
+export default function cssBeautificationAndExternalCssTreeShakingPlugin(config: TreeShakingConfig): Plugin {
     const { cssPath, framework } = config;
     return {
         name: 'vite-plugin-css-beautification-and-external-css-tree-shaking',
         apply: 'build',
         enforce: 'post',
-        generateBundle(_: Rollup.OutputOptions, bundle: { [fileName: string]: Rollup.OutputAsset | Rollup.OutputChunk }) {
+        generateBundle(_options, bundle) {
             try {
                 const file = readFileInformation(cssPath);
                 const fileInformation = cssFileTransformation(file);
