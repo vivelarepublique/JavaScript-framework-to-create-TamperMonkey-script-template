@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type PluginOption } from 'vite';
 
 import vue from '@vitejs/plugin-vue';
 import react from '@vitejs/plugin-react';
@@ -11,6 +11,8 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 import cssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking';
 import tampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection';
+
+import { visualizer } from 'rollup-plugin-visualizer';
 
 import { bannerConfig } from './config/getParameters';
 
@@ -51,5 +53,9 @@ export default defineConfig({
         }),
         cssBeautificationAndExternalCssTreeShaking({ cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css', framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] }),
         tampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
+        visualizer({
+            emitFile: true,
+            filename: 'stats.html',
+        }) as PluginOption,
     ],
 });
