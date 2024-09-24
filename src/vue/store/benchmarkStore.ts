@@ -1,17 +1,13 @@
 import { reactive } from 'vue';
 import { defineStore } from 'pinia';
-
-interface RandomColor {
-    backgroundColor: string;
-    color: string;
-    id: number;
-}
+import type { RandomColor } from '../../common/benchmark';
+import { generateRandomColor } from '../../common/benchmark';
 
 export const useBenchmarkStore = defineStore('benchMark', () => {
-    const divs = reactive<RandomColor[]>([]);
+    const divList = reactive<RandomColor[]>([]);
 
     function emptyRandomColorDiv() {
-        divs.length = 0;
+        divList.length = 0;
     }
 
     function addRandomColorDiv(count: number) {
@@ -19,19 +15,12 @@ export const useBenchmarkStore = defineStore('benchMark', () => {
         const countBefore = count > 0 ? count : 0;
         const tempRandomColorDiv: RandomColor[] = [];
         for (let i = 0; i < countBefore; i++) {
-            const color = Math.floor(Math.random() * 16777215);
-            const backgroundColor = Math.floor(Math.random() * 16777215);
-
-            const randomColor: RandomColor = {
-                id: i,
-                color: `#${color.toString(16).padStart(6, '0')}}`,
-                backgroundColor: `#${backgroundColor.toString(16).padStart(6, '0')}`,
-            };
+            const randomColor = generateRandomColor(i);
             tempRandomColorDiv.push(randomColor);
         }
 
-        divs.push(...tempRandomColorDiv);
+        divList.push(...tempRandomColorDiv);
     }
 
-    return { divs, emptyRandomColorDiv, addRandomColorDiv };
+    return { divList, emptyRandomColorDiv, addRandomColorDiv };
 });

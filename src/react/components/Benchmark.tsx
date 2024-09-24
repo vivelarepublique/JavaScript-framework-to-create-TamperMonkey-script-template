@@ -1,30 +1,37 @@
 import React, { useState } from 'react';
 
+import { measureRenderTime } from '../../common/benchmark';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { divs, addRandomColorDiv, emptyRandomColorDiv } from '../store/benchmarkStore';
+import { divList, addRandomColorDiv, emptyRandomColorDiv } from '../store/benchmarkStore';
 
 export default function Counter() {
     const dispatch = useDispatch();
-    const _divs = useSelector(divs);
+    const _divList = useSelector(divList);
     const [count, setCount] = useState(0);
-    const [startTime, setStartTime] = useState(0);
-    const [endTime, setEndTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    function _add(count: number) {
+        dispatch(addRandomColorDiv(count));
+    }
 
     function _render() {
-        setStartTime(Date.now());
-        dispatch(addRandomColorDiv(count));
-        setEndTime(Date.now());
+        measureRenderTime(_add, count, setDuration);
+    }
+
+    function handleNumberInput(event: React.ChangeEvent<HTMLInputElement>) {
+        setCount(parseInt(event.target.value));
     }
     return (
         <React.Fragment>
             <div>
                 <h1>Benchmark</h1>
-                <p>Spend Time: {endTime - startTime} ms</p>
+                <p>Spend Time: {duration} ms</p>
                 <div className='container text-center'>
                     <div className='row align-items-center'>
                         <div className='input-group'>
                             <span className='input-group-text'>Render Number:</span>
-                            <input type='number' className='form-control' placeholder='Input number of divs' value={count} onChange={e => setCount(parseInt(e.target.value))} />
+                            <input type='number' className='form-control' placeholder='Input number of divs' value={count} onChange={handleNumberInput} />
                             <button type='button' className='btn btn-lg btn-framework-test-react' onClick={() => _render()}>
                                 Render
                             </button>
@@ -36,7 +43,7 @@ export default function Counter() {
                 </div>
                 <div className='container text-center'>
                     <div className='row align-items-center'>
-                        {_divs.map(ds => {
+                        {_divList.map(ds => {
                             return (
                                 <div key={ds.id} className='col-1' style={{ backgroundColor: ds.backgroundColor, color: ds.color, fontSize: '8px' }}>
                                     Div# {ds.id}

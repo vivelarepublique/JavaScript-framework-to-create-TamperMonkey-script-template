@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Benchmark</h1>
-        <p>Spend Time: {{ endTime - startTime }} ms</p>
+        <p>Spend Time: {{ duration }} ms</p>
         <div class="container text-center">
             <div class="row align-items-center">
                 <div class="input-group">
@@ -14,7 +14,7 @@
         </div>
         <div class="container text-center">
             <div class="row align-items-center">
-                <div v-for="ds in _divs" :key="ds.id" class="col-1" :style="{ 'background-color': ds.backgroundColor, color: ds.color, fontSize: '8px' }">Div# {{ ds.id }}</div>
+                <div v-for="ds in divList" :key="ds.id" class="col-1" :style="{ 'background-color': ds.backgroundColor, color: ds.color, fontSize: '8px' }">Div# {{ ds.id }}</div>
             </div>
         </div>
     </div>
@@ -25,17 +25,20 @@
     import { storeToRefs } from 'pinia';
     import { useBenchmarkStore } from '../store/benchmarkStore';
 
-    const count = ref(0);
-    const startTime = ref(0);
-    const endTime = ref(0);
-
-    function _render() {
-        startTime.value = Date.now();
-        addRandomColorDiv(count.value);
-        endTime.value = Date.now();
-    }
+    import { measureRenderTime } from '../../common/benchmark';
 
     const benchMarkStore = useBenchmarkStore();
-    const { _divs } = storeToRefs(benchMarkStore);
+    const { divList } = storeToRefs(benchMarkStore);
     const { addRandomColorDiv, emptyRandomColorDiv } = benchMarkStore;
+
+    const count = ref(0);
+    const duration = ref(0);
+
+    function updateDuration(time: number) {
+        duration.value = time;
+    }
+
+    function _render() {
+        measureRenderTime(addRandomColorDiv, count.value, updateDuration);
+    }
 </script>
