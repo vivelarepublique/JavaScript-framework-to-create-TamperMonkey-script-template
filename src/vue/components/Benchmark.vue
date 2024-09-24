@@ -36,6 +36,6 @@
     }
 
     const benchMarkStore = useBenchmarkStore();
-    const { randomColorDiv: _divs } = storeToRefs(benchMarkStore);
+    const { _divs } = storeToRefs(benchMarkStore);
     const { addRandomColorDiv, emptyRandomColorDiv } = benchMarkStore;
 </script>

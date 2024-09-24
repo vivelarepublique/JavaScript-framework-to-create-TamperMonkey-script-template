@@ -8,10 +8,10 @@ interface RandomColor {
 }
 
 export const useBenchmarkStore = defineStore('benchMark', () => {
-    const randomColorDiv = reactive<RandomColor[]>([]);
+    const divs = reactive<RandomColor[]>([]);
 
     function emptyRandomColorDiv() {
-        randomColorDiv.length = 0;
+        divs.length = 0;
     }
 
     function addRandomColorDiv(count: number) {
@@ -30,8 +30,8 @@ export const useBenchmarkStore = defineStore('benchMark', () => {
             tempRandomColorDiv.push(randomColor);
         }
 
-        randomColorDiv.push(...tempRandomColorDiv);
+        divs.push(...tempRandomColorDiv);
     }
 
-    return { randomColorDiv, emptyRandomColorDiv, addRandomColorDiv };
+    return { divs, emptyRandomColorDiv, addRandomColorDiv };
 });

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { randomColorDiv, addRandomColorDiv, emptyRandomColorDiv } from '../store/benchmarkStore';
+import { divs, addRandomColorDiv, emptyRandomColorDiv } from '../store/benchmarkStore';
 
 export default function Counter() {
     const dispatch = useDispatch();
-    const _divs = useSelector(randomColorDiv);
+    const _divs = useSelector(divs);
     const [count, setCount] = useState(0);
     const [startTime, setStartTime] = useState(0);
     const [endTime, setEndTime] = useState(0);

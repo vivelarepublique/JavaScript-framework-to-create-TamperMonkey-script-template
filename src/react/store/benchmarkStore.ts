@@ -42,6 +42,6 @@ const benchmarkSlice = createSlice({
 });
 
 export const { emptyRandomColorDiv, addRandomColorDiv } = benchmarkSlice.actions;
-export const randomColorDiv = (state: RootState) => state.benchmark.value;
+export const divs = (state: RootState) => state.benchmark.value;
 
 export default benchmarkSlice.reducer;
