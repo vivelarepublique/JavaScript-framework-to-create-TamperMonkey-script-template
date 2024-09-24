@@ -5,6 +5,7 @@ import { BaseComponent } from './extends/baseComponents';
 import { provide } from '@lit/context';
 import { showStore, showContext } from './context/show-context';
 import { CounterStore, counterContext } from './context/counter-context';
+import { BenchmarkStore, benchmarkContext } from './context/benchmark-context';
 
 import './components/lit-modal';
 
@@ -15,6 +16,9 @@ export class LitApp extends BaseComponent {
 
     @provide({ context: counterContext })
     counterStore: CounterStore = new CounterStore();
+
+    @provide({ context: benchmarkContext })
+    benchmarkStore: BenchmarkStore = new BenchmarkStore();
 
     _open() {
         this.showStore.open();

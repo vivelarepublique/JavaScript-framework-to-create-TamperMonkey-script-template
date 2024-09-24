@@ -10,6 +10,7 @@ import { showContext, showStore } from '../context/show-context';
 import './lit-vector-image';
 import './lit-counter';
 import './lit-window-event';
+import './lit-benchmark';
 
 @customElement('lit-modal')
 export class LitModal extends BaseComponent {
@@ -17,6 +18,7 @@ export class LitModal extends BaseComponent {
         VectorImage: 'lit-vector-image',
         Counter: 'lit-counter',
         WindowEvent: 'lit-window-event',
+        Benchmark: 'lit-benchmark',
     };
 
     @property({ type: String })
@@ -57,6 +59,7 @@ export class LitModal extends BaseComponent {
                                     <button type="button" class=${this.currentView === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'VectorImage')}>Vector Image</button>
                                     <button type="button" class=${this.currentView === 'Counter' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'Counter')}>Counter</button>
                                     <button type="button" class=${this.currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'WindowEvent')}>Window Event</button>
+                                    <button type="button" class=${this.currentView === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'Benchmark')}>Benchmark</button>
                                 </div>
                             </div>
                             <div class="col-8">${staticHtml`<${componentTag}></${componentTag}>`}</div>

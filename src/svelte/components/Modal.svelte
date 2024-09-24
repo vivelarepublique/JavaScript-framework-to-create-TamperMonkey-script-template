@@ -3,12 +3,13 @@
     import VectorImage from './VectorImage.svelte';
     import Counter from './Counter.svelte';
     import WindowEvent from './WindowEvent.svelte';
+    import Benchmark from './Benchmark.svelte';
 
     let currentView = 'VectorImage';
     const componentsMap: Record<string, ComponentType> = {
         VectorImage,
         Counter,
-        WindowEvent,
+        WindowEvent,Benchmark
     };
 
     import { close } from '../store/showStore';
@@ -30,6 +31,7 @@
                             <button type="button" class={currentView === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-svelte' : 'btn btn-framework-test'} on:click={() => (currentView = 'VectorImage')}> Vector Image </button>
                             <button type="button" class={currentView === 'Counter' ? 'btn btn-framework-test btn-framework-test-svelte' : 'btn btn-framework-test'} on:click={() => (currentView = 'Counter')}> Counter </button>
                             <button type="button" class={currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-svelte' : 'btn btn-framework-test'} on:click={() => (currentView = 'WindowEvent')}> Window Event </button>
+                            <button type="button" class={currentView === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-svelte' : 'btn btn-framework-test'} on:click={() => (currentView = 'Benchmark')}> Benchmark </button>
                         </div>
                     </div>
 

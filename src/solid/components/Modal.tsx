@@ -4,6 +4,7 @@ import type { JSX } from 'solid-js';
 import VectorImage from './VectorImage';
 import Counter from './Counter';
 import WindowEvent from './WindowEvent';
+import Benchmark from './Benchmark';
 
 import { close } from '../signal/showSignal';
 
@@ -11,6 +12,7 @@ const componentsMap: Record<string, () => JSX.Element> = {
     VectorImage,
     Counter,
     WindowEvent,
+    Benchmark,
 };
 
 interface Props {
@@ -50,6 +52,9 @@ export default function Modal(props: Props) {
                                 </button>
                                 <button type='button' class={currentView() === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('WindowEvent')}>
                                     Window Event
+                                </button>{' '}
+                                <button type='button' class={currentView() === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('Benchmark')}>
+                                    Benchmark
                                 </button>
                             </div>
                         </div>
