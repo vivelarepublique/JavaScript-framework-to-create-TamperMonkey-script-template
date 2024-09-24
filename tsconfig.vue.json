@@ -16,5 +16,5 @@
         "target": "ESNext",
         "useDefineForClassFields": true
     },
-    "include": ["src/vue/**/*.ts", "src/vue/**/*.vue", "src/types/*.d.ts", "src/native/**/*.ts"]
+    "include": ["src/vue/**/*.ts", "src/vue/**/*.vue", "src/types/*.d.ts", "src/native/**/*.ts", "src/common/**/*.ts"]
 }
