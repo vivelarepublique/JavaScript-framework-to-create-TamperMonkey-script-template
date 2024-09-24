@@ -17,7 +17,7 @@ export default function Counter() {
     }
     return (
         <div>
-            <h1>Counter</h1>
+            <h1>Benchmark</h1>
             <p>Spend Time: {duration()} ms</p>
             <div class='container text-center'>
                 <div class='row align-items-center'>
