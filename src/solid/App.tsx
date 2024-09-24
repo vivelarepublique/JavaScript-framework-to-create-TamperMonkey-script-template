@@ -1,4 +1,5 @@
 import './app.css';
+import { Show } from 'solid-js';
 
 import Modal from './components/Modal';
 
@@ -10,7 +11,9 @@ function App() {
             <button id='framework-test-solid-modal' class='framework-test-modal-switch' onClick={open}>
                 Show Solid Modal
             </button>
-            {show() && <Modal msg='Welcome Solid' />}
+            <Show when={show()}>
+                <Modal msg='Welcome Solid' />
+            </Show>
         </div>
     );
 }
