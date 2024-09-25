@@ -1,14 +1,26 @@
 import { createContext } from '@lit/context';
 
 export class CounterStore {
-    count: number = 0;
+    count = 0;
 
     increment() {
-        this.count += 1;
+        this.count++;
     }
 
     decrement() {
-        this.count -= 1;
+        this.count--;
+    }
+
+    incrementByAmount(amount: number) {
+        this.count += amount || 0;
+    }
+
+    doubleCount() {
+        this.count *= 2;
+    }
+
+    reset() {
+        this.count = 0;
     }
 }
 
