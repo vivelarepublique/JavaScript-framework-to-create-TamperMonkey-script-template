@@ -20,7 +20,8 @@ export default defineConfig({
     build: {
         target: 'esnext',
         outDir: 'release',
-        assetsInlineLimit: 4 * 1024 * 1024,
+        assetsInlineLimit: 4096 * 1024,
+        chunkSizeWarningLimit: 2048 * 1024,
         minify: 'terser',
         terserOptions: {
             compress: true,
