@@ -1,4 +1,4 @@
-import { SecureHashAlgorithm, KeyFormatExceptJWK } from '../interface/crypto';
+import type { SecureHashAlgorithm, KeyFormatExceptJWK } from '../interface/crypto';
 
 export async function hash(message: string, algorithm: SecureHashAlgorithm = 'SHA-256'): Promise<ArrayBuffer> {
     return await window.crypto.subtle.digest(algorithm, new TextEncoder().encode(message));

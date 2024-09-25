@@ -1,4 +1,5 @@
-import { Rollup, Plugin } from 'vite';
+import { Rollup } from 'vite';
+import type { Plugin } from 'vite';
 import { readFileInformation, cssFileTransformation, cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking';
 import type { TreeShakingConfig } from '../types';
 

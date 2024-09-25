@@ -1,5 +1,5 @@
-import { ListenOptions } from '../interface/mutations';
-import { IndexedByStringElement } from '../interface/dom';
+import type { ListenOptions } from '../interface/mutations';
+import type { IndexedByStringElement } from '../interface/dom';
 import { getElement } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';

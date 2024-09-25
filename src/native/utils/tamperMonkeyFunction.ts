@@ -1,6 +1,6 @@
 /// <reference path="../../types/tampermonkey.d.ts" />
 
-import { TampermonkeyWebRequestParameters } from '../interface/request';
+import type { TampermonkeyWebRequestParameters } from '../interface/request';
 
 export async function httpRequestReturnXML(request: TampermonkeyWebRequestParameters): Promise<Document | null> {
     const { url, method, headers, data } = request;

@@ -1,4 +1,5 @@
-import { Rollup, Plugin } from 'vite';
+import { Rollup } from 'vite';
+import type { Plugin } from 'vite';
 import { countAllUniqueHostnames, countAllUniqueGrants, returnUniformLengthParameter, generateNewVersionId } from '../tools/banner';
 import { removeDuplicates } from '../tools/utils';
 import type { ScriptInformationParameters } from '../types';
