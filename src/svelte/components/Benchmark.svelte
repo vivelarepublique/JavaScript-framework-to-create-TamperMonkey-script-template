@@ -25,7 +25,7 @@
         <div class="row align-items-center">
             <div class="input-group">
                 <span class="input-group-text">Render Number:</span>
-                <input type="number" class="form-control" placeholder="Input number of divList" value={count} on:input={handleNumberInput} />
+                <input type="number" class="form-control" placeholder="Input number of divList" bind:value={count} on:input={handleNumberInput} />
                 <button type="button" class="btn btn-lg btn-framework-test-svelte" on:click={_render}> Render </button>
                 <button type="button" class="btn btn-lg btn-framework-test-svelte" on:click={emptyRandomColorDiv}> Empty </button>
             </div>
