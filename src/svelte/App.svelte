@@ -1,10 +1,15 @@
 <script lang="ts">
+    import svelteLogo from '../assets/svg/svelte.svg';
+
     import Modal from './components/Modal.svelte';
     import { show, open } from './store/showStore';
 </script>
 
 <main>
-    <button id="framework-test-svelte-modal" class="framework-test-modal-switch" on:click={open}> Show Svelte Modal</button>
+    <button id="framework-test-svelte-modal" class="framework-test-modal-switch" on:click={open}>
+        <span>More</span>
+        <img src={svelteLogo} class="ft-button-logo" alt="Svelte logo" />
+    </button>
     {#if $show}
         <Modal msg={'Welcome Svelte'} />
     {/if}
@@ -12,7 +17,7 @@
 
 <style>
     #framework-test-svelte-modal {
-        left: 50%;
-        background-color: var(--ft-color-svelte);
+        top: 50%;
+        background-color: var(--ft-border-color-svelte);
     }
 </style>

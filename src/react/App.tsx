@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from './components/Modal';
 
+import reactLogo from '../assets/svg/react.svg';
+
 import { open, show } from './store/showStore';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,7 +14,8 @@ export default function App() {
     return (
         <React.Fragment>
             <button id='framework-test-react-modal' className='framework-test-modal-switch' onClick={() => dispatch(open())}>
-                Show React Modal
+                <span>More</span>
+                <img src={reactLogo} className='ft-button-logo' alt='React logo' />
             </button>
             {_show && <Modal msg='Welcome React'></Modal>}
         </React.Fragment>

@@ -2,6 +2,8 @@ import { css, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { BaseComponent } from './extends/baseComponents';
 
+import litLogo from '../assets/svg/lit.svg';
+
 import { provide } from '@lit/context';
 import { showStore, showContext } from './context/show-context';
 import { CounterStore, counterContext } from './context/counter-context';
@@ -34,15 +36,18 @@ export class LitApp extends BaseComponent {
 
     render() {
         return html`
-            <button id="framework-test-lit-modal" class="framework-test-modal-switch" @click=${this._open} part="button">Show Lit Modal</button>
+            <button id="framework-test-lit-modal" class="framework-test-modal-switch" @click=${this._open} part="button">
+                <span>More</span>
+                <img src=${litLogo} class="ft-button-logo" alt="Lit logo" />
+            </button>
             ${this.showStore.show ? html`<lit-modal @show-changed=${this.handleShowChanged} .msg="${'Welcome Lit'}"></lit-modal>` : nothing}
         `;
     }
 
     static styles = css`
         #framework-test-lit-modal {
-            left: 40%;
-            background-color: var(--ft-color-lit);
+            top: 40%;
+            background-color: var(--ft-border-color-lit);
         }
     `;
 }

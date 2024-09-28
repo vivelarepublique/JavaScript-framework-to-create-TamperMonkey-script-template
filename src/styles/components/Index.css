@@ -3,7 +3,6 @@
     z-index: 9998;
     top: 0;
     left: 0;
-    transform: translateX(-50%);
     animation: anime-framework-test 0.25s;
     padding: 10px 20px;
     margin: 5px 10px;
@@ -12,4 +11,10 @@
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    min-width: 120px;
+    max-width: 160px;
+}
+
+.ft-button-logo {
+    height: 32px;
 }

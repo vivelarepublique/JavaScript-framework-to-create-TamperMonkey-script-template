@@ -9,13 +9,16 @@
 </script>
 
 <template>
-    <button id="framework-test-vue-modal" class="framework-test-modal-switch" @click="open">Show Vue Modal</button>
+    <button id="framework-test-vue-modal" class="framework-test-modal-switch" @click="open">
+        <span>More</span>
+        <img src="../assets/svg/vue.svg" class="ft-button-logo" alt="Vue logo" />
+    </button>
     <Modal v-if="show" msg="Welcome Vue"></Modal>
 </template>
 
 <style>
     #framework-test-vue-modal {
-        left: 10%;
-        background-color: var(--ft-color-vue);
+        top: 10%;
+        background-color: var(--ft-border-color-vue);
     }
 </style>

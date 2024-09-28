@@ -1,5 +1,6 @@
 import './app.css';
 import { Show } from 'solid-js';
+import solidLogo from '../assets/svg/solid.svg';
 
 import Modal from './components/Modal';
 
@@ -9,7 +10,8 @@ function App() {
     return (
         <div>
             <button id='framework-test-solid-modal' class='framework-test-modal-switch' onClick={open}>
-                Show Solid Modal
+                <span>More</span>
+                <img src={solidLogo} class='ft-button-logo' alt='Solid logo' />
             </button>
             <Show when={show()}>
                 <Modal msg='Welcome Solid' />

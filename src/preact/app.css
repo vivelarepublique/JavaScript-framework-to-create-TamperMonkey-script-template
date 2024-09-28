@@ -1,4 +1,4 @@
 #framework-test-preact-modal {
-    left: 30%;
-    background-color: var(--ft-color-preact);
+    top: 30%;
+    background-color: var(--ft-border-color-preact);
 }

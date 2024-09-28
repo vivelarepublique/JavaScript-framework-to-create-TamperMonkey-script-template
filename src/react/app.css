@@ -1,4 +1,4 @@
 #framework-test-react-modal {
-    left: 20%;
-    background-color: var(--ft-color-react);
+    top: 20%;
+    background-color: var(--ft-border-color-react);
 }
