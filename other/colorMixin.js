@@ -12,20 +12,20 @@ function colorMixin(path) {
             }
 
             if (colors.length === 1) {
-                return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrBlight(colors[0]).toLowerCase() };
+                return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrLight(colors[0]).toLowerCase() };
             }
 
             if (colors.length <= 4) {
                 const mostFrequentColor = findMostFrequent(colors);
                 if (mostFrequentColor) {
-                    return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrBlight(mostFrequentColor).toLowerCase() };
+                    return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrLight(mostFrequentColor).toLowerCase() };
                 }
 
                 const hex = calculateAverage(colors);
-                return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrBlight(hex).toLowerCase() };
+                return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrLight(hex).toLowerCase() };
             }
             const hex = calculateWeightedAverage(colors);
-            return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrBlight(hex).toLowerCase() };
+            return { name: file.replace(/\.svg/g, ''), value: DiminishDarkOrLight(hex).toLowerCase() };
         })
         .filter(item => item.name && item.value);
     console.log(array);
@@ -87,7 +87,7 @@ function shadowColor(hex) {
     return `#${toHex(red)}${toHex(green)}${toHex(blue)}84`;
 }
 
-function DiminishDarkOrBlight(hex) {
+function DiminishDarkOrLight(hex) {
     const { r, g, b } = hexToObject(hex);
 
     const red = r === 255 ? r - 21 : r === 0 ? r + 21 : r;
