@@ -1,8 +1,12 @@
 # Custom
+dist
 release
 bundle
 temp
 other/*.css
+other/*.less
+other/*.sass
+other/*.stylus
 
 # Logs
 logs
@@ -15,8 +19,6 @@ lerna-debug.log*
 
 # Folders
 node_modules
-dist
-dist-ssr
 *.local
 
 # Editor directories and files
