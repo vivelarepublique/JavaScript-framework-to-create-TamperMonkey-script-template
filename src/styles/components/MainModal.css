@@ -11,7 +11,7 @@
     overflow: auto;
     min-width: 1200px;
     max-height: 95vh;
-    animation: anime-framework-test 0.25s;
+    animation: anime-top-framework-test 0.25s;
     font-size: min(3.2vh, 3.2vw);
 }
 

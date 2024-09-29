@@ -4,14 +4,26 @@
 @import './components/VectorImage.css';
 @import './components/MainModal.css';
 
-@keyframes anime-framework-test {
+@keyframes anime-top-framework-test {
     0% {
-        top: -100px;
+        top: -160px;
         opacity: 0;
     }
 
     100% {
         top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes anime-left-framework-test {
+    0% {
+        left: -120px;
+        opacity: 0;
+    }
+
+    100% {
+        left: 0;
         opacity: 1;
     }
 }
