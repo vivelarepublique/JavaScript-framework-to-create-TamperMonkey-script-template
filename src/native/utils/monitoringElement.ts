@@ -1,21 +1,24 @@
 import type { ListenOptions } from '../interface/mutations';
-import type { IndexedByStringElement } from '../interface/dom';
-import { getElement } from './elementCRUD';
+import type { IndexedByStringElement, CommonSelectors } from '../interface/element';
+import { getElement, combineSelectors } from './elementCRUD';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';
+import { body } from '../alias';
 
-export function listenElementChanges(selector: string, options: ListenOptions): MutationObserver {
+export function listenElementChanges(selector: string | CommonSelectors, options: ListenOptions): MutationObserver {
     const { anyMutation = false, callback = () => console.log('No action.'), attributesConcern, childrenConcern = [], immediateImplementation = false, triggerLimitation = { way: 'none', delay: 0 }, manualSetupOptions = {} } = options;
+
+    if (!anyMutation && !attributesConcern && childrenConcern.length === 0) throw new Error('No action defined for the listener');
 
     if (anyMutation) Object.assign(manualSetupOptions, { childList: true, attributes: true, subtree: true });
     const { delay, way } = triggerLimitation;
     const delayedCallback = way === 'debounce' ? debounce(callback, delay) : way === 'throttle' ? throttle(callback, delay) : callback;
 
-    const selectorTargetElement = (getElement(selector) || document.body) as IndexedByStringElement;
+    if (!getElement(selector)) throw new Error('Element not found');
+    const selectorTargetElement = getElement(selector) as IndexedByStringElement;
 
-    if (immediateImplementation) {
-        attributesConcern ? callback(selectorTargetElement[attributesConcern]) : callback();
-    }
+    if (immediateImplementation) attributesConcern ? callback(selectorTargetElement[attributesConcern]) : callback();
+
     const children = childrenConcern.map(({ selector, action }) => {
         return {
             selector,
@@ -33,7 +36,8 @@ export function listenElementChanges(selector: string, options: ListenOptions): 
             });
 
             if (attributesConcern) {
-                const attributesMutation = mutations.find(el => (el.target as HTMLElement).matches(selector));
+                const combinedSelector = typeof selector === 'string' ? selector : combineSelectors(selector);
+                const attributesMutation = mutations.find(el => (el.target as HTMLElement).matches(combinedSelector));
                 attributesMutation && delayedCallback((attributesMutation.target as IndexedByStringElement)[attributesConcern]);
             }
         }
@@ -54,7 +58,7 @@ export function waitElementFinishLoading(selector: string, refer?: HTMLElement):
                 resolve(targetElement);
             }
         });
-        bodyObserver.observe(refer || document.body, { childList: true, subtree: true });
+        bodyObserver.observe(refer || body, { childList: true, subtree: true });
     });
 }
 
