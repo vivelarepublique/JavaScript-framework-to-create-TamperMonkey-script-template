@@ -4,8 +4,8 @@
     "version": "",
     "description": "try to take over the world!",
     "author": "vivelarepublique",
-    "matchUrl": ["https://www.baidu.com/*"],
+    "matchUrl": ["https://www.baidu.com/*", "https://www.bing.com/*", "https://www.google.com/*"],
     "grant": ["GM_xmlhttpRequest", "unsafeWindow"],
     "runtime": "document-idle",
-    "connect": ["www.bytedance.com"]
+    "connect": ["www.bing.com"]
 }

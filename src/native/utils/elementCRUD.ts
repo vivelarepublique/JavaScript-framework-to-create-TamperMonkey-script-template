@@ -1,6 +1,6 @@
 import type { customEventListener } from '../interface/dom';
 
-export function getElement(selector: string, refer?: HTMLElement): HTMLElement | null {
+export function getElement(selector: string, refer?: Document): HTMLElement | null {
     return refer ? refer.querySelector(selector) : document.querySelector(selector);
 }
 

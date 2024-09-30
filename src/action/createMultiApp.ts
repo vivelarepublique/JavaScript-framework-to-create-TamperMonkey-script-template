@@ -1,9 +1,6 @@
 import { appendElement, createElementWithAttributes, getElement } from '../native/utils/elementCRUD';
 import { ScriptOptions, LinkOptions } from '../native/interface/element';
-
-const body = document.body;
-const head = document.head;
-const isArr = Array.isArray;
+import { body, head, isArr } from '../native/alias';
 
 export function createDivAppElement(id: string | string[]): void {
     isArr(id) ? id.forEach(i => appendElement(body, createElementWithAttributes('div', { props: { id: `${i}App` } }))) : appendElement(body, createElementWithAttributes('div', { props: { id: `${id}App` } }));
