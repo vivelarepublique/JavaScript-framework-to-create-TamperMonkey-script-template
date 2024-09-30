@@ -15,8 +15,8 @@
 
 - [Vue](https://github.com/vuejs/vue) ( Include [Pinia](https://github.com/vuejs/pinia) )
 - [React](https://github.com/facebook/react) ( Include [Redux](https://github.com/reduxjs/redux) )
-- [Preact](https://github.com/preactjs/preact)
-- [Lit](https://github.com/lit/lit)
+- [Preact](https://github.com/preactjs/preact) ( Include `@preact/signals`)
+- [Lit](https://github.com/lit/lit) ( Include `@lit/context` )
 - [Svelte](https://github.com/sveltejs/svelte)
 - [Solid](https://github.com/solidjs/solid)
 
@@ -32,12 +32,12 @@
 git clone https://github.com/vivelarepublique/JavaScript-framework-to-create-TamperMonkey-script-template
 cd JavaScript-framework-to-create-TamperMonkey-script-template
 npm install
-npm run dev
+npm run build
 ```
 
 ## Ongoing plans
 
-- [ ] Framework support
+- [ - ] Framework support
   - [Vue](https://github.com/vuejs/vue)✅
   - [React](https://github.com/facebook/react)✅
   - [Preact](https://github.com/preactjs/preact)✅
@@ -48,9 +48,9 @@ npm run dev
     > Compiling Angular projects can only be done with Angular's own compiler, not with Vite or Webpack, so combining Angular code with code from other projects can be a pain.
   - [Astro](https://github.com/withastro/astro)
     > Astro is using a self-contained build tool based on Vite, so combining Astro with code from other projects isn't simple.
-- [ ] Repackaged JavaScript Functions
-- [ ] Detailed documentation
-- [ ] Performance testing and comparison
+- [ X ] Repackaged JavaScript Functions
+- [ X ] Detailed documentation
+- [ X ] Performance testing and comparison
 
 ## License
 
