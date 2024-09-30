@@ -5,7 +5,8 @@
     "main": "./src/index.ts",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build --mode development",
+        "build:prod": "vite build --mode production"
     },
     "keywords": [
         "react",

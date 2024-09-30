@@ -17,18 +17,27 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 import { bannerConfig } from './config/getParameters';
 
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
     const isBuild = command === 'build';
+    const isProduction = mode === 'production';
 
     const buildPlugins: PluginOption[] = isBuild
         ? [
-              cssBeautificationAndExternalCssTreeShaking({ cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css', framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'] }),
+              cssBeautificationAndExternalCssTreeShaking({
+                  cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css',
+                  framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'],
+              }),
               tampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
-              visualizer({
-                  emitFile: true,
-                  filename: 'stats.html',
-              }) as PluginOption,
-          ]
+          ].concat(
+              isProduction
+                  ? []
+                  : [
+                        visualizer({
+                            emitFile: true,
+                            filename: 'stats.html',
+                        }),
+                    ],
+          )
         : [];
 
     return {
@@ -51,16 +60,12 @@ export default defineConfig(({ command }) => {
             minify: 'terser',
             terserOptions: {
                 compress: true,
-                mangle: false,
-                format: {
-                    beautify: true,
-                },
+                mangle: true,
+                format: { beautify: !isProduction },
             },
             rollupOptions: {
                 input: './src/index.ts',
-                output: {
-                    entryFileNames: `${bannerConfig.name}.user.js`,
-                },
+                output: { entryFileNames: `${bannerConfig.name}.user.js` },
             },
         },
         plugins: [
