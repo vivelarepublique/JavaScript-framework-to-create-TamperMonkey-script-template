@@ -32,6 +32,13 @@ export default defineConfig(({ command }) => {
         : [];
 
     return {
+        css: {
+            preprocessorOptions: {
+                less: { math: 'parens-division' },
+                sass: { api: 'modern' },
+                stylus: {},
+            },
+        },
         server: {
             port: 5267,
             cors: true,
