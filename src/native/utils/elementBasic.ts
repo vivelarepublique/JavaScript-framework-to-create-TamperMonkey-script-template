@@ -1,11 +1,11 @@
-import type { CommonSelectors, CustomEventListener } from '../interface/element';
+import type { ElementAttributeOptions, ElementType, CommonSelectors } from '../interface/element';
 
 export function combineSelectors(selector: CommonSelectors): string {
     const { tagName, id, className, other } = selector;
     const idRes = id ? `#${id}` : '';
     const classNameRes = className ? `.${className.trim().replaceAll(' ', '.')}` : '';
 
-    return `${tagName}${idRes}${classNameRes}${other ? other : ''}`;
+    return `${tagName}${idRes}${classNameRes}${other || ''}`;
 }
 
 export function getElement(selector: string | CommonSelectors, refer?: Document): HTMLElement | null {
@@ -36,11 +36,7 @@ export function appendElement(parent: HTMLElement, child: HTMLElement | string, 
     refer ? parent.insertBefore(childNode, refer) : parent.appendChild(childNode);
 }
 
-export function createElementWithAttributes<T extends keyof HTMLElementTagNameMap, U extends keyof HTMLElementDeprecatedTagNameMap>(
-    tagName: T | U | string,
-    options?: { props?: Partial<HTMLElementTagNameMap[T] | HTMLElementDeprecatedTagNameMap[U] | HTMLElement>; styles?: Partial<CSSStyleDeclaration>; event?: CustomEventListener<keyof HTMLElementEventMap> | CustomEventListener<keyof HTMLElementEventMap>[] },
-): HTMLElementTagNameMap[T] | HTMLElementDeprecatedTagNameMap[U] | HTMLElement {
-    const element = document.createElement(tagName);
+export function updateElementAttribute<T extends keyof HTMLElementTagNameMap, D extends keyof HTMLElementDeprecatedTagNameMap>(element: HTMLElement, options?: ElementAttributeOptions<T, D>): ElementType<T, D> {
     const { props, styles, event } = options || {};
     if (props) {
         Object.assign(element, props);
@@ -55,4 +51,9 @@ export function createElementWithAttributes<T extends keyof HTMLElementTagNameMa
     }
 
     return element;
+}
+
+export function createElementWithAttributes<T extends keyof HTMLElementTagNameMap, D extends keyof HTMLElementDeprecatedTagNameMap>(tagName: T | D | string, options?: ElementAttributeOptions<T, D>): ElementType<T, D> {
+    const element = document.createElement(tagName);
+    return updateElementAttribute(element, options);
 }

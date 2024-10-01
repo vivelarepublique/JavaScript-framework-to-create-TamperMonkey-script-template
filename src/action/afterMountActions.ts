@@ -1,5 +1,4 @@
 import { listenElementChanges } from '../native/utils/monitoringElement';
-import { getElement, getMultiElement, removeElement } from '../native/utils/elementCRUD';
 import { windowProxy } from '../native/utils/tamperMonkeyFunction';
 import { hostname } from '../native/alias';
 import type { CommonSelectors } from '../native/interface/element';
@@ -19,38 +18,13 @@ export function otherTestActions() {
 }
 
 function baidu() {
-    updateElementBackgroundColor(
-        [
-            {
-                tagName: 'div',
-                className: 's_top_wrap',
-            },
-            {
-                tagName: 'div',
-                className: 'bottom_layer',
-            },
-        ],
-        'rgba(0, 0, 0, 0)',
-    );
-    removeElement({
-        tagName: 'div',
-        id: 's-hotsearch-wrapper',
-    });
-
     const selector: CommonSelectors = {
         tagName: 'input',
         id: 'kw',
     };
 
     try {
-        listenElementChanges(selector, {
-            callback: value => {
-                Object.assign(windowProxy, { scriptTemplate: { search: value || '' } });
-                windowProxy.dispatchEvent(new Event('kwChanged'));
-            },
-            attributesConcern: 'value',
-            immediateImplementation: true,
-        });
+        searchInput(selector);
     } catch (error) {
         console.log(error);
     }
@@ -58,55 +32,37 @@ function baidu() {
 
 function bing() {
     const selector: CommonSelectors = {
-        tagName: 'div',
-        className: 'bottom_row widget',
+        tagName: 'textarea',
+        id: 'sb_form_q',
     };
+
     try {
-        listenElementChanges(selector, {
-            callback: () => removeBottomInformationBar(selector),
-            immediateImplementation: true,
-            anyMutation: true,
-        });
+        searchInput(selector);
     } catch (error) {
         console.log(error);
     }
 }
 
 function google() {
-    updateElementBackgroundColor(
-        [
-            {
-                tagName: 'div',
-                className: 'gb',
-            },
-            {
-                tagName: 'div',
-                other: '[role="contentinfo"]',
-            },
-            {
-                tagName: 'input',
-                other: '[type="submit"]',
-            },
-        ],
-        'rgba(0, 0, 0, 0)',
-    );
-}
+    const selector: CommonSelectors = {
+        tagName: 'textarea',
+        id: 'APjFqb',
+    };
 
-function removeBottomInformationBar(selector: string | CommonSelectors) {
-    const target = getElement(selector);
-    if (target) {
-        target.innerHTML = '';
+    try {
+        searchInput(selector);
+    } catch (error) {
+        console.log(error);
     }
 }
 
-function updateElementBackgroundColor(selectors: string[] | CommonSelectors[], color: string) {
-    selectors.forEach(selector => {
-        const elements = getMultiElement(selector);
-        elements.forEach(element => {
-            const style: Partial<CSSStyleDeclaration> = {
-                backgroundColor: color,
-            };
-            Object.assign(element.style, style);
-        });
+function searchInput(selector: CommonSelectors) {
+    listenElementChanges(selector, {
+        callback: value => {
+            Object.assign(windowProxy, { scriptTemplate: { search: value || '' } });
+            windowProxy.dispatchEvent(new Event('kwChanged'));
+        },
+        attributesConcern: 'value',
+        immediateImplementation: true,
     });
 }

@@ -1,6 +1,6 @@
 import type { ListenOptions } from '../interface/mutations';
 import type { IndexedByStringElement, CommonSelectors } from '../interface/element';
-import { getElement, combineSelectors } from './elementCRUD';
+import { getElement, combineSelectors } from './elementBasic';
 import { debounce, throttle } from './delayTools';
 import { windowProxy } from './tamperMonkeyFunction';
 import { body } from '../alias';

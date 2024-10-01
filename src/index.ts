@@ -15,7 +15,7 @@ import { createSolid } from './solid';
 
 import { someTestActions } from './action/beforeMountActions';
 import { otherTestActions } from './action/afterMountActions';
-import { createDivAppElement, createAppElement, getMultiDivAppElement } from './action/createMultiApp';
+import { createDivAppElement, createAppElement, getMultiDivAppElement } from './native/utils/elementAdvanced';
 
 createDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
 createAppElement('lit');

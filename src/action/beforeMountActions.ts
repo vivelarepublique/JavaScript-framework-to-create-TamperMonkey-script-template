@@ -1,7 +1,7 @@
 import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../native/utils/monitoringElement';
-import { getElement } from '../native/utils/elementCRUD';
+import { getElement, createElementWithAttributes } from '../native/utils/elementBasic';
 import { httpRequestReturnXML } from '../native/utils/tamperMonkeyFunction';
-import { hostname, body } from '../native/alias';
+import { hostname, body, head } from '../native/alias';
 
 export async function someTestActions() {
     if (hostname === 'localhost' || hostname === '127.0.0.1') return;
@@ -11,10 +11,32 @@ export async function someTestActions() {
     if (!isLoaded && !body) return;
 
     if (hostname.includes('baidu.com')) {
+        updateCssRules(/*css*/ `
+            div#s_top_wrap, div#bottom_layer {
+                background-color: rgba(0, 0, 0, 0) !important;
+            }
+
+            div#s_wrap, div#s-hotsearch-wrapper {
+                display: none !important;
+            }
+            `);
         updateBackgroundImage();
     }
 
+    if (hostname.includes('bing.com')) {
+        updateCssRules(/*css*/ `
+            div.bottom_row.widget {
+                display: none !important;
+            }
+            `);
+    }
+
     if (hostname.includes('google.com')) {
+        updateCssRules(/*css*/ `
+            div#gb, div[role="contentinfo"], input[type="submit"] {
+                background-color: rgba(0, 0, 0, 0) !important;
+            }
+            `);
         updateBackgroundImage();
     }
 }
@@ -35,10 +57,20 @@ async function getBackgroundImage() {
 
 async function updateBackgroundImage() {
     const backgroundImage = await getBackgroundImage();
-    if (!backgroundImage) return;
-    const styles: Partial<CSSStyleDeclaration> = {
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundRepeat: 'round',
-    };
-    Object.assign(body.style, styles);
+    if (backgroundImage) {
+        Object.assign(body.style, {
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundRepeat: 'round',
+        });
+    }
+}
+
+function updateCssRules(rules: string) {
+    const style = createElementWithAttributes('style', {
+        props: {
+            type: 'text/css',
+            innerHTML: rules,
+        },
+    });
+    head.appendChild(style);
 }
