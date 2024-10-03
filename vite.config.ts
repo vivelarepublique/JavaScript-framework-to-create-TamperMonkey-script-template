@@ -50,7 +50,6 @@ export default defineConfig(({ command, mode }) => {
         },
         server: {
             port: 5267,
-            cors: true,
         },
         build: {
             target: 'esnext',
