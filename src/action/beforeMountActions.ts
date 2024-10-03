@@ -4,9 +4,8 @@ import { httpRequestReturnXML } from '../native/utils/tamperMonkeyFunction';
 import { hostname, body, head } from '../native/alias';
 
 export async function someTestActions() {
-    if (hostname === 'localhost' || hostname === '127.0.0.1') return;
     const isLoaded = await DetermineWindowPropertyIsLoaded('$');
-    const body = await waitElementFinishLoading('body');
+    const body = await waitElementFinishLoading({ tagName: 'body' });
 
     if (!isLoaded && !body) return;
 
@@ -20,7 +19,6 @@ export async function someTestActions() {
                 display: none !important;
             }
             `);
-        updateBackgroundImage();
     }
 
     if (hostname.includes('bing.com')) {
@@ -29,6 +27,8 @@ export async function someTestActions() {
                 display: none !important;
             }
             `);
+    } else {
+        updateBackgroundImage();
     }
 
     if (hostname.includes('google.com')) {
@@ -37,7 +37,6 @@ export async function someTestActions() {
                 background-color: rgba(0, 0, 0, 0) !important;
             }
             `);
-        updateBackgroundImage();
     }
 }
 

@@ -47,9 +47,9 @@ export function listenElementChanges(selector: string | CommonSelectors, options
     return targetObserver;
 }
 
-export function waitElementFinishLoading(selector: string, refer?: HTMLElement): Promise<HTMLElement | null> {
+export function waitElementFinishLoading(selector: string | CommonSelectors, refer?: HTMLElement): Promise<HTMLElement | null> {
     return new Promise(resolve => {
-        if (!getElement(selector)) resolve(null);
+        getElement(selector) && resolve(getElement(selector));
 
         const bodyObserver = new MutationObserver(_ => {
             const targetElement = getElement(selector);
