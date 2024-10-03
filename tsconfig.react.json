@@ -16,5 +16,5 @@
         "target": "ESNext",
         "useDefineForClassFields": true
     },
-    "include": ["src/react/**/*.ts", "src/react/**/*.tsx", "src/types/*.d.ts", "src/native/**/*.ts", "src/common/**/*.ts", "src/common/**/*.ts"]
+    "include": ["src/react/**/*.ts", "src/react/**/*.tsx", "src/declaration/*.d.ts", "src/common/**/*.ts"]
 }

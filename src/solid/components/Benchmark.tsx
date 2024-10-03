@@ -1,7 +1,7 @@
 import { createSignal, Index } from 'solid-js';
 import { divList, addRandomColorDiv, emptyRandomColorDiv } from '../signal/benchmarkSignal';
 
-import { measureRenderTime } from '../../common/benchmark';
+import { measureRenderTime } from '../../common/components/benchmark';
 
 export default function Counter() {
     const [count, setCount] = createSignal(0);

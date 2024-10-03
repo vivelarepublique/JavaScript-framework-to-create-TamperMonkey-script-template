@@ -15,5 +15,5 @@
         "target": "ESNext",
         "useDefineForClassFields": true
     },
-    "include": ["src/native/**/*.ts", "src/action/*.ts", "src/types/*.ts"]
+    "include": ["src/common/**/*.ts", "src/lifecycle/*.ts", "src/declaration/*.ts"]
 }

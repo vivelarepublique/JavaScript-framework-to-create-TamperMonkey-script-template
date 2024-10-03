@@ -1,9 +1,9 @@
-import './styles/global.css';
+import './assets/css/global.css';
 import '../node_modules/ress/dist/ress.min.css';
 
-import './styles/test.less';
-import './styles/test.sass';
-import './styles/test.stylus';
+import './assets/css/index.less';
+import './assets/css/index.sass';
+import './assets/css/index.stylus';
 
 import { createVue } from './vue';
 import { createReact } from './react';
@@ -13,18 +13,17 @@ import { createLit } from './lit';
 import { createSvelte } from './svelte';
 import { createSolid } from './solid';
 
-import { someTestActions } from './action/beforeMountActions';
-import { otherTestActions } from './action/afterMountActions';
-import { createDivAppElement, createAppElement, getMultiDivAppElement } from './native/utils/elementAdvanced';
+import { beforeMountEvent, afterMountEvent } from './lifecycle/mountEvent';
+import { createDivAppElement, createAppElement, getMultiDivAppElement } from './common/utils/elementAdvanced';
 
 createDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
 createAppElement('lit');
 const [vue, react, preact, svelte, solid] = getMultiDivAppElement(['vue', 'react', 'preact', 'svelte', 'solid']);
 
-const beforeMountEvent = async () => await someTestActions();
-const afterMountEvent = () => otherTestActions();
+const before = async () => await beforeMountEvent();
+const after = () => afterMountEvent();
 
-beforeMountEvent();
+before();
 
 createVue(vue);
 createReact(react);
@@ -34,4 +33,4 @@ createLit();
 createSvelte(svelte);
 createSolid(solid);
 
-afterMountEvent();
+after();

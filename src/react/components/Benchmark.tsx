@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { measureRenderTime } from '../../common/benchmark';
+import { measureRenderTime } from '../../common/components/benchmark';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { divList, addRandomColorDiv, emptyRandomColorDiv } from '../store/benchmarkStore';

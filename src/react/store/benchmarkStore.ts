@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import type { RandomColor } from '../../common/benchmark';
-import { generateRandomColor } from '../../common/benchmark';
+import type { RandomColor } from '../../common/components/benchmark';
+import { generateRandomColor } from '../../common/components/benchmark';
 
 const benchmarkSlice = createSlice({
     name: 'benchmark',

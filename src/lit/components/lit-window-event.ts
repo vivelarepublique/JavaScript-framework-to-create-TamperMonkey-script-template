@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { BaseComponent } from '../extends/baseComponents';
 
-import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+import { windowProxy } from '../../common/utils/tamperMonkeyFunction';
 
 @customElement('lit-window-event')
 export class LitWindowEvent extends BaseComponent {

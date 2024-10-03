@@ -1,23 +1,8 @@
-import { listenElementChanges } from '../native/utils/monitoringElement';
-import { windowProxy } from '../native/utils/tamperMonkeyFunction';
-import { hostname } from '../native/alias';
-import type { CommonSelectors } from '../native/interface/element';
+import { windowProxy } from '../common/utils/tamperMonkeyFunction';
+import { listenElementChanges } from '../common/utils/monitoringElement';
+import type { CommonSelectors } from '../common/interface/element';
 
-export function otherTestActions() {
-    switch (hostname) {
-        case 'www.baidu.com':
-            baidu();
-            break;
-        case 'www.bing.com':
-            bing();
-            break;
-        case 'www.google.com':
-            google();
-            break;
-    }
-}
-
-function baidu() {
+export function baidu() {
     const selector: CommonSelectors = {
         tagName: 'input',
         id: 'kw',
@@ -30,7 +15,7 @@ function baidu() {
     }
 }
 
-function bing() {
+export function bing() {
     const selector: CommonSelectors = {
         tagName: 'textarea',
         id: 'sb_form_q',
@@ -43,7 +28,7 @@ function bing() {
     }
 }
 
-function google() {
+export function google() {
     const selector: CommonSelectors = {
         tagName: 'textarea',
         id: 'APjFqb',

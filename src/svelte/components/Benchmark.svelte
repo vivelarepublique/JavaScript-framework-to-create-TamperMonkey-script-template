@@ -1,6 +1,6 @@
 <script lang="ts">
     import { divList, addRandomColorDiv, emptyRandomColorDiv } from '../store/benchmarkStore';
-    import { measureRenderTime } from '../../common/benchmark';
+    import { measureRenderTime } from '../../common/components/benchmark';
     let count = 0;
     let duration = 0;
 

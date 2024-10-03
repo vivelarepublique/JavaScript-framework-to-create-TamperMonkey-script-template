@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
-import type { RandomColor } from '../../common/benchmark';
-import { generateRandomColor } from '../../common/benchmark';
+import type { RandomColor } from '../../common/components/benchmark';
+import { generateRandomColor } from '../../common/components/benchmark';
 
 export const [divList, setDivList] = createSignal<RandomColor[]>([]);
 

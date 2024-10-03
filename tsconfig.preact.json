@@ -18,5 +18,5 @@
         "target": "ESNext",
         "useDefineForClassFields": true
     },
-    "include": ["src/preact/**/*.ts", "src/preact/**/*.tsx", "src/types/*.d.ts", "src/native/**/*.ts", "src/common/**/*.ts"]
+    "include": ["src/preact/**/*.ts", "src/preact/**/*.tsx", "src/declaration/*.d.ts", "src/common/**/*.ts"]
 }

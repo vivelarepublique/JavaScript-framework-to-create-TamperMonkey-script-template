@@ -6,7 +6,7 @@ import { BaseComponent } from '../extends/baseComponents';
 import { consume } from '@lit/context';
 import { BenchmarkStore, benchmarkContext } from '../context/benchmark-context';
 
-import { measureRenderTime } from '../../common/benchmark';
+import { measureRenderTime } from '../../common/components/benchmark';
 
 @customElement('lit-benchmark')
 export class LitBenchmark extends BaseComponent {

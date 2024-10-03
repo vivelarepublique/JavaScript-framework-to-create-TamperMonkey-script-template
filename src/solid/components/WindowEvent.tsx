@@ -1,6 +1,6 @@
 import { createSignal, onMount } from 'solid-js';
 
-import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+import { windowProxy } from '../../common/utils/tamperMonkeyFunction';
 
 export default function WindowEvent() {
     const [sharedState, setSharedState] = createSignal({

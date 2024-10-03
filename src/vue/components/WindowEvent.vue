@@ -8,7 +8,7 @@
 <script setup lang="ts">
     import { reactive, onMounted } from 'vue';
 
-    import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+    import { windowProxy } from '../../common/utils/tamperMonkeyFunction';
 
     const sharedState = reactive({
         search: windowProxy.scriptTemplate?.search || '',

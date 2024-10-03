@@ -1,4 +1,4 @@
-/// <reference path="../../types/tampermonkey.d.ts" />
+/// <reference path="../../declaration/tampermonkey.d.ts" />
 
 import type { TampermonkeyWebRequestParameters } from '../interface/request';
 

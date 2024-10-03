@@ -1,3 +1,22 @@
+interface ImportMetaEnv {
+    [key: string]: any;
+    BASE_URL: string;
+    MODE: string;
+    DEV: boolean;
+    PROD: boolean;
+    SSR: boolean;
+}
+
+interface ImportMeta {
+    url: string;
+
+    readonly hot?: import('./hot').ViteHotContext;
+
+    readonly env: ImportMetaEnv;
+
+    glob: import('./importGlob').ImportGlobFunction;
+}
+
 type CSSModuleClasses = { readonly [key: string]: string };
 
 declare module '*.module.css' {
@@ -230,4 +249,12 @@ declare module '*?url' {
 declare module '*?inline' {
     const src: string;
     export default src;
+}
+
+declare interface VitePreloadErrorEvent extends Event {
+    payload: Error;
+}
+
+declare interface WindowEventMap {
+    'vite:preloadError': VitePreloadErrorEvent;
 }

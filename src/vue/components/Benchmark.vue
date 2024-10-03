@@ -25,7 +25,7 @@
     import { storeToRefs } from 'pinia';
     import { useBenchmarkStore } from '../store/benchmarkStore';
 
-    import { measureRenderTime } from '../../common/benchmark';
+    import { measureRenderTime } from '../../common/components/benchmark';
 
     const benchMarkStore = useBenchmarkStore();
     const { divList } = storeToRefs(benchMarkStore);

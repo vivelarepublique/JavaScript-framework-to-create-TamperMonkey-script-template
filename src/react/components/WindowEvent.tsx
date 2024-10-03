@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+import { windowProxy } from '../../common/utils/tamperMonkeyFunction';
 
 export default function WindowEvent() {
     const [sharedState, setSharedState] = useState({

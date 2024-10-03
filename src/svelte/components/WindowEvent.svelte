@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import { windowProxy } from '../../native/utils/tamperMonkeyFunction';
+    import { windowProxy } from '../../common/utils/tamperMonkeyFunction';
     const sharedState = {
         search: windowProxy.scriptTemplate?.search || '',
     };

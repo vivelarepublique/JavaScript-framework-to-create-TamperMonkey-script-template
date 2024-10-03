@@ -14,5 +14,5 @@
         "target": "ESNext",
         "useDefineForClassFields": true
     },
-    "include": ["src/solid/**/*.ts", "src/solid/**/*.tsx", "src/types/*.d.ts", "src/native/**/*.ts", "src/common/**/*.ts"]
+    "include": ["src/solid/**/*.ts", "src/solid/**/*.tsx", "src/declaration/*.d.ts", "src/common/**/*.ts"]
 }

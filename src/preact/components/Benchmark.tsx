@@ -1,7 +1,7 @@
 import { Fragment } from 'preact';
 import { useState } from 'preact/hooks';
 
-import { measureRenderTime } from '../../common/benchmark';
+import { measureRenderTime } from '../../common/components/benchmark';
 
 import { divList, addRandomColorDiv, emptyRandomColorDiv } from '../signal/benchmarkSignal';
 
