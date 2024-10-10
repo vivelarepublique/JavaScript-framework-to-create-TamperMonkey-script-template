@@ -1,4 +1,3 @@
-import { Fragment } from 'preact';
 import type { JSX } from 'preact';
 import { useState, useCallback } from 'preact/hooks';
 
@@ -33,40 +32,44 @@ export default function Modal(props: Props) {
     }, []);
 
     return (
-        <Fragment>
-            <div class='framework-test-modal-mask' onClick={_close}>
-                <div class='framework-test-modal-container'>
-                    <span>
-                        <button class='framework-test-modal-close-button' onClick={close}>
-                            &times;
-                        </button>
-                    </span>
-                    <div class='container-fluid text-center'>
-                        <div class='row'>
-                            <div class='col-2'>
-                                <p class='framework-test-header-preact framework-test-heavy'>{msg}</p>
-                                <div class='btn-group-vertical' role='group'>
-                                    <button type='button' class={currentView === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-preact' : 'btn btn-framework-test'} onClick={() => setCurrentView('VectorImage')}>
-                                        Vector Image
-                                    </button>
-                                    <button type='button' class={currentView === 'Counter' ? 'btn btn-framework-test btn-framework-test-preact' : 'btn btn-framework-test'} onClick={() => setCurrentView('Counter')}>
-                                        Counter
-                                    </button>
-                                    <button type='button' class={currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-preact' : 'btn btn-framework-test'} onClick={() => setCurrentView('WindowEvent')}>
-                                        Window Event
-                                    </button>
-                                    <button type='button' class={currentView === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-preact' : 'btn btn-framework-test'} onClick={() => setCurrentView('Benchmark')}>
-                                        Benchmark
-                                    </button>
-                                </div>
-                            </div>
-                            <div class='col-8'>
-                                <ComponentToRender />
-                            </div>
-                        </div>
+        <div class='framework-test-modal-mask' onClick={_close}>
+            <div class='framework-test-modal-container'>
+                <span>
+                    <button class='framework-test-modal-close-button' onClick={close}>
+                        &times;
+                    </button>
+                </span>
+
+                <div class='container-fluid text-center'>
+                    <div class='title is-1 header-framework-test-preact'>{msg}</div>
+
+                    <div class='tabs is-centered is-toggle is-toggle-rounded'>
+                        <ul>
+                            <li>
+                                <button class={currentView === 'VectorImage' ? 'button button-framework-test-preact' : 'button'} onClick={() => setCurrentView('VectorImage')}>
+                                    Vector Image
+                                </button>
+                            </li>
+                            <li>
+                                <button class={currentView === 'Counter' ? 'button button-framework-test-preact' : 'button'} onClick={() => setCurrentView('Counter')}>
+                                    Counter
+                                </button>
+                            </li>
+                            <li>
+                                <button class={currentView === 'WindowEvent' ? 'button button-framework-test-preact' : 'button'} onClick={() => setCurrentView('WindowEvent')}>
+                                    Window Event
+                                </button>
+                            </li>
+                            <li>
+                                <button class={currentView === 'Benchmark' ? 'button button-framework-test-preact' : 'button'} onClick={() => setCurrentView('Benchmark')}>
+                                    Benchmark
+                                </button>
+                            </li>
+                        </ul>
                     </div>
+                    <ComponentToRender />
                 </div>
             </div>
-        </Fragment>
+        </div>
     );
 }

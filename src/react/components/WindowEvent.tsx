@@ -13,9 +13,8 @@ export default function WindowEvent() {
     }, []);
     return (
         <React.Fragment>
-            <div>
-                <h1>Window Event Test</h1>
-                <p>Value: {sharedState.search}</p>
+            <div className='block'>
+                <div className='subtitle is-2 header-framework-test-react'>Window Event, Value is {sharedState.search}</div>
             </div>
         </React.Fragment>
     );

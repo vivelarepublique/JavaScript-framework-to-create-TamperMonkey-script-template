@@ -9,7 +9,7 @@
 </script>
 
 <template>
-    <button id="framework-test-vue-modal" class="framework-test-modal-switch" @click="open">
+    <button id="framework-test-vue-modal" class="button framework-test-modal-switch" @click="open">
         <span>More</span>
         <img src="../assets/svg/vue.svg" class="ft-button-logo" alt="Vue logo" />
     </button>

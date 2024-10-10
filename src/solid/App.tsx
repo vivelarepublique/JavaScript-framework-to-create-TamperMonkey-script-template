@@ -9,7 +9,7 @@ import { show, open } from './signal/showSignal';
 function App() {
     return (
         <div>
-            <button id='framework-test-solid-modal' class='framework-test-modal-switch' onClick={open}>
+            <button id='framework-test-solid-modal' class='button framework-test-modal-switch' onClick={open}>
                 <span>More</span>
                 <img src={solidLogo} class='ft-button-logo' alt='Solid logo' />
             </button>

@@ -1,4 +1,3 @@
-import { Fragment } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 
 import { windowProxy } from '../../common/utils/tamperMonkeyFunction';
@@ -15,11 +14,8 @@ export default function WindowEvent() {
     }, []);
 
     return (
-        <Fragment>
-            <div>
-                <h1>Window Event Test</h1>
-                <p>Value: {sharedState.search}</p>
-            </div>
-        </Fragment>
+        <div class='block'>
+            <div class='subtitle is-2 header-framework-test-preact'>Window Event, Value is {sharedState.search}</div>
+        </div>
     );
 }

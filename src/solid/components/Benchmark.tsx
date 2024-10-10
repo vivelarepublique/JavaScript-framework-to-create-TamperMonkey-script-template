@@ -16,33 +16,37 @@ export default function Counter() {
         setCount(parseInt(target.value));
     }
     return (
-        <div>
-            <h1>Benchmark</h1>
-            <p>Spend Time: {duration()} ms</p>
-            <div class='container text-center'>
-                <div class='row align-items-center'>
-                    <div class='input-group'>
-                        <span class='input-group-text'>Render Number:</span>
-                        <input type='number' class='form-control' placeholder='Input number of divList' value={count()} onInput={handleNumberInput} />
-                        <button type='button' class='btn btn-lg btn-framework-test-solid' onClick={_render}>
-                            Render
-                        </button>
-                        <button type='button' class='btn btn-lg btn-framework-test-solid' onClick={emptyRandomColorDiv}>
-                            Empty
-                        </button>
-                    </div>
+        <div class='block'>
+            <div class='subtitle is-2 header-framework-test-solid'>Benchmark, Spend Time: {duration()} ms</div>
+
+            <div class='field'>
+                <label class='label'>Render Number</label>
+                <div class='control'>
+                    <input type='number' class='input' placeholder='Render Number' value={count()} onInput={handleNumberInput} />
                 </div>
             </div>
-            <div class='container text-center'>
-                <div class='row align-items-center'>
-                    <Index each={divList()}>
-                        {(ds, index) => (
-                            <div class='col-1' style={{ 'background-color': ds().backgroundColor, color: ds().color, 'font-size': '8px' }}>
-                                Div# {ds().id}
-                            </div>
-                        )}
-                    </Index>
+
+            <div class='field is-grouped'>
+                <div class='control'>
+                    <button class='button is-large button-framework-test-solid' onClick={_render}>
+                        Render
+                    </button>
                 </div>
+                <div class='control'>
+                    <button class='button is-large button-framework-test-solid' onClick={emptyRandomColorDiv}>
+                        Empty
+                    </button>
+                </div>
+            </div>
+
+            <div class='columns is-multiline'>
+                <Index each={divList()}>
+                    {(ds, index) => (
+                        <div class='column is-1' style={{ 'background-color': ds().backgroundColor, color: ds().color, 'font-size': '8px' }}>
+                            Div# {ds().id}
+                        </div>
+                    )}
+                </Index>
             </div>
         </div>
     );

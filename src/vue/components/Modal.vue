@@ -3,19 +3,25 @@
         <div class="framework-test-modal-container">
             <span><button class="framework-test-modal-close-button" @click="close">&times;</button></span>
 
-            <div class="container-fluid text-center">
-                <div class="row">
-                    <div class="col-2">
-                        <p class="framework-test-header-vue framework-test-heavy">{{ msg }}</p>
-                        <div class="btn-group-vertical" role="group">
-                            <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'VectorImage' }" @click="currentView = 'VectorImage'" class="btn btn-framework-test">Vector Image</button>
-                            <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'Counter' }" @click="currentView = 'Counter'" class="btn btn-framework-test">Counter</button>
-                            <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'WindowEvent' }" @click="currentView = 'WindowEvent'" class="btn btn-framework-test">Window Event</button>
-                            <button type="button" :class="{ 'btn-framework-test-vue': currentView === 'Benchmark' }" @click="currentView = 'Benchmark'" class="btn btn-framework-test">Benchmark</button>
-                        </div>
-                    </div>
-                    <component :is="componentsMap[currentView]" class="col-8" />
+            <div class="block">
+                <div class="title is-1 header-framework-test-vue">{{ msg }}</div>
+                <div class="tabs is-centered is-toggle is-toggle-rounded">
+                    <ul>
+                        <li>
+                            <button :class="{ 'button-framework-test-vue': currentView === 'VectorImage' }" @click="currentView = 'VectorImage'" class="button">Vector Image</button>
+                        </li>
+                        <li>
+                            <button :class="{ 'button-framework-test-vue': currentView === 'Counter' }" @click="currentView = 'Counter'" class="button">Counter</button>
+                        </li>
+                        <li>
+                            <button :class="{ 'button-framework-test-vue': currentView === 'WindowEvent' }" @click="currentView = 'WindowEvent'" class="button">Window Event</button>
+                        </li>
+                        <li>
+                            <button :class="{ 'button-framework-test-vue': currentView === 'Benchmark' }" @click="currentView = 'Benchmark'" class="button">Benchmark</button>
+                        </li>
+                    </ul>
                 </div>
+                <component :is="componentsMap[currentView]" />
             </div>
         </div>
     </div>

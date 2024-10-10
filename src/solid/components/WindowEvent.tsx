@@ -14,11 +14,8 @@ export default function WindowEvent() {
     });
 
     return (
-        <>
-            <div>
-                <h1>Window Event Test</h1>
-                <p>Value: {sharedState().search}</p>
-            </div>
-        </>
+        <div class='block'>
+            <div class='subtitle is-2 header-framework-test-solid'>Window Event, Value is {sharedState().search}</div>
+        </div>
     );
 }

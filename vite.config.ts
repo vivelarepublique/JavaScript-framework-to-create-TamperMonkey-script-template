@@ -24,7 +24,7 @@ export default defineConfig(({ command, mode }) => {
     const buildPlugins: PluginOption[] = isBuild
         ? [
               cssBeautificationAndExternalCssTreeShaking({
-                  cssPath: 'node_modules/bootstrap/dist/css/bootstrap.min.css',
+                  cssPath: 'node_modules/bulma/css/bulma.min.css',
                   framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'],
               }),
               tampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
@@ -45,7 +45,6 @@ export default defineConfig(({ command, mode }) => {
             preprocessorOptions: {
                 less: { math: 'parens-division' },
                 sass: { api: 'modern' },
-                stylus: {},
             },
         },
         server: {

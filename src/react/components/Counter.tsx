@@ -9,41 +9,41 @@ export default function Counter() {
     const [amount, setAmount] = useState(0);
     return (
         <React.Fragment>
-            <div>
-                <h1>Counter</h1>
-                <div className='alert alert-dark' role='alert'>
-                    Count: {_count}
-                </div>
-                <div className='container text-center'>
-                    <div className='row align-items-end'>
-                        <div className='col-2'>
-                            <button type='button' className='btn btn-lg btn-framework-test-react' onClick={() => dispatch(increment())}>
-                                Increment
-                            </button>
-                        </div>
-                        <div className='col-2'>
-                            <button type='button' className='btn btn-lg btn-framework-test-react' onClick={() => dispatch(decrement())}>
-                                Decrement
-                            </button>
-                        </div>
-                        <div className='col-4'>
-                            <div className='input-group'>
-                                <input type='number' className='form-control' placeholder='Amount' value={amount} onChange={e => setAmount(Number(e.target.value))} />
-                                <button type='button' className='btn btn-lg btn-framework-test-react' onClick={() => dispatch(incrementByAmount(amount))}>
+            <div className='block'>
+                <div className='subtitle is-2 header-framework-test-react'>Counter, Count is {_count}</div>
+
+                <div className='columns'>
+                    <div className='column'>
+                        <button className='button button-framework-test-react' onClick={() => dispatch(increment())}>
+                            Increment
+                        </button>
+                    </div>
+                    <div className='column'>
+                        <button className='button button-framework-test-react' onClick={() => dispatch(decrement())}>
+                            Decrement
+                        </button>
+                    </div>
+                    <div className='column'>
+                        <div className='field has-addons'>
+                            <div className='control'>
+                                <input type='number' className='input' placeholder='Amount' value={amount} onChange={e => setAmount(Number(e.target.value))} />
+                            </div>
+                            <div className='control'>
+                                <button className='button button-framework-test-react' onClick={() => dispatch(incrementByAmount(amount))}>
                                     Increment By Amount
                                 </button>
                             </div>
                         </div>
-                        <div className='col-3'>
-                            <button type='button' className='btn btn-lg btn-framework-test-react' onClick={() => dispatch(doubleCount())}>
-                                Double Count
-                            </button>
-                        </div>
-                        <div className='col-1'>
-                            <button type='button' className='btn btn-lg btn-framework-test-react' onClick={() => dispatch(reset())}>
-                                Reset
-                            </button>
-                        </div>
+                    </div>
+                    <div className='column'>
+                        <button className='button button-framework-test-react' onClick={() => dispatch(doubleCount())}>
+                            Double Count
+                        </button>
+                    </div>
+                    <div className='column'>
+                        <button className='button button-framework-test-react' onClick={() => dispatch(reset())}>
+                            Reset
+                        </button>
                     </div>
                 </div>
             </div>

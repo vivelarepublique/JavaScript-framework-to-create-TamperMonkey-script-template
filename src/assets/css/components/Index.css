@@ -1,18 +1,18 @@
 .framework-test-modal-switch {
-    position: fixed;
-    z-index: 9998;
+    position: fixed !important;
+    z-index: 9998 !important;
     top: 0;
     left: 0;
     animation: anime-left-framework-test 0.25s;
     padding: 10px 20px;
     margin: 5px 10px;
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    min-width: 120px;
-    max-width: 160px;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    min-width: 120px !important;
+    max-width: 160px !important;
 }
 
 .ft-button-logo {

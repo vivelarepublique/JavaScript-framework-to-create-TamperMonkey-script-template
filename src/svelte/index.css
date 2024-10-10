@@ -1,20 +1,21 @@
-.framework-test-header-svelte {
-    color: var(--ft-color-svelte);
+.header-framework-test-svelte {
+    color: var(--ft-color-svelte) !important;
+    text-align: center;
 }
 
-.btn-framework-test-svelte {
+.button-framework-test-svelte {
     color: #fff !important;
     background-color: var(--ft-color-svelte) !important;
     border-color: var(--ft-color-svelte) !important;
 }
 
-.btn-framework-test-svelte:hover {
+.button-framework-test-svelte:hover {
     color: #fff !important;
     background-color: var(--ft-background-color-svelte) !important;
     border-color: var(--ft-border-color-svelte) !important;
 }
 
-.btn-framework-test-svelte:focus {
+.button-framework-test-svelte:focus {
     color: #fff !important;
     background-color: var(--ft-background-color-svelte) !important;
     border-color: var(--ft-border-color-svelte) !important;

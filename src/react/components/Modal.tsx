@@ -44,30 +44,35 @@ export default function Modal(props: Props) {
                             &times;
                         </button>
                     </span>
-                    <div className='container-fluid text-center'>
-                        <div className='row'>
-                            <div className='col-2'>
-                                <p className='framework-test-header-react framework-test-heavy'>{msg}</p>
-                                <div className='btn-group-vertical' role='group'>
-                                    <button type='button' className={currentView === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-react' : 'btn btn-framework-test'} onClick={() => setCurrentView('VectorImage')}>
+
+                    <div className='block'>
+                        <div className='title is-1 header-framework-test-react'>{msg}</div>
+
+                        <div className='tabs is-centered is-toggle is-toggle-rounded'>
+                            <ul>
+                                <li>
+                                    <button className={currentView === 'VectorImage' ? 'button button-framework-test-react' : 'button'} onClick={() => setCurrentView('VectorImage')}>
                                         Vector Image
                                     </button>
-                                    <button type='button' className={currentView === 'Counter' ? 'btn btn-framework-test btn-framework-test-react' : 'btn btn-framework-test'} onClick={() => setCurrentView('Counter')}>
+                                </li>
+                                <li>
+                                    <button className={currentView === 'Counter' ? 'button button-framework-test-react' : 'button'} onClick={() => setCurrentView('Counter')}>
                                         Counter
                                     </button>
-                                    <button type='button' className={currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-react' : 'btn btn-framework-test'} onClick={() => setCurrentView('WindowEvent')}>
+                                </li>
+                                <li>
+                                    <button className={currentView === 'WindowEvent' ? 'button button-framework-test-react' : 'button'} onClick={() => setCurrentView('WindowEvent')}>
                                         Window Event
                                     </button>
-                                    <button type='button' className={currentView === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-react' : 'btn btn-framework-test'} onClick={() => setCurrentView('Benchmark')}>
+                                </li>
+                                <li>
+                                    <button className={currentView === 'Benchmark' ? 'button button-framework-test-react' : 'button'} onClick={() => setCurrentView('Benchmark')}>
                                         Benchmark
                                     </button>
-                                </div>
-                            </div>
-
-                            <div className='col-8'>
-                                <ComponentToRender />
-                            </div>
+                                </li>
+                            </ul>
                         </div>
+                        <ComponentToRender />
                     </div>
                 </div>
             </div>

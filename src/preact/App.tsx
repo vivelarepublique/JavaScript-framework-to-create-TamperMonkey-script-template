@@ -13,7 +13,7 @@ export function App() {
 
     return (
         <Fragment>
-            <button id='framework-test-preact-modal' class='framework-test-modal-switch' onClick={open}>
+            <button id='framework-test-preact-modal' class='button framework-test-modal-switch' onClick={open}>
                 <span>More</span>
                 <img src={preactLogo} class='ft-button-logo' alt='Preact logo' />
             </button>

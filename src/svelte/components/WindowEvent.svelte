@@ -12,7 +12,6 @@
     });
 </script>
 
-<div>
-    <h1>Window Event Test</h1>
-    <p>Value: {sharedState.search}</p>
+<div class="block">
+    <div class="subtitle is-2 header-framework-test-svelte">Window Event, Value is {sharedState.search}</div>
 </div>

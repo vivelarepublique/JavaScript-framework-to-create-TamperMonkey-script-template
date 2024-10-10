@@ -1,12 +1,16 @@
 const html = /*html*/ `<form name="f" id="form">
     <div id="s_kw_wrap">
-        <div class="input-group mb-3">
-            <span class="input-group-text">Input</span>
-            <input id="input" type="text" class="form-control" placeholder="input" >
+        <div class="field">
+            <label class="label">Input</label>
+            <div class="control">
+                <input id="input" class="input" type="text" placeholder="input" >
+            </div>
         </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text">Sync</span>
-            <input id="kw" disabled type="text" class="form-control" placeholder="sync">
+        <div class="field">
+            <label class="label">Sync</label>
+            <div class="control">
+                <input id="kw" class="input" readonly type="text" placeholder="sync">
+            </div>
         </div>
     </div>
 </form>

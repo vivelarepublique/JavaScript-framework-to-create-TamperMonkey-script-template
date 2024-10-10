@@ -18,24 +18,29 @@
     }
 </script>
 
-<div>
-    <h1>Benchmark</h1>
-    <p>Spend Time: {duration} ms</p>
-    <div class="container text-center">
-        <div class="row align-items-center">
-            <div class="input-group">
-                <span class="input-group-text">Render Number:</span>
-                <input type="number" class="form-control" placeholder="Input number of divList" bind:value={count} on:input={handleNumberInput} />
-                <button type="button" class="btn btn-lg btn-framework-test-svelte" on:click={_render}> Render </button>
-                <button type="button" class="btn btn-lg btn-framework-test-svelte" on:click={emptyRandomColorDiv}> Empty </button>
-            </div>
+<div class="block">
+    <div class="subtitle is-2 header-framework-test-svelte">Benchmark, Spend Time: {duration} ms</div>
+
+    <div class="field">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
+        <label class="label">Render Number</label>
+        <div class="control">
+            <input type="number" class="input" placeholder="Render Number" bind:value={count} on:input={handleNumberInput} />
         </div>
     </div>
-    <div class="container text-center">
-        <div class="row align-items-center">
-            {#each $divList as ds (ds.id)}
-                <div class="col-1" style="background-color: {ds.backgroundColor}; color: {ds.color}; font-size: 8px;">Div# {ds.id}</div>
-            {/each}
+
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-large button-framework-test-svelte" on:click={_render}>Render</button>
         </div>
+        <div class="control">
+            <button class="button is-large button-framework-test-svelte" on:click={emptyRandomColorDiv}>Empty</button>
+        </div>
+    </div>
+
+    <div class="columns is-multiline">
+        {#each $divList as ds (ds.id)}
+            <div class="column is-1" style="background-color: {ds.backgroundColor}; color: {ds.color}; font-size: 8px;">Div# {ds.id}</div>
+        {/each}
     </div>
 </div>

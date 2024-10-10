@@ -39,27 +39,34 @@ export default function Modal(props: Props) {
                         &times;
                     </button>
                 </span>
-                <div class='container-fluid text-center'>
-                    <div class='row'>
-                        <div class='col-2'>
-                            <p class='framework-test-header-solid framework-test-heavy'>{msg}</p>
-                            <div class='btn-group-vertical' role='group'>
-                                <button type='button' class={currentView() === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('VectorImage')}>
+                <div class='block'>
+                    <div class='title is-1 header-framework-test-react'>{msg}</div>
+
+                    <div class='tabs is-centered is-toggle is-toggle-rounded'>
+                        <ul>
+                            <li>
+                                <button class={currentView() === 'VectorImage' ? 'button button-framework-test-solid' : 'button'} onClick={() => setCurrentView('VectorImage')}>
                                     Vector Image
                                 </button>
-                                <button type='button' class={currentView() === 'Counter' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('Counter')}>
+                            </li>
+                            <li>
+                                <button class={currentView() === 'Counter' ? 'button button-framework-test-solid' : 'button'} onClick={() => setCurrentView('Counter')}>
                                     Counter
                                 </button>
-                                <button type='button' class={currentView() === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('WindowEvent')}>
+                            </li>
+                            <li>
+                                <button class={currentView() === 'WindowEvent' ? 'button button-framework-test-solid' : 'button'} onClick={() => setCurrentView('WindowEvent')}>
                                     Window Event
-                                </button>{' '}
-                                <button type='button' class={currentView() === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-solid' : 'btn btn-framework-test'} onClick={() => setCurrentView('Benchmark')}>
+                                </button>
+                            </li>
+                            <li>
+                                <button class={currentView() === 'Benchmark' ? 'button button-framework-test-solid' : 'button'} onClick={() => setCurrentView('Benchmark')}>
                                     Benchmark
                                 </button>
-                            </div>
-                        </div>
-                        <div class='col-8'>{componentsMap[currentView()]()}</div>
+                            </li>
+                        </ul>
                     </div>
+                    {componentsMap[currentView()]()}
                 </div>
             </div>
         </div>

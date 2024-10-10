@@ -1,20 +1,21 @@
-.framework-test-header-vue {
-    color: var(--ft-color-vue);
+.header-framework-test-vue {
+    color: var(--ft-color-vue) !important;
+    text-align: center;
 }
 
-.btn-framework-test-vue {
+.button-framework-test-vue {
     color: #fff !important;
     background-color: var(--ft-color-vue) !important;
     border-color: var(--ft-color-vue) !important;
 }
 
-.btn-framework-test-vue:hover {
+.button-framework-test-vue:hover {
     color: #fff !important;
     background-color: var(--ft-background-color-vue) !important;
     border-color: var(--ft-border-color-vue) !important;
 }
 
-.btn-framework-test-vue:focus {
+.button-framework-test-vue:focus {
     color: #fff !important;
     background-color: var(--ft-background-color-vue) !important;
     border-color: var(--ft-border-color-vue) !important;

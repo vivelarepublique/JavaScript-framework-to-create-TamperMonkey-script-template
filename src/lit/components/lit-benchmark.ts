@@ -48,22 +48,26 @@ export class LitBenchmark extends BaseComponent {
 
     render() {
         return html`
-            <div>
-                <h1>Benchmark</h1>
-                <p>Spend Time: ${this.duration} ms</p>
-                <div class="container text-center">
-                    <div class="row align-items-center">
-                        <div class="input-group">
-                            <span class="input-group-text">Render Number:</span>
-                            <input type="number" class="form-control" placeholder="Input number of divList" .value="${this.count}" @input="${this.handleNumberInput}" />
-                            <button type="button" class="btn btn-lg btn-framework-test-lit" @click="${this._render}">Render</button>
-                            <button type="button" class="btn btn-lg btn-framework-test-lit" @click="${this._empty}">Empty</button>
-                        </div>
+            <div class="block">
+                <div class="subtitle is-2 header-framework-test-lit">Benchmark, Spend Time: ${this.duration} ms</div>
+
+                <div class="field">
+                    <label class="label">Render Number</label>
+                    <div class="control">
+                        <input type="number" class="input" placeholder="Render Number" .value="${this.count}" @input="${this.handleNumberInput}" />
                     </div>
                 </div>
-                <div class="container text-center">
-                    <div class="row align-items-center">${this.benchmarkStore?.divList.map(ds => html`<div class="col-1" style="background-color: ${ds.backgroundColor} !important; color: ${ds.color}; font-size: 8px !important;">Div# ${ds.id}</div>`)}</div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-large button-framework-test-lit" @click="${this._render}">Render</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-large button-framework-test-lit" @click="${this._empty}">Empty</button>
+                    </div>
                 </div>
+
+                <div class="columns is-multiline">${this.benchmarkStore?.divList.map(ds => html`<div class="column is-1" style="background-color: ${ds.backgroundColor} !important; color: ${ds.color}; font-size: 8px !important;">Div# ${ds.id}</div>`)}</div>
             </div>
         `;
     }

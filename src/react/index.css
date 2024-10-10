@@ -1,20 +1,21 @@
-.framework-test-header-react {
-    color: var(--ft-color-react);
+.header-framework-test-react {
+    color: var(--ft-color-react) !important;
+    text-align: center;
 }
 
-.btn-framework-test-react {
+.button-framework-test-react {
     color: #fff !important;
     background-color: var(--ft-color-react) !important;
     border-color: var(--ft-color-react) !important;
 }
 
-.btn-framework-test-react:hover {
+.button-framework-test-react:hover {
     color: #fff !important;
     background-color: var(--ft-background-color-react) !important;
     border-color: var(--ft-border-color-react) !important;
 }
 
-.btn-framework-test-react:focus {
+.button-framework-test-react:focus {
     color: #fff !important;
     background-color: var(--ft-background-color-react) !important;
     border-color: var(--ft-border-color-react) !important;

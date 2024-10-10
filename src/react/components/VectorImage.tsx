@@ -20,18 +20,12 @@ import viteLogo from '../../assets/svg/vite.svg';
 export default function VectorImage() {
     return (
         <React.Fragment>
-            <div>
-                <p className='framework-test-header-react'>React Test Vector Image</p>
-                <div className='container-fluid text-center'>
-                    <div className='row'>
-                        <div className='col-12'>
-                            <img src={reactLogo} className='framework-test-large-logo framework-test-rotate-logo' alt='React logo' />
-                        </div>
-                    </div>
-                </div>
-                <div className='container-fluid text-center'>
-                    <div className='row'>
-                        <div className='col-3'>
+            <div className='block framework-test-text-align'>
+                <div className='subtitle is-2 header-framework-test-react'>React Test Vector Image</div>
+
+                <div className='box'>
+                    <div className='columns'>
+                        <div className='column is-3'>
                             <div>
                                 <img src={vueLogo} className='framework-test-logo' alt='Vue logo' />
                             </div>
@@ -41,9 +35,9 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-3'>
+                        <div className='column is-3'>
                             <div>
-                                <img src={reactLogo} className='framework-test-logo' alt='React logo' />
+                                <img src={reactLogo} className='framework-test-logo framework-test-rotate-logo' alt='React logo' />
                             </div>
                             <div>
                                 <a className='framework-test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
@@ -51,7 +45,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-3'>
+                        <div className='column is-3'>
                             <div>
                                 <img src={angularLogo} className='framework-test-logo' alt='Angular logo' />
                             </div>
@@ -61,7 +55,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-3'>
+                        <div className='column is-3'>
                             <div>
                                 <img src={astroLogo} className='framework-test-logo' alt='Astro logo' />
                             </div>
@@ -73,9 +67,9 @@ export default function VectorImage() {
                         </div>
                     </div>
                 </div>
-                <div className='container-fluid text-center'>
-                    <div className='row'>
-                        <div className='col-3'>
+                <div className='box'>
+                    <div className='columns'>
+                        <div className='column is-3'>
                             <div>
                                 <img src={preactLogo} className='framework-test-logo' alt='Preact logo' />
                             </div>
@@ -85,7 +79,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-3'>
+                        <div className='column is-3'>
                             <div>
                                 <img src={litLogo} className='framework-test-logo' alt='Lit logo' />
                             </div>
@@ -95,7 +89,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-3'>
+                        <div className='column is-3'>
                             <div>
                                 <img src={svelteLogo} className='framework-test-logo' alt='Svelte logo' />
                             </div>
@@ -105,7 +99,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-3'>
+                        <div className='column is-3'>
                             <div>
                                 <img src={solidLogo} className='framework-test-logo' alt='Solid logo' />
                             </div>
@@ -117,9 +111,9 @@ export default function VectorImage() {
                         </div>
                     </div>
                 </div>
-                <div className='container-fluid text-center'>
-                    <div className='row'>
-                        <div className='col-4'>
+                <div className='box'>
+                    <div className='columns'>
+                        <div className='column is-4'>
                             <div>
                                 <img src={lessLogo} className='framework-test-logo less-logo' alt='Less logo' />
                             </div>
@@ -129,7 +123,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-4'>
+                        <div className='column is-4'>
                             <div>
                                 <img src={sassLogo} className='framework-test-logo sass-logo' alt='Sass logo' />
                             </div>
@@ -139,7 +133,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-4'>
+                        <div className='column is-4'>
                             <div>
                                 <img src={stylusLogo} className='framework-test-logo stylus-logo' alt='Stylus logo' />
                             </div>
@@ -151,9 +145,9 @@ export default function VectorImage() {
                         </div>
                     </div>
                 </div>
-                <div className='container-fluid text-center'>
-                    <div className='row'>
-                        <div className='col-6'>
+                <div className='box'>
+                    <div className='columns'>
+                        <div className='column is-6'>
                             <div>
                                 <img src={typescriptLogo} className='framework-test-logo' alt='Typescript logo' />
                             </div>
@@ -163,7 +157,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='col-6'>
+                        <div className='column is-6'>
                             <div>
                                 <img src={viteLogo} className='framework-test-logo' alt='Vite logo' />
                             </div>

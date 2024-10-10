@@ -51,19 +51,26 @@ export class LitModal extends BaseComponent {
                     <span>
                         <button class="framework-test-modal-close-button" @click="${this.close}">&times;</button>
                     </span>
-                    <div class="container-fluid text-center">
-                        <div class="row">
-                            <div class="col-2">
-                                <p class="framework-test-header-lit framework-test-heavy">${this.msg}</p>
-                                <div class="btn-group-vertical" role="group">
-                                    <button type="button" class=${this.currentView === 'VectorImage' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'VectorImage')}>Vector Image</button>
-                                    <button type="button" class=${this.currentView === 'Counter' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'Counter')}>Counter</button>
-                                    <button type="button" class=${this.currentView === 'WindowEvent' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'WindowEvent')}>Window Event</button>
-                                    <button type="button" class=${this.currentView === 'Benchmark' ? 'btn btn-framework-test btn-framework-test-lit' : 'btn btn-framework-test'} @click=${() => (this.currentView = 'Benchmark')}>Benchmark</button>
-                                </div>
-                            </div>
-                            <div class="col-8">${staticHtml`<${componentTag}></${componentTag}>`}</div>
+
+                    <div class="block">
+                        <div class="title is-1 header-framework-test-lit">${this.msg}</div>
+                        <div class="tabs is-centered is-toggle is-toggle-rounded">
+                            <ul>
+                                <li>
+                                    <button class=${this.currentView === 'VectorImage' ? ' button  button-framework-test-lit' : ' button'} @click=${() => (this.currentView = 'VectorImage')}>Vector Image</button>
+                                </li>
+                                <li>
+                                    <button class=${this.currentView === 'Counter' ? ' button  button-framework-test-lit' : ' button'} @click=${() => (this.currentView = 'Counter')}>Counter</button>
+                                </li>
+                                <li>
+                                    <button class=${this.currentView === 'WindowEvent' ? ' button  button-framework-test-lit' : ' button'} @click=${() => (this.currentView = 'WindowEvent')}>Window Event</button>
+                                </li>
+                                <li>
+                                    <button class=${this.currentView === 'Benchmark' ? ' button  button-framework-test-lit' : ' button'} @click=${() => (this.currentView = 'Benchmark')}>Benchmark</button>
+                                </li>
+                            </ul>
                         </div>
+                        ${staticHtml`<${componentTag}></${componentTag}>`}
                     </div>
                 </div>
             </div>

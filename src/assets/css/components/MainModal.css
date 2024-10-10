@@ -30,13 +30,3 @@
     font-size: 24px;
     font-weight: bold;
 }
-
-.framework-test-heavy {
-    font-weight: bold;
-    font-size: 128%;
-}
-
-.btn-framework-test {
-    border: solid 1px #ccc !important;
-    font-size: 100% !important;
-}

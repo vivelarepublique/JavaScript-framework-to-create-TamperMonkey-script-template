@@ -36,7 +36,7 @@ export class LitApp extends BaseComponent {
 
     render() {
         return html`
-            <button id="framework-test-lit-modal" class="framework-test-modal-switch" @click=${this._open} part="button">
+            <button id="framework-test-lit-modal" class="button framework-test-modal-switch" @click=${this._open} part="button">
                 <span>More</span>
                 <img src=${litLogo} class="ft-button-logo" alt="Lit logo" />
             </button>

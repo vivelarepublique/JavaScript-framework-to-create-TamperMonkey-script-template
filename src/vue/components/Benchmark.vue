@@ -1,21 +1,25 @@
 <template>
-    <div>
-        <h1>Benchmark</h1>
-        <p>Spend Time: {{ duration }} ms</p>
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="input-group">
-                    <span class="input-group-text">Render Number: </span>
-                    <input type="number" class="form-control" placeholder="Input number of divs" v-model="count" />
-                    <button type="button" class="btn btn-lg btn-framework-test-vue" @click="_render">Render</button>
-                    <button type="button" class="btn btn-lg btn-framework-test-vue" @click="emptyRandomColorDiv">Empty</button>
-                </div>
+    <div class="block">
+        <div class="subtitle is-2 header-framework-test-vue">Benchmark, Spend Time: {{ duration }} ms</div>
+
+        <div class="field">
+            <label class="label">Render Number</label>
+            <div class="control">
+                <input type="number" class="input" placeholder="Render Number" v-model="count" />
             </div>
         </div>
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div v-for="ds in divList" :key="ds.id" class="col-1" :style="{ 'background-color': ds.backgroundColor, color: ds.color, fontSize: '8px' }">Div# {{ ds.id }}</div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-large button-framework-test-vue" @click="_render">Render</button>
             </div>
+            <div class="control">
+                <button class="button is-large button-framework-test-vue" @click="emptyRandomColorDiv">Empty</button>
+            </div>
+        </div>
+
+        <div class="columns is-multiline">
+            <div v-for="ds in divList" :key="ds.id" class="column is-1" :style="{ 'background-color': ds.backgroundColor, color: ds.color, fontSize: '8px' }">Div# {{ ds.id }}</div>
         </div>
     </div>
 </template>

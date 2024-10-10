@@ -20,9 +20,8 @@ export class LitWindowEvent extends BaseComponent {
     };
 
     render() {
-        return html` <div>
-            <h1>Window Event Test</h1>
-            <p>Value: ${this.sharedState.search}</p>
+        return html` <div class="block">
+            <div class="subtitle is-2 header-framework-test-lit">Window Event, Value is ${this.sharedState.search}</div>
         </div>`;
     }
 }

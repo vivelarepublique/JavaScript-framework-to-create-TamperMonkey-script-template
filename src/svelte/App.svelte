@@ -6,7 +6,7 @@
 </script>
 
 <main>
-    <button id="framework-test-svelte-modal" class="framework-test-modal-switch" on:click={open}>
+    <button id="framework-test-svelte-modal" class="button framework-test-modal-switch" on:click={open}>
         <span>More</span>
         <img src={svelteLogo} class="ft-button-logo" alt="Svelte logo" />
     </button>

@@ -9,41 +9,41 @@ export default function Counter() {
         setAmount(parseInt(target.value));
     }
     return (
-        <div>
-            <h1>Counter</h1>
-            <div class='alert alert-dark' role='alert'>
-                Count: {count()}
-            </div>
-            <div class='container text-center'>
-                <div class='row align-items-end'>
-                    <div class='col-2'>
-                        <button type='button' class='btn btn-lg btn-framework-test-solid' onClick={increment}>
-                            Increment
-                        </button>
-                    </div>
-                    <div class='col-2'>
-                        <button type='button' class='btn btn-lg btn-framework-test-solid' onClick={decrement}>
-                            Decrement
-                        </button>
-                    </div>
-                    <div class='col-4'>
-                        <div class='input-group'>
-                            <input type='number' class='form-control' placeholder='Amount' value={amount()} onInput={handleNAmountInput} />
-                            <button type='button' class='btn btn-lg btn-framework-test-solid' onClick={() => incrementByAmount(amount())}>
+        <div class='block'>
+            <div class='subtitle is-2 header-framework-test-solid'>Counter, Count is {count()}</div>
+
+            <div class='columns'>
+                <div class='column'>
+                    <button class='button button-framework-test-solid' onClick={increment}>
+                        Increment
+                    </button>
+                </div>
+                <div class='column'>
+                    <button class='button button-framework-test-solid' onClick={decrement}>
+                        Decrement
+                    </button>
+                </div>
+                <div class='column'>
+                    <div class='field has-addons'>
+                        <div class='control'>
+                            <input type='number' class='input' placeholder='Amount' value={amount()} onInput={handleNAmountInput} />
+                        </div>
+                        <div class='control'>
+                            <button class='button button-framework-test-solid' onClick={() => incrementByAmount(amount())}>
                                 Increment By Amount
                             </button>
                         </div>
                     </div>
-                    <div class='col-3'>
-                        <button type='button' class='btn btn-lg btn-framework-test-solid' onClick={doubleCount}>
-                            Double Count
-                        </button>
-                    </div>
-                    <div class='col-1'>
-                        <button type='button' class='btn btn-lg btn-framework-test-solid' onClick={reset}>
-                            Reset
-                        </button>
-                    </div>
+                </div>
+                <div class='column'>
+                    <button class='button button-framework-test-solid' onClick={doubleCount}>
+                        Double Count
+                    </button>
+                </div>
+                <div class='column'>
+                    <button class='button button-framework-test-solid' onClick={reset}>
+                        Reset
+                    </button>
                 </div>
             </div>
         </div>
