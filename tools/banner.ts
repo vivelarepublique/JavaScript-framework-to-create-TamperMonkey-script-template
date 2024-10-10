@@ -1,6 +1,18 @@
 import { removeDuplicates, hashReturnHex } from './utils';
 import type { ScriptInformationParameters } from '../types';
 
+function generalParameter(key: string, value?: string) {
+    return value ? `// @${key + ' '.repeat(13 - key.length) + value}\n` : `// @${key}\n`;
+}
+
+function optionalParameter(key: string, value?: string | string[]) {
+    return value ? (Array.isArray(value) ? parameterArray(value, key) : generalParameter(key, value)) : '';
+}
+
+function parameterArray(array: string[], key: string): string {
+    return array.reduce((accelerator, current) => accelerator + generalParameter(key, current), '');
+}
+
 function countAllUniqueHostnames(code: string): string[] {
     const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
     const urls = code.match(urlRegex);
@@ -13,12 +25,8 @@ function countAllUniqueGrants(code: string): string[] {
     return grants ? removeDuplicates(grants) : [];
 }
 
-function returnUniformLengthParameter(parameter: string[], name: string): string {
-    return parameter.reduce((accelerator, current, index, self) => accelerator + '// @' + name + ' '.repeat(13 - name.length) + current + (index === self.length - 1 ? '' : '\n'), '');
-}
-
 function generateNewVersionId(date: Date = new Date()): string {
-    return date.getFullYear() - 2023 + '.' + date.getMonth() + '.' + (date.getDate() - 1);
+    return date.getFullYear() - 2021 + '.' + date.getMonth() + '.' + (date.getDate() - 1);
 }
 
 export async function cssTemplate(code: string, name: string): Promise<string> {
@@ -31,21 +39,26 @@ document.head.appendChild(${name}_${hashSub});`;
 }
 
 export function bannerTemplate(code: string, details: ScriptInformationParameters) {
-    const { name, namespace, version, description, author, runtime, matchUrl, grant, connect } = details;
+    const { name, namespace, version, description, author, runAt, runIn, sandbox, tag, noframes, match, grant, connect } = details;
     const grants = removeDuplicates(countAllUniqueGrants(code).concat(grant));
     const connects = removeDuplicates(countAllUniqueHostnames(code).concat(connect));
-    return `// ==UserScript==
-// @name         ${name}
-// @namespace    ${namespace}
-// @version      ${version || generateNewVersionId()}
-// @description  ${description}
-// @author       ${author}
-// @run-at       ${runtime}
-${returnUniformLengthParameter(matchUrl, 'match')}
-${returnUniformLengthParameter(grants, 'grant')}
-${returnUniformLengthParameter(connects, 'connect')}
-// ==/UserScript==
-`;
+    return (
+        '// ==UserScript==\n' +
+        generalParameter('name', name) +
+        generalParameter('namespace', namespace) +
+        generalParameter('version', version || generateNewVersionId()) +
+        generalParameter('description', description) +
+        generalParameter('author', author) +
+        optionalParameter('run-at', runAt) +
+        optionalParameter('run-in', runIn) +
+        optionalParameter('sandbox', sandbox) +
+        (tag ? parameterArray(tag, 'tag') : '') +
+        (noframes ? generalParameter('noframes') : '') +
+        parameterArray(match, 'match') +
+        parameterArray(grants, 'grant') +
+        parameterArray(connects, 'connect') +
+        '// ==/UserScript==\n'
+    );
 }
 
 export function jsTemplate(banner: string, css: string, code: string) {

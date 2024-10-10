@@ -1,0 +1,15 @@
+name: JavaScript-framework-to-create-TamperMonkey-script-template
+namespace: http://tampermonkey.net/
+description: try to take over the world!
+author: vivelarepublique
+runAt: document-idle
+noframes: true
+match:
+    - https://www.baidu.com/*
+    - https://www.bing.com/*
+    - https://www.google.com/*
+grant:
+    - GM_xmlhttpRequest
+    - unsafeWindow
+connect:
+    - www.bing.com
