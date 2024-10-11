@@ -1,8 +1,10 @@
 # Custom
+bundle
+cache
 dist
 release
-bundle
 temp
+
 other/*.css
 other/*.less
 other/*.sass
