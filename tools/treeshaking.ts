@@ -13,19 +13,19 @@ export function cssSplitAndReorganize(cssContent: string, sortByOrder: boolean =
 
     const tempArray: string[] = [];
     let finishFlag = true;
-    for (let i = 0; i < cssArray.length; i++) {
-        if (cssArray[i].includes('@')) {
+    for (const rule of cssArray) {
+        if (rule.includes('@')) {
             finishFlag = false;
-            tempArray.push(cssArray[i] + '}');
-        } else if (cssArray[i].trim() === '') {
+            tempArray.push(`${rule}}`);
+        } else if (rule.trim() === '') {
             finishFlag = true;
-            cssResult.push(tempArray.join('') + '}');
+            cssResult.push(`${tempArray.join('')}}`);
             tempArray.length = 0;
         } else {
-            finishFlag ? cssResult.push(cssArray[i] + '}') : tempArray.push(cssArray[i] + '}');
+            finishFlag ? cssResult.push(`${rule}}`) : tempArray.push(`${rule}}`);
         }
     }
-    return sortByOrder ? cssResult.sort() : cssResult;
+    return sortByOrder ? cssResult.filter(c => c.length > 1).sort() : cssResult.filter(c => c.length > 1);
 }
 
 function readCssFileAndPreprocess(filePath: string | string[]): string {
@@ -78,7 +78,7 @@ export function componentsAnalysis(frameworkPath: string | string[]): string[] {
 
 export function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray: string[]): string[] {
     const minResult = cssContent.filter(rule => {
-        if (rule.length < 1) return false;
+        if (rule.length <= 1) return false;
 
         const { selector, content } = splitRule(rule);
         if (selector === 'html' || selector === 'body' || selector === ':root' || selector.includes('*') || selector.includes('@keyframes')) {
@@ -122,8 +122,8 @@ export function extractCssOnDemand(cssContent: string[], tagArray: string[], cla
 
 function splitRule(rule: string): { selector: string; content: string } {
     const css = rule.split('{');
-    const selector = css[0]?.trim();
-    const content = css[1]?.trim();
+    const selector = css[0]?.trim() || '';
+    const content = css[1]?.trim() || '';
     return { selector, content };
 }
 
