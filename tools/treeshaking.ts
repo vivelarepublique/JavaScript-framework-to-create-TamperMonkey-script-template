@@ -2,6 +2,11 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { removeDuplicates } from './utils';
 
+export function handlingCssFiles(filePath: string | string[]): string[] {
+    const content = readCssFileAndPreprocess(filePath);
+    return cssSplitAndReorganize(content);
+}
+
 export function cssSplitAndReorganize(cssContent: string, sortByOrder: boolean = false): string[] {
     const cssArray = cssContent.split('}');
     const cssResult: string[] = [];
@@ -23,127 +28,103 @@ export function cssSplitAndReorganize(cssContent: string, sortByOrder: boolean =
     return sortByOrder ? cssResult.sort() : cssResult;
 }
 
-export function readFileInformation(filePath: string): string {
-    if (existsSync(filePath)) {
-        return readFileSync(filePath, 'utf-8');
+function readCssFileAndPreprocess(filePath: string | string[]): string {
+    if (Array.isArray(filePath)) {
+        return filePath.reduce((previous, current) => {
+            if (!isMinCssAndExists(current)) return previous;
+            const content = readFileSync(current, 'utf-8');
+            return previous + removeCommentsAndCharset(content);
+        }, '');
     } else {
-        throw new Error(`File ${filePath} not found`);
+        if (!isMinCssAndExists(filePath)) return '';
+        const content = readFileSync(filePath, 'utf-8');
+        return removeCommentsAndCharset(content);
     }
 }
 
-export function cssFileTransformation(fileContent: string): string[] {
-    return cssSplitAndReorganize(fileContent.replaceAll(/(@charset "UTF-8";)|(\/\*[\s\S]*?\*\/)/g, ''));
+function isMinCssAndExists(filePath: string): boolean {
+    return filePath.endsWith('.min.css') && existsSync(filePath);
+}
+
+function removeCommentsAndCharset(content: string): string {
+    return content.replaceAll(/(@charset "UTF-8";)|(\/\*[\s\S]*?\*\/)/g, '');
+}
+
+function isComponentsFile(file: string): boolean {
+    return file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.vue') || file.endsWith('.svelte');
+}
+
+export function componentsAnalysis(frameworkPath: string | string[]): string[] {
+    if (Array.isArray(frameworkPath)) {
+        return frameworkPath.reduce((previous, current) => {
+            if (!existsSync(current)) return previous;
+            const files = readdirSync(current);
+            return previous.concat(
+                files.reduce((prev, curr) => {
+                    if (!isComponentsFile(curr)) return prev;
+                    return prev.concat(readFileSync(join(current, curr), 'utf-8'));
+                }, [] as string[]),
+            );
+        }, [] as string[]);
+    } else {
+        if (!existsSync(frameworkPath)) return [];
+        const files = readdirSync(frameworkPath);
+        return files.reduce((prev, curr) => {
+            if (!isComponentsFile(curr)) return prev;
+            return prev.concat(readFileSync(join(frameworkPath, curr), 'utf-8'));
+        }, [] as string[]);
+    }
 }
 
 export function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray: string[]): string[] {
-    const minResult: string[] = [];
+    const minResult = cssContent.filter(rule => {
+        if (rule.length < 1) return false;
 
-    const mediaQueryTemp: string[] = [];
-    const keyFramesTemp: string[] = [];
-
-    cssContent.forEach(rule => {
-        const css = rule.split('{');
-        const selector = css[0].trim();
-        if (selector === 'html' || selector === 'body' || selector.includes(':root')) {
-            minResult.push(rule);
+        const { selector, content } = splitRule(rule);
+        if (selector === 'html' || selector === 'body' || selector === ':root' || selector.includes('*') || selector.includes('@keyframes')) {
+            return true;
         } else {
-            if (selector.includes('@keyframes') || selector.includes('@media')) {
-                if (selector.includes('@keyframes')) {
-                    keyFramesTemp.push(rule);
-                }
-                if (selector.includes('@media')) {
-                    mediaQueryTemp.push(rule);
-                }
+            if (selector.includes('@media')) {
+                return !!classArray.find(className => content.includes(className));
             } else {
-                tagArray.forEach(tag => {
-                    if (selector.includes(',')) {
-                        const selectors = selector.split(',').map(s => s.trim());
-                        if (selectors.includes(tag)) {
-                            minResult.push(rule);
+                return (
+                    !!tagArray.find(tag => {
+                        if (selector.includes(',')) {
+                            const selectors = selector.split(',').map(s => s.trim());
+                            return selectors.includes(tag);
+                        } else {
+                            const selectors = selector
+                                .split(' ')
+                                .filter(s => s)
+                                .map(s => s.trim());
+                            return selectors.includes(tag);
                         }
-                    } else {
-                        const selectors = selector
-                            .split(' ')
-                            .filter(s => s)
-                            .map(s => s.trim());
-                        if (selectors.includes(tag)) {
-                            minResult.push(rule);
+                    }) ||
+                    !!classArray.find(className => {
+                        if (selector.includes('.')) {
+                            const selectors = selector
+                                .replaceAll(/[\+\>\*]|\[.*?\]|:{1,2}[a-z]+((\(.*?\)))?/g, ',')
+                                .split(',')
+                                .filter(s => s)
+                                .map(s => s.trim());
+                            return selectors.some(s => s.includes(`.${className}`));
+                        } else {
+                            return false;
                         }
-                    }
-                });
-                classArray.forEach(className => {
-                    if (selector.includes('.')) {
-                        const selectors = selector
-                            .replaceAll(/[\+\>\*]|\[.*?\]|:{1,2}[a-z]+((\(.*?\)))?/g, ',')
-                            .split(',')
-                            .filter(s => s)
-                            .map(s => s.trim());
-                        if (selectors.some(s => `.${className}` === s)) {
-                            minResult.push(rule);
-                        }
-                    }
-                });
+                    })
+                );
             }
         }
     });
 
-    if (keyFramesTemp.length > 0) {
-        const tempResult = minResult.join('');
-        keyFramesTemp.forEach(rule => {
-            const css = rule.split('{');
-            const name = css[1].split(' ')[1];
-            if (tempResult.includes(name)) {
-                minResult.push(rule);
-            }
-        });
-    }
-
-    if (mediaQueryTemp.length > 0) {
-        mediaQueryTemp.forEach(rule => {
-            const css = rule.split('{');
-            const content = css[1];
-            classArray.forEach(className => {
-                if (content.includes(className)) {
-                    minResult.push(rule);
-                }
-            });
-        });
-    }
-
     return removeDuplicates(minResult);
 }
 
-export function componentsAnalysis(frameworkPath: string | string[]): string[] {
-    const result: string[] = [];
-    try {
-        if (Array.isArray(frameworkPath)) {
-            frameworkPath
-                .map(framework => `src/${framework}/components`)
-                .forEach(path => {
-                    const files = readdirSync(path);
-                    files.forEach(file => {
-                        if (file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.vue') || file.endsWith('.svelte')) {
-                            const filePath = join(path, file);
-                            const data = readFileSync(filePath, 'utf-8');
-                            result.push(data);
-                        }
-                    });
-                });
-        } else {
-            const files = readdirSync(`src/${frameworkPath}/components`);
-            files.forEach(file => {
-                if (file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.vue') || file.endsWith('.svelte')) {
-                    const filePath = join(`src/${frameworkPath}/components`, file);
-                    const data = readFileSync(filePath, 'utf-8');
-                    result.push(data);
-                }
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    } finally {
-        return result;
-    }
+function splitRule(rule: string): { selector: string; content: string } {
+    const css = rule.split('{');
+    const selector = css[0]?.trim();
+    const content = css[1]?.trim();
+    return { selector, content };
 }
 
 export function extractFileContentTagName(filesData: string[], excludeTags: string[] = []): string[] {

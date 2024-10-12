@@ -15,8 +15,8 @@ export interface ScriptInformationParameters {
 }
 
 export interface TreeShakingConfig {
-    cssPath: string;
-    framework: string | string[];
+    cssFilesPath: string | string[];
+    frameworkComponentsPath: string | string[];
 }
 
 export type SecureHashAlgorithm = 'SHA-256' | 'SHA-384' | 'SHA-512';

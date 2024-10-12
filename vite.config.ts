@@ -15,7 +15,7 @@ import tampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tamp
 
 import { visualizer } from 'rollup-plugin-visualizer';
 
-import { bannerConfig } from './config/getParameters';
+import { bannerConfig, supportedFramework } from './config/getParameters';
 
 export default defineConfig(({ command, mode }) => {
     const isBuild = command === 'build';
@@ -24,8 +24,8 @@ export default defineConfig(({ command, mode }) => {
     const buildPlugins: PluginOption[] = isBuild
         ? [
               cssBeautificationAndExternalCssTreeShaking({
-                  cssPath: 'node_modules/bulma/css/bulma.min.css',
-                  framework: ['vue', 'react', 'preact', 'lit', 'svelte', 'solid'],
+                  cssFilesPath: 'node_modules/bulma/css/bulma.min.css',
+                  frameworkComponentsPath: supportedFramework.map(framework => `src/${framework}/components`),
               }),
               tampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
           ].concat(
