@@ -2,47 +2,15 @@
 
 import type { TampermonkeyWebRequestParameters } from '../interface/request';
 
-export async function httpRequestReturnXML(request: TampermonkeyWebRequestParameters): Promise<Document | null> {
-    const { url, method, headers, data } = request;
-
-    return new Promise(async resolve => {
-        if (typeof GM_xmlhttpRequest === 'function') {
-            const context = { url, method };
-            if (headers) {
-                Object.assign(context, headers);
-            }
-            if (data && method != 'GET') {
-                Object.assign(context, data);
-            }
-
-            GM_xmlhttpRequest({
-                ...context,
-                onload: response => {
-                    resolve(response.responseXML);
-                },
-                onerror: _ => resolve(null),
-            });
-        } else {
-            const init = { method };
-            if (headers) {
-                Object.assign(init, headers);
-            }
-            if (data && method != 'GET') {
-                Object.assign(init, { body: data });
-            }
-
-            const response = await fetch(url, init);
-            const xml = await response.text();
-            response.ok ? resolve(new DOMParser().parseFromString(xml, 'text/html')) : resolve(null);
-        }
-    });
+function getContentType(headers: string): string {
+    return headers.match(/[a-z]+\/[a-z]+(?=;\s?charset)/)?.join('') || '';
 }
 
-export async function httpRequestReturnJSON(request: TampermonkeyWebRequestParameters): Promise<any | null> {
+export async function httpRequest(request: TampermonkeyWebRequestParameters): Promise<any> {
     const { url, method, headers, data } = request;
 
-    return new Promise(async resolve => {
-        if (typeof GM_xmlhttpRequest === 'function') {
+    if (typeof GM_xmlhttpRequest === 'function') {
+        return new Promise(resolve => {
             const context = { url, method };
             if (headers) {
                 Object.assign(context, headers);
@@ -54,28 +22,44 @@ export async function httpRequestReturnJSON(request: TampermonkeyWebRequestParam
             GM_xmlhttpRequest({
                 ...context,
                 onload: response => {
-                    try {
+                    const contentType = getContentType(response.responseHeaders);
+
+                    if (contentType === 'application/json') {
                         resolve(JSON.parse(response.responseText));
-                    } catch (error) {
-                        console.error(error);
-                        resolve(null);
+                    } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
+                        resolve(response.responseXML);
+                    } else {
+                        resolve(response.responseText);
                     }
                 },
                 onerror: _ => resolve(null),
             });
-        } else {
-            const init = { method };
-            if (headers) {
-                Object.assign(init, headers);
-            }
-            if (data && method != 'GET') {
-                Object.assign(init, { body: data });
-            }
-
-            const response = await fetch(url, init);
-            response.ok ? resolve(await response.json()) : resolve(null);
+        });
+    } else {
+        const init = { method };
+        if (headers) {
+            Object.assign(init, headers);
         }
-    });
+        if (data && method != 'GET') {
+            Object.assign(init, { body: data });
+        }
+
+        const response = await fetch(url, init);
+        const contentType = getContentType(response.headers.get('content-type') || '');
+
+        if (contentType === 'application/json') {
+            return response.ok ? response.json() : null;
+        } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
+            if (response.ok) {
+                const xml = await response.text();
+                return new DOMParser().parseFromString(xml, 'text/html');
+            } else {
+                return null;
+            }
+        } else {
+            return response.ok ? response.text() : null;
+        }
+    }
 }
 
 export const windowProxy: {

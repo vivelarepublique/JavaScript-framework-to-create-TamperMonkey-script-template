@@ -1,10 +1,11 @@
-import { httpRequestReturnXML } from '../common/utils/tamperMonkeyFunction';
+import { httpRequest } from '../common/utils/tamperMonkeyFunction';
 import { getElement, createElementWithAttributes } from '../common/utils/elementBasic';
 import { body, head } from '../common/alias';
 
-async function getBackgroundImage() {
-    const doc = await httpRequestReturnXML({ url: 'https://www.bing.com/?toWww=1', method: 'GET' });
-    if (!doc) return null;
+async function getBackgroundImageURL() {
+    const doc = await httpRequest({ url: 'https://www.bing.com/?toWww=1', method: 'GET' });
+    if (!doc) return '';
+
     const background = getElement(
         {
             tagName: 'div',
@@ -13,17 +14,15 @@ async function getBackgroundImage() {
         doc,
     );
     const url = background?.style.backgroundImage?.match(/(?<=").+?(?=")/g)?.[0];
-    return url ? `https://www.bing.com/${url}` : null;
+    return url ? `https://www.bing.com/${url}` : '';
 }
 
 export async function updateBackgroundImage() {
-    const backgroundImage = await getBackgroundImage();
-    if (backgroundImage) {
-        Object.assign(body.style, {
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundRepeat: 'round',
-        });
-    }
+    const backgroundImageURL = await getBackgroundImageURL();
+    Object.assign(body.style, {
+        backgroundImage: `url(${backgroundImageURL})`,
+        backgroundRepeat: 'round',
+    });
 }
 
 export function updateCssRules(rules: string) {
