@@ -5,10 +5,8 @@ import vue from '@vitejs/plugin-vue';
 import react from '@vitejs/plugin-react';
 
 import preact from '@preact/preset-vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import solid from 'vite-plugin-solid';
-
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 import cssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking';
 import tampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection';
@@ -53,8 +51,8 @@ export default defineConfig(({ command, mode }) => {
         build: {
             target: 'esnext',
             outDir: 'release',
-            assetsInlineLimit: 4096 * 1024,
-            chunkSizeWarningLimit: 2048 * 1024,
+            assetsInlineLimit: 16384,
+            chunkSizeWarningLimit: 2048,
             minify: 'terser',
             terserOptions: {
                 compress: true,
@@ -75,7 +73,6 @@ export default defineConfig(({ command, mode }) => {
                 include: ['src/preact/**/*.{tsx,ts,jsx,js}'],
             }),
             svelte({
-                include: ['src/svelte/**/*.{tsx,ts,jsx,js,svelte}'],
                 preprocess: vitePreprocess(),
             }),
             solid({
