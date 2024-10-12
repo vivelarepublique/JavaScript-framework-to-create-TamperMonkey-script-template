@@ -62,20 +62,22 @@ export async function httpRequest(request: TampermonkeyWebRequestParameters): Pr
         try {
             const response = await fetch(url, init);
             clearTimeout(timeoutId);
-            const contentType = getContentType(response.headers.get('content-type') || '');
+
             const ok = responseOK(response);
 
-            if (contentType === 'application/json') {
-                return ok ? response.json() : null;
-            } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
-                if (ok) {
+            if (ok) {
+                const contentType = getContentType(response.headers.get('content-type') || '');
+
+                if (contentType === 'application/json') {
+                    return await response.json();
+                } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
                     const xml = await response.text();
                     return new DOMParser().parseFromString(xml, 'text/html');
                 } else {
-                    return null;
+                    return await response.text();
                 }
             } else {
-                return ok ? response.text() : null;
+                return null;
             }
         } catch (error: any) {
             if (error.name === 'AbortError') {
