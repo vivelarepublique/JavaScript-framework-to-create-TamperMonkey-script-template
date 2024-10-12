@@ -40,7 +40,7 @@ export default function Modal(props: Props) {
                     </button>
                 </span>
 
-                <div class='container-fluid text-center'>
+                <div class='block'>
                     <div class='title is-1 header-framework-test-preact'>{msg}</div>
 
                     <div class='tabs is-centered is-toggle is-toggle-rounded'>
