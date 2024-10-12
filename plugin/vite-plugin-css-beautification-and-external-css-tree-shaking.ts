@@ -1,6 +1,6 @@
 import { Rollup } from 'vite';
 import type { Plugin } from 'vite';
-import { handlingCssFiles, cssSplitAndReorganize, extractCssOnDemand, componentsAnalysis, extractFileContentTagName, extractFileContentClassName } from '../tools/treeshaking';
+import treeShaking, { cssSplitAndReorganize } from '../tools/treeshaking';
 import type { TreeShakingConfig } from '../types';
 
 export default function cssBeautificationAndExternalCssTreeShakingPlugin(config: TreeShakingConfig): Plugin {
@@ -11,11 +11,12 @@ export default function cssBeautificationAndExternalCssTreeShakingPlugin(config:
         enforce: 'post',
         generateBundle(_options, bundle) {
             try {
-                const fileInformation = handlingCssFiles(cssFilesPath);
-                if (fileInformation.length === 0) return;
-
-                const filesData = componentsAnalysis(frameworkComponentsPath);
-                const minExternalCss = extractCssOnDemand(fileInformation, extractFileContentTagName(filesData), extractFileContentClassName(filesData, 'framework-test'));
+                const minExternalCss = treeShaking({
+                    cssFilesPath,
+                    frameworkComponentsPath,
+                    excludeTags: ['main', 'style', 'link', 'script', 'number', 'string', 'boolean', 'component', 'template'],
+                    excludeClassNameKeywords: 'framework-test',
+                });
 
                 const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
                 const lastCssBundleName = cssBundleNames[cssBundleNames.length - 1];

@@ -1,8 +1,17 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { removeDuplicates } from './utils';
+import type { TreeShakingOptions } from '../types';
 
-export function handlingCssFiles(filePath: string | string[]): string[] {
+export default function treeShaking(option: TreeShakingOptions): string[] {
+    const { cssFilesPath, frameworkComponentsPath, excludeTags, excludeClassNameKeywords } = option;
+    const cssArray = handlingCssFiles(cssFilesPath);
+    const componentsArray = componentsAnalysis(frameworkComponentsPath);
+
+    return extractCssOnDemand(cssArray, extractFileContentTagName(componentsArray, excludeTags), extractFileContentClassName(componentsArray, excludeClassNameKeywords));
+}
+
+function handlingCssFiles(filePath: string | string[]): string[] {
     const content = readCssFileAndPreprocess(filePath);
     return cssSplitAndReorganize(content);
 }
@@ -54,7 +63,7 @@ function isComponentsFile(file: string): boolean {
     return file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.vue') || file.endsWith('.svelte');
 }
 
-export function componentsAnalysis(frameworkPath: string | string[]): string[] {
+function componentsAnalysis(frameworkPath: string | string[]): string[] {
     if (Array.isArray(frameworkPath)) {
         return frameworkPath.reduce((previous, current) => {
             if (!existsSync(current)) return previous;
@@ -76,7 +85,7 @@ export function componentsAnalysis(frameworkPath: string | string[]): string[] {
     }
 }
 
-export function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray: string[]): string[] {
+function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray: string[]): string[] {
     const minResult = cssContent.filter(rule => {
         if (rule.length <= 1) return false;
 
@@ -127,7 +136,7 @@ function splitRule(rule: string): { selector: string; content: string } {
     return { selector, content };
 }
 
-export function extractFileContentTagName(filesData: string[], excludeTags: string[] = []): string[] {
+function extractFileContentTagName(filesData: string[], excludeTags: string[] = []): string[] {
     return removeDuplicates(
         filesData.reduce((accumulator: string[], current: string) => {
             return accumulator.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g) || []);
@@ -135,7 +144,7 @@ export function extractFileContentTagName(filesData: string[], excludeTags: stri
     ).filter(t => !excludeTags.includes(t));
 }
 
-export function extractFileContentClassName(filesData: string[], excludeClassNameKeywords: string = 'framework-test'): string[] {
+function extractFileContentClassName(filesData: string[], excludeClassNameKeywords: string = 'exclude-class-keywords'): string[] {
     const nativeClasses = filesData.reduce((accumulator: string[], current: string) => {
         return accumulator.concat((current.match(/(?<=\sclassN?a?m?e?=['"])[a-z0-9\-\s]+?(?=['"])/g) || []).map(c => c.split(' ')).flat());
     }, []);

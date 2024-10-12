@@ -19,4 +19,9 @@ export interface TreeShakingConfig {
     frameworkComponentsPath: string | string[];
 }
 
+export interface TreeShakingOptions extends TreeShakingConfig {
+    excludeTags?: string[];
+    excludeClassNameKeywords?: string;
+}
+
 export type SecureHashAlgorithm = 'SHA-256' | 'SHA-384' | 'SHA-512';
