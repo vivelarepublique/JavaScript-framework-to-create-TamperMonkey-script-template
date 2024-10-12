@@ -30,13 +30,13 @@ export default defineConfig(({ command, mode }) => {
               tampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
           ].concat(
               isProduction
-                  ? []
-                  : [
+                  ? [
                         visualizer({
                             emitFile: true,
                             filename: 'stats.html',
                         }),
-                    ],
+                    ]
+                  : [],
           )
         : [];
 
