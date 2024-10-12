@@ -1,4 +1,4 @@
-import { removeDuplicates, hashReturnHex } from './utils';
+import { removeDuplicates, hashReturnHex, urlRegex } from './utils';
 import type { ScriptInformationParameters } from '../types';
 
 function generalParameter(key: string, value?: string) {
@@ -14,13 +14,12 @@ function parameterArray(array: string[], key: string): string {
 }
 
 function countAllUniqueHostnames(code: string): string[] {
-    const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm;
     const urls = code.match(urlRegex);
     return urls ? removeDuplicates(urls.map(url => new URL(url).hostname)) : [];
 }
 
 function countAllUniqueGrants(code: string): string[] {
-    const grantRegex = /(GM_[a-zA-Z]+)|unsafeWindow/gm;
+    const grantRegex = /(GM_[a-zA-Z]+)|unsafeWindow/g;
     const grants = code.match(grantRegex);
     return grants ? removeDuplicates(grants) : [];
 }
@@ -41,7 +40,7 @@ document.head.appendChild(${name}_${hashSub});`;
 export function bannerTemplate(code: string, details: ScriptInformationParameters) {
     const { name, namespace, version, description, author, runAt, runIn, sandbox, tag, noframes, match, grant, connect } = details;
     const grants = removeDuplicates(countAllUniqueGrants(code).concat(grant));
-    const connects = removeDuplicates(countAllUniqueHostnames(code).concat(connect));
+    const connects = connect === '*' ? ['*'] : removeDuplicates(countAllUniqueHostnames(code).concat(connect));
     return (
         '// ==UserScript==\n' +
         generalParameter('name', name) +

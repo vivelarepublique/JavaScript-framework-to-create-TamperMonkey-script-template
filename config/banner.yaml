@@ -11,5 +11,4 @@ match:
 grant:
     - GM_xmlhttpRequest
     - unsafeWindow
-connect:
-    - www.bing.com
+connect: '*'

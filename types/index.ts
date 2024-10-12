@@ -11,7 +11,7 @@ export interface ScriptInformationParameters {
     tag?: string[];
     noframes?: boolean;
     grant: string[];
-    connect: string[];
+    connect: string | string[];
 }
 
 export interface TreeShakingConfig {

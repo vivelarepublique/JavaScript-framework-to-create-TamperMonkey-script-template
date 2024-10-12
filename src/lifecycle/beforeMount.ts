@@ -1,6 +1,7 @@
 import { httpRequest } from '../common/utils/tamperMonkeyFunction';
 import { getElement, createElementWithAttributes } from '../common/utils/elementBasic';
 import { body, head } from '../common/alias';
+import { urlRegex } from '../common/constant';
 
 async function getBackgroundImageURL() {
     const doc = await httpRequest({ url: 'https://www.bing.com/?toWww=1', method: 'GET' });
@@ -14,7 +15,7 @@ async function getBackgroundImageURL() {
         doc,
     );
     const url = background?.style.backgroundImage?.match(/(?<=").+?(?=")/g)?.[0];
-    return url ? `https://www.bing.com/${url}` : '';
+    return url ? (urlRegex.test(url) ? url : `https://www.bing.com/${url}`) : '';
 }
 
 export async function updateBackgroundImage() {
