@@ -6,12 +6,17 @@ function getContentType(headers: string): string {
     return headers.match(/[a-z]+\/[a-z]+(?=;\s?charset)/)?.join('') || '';
 }
 
+function responseOK(response: Response): boolean {
+    return response.ok && response.status >= 200 && response.status < 300;
+}
+
 export async function httpRequest(request: TampermonkeyWebRequestParameters): Promise<any> {
-    const { url, method, headers, data } = request;
+    const { url, method, headers, data, timeout, anonymous } = request;
+    const noCookie = typeof anonymous === 'undefined' || anonymous;
 
     if (typeof GM_xmlhttpRequest === 'function') {
         return new Promise(resolve => {
-            const context = { url, method };
+            const context: TampermonkeyWebRequestParameters = { url, method };
             if (headers) {
                 Object.assign(context, headers);
             }
@@ -20,6 +25,9 @@ export async function httpRequest(request: TampermonkeyWebRequestParameters): Pr
             }
 
             GM_xmlhttpRequest({
+                fetch: true,
+                timeout: timeout || 60 * 1000,
+                anonymous: noCookie,
                 ...context,
                 onload: response => {
                     const contentType = getContentType(response.responseHeaders);
@@ -32,11 +40,18 @@ export async function httpRequest(request: TampermonkeyWebRequestParameters): Pr
                         resolve(response.responseText);
                     }
                 },
+                onabort: () => resolve(null),
                 onerror: _ => resolve(null),
             });
         });
     } else {
-        const init = { method };
+        const controller = new AbortController();
+        const { signal, abort } = controller;
+        const timeoutId = setTimeout(() => {
+            abort();
+        }, timeout || 60 * 1000);
+
+        const init: RequestInit = { method, signal, credentials: noCookie ? 'omit' : 'include' };
         if (headers) {
             Object.assign(init, headers);
         }
@@ -44,20 +59,29 @@ export async function httpRequest(request: TampermonkeyWebRequestParameters): Pr
             Object.assign(init, { body: data });
         }
 
-        const response = await fetch(url, init);
-        const contentType = getContentType(response.headers.get('content-type') || '');
+        try {
+            const response = await fetch(url, init);
+            clearTimeout(timeoutId);
+            const contentType = getContentType(response.headers.get('content-type') || '');
+            const ok = responseOK(response);
 
-        if (contentType === 'application/json') {
-            return response.ok ? response.json() : null;
-        } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
-            if (response.ok) {
-                const xml = await response.text();
-                return new DOMParser().parseFromString(xml, 'text/html');
+            if (contentType === 'application/json') {
+                return ok ? response.json() : null;
+            } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
+                if (ok) {
+                    const xml = await response.text();
+                    return new DOMParser().parseFromString(xml, 'text/html');
+                } else {
+                    return null;
+                }
             } else {
-                return null;
+                return ok ? response.text() : null;
             }
-        } else {
-            return response.ok ? response.text() : null;
+        } catch (error: any) {
+            if (error.name === 'AbortError') {
+                throw new Error(`Request timed out after ${timeout} ms`);
+            }
+            throw error;
         }
     }
 }
