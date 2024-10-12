@@ -1,13 +1,17 @@
-@keyframes rotate-less {
+@keyframes framework-test-less-animation {
     from {
-        transform: rotate(0deg);
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(0.5) rotate(180deg);
     }
 
     to {
-        transform: rotate(360deg);
+        transform: scale(1) rotate(360deg);
     }
 }
 
-img.framework-test-logo.less-logo {
-    animation: rotate-less 5s linear infinite;
+img.framework-test-logo.framework-test-less-logo {
+    animation: framework-test-less-animation 5s linear infinite;
 }

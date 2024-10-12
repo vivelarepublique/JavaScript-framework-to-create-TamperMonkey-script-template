@@ -54,20 +54,24 @@ a.framework-test-a-vite {
     height: 128px;
 }
 
-.framework-test-rotate-logo {
-    animation: rotate-framework-test 8s linear infinite;
+.framework-test-logo-animation {
+    animation: framework-test-scale 5s linear infinite;
 }
 
 .framework-test-text-align {
     text-align: center;
 }
 
-@keyframes rotate-framework-test {
+@keyframes framework-test-scale {
     from {
-        transform: rotate(0deg);
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.5);
     }
 
     to {
-        transform: rotate(360deg);
+        transform: scale(1);
     }
 }

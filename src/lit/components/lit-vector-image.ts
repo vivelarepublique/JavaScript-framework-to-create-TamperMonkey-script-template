@@ -74,7 +74,7 @@ export class LitVectorImage extends BaseComponent {
                         </div>
                         <div class="column is-3">
                             <div>
-                                <img src=${litLogo} class="framework-test-logo framework-test-rotate-logo" alt="Lit logo" />
+                                <img src=${litLogo} class="framework-test-logo framework-test-logo-animation" alt="Lit logo" />
                             </div>
                             <div>
                                 <a class="framework-test-a-lit" href="https://lit.dev" target="_blank" rel="noopener"> Lit </a>
@@ -102,7 +102,7 @@ export class LitVectorImage extends BaseComponent {
                     <div class="columns">
                         <div class="column is-4">
                             <div>
-                                <img src=${lessLogo} class="framework-test-logo less-logo" alt="Less logo" />
+                                <img src=${lessLogo} class="framework-test-logo framework-test-less-logo" alt="Less logo" />
                             </div>
                             <div>
                                 <a class="framework-test-a-less" href="https://lesscss.org" target="_blank" rel="noopener"> Less </a>
@@ -110,7 +110,7 @@ export class LitVectorImage extends BaseComponent {
                         </div>
                         <div class="column is-4">
                             <div>
-                                <img src=${sassLogo} class="framework-test-logo sass-logo" alt="Sass logo" />
+                                <img src=${sassLogo} class="framework-test-logo framework-test-sass-logo" alt="Sass logo" />
                             </div>
                             <div>
                                 <a class="framework-test-a-sass" href="https://sass-lang.com" target="_blank" rel="noopener"> Sass </a>
@@ -118,7 +118,7 @@ export class LitVectorImage extends BaseComponent {
                         </div>
                         <div class="column is-4">
                             <div>
-                                <img src=${stylusLogo} class="framework-test-logo stylus-logo" alt="Stylus logo" />
+                                <img src=${stylusLogo} class="framework-test-logo framework-test-stylus-logo" alt="Stylus logo" />
                             </div>
                             <div>
                                 <a class="framework-test-a-stylus" href="https://stylus-lang.com" target="_blank" rel="noopener"> Stylus </a>

@@ -1,9 +1,12 @@
-@keyframes rotate-stylus
+@keyframes framework-test-stylus-animation
   from
-    transform: rotate(0deg);
+    transform: skew(0deg, 0deg);
+
+  50%
+    transform: skew(20deg, 20deg);
 
   to
-    transform: rotate(360deg);
+    transform: skew(0deg, 0deg);
 
-img.framework-test-logo.stylus-logo
-  animation: rotate-stylus 7s linear infinite;
+img.framework-test-logo.framework-test-stylus-logo
+  animation: framework-test-stylus-animation 5s linear infinite;

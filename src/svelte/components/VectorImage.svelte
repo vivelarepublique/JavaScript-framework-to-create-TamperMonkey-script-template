@@ -76,7 +76,7 @@
             </div>
             <div class="column is-3">
                 <div>
-                    <img src={svelteLogo} class="framework-test-logo framework-test-rotate-logo" alt="Svelte logo" />
+                    <img src={svelteLogo} class="framework-test-logo framework-test-logo-animation" alt="Svelte logo" />
                 </div>
                 <div>
                     <a class="framework-test-a-svelte" href="https://svelte.dev" target="_blank" rel="noopener"> Svelte </a>
@@ -96,7 +96,7 @@
         <div class="columns">
             <div class="column is-4">
                 <div>
-                    <img src={lessLogo} class="framework-test-logo less-logo" alt="Less logo" />
+                    <img src={lessLogo} class="framework-test-logo framework-test-less-logo" alt="Less logo" />
                 </div>
                 <div>
                     <a class="framework-test-a-less" href="https://lesscss.org" target="_blank" rel="noopener"> Less </a>
@@ -104,7 +104,7 @@
             </div>
             <div class="column is-4">
                 <div>
-                    <img src={sassLogo} class="framework-test-logo sass-logo" alt="Sass logo" />
+                    <img src={sassLogo} class="framework-test-logo framework-test-sass-logo" alt="Sass logo" />
                 </div>
                 <div>
                     <a class="framework-test-a-sass" href="https://sass-lang.com" target="_blank" rel="noopener"> Sass </a>
@@ -112,7 +112,7 @@
             </div>
             <div class="column is-4">
                 <div>
-                    <img src={stylusLogo} class="framework-test-logo stylus-logo" alt="Stylus logo" />
+                    <img src={stylusLogo} class="framework-test-logo framework-test-stylus-logo" alt="Stylus logo" />
                 </div>
                 <div>
                     <a class="framework-test-a-stylus" href="https://stylus-lang.com" target="_blank" rel="noopener"> Stylus </a>

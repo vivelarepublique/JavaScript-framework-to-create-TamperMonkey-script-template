@@ -6,7 +6,7 @@
             <div class="columns">
                 <div class="column is-3">
                     <div>
-                        <img src="../../assets/svg/vue.svg" class="framework-test-logo framework-test-rotate-logo" alt="Vue logo" />
+                        <img src="../../assets/svg/vue.svg" class="framework-test-logo framework-test-logo-animation" alt="Vue logo" />
                     </div>
                     <div>
                         <a class="framework-test-a-vue" href="https://vuejs.org" target="_blank" rel="noopener">Vue</a>
@@ -78,7 +78,7 @@
             <div class="columns">
                 <div class="column is-4">
                     <div>
-                        <img src="../../assets/svg/less.svg" class="framework-test-logo less-logo" alt="Less logo" />
+                        <img src="../../assets/svg/less.svg" class="framework-test-logo framework-test-less-logo" alt="Less logo" />
                     </div>
                     <div>
                         <a class="framework-test-a-less" href="https://lesscss.org" target="_blank" rel="noopener">Less</a>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="column is-4">
                     <div>
-                        <img src="../../assets/svg/sass.svg" class="framework-test-logo sass-logo" alt="Sass logo" />
+                        <img src="../../assets/svg/sass.svg" class="framework-test-logo framework-test-sass-logo" alt="Sass logo" />
                     </div>
                     <div>
                         <a class="framework-test-a-sass" href="https://sass-lang.com" target="_blank" rel="noopener">Sass</a>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="column is-4">
                     <div>
-                        <img src="../../assets/svg/stylus.svg" class="framework-test-logo stylus-logo" alt="Stylus logo" />
+                        <img src="../../assets/svg/stylus.svg" class="framework-test-logo framework-test-stylus-logo" alt="Stylus logo" />
                     </div>
                     <div>
                         <a class="framework-test-a-stylus" href="https://stylus-lang.com" target="_blank" rel="noopener">Stylus</a>

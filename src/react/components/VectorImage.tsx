@@ -37,7 +37,7 @@ export default function VectorImage() {
                         </div>
                         <div className='column is-3'>
                             <div>
-                                <img src={reactLogo} className='framework-test-logo framework-test-rotate-logo' alt='React logo' />
+                                <img src={reactLogo} className='framework-test-logo framework-test-logo-animation' alt='React logo' />
                             </div>
                             <div>
                                 <a className='framework-test-a-react' href='https://react.dev' target='_blank' rel='noopener'>
@@ -115,7 +115,7 @@ export default function VectorImage() {
                     <div className='columns'>
                         <div className='column is-4'>
                             <div>
-                                <img src={lessLogo} className='framework-test-logo less-logo' alt='Less logo' />
+                                <img src={lessLogo} className='framework-test-logo framework-test-less-logo' alt='Less logo' />
                             </div>
                             <div>
                                 <a className='framework-test-a-less' href='https://lesscss.org' target='_blank' rel='noopener'>
@@ -125,7 +125,7 @@ export default function VectorImage() {
                         </div>
                         <div className='column is-4'>
                             <div>
-                                <img src={sassLogo} className='framework-test-logo sass-logo' alt='Sass logo' />
+                                <img src={sassLogo} className='framework-test-logo framework-test-sass-logo' alt='Sass logo' />
                             </div>
                             <div>
                                 <a className='framework-test-a-sass' href='https://sass-lang.com' target='_blank' rel='noopener'>
@@ -135,7 +135,7 @@ export default function VectorImage() {
                         </div>
                         <div className='column is-4'>
                             <div>
-                                <img src={stylusLogo} className='framework-test-logo stylus-logo' alt='Stylus logo' />
+                                <img src={stylusLogo} className='framework-test-logo framework-test-stylus-logo' alt='Stylus logo' />
                             </div>
                             <div>
                                 <a className='framework-test-a-stylus' href='https://stylus-lang.com' target='_blank' rel='noopener'>

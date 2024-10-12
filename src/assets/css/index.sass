@@ -1,9 +1,12 @@
-@keyframes rotate-sass
+@keyframes framework-test-sass-animation
     from
-        transform: rotate(0deg)
+        transform: scale(1) rotate(0deg)
+
+    50%
+        transform: scale(0.5) rotate(180deg)
 
     to
-        transform: rotate(360deg)
+        transform: scale(1) rotate(360deg)
 
-img.framework-test-logo.sass-logo
-    animation: rotate-sass 6s linear infinite
+img.framework-test-logo.framework-test-sass-logo
+    animation: framework-test-sass-animation 5s linear infinite
