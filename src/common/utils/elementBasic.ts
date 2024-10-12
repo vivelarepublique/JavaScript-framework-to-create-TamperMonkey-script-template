@@ -9,20 +9,22 @@ export function combineSelectors(selector: CommonSelectors): string {
 }
 
 export function getElement(selector: string | CommonSelectors, refer?: Document): HTMLElement | null {
+    const flag = refer instanceof Document;
     if (typeof selector === 'string') {
-        return refer ? refer.querySelector(selector) : document.querySelector(selector);
+        return flag ? refer.querySelector(selector) : document.querySelector(selector);
     } else {
         const combinedSelector = combineSelectors(selector);
-        return refer ? refer.querySelector(combinedSelector) : document.querySelector(combinedSelector);
+        return flag ? refer.querySelector(combinedSelector) : document.querySelector(combinedSelector);
     }
 }
 
 export function getMultiElement(selector: string | CommonSelectors, refer?: Document): HTMLElement[] {
+    const flag = refer instanceof Document;
     if (typeof selector === 'string') {
-        return Array.from(refer ? refer.querySelectorAll(selector) : document.querySelectorAll(selector));
+        return Array.from(flag ? refer.querySelectorAll(selector) : document.querySelectorAll(selector));
     } else {
         const combinedSelector = combineSelectors(selector);
-        return Array.from(refer ? refer.querySelectorAll(combinedSelector) : document.querySelectorAll(combinedSelector));
+        return Array.from(flag ? refer.querySelectorAll(combinedSelector) : document.querySelectorAll(combinedSelector));
     }
 }
 
@@ -33,7 +35,7 @@ export function removeElement(element: HTMLElement | CommonSelectors | string) {
 
 export function appendElement(parent: HTMLElement, child: HTMLElement | string, refer?: HTMLElement) {
     const childNode = typeof child === 'string' ? document.createTextNode(child) : child;
-    refer ? parent.insertBefore(childNode, refer) : parent.appendChild(childNode);
+    refer instanceof HTMLElement ? parent.insertBefore(childNode, refer) : parent.appendChild(childNode);
 }
 
 export function updateElementAttribute<T extends keyof HTMLElementTagNameMap, D extends keyof HTMLElementDeprecatedTagNameMap>(element: HTMLElement, options?: ElementAttributeOptions<T, D>): ElementType<T, D> {
