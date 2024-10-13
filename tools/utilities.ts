@@ -1,6 +1,4 @@
-import type { SecureHashAlgorithm } from '../types';
-
-export const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+import type { SecureHashAlgorithm } from './types';
 
 export function removeDuplicates<T>(arr: T[]): T[] {
     return Array.from(new Set(arr));

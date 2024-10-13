@@ -1,32 +1,8 @@
-import { removeDuplicates, hashReturnHex, urlRegex } from './utils';
+import { removeDuplicates, hashReturnHex } from '../../../tools/utilities';
+import { generalParameter, optionalParameter, parameterArray } from './parameter';
+import { countAllUniqueHostnames, countAllUniqueGrants } from './count';
+import { generateNewVersionId } from './id';
 import type { ScriptInformationParameters } from '../types';
-
-function generalParameter(key: string, value?: string) {
-    return value ? `// @${key + ' '.repeat(13 - key.length) + value}\n` : `// @${key}\n`;
-}
-
-function optionalParameter(key: string, value?: string | string[]) {
-    return value ? (Array.isArray(value) ? parameterArray(value, key) : generalParameter(key, value)) : '';
-}
-
-function parameterArray(array: string[], key: string): string {
-    return array.reduce((accelerator, current) => accelerator + generalParameter(key, current), '');
-}
-
-function countAllUniqueHostnames(code: string): string[] {
-    const urls = code.match(urlRegex);
-    return urls ? removeDuplicates(urls.map(url => new URL(url).hostname)) : [];
-}
-
-function countAllUniqueGrants(code: string): string[] {
-    const grantRegex = /(GM_[a-zA-Z]+)|unsafeWindow/g;
-    const grants = code.match(grantRegex);
-    return grants ? removeDuplicates(grants) : [];
-}
-
-function generateNewVersionId(date: Date = new Date()): string {
-    return date.getFullYear() - 2021 + '.' + date.getMonth() + '.' + (date.getDate() - 1);
-}
 
 export async function cssTemplate(code: string, name: string): Promise<string> {
     const cssCode = '/*css*/`\n' + code + '`';

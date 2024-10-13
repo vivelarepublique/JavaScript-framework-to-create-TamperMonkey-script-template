@@ -1,7 +1,6 @@
-import { Rollup } from 'vite';
-import type { Plugin } from 'vite';
-import { cssTemplate, bannerTemplate, jsTemplate } from '../tools/banner';
-import type { ScriptInformationParameters } from '../types';
+import { Rollup, type Plugin } from 'vite';
+import { cssTemplate, bannerTemplate, jsTemplate } from './utilities';
+import type { ScriptInformationParameters } from './types';
 
 export default function tampermonkeyBannerAdditionAndCssInjectionPlugin({ bannerConfig }: { bannerConfig: ScriptInformationParameters }): Plugin {
     return {

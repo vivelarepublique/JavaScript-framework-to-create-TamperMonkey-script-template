@@ -13,15 +13,3 @@ export interface ScriptInformationParameters {
     grant?: string[];
     connect?: string | string[];
 }
-
-export interface TreeShakingConfig {
-    cssFilesPath: string | string[];
-    frameworkComponentsPath: string | string[];
-}
-
-export interface TreeShakingOptions extends TreeShakingConfig {
-    excludeTags?: string[];
-    excludeClassNameKeywords?: string;
-}
-
-export type SecureHashAlgorithm = 'SHA-256' | 'SHA-384' | 'SHA-512';
