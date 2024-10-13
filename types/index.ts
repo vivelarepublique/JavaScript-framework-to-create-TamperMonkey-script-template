@@ -10,8 +10,8 @@ export interface ScriptInformationParameters {
     sandbox?: string;
     tag?: string[];
     noframes?: boolean;
-    grant: string[];
-    connect: string | string[];
+    grant?: string[];
+    connect?: string | string[];
 }
 
 export interface TreeShakingConfig {

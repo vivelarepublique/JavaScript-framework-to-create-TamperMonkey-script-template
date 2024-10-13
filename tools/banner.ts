@@ -38,9 +38,9 @@ document.head.appendChild(${name}_${hashSub});`;
 }
 
 export function bannerTemplate(code: string, details: ScriptInformationParameters) {
-    const { name, namespace, version, description, author, runAt, runIn, sandbox, tag, noframes, match, grant, connect } = details;
-    const grants = removeDuplicates(countAllUniqueGrants(code).concat(grant));
-    const connects = connect === '*' ? ['*'] : removeDuplicates(countAllUniqueHostnames(code).concat(connect));
+    const { name, namespace, version, description, author, match, runAt, runIn, sandbox, tag, noframes, grant, connect } = details;
+    const grants = grant ? removeDuplicates(countAllUniqueGrants(code).concat(grant)) : [];
+    const connects = connect ? (connect === '*' ? ['*'] : removeDuplicates(countAllUniqueHostnames(code).concat(connect))) : [];
     return (
         '// ==UserScript==\n' +
         generalParameter('name', name) +
@@ -48,12 +48,12 @@ export function bannerTemplate(code: string, details: ScriptInformationParameter
         generalParameter('version', version || generateNewVersionId()) +
         generalParameter('description', description) +
         generalParameter('author', author) +
+        parameterArray(match, 'match') +
         optionalParameter('run-at', runAt) +
         optionalParameter('run-in', runIn) +
         optionalParameter('sandbox', sandbox) +
-        (tag ? parameterArray(tag, 'tag') : '') +
         (noframes ? generalParameter('noframes') : '') +
-        parameterArray(match, 'match') +
+        (tag ? parameterArray(tag, 'tag') : '') +
         parameterArray(grants, 'grant') +
         parameterArray(connects, 'connect') +
         '// ==/UserScript==\n'

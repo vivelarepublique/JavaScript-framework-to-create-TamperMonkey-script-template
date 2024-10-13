@@ -15,10 +15,10 @@ export const bannerConfig: ScriptInformationParameters = {
     runAt: runAt || 'document-idle',
     runIn,
     sandbox,
-    tag: tag || [],
-    noframes: noframes || false,
-    grant: grant || ['none'],
-    connect: connect || [],
+    tag,
+    noframes,
+    grant,
+    connect,
 };
 
 const frameworkFile = fs.readFileSync('./config/framework.yaml', 'utf8');
