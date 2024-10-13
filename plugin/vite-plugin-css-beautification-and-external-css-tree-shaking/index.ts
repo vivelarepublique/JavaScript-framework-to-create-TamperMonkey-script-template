@@ -13,7 +13,7 @@ export default function cssBeautificationAndExternalCssTreeShakingPlugin(config:
                 const minExternalCss = treeShaking({
                     cssFilesPath,
                     frameworkComponentsPath,
-                    excludeTags: ['main', 'style', 'link', 'script', 'number', 'string', 'boolean', 'component', 'template'],
+                    excludeTags: ['main', 'style', 'link', 'script', 'number', 'string', 'boolean', 'component', 'template', 'symbol', 'function', 'object', 'undefined'],
                     excludeClassNameKeywords: 'framework-test',
                 });
 
