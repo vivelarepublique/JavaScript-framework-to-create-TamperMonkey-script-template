@@ -1,12 +1,13 @@
-import { removeDuplicates, hashReturnHex } from '../../../tools/utilities';
+import { removeDuplicates } from './common';
+import { hash } from './crypto';
 import { generalParameter, optionalParameter, parameterArray } from './parameter';
 import { countAllUniqueHostnames, countAllUniqueGrants } from './count';
 import { generateNewVersionId } from './id';
-import type { ScriptInformationParameters } from '../types';
+import type { ScriptInformationParameters } from '../interfaces';
 
 export async function cssTemplate(code: string, name: string): Promise<string> {
     const cssCode = '/*css*/`\n' + code + '`';
-    const hashSub = (await hashReturnHex(code)).substring(0, 8);
+    const hashSub = (await hash(code)).substring(0, 8);
     return /*javascript*/ `const ${name}_${hashSub} = document.createElement('style');
 const ${name}_${hashSub}_Code = document.createTextNode(${cssCode});
 ${name}_${hashSub}.appendChild(${name}_${hashSub}_Code);

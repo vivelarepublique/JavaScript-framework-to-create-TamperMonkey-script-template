@@ -1,10 +1,10 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { removeDuplicates } from '../../../tools/utilities';
+import { removeDuplicates } from './common';
 import { isMinCssAndExists, isComponentsFile } from './judgement';
 import { removeCommentsAndCharset, simplifySelector } from './replace';
 import { splitRule, splitCssToArray } from './split';
-import type { TreeShakingOptions } from '../types';
+import type { TreeShakingOptions } from '../interfaces';
 
 export { splitCssToArray };
 

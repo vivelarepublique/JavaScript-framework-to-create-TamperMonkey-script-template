@@ -1,6 +1,6 @@
 import { Rollup, type Plugin } from 'vite';
 import treeShaking, { splitCssToArray } from './utilities';
-import type { TreeShakingConfig } from './types';
+import type { TreeShakingConfig } from './interfaces';
 
 export default function cssBeautificationAndExternalCssTreeShakingPlugin(config: TreeShakingConfig): Plugin {
     const { cssFilesPath, frameworkComponentsPath } = config;
