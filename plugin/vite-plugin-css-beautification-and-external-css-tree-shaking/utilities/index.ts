@@ -68,20 +68,22 @@ function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray
         } else {
             if (selector.includes('@media') || selector.includes('@container')) {
                 return !!classArray.find((className, _, self) => {
-                    return `{${content}`
+                    return content
                         .replaceAll(/{.+?}/g, ' ')
                         .replace('}', '')
-                        .replaceAll(',', ' ')
-                        .split(' ')
-                        .filter(c => c)
-                        .map(s => simplifySelector(s))
-                        .some(
-                            sel =>
-                                `.${className}` === sel ||
-                                sel
-                                    .split('.')
-                                    .filter(se => se)
-                                    .every(s => self.includes(s)),
+                        .split(',')
+                        .map(i => simplifySelector(i))
+                        .filter(j => j)
+                        .some(k =>
+                            k.split(' ').every(
+                                l =>
+                                    l === `.${className}` ||
+                                    tagArray.includes(l) ||
+                                    l
+                                        .split('.')
+                                        .filter(m => m)
+                                        .every(n => self.includes(n)),
+                            ),
                         );
                 });
             } else {
@@ -94,16 +96,18 @@ function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray
                         return (
                             simpleSelector.includes('.') &&
                             simpleSelector
-                                .replaceAll(',', ' ')
-                                .split(' ')
-                                .filter(simple => simple.includes('.'))
-                                .some(
-                                    sel =>
-                                        `.${className}` === sel ||
-                                        sel
-                                            .split('.')
-                                            .filter(se => se)
-                                            .every(s => self.includes(s)),
+                                .split(',')
+                                .filter(i => i.includes('.'))
+                                .some(j =>
+                                    j.split(' ').every(
+                                        k =>
+                                            k === `.${className}` ||
+                                            tagArray.includes(k) ||
+                                            k
+                                                .split('.')
+                                                .filter(l => l)
+                                                .every(m => self.includes(m)),
+                                    ),
                                 )
                         );
                     })
