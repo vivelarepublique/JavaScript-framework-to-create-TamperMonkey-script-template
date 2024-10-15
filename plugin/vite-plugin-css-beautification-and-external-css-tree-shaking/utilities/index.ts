@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { removeDuplicates } from './common';
 import { isMinCssAndExists, isComponentsFile } from './judgement';
 import { removeCommentsAndCharset, simplifySelector } from './replace';
+import { cssSelectorFilter } from './filter';
 import { splitRule, splitCssToArray } from './split';
 import type { TreeShakingOptions } from '../interfaces';
 
@@ -68,23 +69,8 @@ function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray
         } else {
             if (selector.includes('@media') || selector.includes('@container')) {
                 return !!classArray.find((className, _, self) => {
-                    return content
-                        .replaceAll(/{.+?}/g, ' ')
-                        .replace('}', '')
-                        .split(',')
-                        .map(i => simplifySelector(i))
-                        .filter(j => j)
-                        .some(k =>
-                            k.split(' ').every(
-                                l =>
-                                    l === `.${className}` ||
-                                    tagArray.includes(l) ||
-                                    l
-                                        .split('.')
-                                        .filter(m => m)
-                                        .every(n => self.includes(n)),
-                            ),
-                        );
+                    const subSelector = simplifySelector(content.replaceAll(/{.+?}/g, ' ').replace('}', ''));
+                    return cssSelectorFilter(subSelector, className, self, tagArray);
                 });
             } else {
                 const simpleSelector = simplifySelector(selector);
@@ -93,23 +79,7 @@ function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray
                         return !simpleSelector.includes('.') && simpleSelector.replaceAll(',', ' ').split(' ').includes(tag);
                     }) ||
                     !!classArray.find((className, _, self) => {
-                        return (
-                            simpleSelector.includes('.') &&
-                            simpleSelector
-                                .split(',')
-                                .filter(i => i.includes('.'))
-                                .some(j =>
-                                    j.split(' ').every(
-                                        k =>
-                                            k === `.${className}` ||
-                                            tagArray.includes(k) ||
-                                            k
-                                                .split('.')
-                                                .filter(l => l)
-                                                .every(m => self.includes(m)),
-                                    ),
-                                )
-                        );
+                        return simpleSelector.includes('.') && cssSelectorFilter(simpleSelector, className, self, tagArray);
                     })
                 );
             }
