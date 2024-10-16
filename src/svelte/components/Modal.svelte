@@ -30,16 +30,16 @@
                 <div class="tabs is-centered is-toggle is-toggle-rounded">
                     <ul>
                         <li>
-                            <button class={currentView === 'VectorImage' ? 'button  button-framework-test-svelte' : 'button '} on:click={() => (currentView = 'VectorImage')}> Vector Image </button>
+                            <button class={currentView === 'VectorImage' ? 'button button-framework-test-svelte' : 'button'} on:click={() => (currentView = 'VectorImage')}> Vector Image </button>
                         </li>
                         <li>
-                            <button class={currentView === 'Counter' ? 'button  button-framework-test-svelte' : 'button '} on:click={() => (currentView = 'Counter')}> Counter </button>
+                            <button class={currentView === 'Counter' ? 'button button-framework-test-svelte' : 'button'} on:click={() => (currentView = 'Counter')}> Counter </button>
                         </li>
                         <li>
-                            <button class={currentView === 'WindowEvent' ? 'button  button-framework-test-svelte' : 'button '} on:click={() => (currentView = 'WindowEvent')}> Window Event </button>
+                            <button class={currentView === 'WindowEvent' ? 'button button-framework-test-svelte' : 'button'} on:click={() => (currentView = 'WindowEvent')}> Window Event </button>
                         </li>
                         <li>
-                            <button class={currentView === 'Benchmark' ? 'button  button-framework-test-svelte' : 'button '} on:click={() => (currentView = 'Benchmark')}> Benchmark </button>
+                            <button class={currentView === 'Benchmark' ? 'button button-framework-test-svelte' : 'button'} on:click={() => (currentView = 'Benchmark')}> Benchmark </button>
                         </li>
                     </ul>
                 </div>
