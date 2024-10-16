@@ -8,7 +8,7 @@ import preact from '@preact/preset-vite';
 import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import solid from 'vite-plugin-solid';
 
-import cssBeautificationAndExternalCssTreeShaking from './plugin/vite-plugin-css-beautification-and-external-css-tree-shaking';
+import linkCssTreeShaking from './plugin/vite-plugin-link-css-tree-shaking';
 import tampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection';
 
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -21,7 +21,7 @@ export default defineConfig(({ command, mode }) => {
 
     const buildPlugins: PluginOption[] = isBuild
         ? [
-              cssBeautificationAndExternalCssTreeShaking({
+              linkCssTreeShaking({
                   cssFilesPath: 'node_modules/bulma/css/bulma.min.css',
                   frameworkComponentsPath: supportedFramework.map(framework => `src/${framework}/components`),
               }),
