@@ -22,8 +22,8 @@ export default defineConfig(({ command, mode }) => {
     const buildPlugins: PluginOption[] = isBuild
         ? [
               linkCssTreeShaking({
-                  cssFilesPath: 'node_modules/bulma/css/bulma.min.css',
-                  frameworkComponentsPath: supportedFramework.map(framework => `src/${framework}/components`),
+                  manualEntry: 'node_modules/bulma/css/bulma.min.css',
+                  componentsFilesPath: supportedFramework.map(framework => `src/${framework}/components`),
               }),
               tampermonkeyBannerAdditionAndCssInjection({ bannerConfig }),
           ].concat(

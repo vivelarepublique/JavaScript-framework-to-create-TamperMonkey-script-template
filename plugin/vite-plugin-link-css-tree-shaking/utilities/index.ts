@@ -10,9 +10,9 @@ import type { TreeShakingOptions } from '../interfaces';
 export { splitCssToArray };
 
 export default function treeShaking(option: TreeShakingOptions): string[] {
-    const { cssFilesPath, frameworkComponentsPath, excludeTags, excludeClassNameKeywords } = option;
-    const cssArray = handlingCssFiles(cssFilesPath);
-    const componentsArray = componentsAnalysis(frameworkComponentsPath);
+    const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords } = option;
+    const cssArray = handlingCssFiles(manualEntry);
+    const componentsArray = componentsAnalysis(componentsFilesPath || 'src/components');
 
     return extractCssOnDemand(cssArray, extractFileContentTagName(componentsArray, excludeTags), extractFileContentClassName(componentsArray, excludeClassNameKeywords));
 }

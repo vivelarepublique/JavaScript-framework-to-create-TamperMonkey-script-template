@@ -1,9 +1,9 @@
 import { Rollup, type Plugin } from 'vite';
 import treeShaking, { splitCssToArray } from './utilities';
-import type { TreeShakingConfig } from './interfaces';
+import type { TreeShakingOptions } from './interfaces';
 
-export default function cssBeautificationAndExternalCssTreeShakingPlugin(config: TreeShakingConfig): Plugin {
-    const { cssFilesPath, frameworkComponentsPath } = config;
+export default function linkCssTreeShakingPlugin(config: TreeShakingOptions): Plugin {
+    const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords } = config;
     return {
         name: 'vite-plugin-link-css-tree-shaking',
         apply: 'build',
@@ -11,10 +11,10 @@ export default function cssBeautificationAndExternalCssTreeShakingPlugin(config:
         generateBundle(_options, bundle) {
             try {
                 const minLinkCss = treeShaking({
-                    cssFilesPath,
-                    frameworkComponentsPath,
-                    excludeTags: ['main', 'style', 'link', 'script', 'number', 'string', 'boolean', 'component', 'template', 'symbol', 'function', 'object', 'undefined'],
-                    excludeClassNameKeywords: 'framework-test',
+                    manualEntry,
+                    componentsFilesPath,
+                    excludeTags: excludeTags || ['main', 'style', 'link', 'script', 'number', 'string', 'boolean', 'component', 'template', 'symbol', 'function', 'object', 'undefined'],
+                    excludeClassNameKeywords: excludeClassNameKeywords || 'framework-test',
                 });
 
                 const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
