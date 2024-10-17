@@ -2,23 +2,28 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { isMinCssAndExists, isComponentsFile } from './judgement';
 import { removeCommentsAndCharset } from './replace';
-import { splitCssToArray } from './split';
-import { extractCssOnDemand, extractFileContentClassName, extractFileContentTagName } from './extract';
+import { splitCssToArray, splitCssFile } from './split';
+import { extractFileContentClassName, extractFileContentTagName } from './extract';
+import { filterCssUsed } from './filter';
 import type { TreeShakingOptions } from '../interfaces';
 
 export { splitCssToArray };
+export { removeDuplicates } from './common';
 
 export default function treeShaking(option: TreeShakingOptions): string[] {
     const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords } = option;
     const cssArray = handlingCssFiles(manualEntry);
     const componentsArray = componentsAnalysis(componentsFilesPath || 'src/components');
 
-    return extractCssOnDemand(cssArray, extractFileContentTagName(componentsArray, excludeTags), extractFileContentClassName(componentsArray, excludeClassNameKeywords));
+    return filterCssUsed(cssArray, {
+        tags: extractFileContentTagName(componentsArray, excludeTags),
+        classes: extractFileContentClassName(componentsArray, excludeClassNameKeywords),
+    });
 }
 
-function handlingCssFiles(filePath: string | string[]): string[] {
+function handlingCssFiles(filePath: string | string[]) {
     const content = readCssFileAndPreprocess(filePath);
-    return splitCssToArray(content);
+    return splitCssFile(content);
 }
 
 function readCssFileAndPreprocess(filePath: string | string[]): string {

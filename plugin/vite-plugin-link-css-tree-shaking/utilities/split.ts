@@ -12,12 +12,12 @@ export function splitRule(rule: string): CssRuleObject {
 
 function splitRuleBasic(rule: string): CssRuleObjectArrayBasic {
     const { selector, content } = splitRule(rule);
-    const selectors = (selector?.trim() || '').split(',').filter(s => s.trim() && s.length > 1);
+    const selectors = (selector?.trim() || '').split(',').filter(s => s.trim() && s.length > 0);
     const contents = (content?.trim() || '').split(';').filter(c => c.trim() && c.length > 1);
     return { selectors, contents };
 }
 
-export function splitRuleToArray(rule: string): CssRuleObjectArray {
+function splitRuleToArray(rule: string): CssRuleObjectArray {
     const { selector, content } = splitRule(rule);
 
     if (selector.includes('@media') || selector.includes('@container')) {
@@ -26,6 +26,11 @@ export function splitRuleToArray(rule: string): CssRuleObjectArray {
     } else {
         return splitRuleBasic(rule);
     }
+}
+
+export function splitCssFile(cssContent: string): CssRuleObjectArray[] {
+    const array = splitCssToArray(cssContent);
+    return array.map(rule => splitRuleToArray(rule));
 }
 
 export function splitCssToArray(cssContent: string, sortByOrder: boolean = false): string[] {

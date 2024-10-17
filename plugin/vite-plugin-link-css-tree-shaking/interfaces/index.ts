@@ -19,3 +19,8 @@ export interface CssRuleObjectArray {
     selectors: string[];
     contents: CssRuleObjectArrayBasic[] | string[];
 }
+
+export interface FiltrationCondition {
+    tags: string[];
+    classes: string[];
+}

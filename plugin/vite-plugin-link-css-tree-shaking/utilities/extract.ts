@@ -1,38 +1,4 @@
 import { removeDuplicates } from './common';
-import { simplifySelector } from './replace';
-import { cssSelectorFilter } from './filter';
-import { splitRule } from './split';
-
-export function extractCssOnDemand(cssContent: string[], tagArray: string[], classArray: string[]): string[] {
-    const minResult = cssContent.filter(rule => {
-        if (rule.length <= 1) return false;
-
-        const { selector, content } = splitRule(rule);
-
-        if (selector === 'html' || selector === 'body' || selector === ':root' || selector.includes('*') || selector.includes('@keyframes')) {
-            return true;
-        } else {
-            if (selector.includes('@media') || selector.includes('@container')) {
-                return !!classArray.find((className, _, self) => {
-                    const subSelector = simplifySelector(content.replaceAll(/{.+?}/g, ' ').replace('}', ''));
-                    return cssSelectorFilter(subSelector, className, self, tagArray);
-                });
-            } else {
-                const simpleSelector = simplifySelector(selector);
-                return (
-                    !!tagArray.find(tag => {
-                        return !simpleSelector.includes('.') && simpleSelector.replaceAll(',', ' ').split(' ').includes(tag);
-                    }) ||
-                    !!classArray.find((className, _, self) => {
-                        return simpleSelector.includes('.') && cssSelectorFilter(simpleSelector, className, self, tagArray);
-                    })
-                );
-            }
-        }
-    });
-
-    return removeDuplicates(minResult);
-}
 
 export function extractFileContentTagName(filesData: string[], excludeTags: string[] = []): string[] {
     const tags = filesData.reduce((previous: string[], current: string) => {
