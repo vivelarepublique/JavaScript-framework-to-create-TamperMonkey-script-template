@@ -1,5 +1,5 @@
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { removeDuplicates } from './common';
 import { isMinCssAndExists, isComponentsFile } from './judgement';
 import { removeCommentsAndCharset, simplifySelector } from './replace';
@@ -26,12 +26,12 @@ function readCssFileAndPreprocess(filePath: string | string[]): string {
     if (Array.isArray(filePath)) {
         return filePath.reduce((previous, current) => {
             if (!isMinCssAndExists(current)) return previous;
-            const content = readFileSync(current, 'utf-8');
+            const content = fs.readFileSync(current, 'utf-8');
             return previous + removeCommentsAndCharset(content);
         }, '');
     } else {
         if (!isMinCssAndExists(filePath)) return '';
-        const content = readFileSync(filePath, 'utf-8');
+        const content = fs.readFileSync(filePath, 'utf-8');
         return removeCommentsAndCharset(content);
     }
 }
@@ -39,21 +39,21 @@ function readCssFileAndPreprocess(filePath: string | string[]): string {
 function componentsAnalysis(frameworkPath: string | string[]): string[] {
     if (Array.isArray(frameworkPath)) {
         return frameworkPath.reduce((previous, current) => {
-            if (!existsSync(current)) return previous;
-            const files = readdirSync(current);
+            if (!fs.existsSync(current)) return previous;
+            const files = fs.readdirSync(current);
             return previous.concat(
                 files.reduce((prev, curr) => {
                     if (!isComponentsFile(curr)) return prev;
-                    return prev.concat(readFileSync(join(current, curr), 'utf-8'));
+                    return prev.concat(fs.readFileSync(path.join(current, curr), 'utf-8'));
                 }, [] as string[]),
             );
         }, [] as string[]);
     } else {
-        if (!existsSync(frameworkPath)) return [];
-        const files = readdirSync(frameworkPath);
+        if (!fs.existsSync(frameworkPath)) return [];
+        const files = fs.readdirSync(frameworkPath);
         return files.reduce((prev, curr) => {
             if (!isComponentsFile(curr)) return prev;
-            return prev.concat(readFileSync(join(frameworkPath, curr), 'utf-8'));
+            return prev.concat(fs.readFileSync(path.join(frameworkPath, curr), 'utf-8'));
         }, [] as string[]);
     }
 }
