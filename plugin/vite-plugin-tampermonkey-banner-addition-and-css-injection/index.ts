@@ -1,8 +1,9 @@
 import { Rollup, type Plugin } from 'vite';
-import { cssTemplate, bannerTemplate, jsTemplate } from './utilities';
-import type { ScriptInformationParameters } from './interfaces';
+import { cssTemplate, bannerTemplate, jsTemplate, splitCssToArray } from './utilities';
+import type { PluginOption } from './interfaces';
 
-export default function tampermonkeyBannerAdditionAndCssInjectionPlugin({ bannerConfig }: { bannerConfig: ScriptInformationParameters }): Plugin {
+export default function tampermonkeyBannerAdditionAndCssInjectionPlugin(config: PluginOption): Plugin {
+    const { bannerConfig, beautifulCss } = config;
     return {
         name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
         apply: 'build',
@@ -13,13 +14,13 @@ export default function tampermonkeyBannerAdditionAndCssInjectionPlugin({ banner
             const entry = bundle[jsBundleNames[0]] as Rollup.OutputChunk;
 
             const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
-            const allCssCode = cssBundleNames.reduce((accumulator, current) => {
+            const allCss = cssBundleNames.reduce((accumulator, current) => {
                 const cssSource = (bundle[current] as Rollup.OutputAsset).source;
                 delete bundle[current];
                 return accumulator + cssSource;
             }, '');
 
-            const cssCode = allCssCode.length === 0 ? '' : await cssTemplate(allCssCode, 'tampermonkeyTemplateCssInjection');
+            const cssCode = allCss.length === 0 ? '' : await cssTemplate(beautifulCss ? splitCssToArray(allCss).join('\n') : allCss, 'tampermonkeyTemplateCssInjection');
             const banner = bannerTemplate(entry.code, bannerConfig);
             entry.code = jsTemplate(banner, cssCode, entry.code);
         },

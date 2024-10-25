@@ -1,15 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { isComponentsFile } from './judgement';
-import { splitCssToArray, splitCssFile } from './split';
+import { splitCssFile } from './split';
 import { extractFileContentClassName, extractFileContentTagName } from './extract';
 import { filterCssUsed } from './filter';
 import { readLocalFile } from './preprocess';
 import { parseIndexHTML } from './parse';
 import type { TreeShakingOptions, CssRuleObjectArray } from '../interfaces';
-
-export { splitCssToArray };
-export { removeDuplicates } from './common';
 
 export default async function treeShaking(option: TreeShakingOptions): Promise<string[]> {
     const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords } = option;

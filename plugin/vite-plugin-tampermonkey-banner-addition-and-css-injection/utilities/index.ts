@@ -5,6 +5,8 @@ import { countAllUniqueHostnames, countAllUniqueGrants } from './count';
 import { generateNewVersionId } from './id';
 import type { ScriptInformationParameters } from '../interfaces';
 
+export { splitCssToArray } from './split';
+
 export async function cssTemplate(code: string, name: string): Promise<string> {
     const cssCode = '/*css*/`\n' + code + '`';
     const hashSub = (await hash(code)).substring(0, 8);

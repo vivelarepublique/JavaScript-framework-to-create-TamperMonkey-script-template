@@ -1,5 +1,5 @@
-import { Rollup, type Plugin } from 'vite';
-import treeShaking, { splitCssToArray, removeDuplicates } from './utilities';
+import type { Plugin } from 'vite';
+import treeShaking from './utilities';
 import type { TreeShakingOptions } from './interfaces';
 
 export default function linkCssTreeShakingPlugin(config: TreeShakingOptions): Plugin {
@@ -8,7 +8,7 @@ export default function linkCssTreeShakingPlugin(config: TreeShakingOptions): Pl
         name: 'vite-plugin-link-css-tree-shaking',
         apply: 'build',
         enforce: 'post',
-        async generateBundle(_options, bundle) {
+        async generateBundle(_options, _bundle) {
             try {
                 const minLinkCss = await treeShaking({
                     manualEntry,
@@ -17,12 +17,11 @@ export default function linkCssTreeShakingPlugin(config: TreeShakingOptions): Pl
                     excludeClassNameKeywords: excludeClassNameKeywords || 'framework-test',
                 });
 
-                const cssBundleNames = Object.keys(bundle).filter(b => bundle[b].type === 'asset' && bundle[b].fileName.endsWith('.css'));
-                const lastCssBundleName = cssBundleNames[cssBundleNames.length - 1];
-                const lastCssBundle = bundle[lastCssBundleName] as Rollup.OutputAsset;
-
-                const finalCss = [...splitCssToArray(lastCssBundle.source as string, true), ...minLinkCss];
-                (lastCssBundle.source as string) = removeDuplicates(finalCss.filter(c => c && c.length > 1).map(c => c.trim())).join('\n');
+                this.emitFile({
+                    fileName: 'z-last.css',
+                    type: 'asset',
+                    source: minLinkCss.join(''),
+                });
             } catch (error) {
                 console.log(`Plugin [vite-plugin-link-css-tree-shaking] Error: ${error}`);
             }

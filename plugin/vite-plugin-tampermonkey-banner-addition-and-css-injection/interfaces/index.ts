@@ -15,3 +15,8 @@ export interface ScriptInformationParameters {
 }
 
 export type SecureHashAlgorithm = 'SHA-256' | 'SHA-384' | 'SHA-512';
+
+export interface PluginOption {
+    bannerConfig: ScriptInformationParameters;
+    beautifulCss?: boolean;
+}
