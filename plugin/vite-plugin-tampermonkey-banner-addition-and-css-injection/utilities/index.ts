@@ -1,4 +1,4 @@
-import { removeDuplicates } from './common';
+import { uniq } from '../public';
 import { hash } from './crypto';
 import { generalParameter, optionalParameter, parameterArray } from './parameter';
 import { countAllUniqueHostnames, countAllUniqueGrants } from './count';
@@ -18,8 +18,8 @@ document.head.appendChild(${name}_${hashSub});`;
 
 export function bannerTemplate(code: string, details: ScriptInformationParameters) {
     const { name, namespace, version, description, author, match, runAt, runIn, sandbox, tag, noframes, grant, connect } = details;
-    const grants = grant ? removeDuplicates(countAllUniqueGrants(code).concat(grant)) : [];
-    const connects = connect ? (connect === '*' ? ['*'] : removeDuplicates(countAllUniqueHostnames(code).concat(connect))) : [];
+    const grants = grant ? uniq(countAllUniqueGrants(code).concat(grant)) : [];
+    const connects = connect ? (connect === '*' ? ['*'] : uniq(countAllUniqueHostnames(code).concat(connect))) : [];
     return (
         '// ==UserScript==\n' +
         generalParameter('name', name) +

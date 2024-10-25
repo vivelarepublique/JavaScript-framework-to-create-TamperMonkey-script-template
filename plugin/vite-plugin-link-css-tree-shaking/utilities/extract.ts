@@ -1,10 +1,10 @@
-import { removeDuplicates } from './common';
+import { uniq } from '../public';
 
 export function extractFileContentTagName(filesData: string[], excludeTags: string[] = []): string[] {
     const tags = filesData.reduce((previous: string[], current: string) => {
         return previous.concat(current.match(/(?<=<)[a-z0-9]+(?=\s|(?=>))/g) || []);
     }, []);
-    return removeDuplicates(tags).filter(t => !excludeTags.includes(t));
+    return uniq(tags).filter(t => !excludeTags.includes(t));
 }
 
 export function extractFileContentClassName(filesData: string[], excludeClassNameKeywords: string = 'exclude-class-keywords'): string[] {
@@ -16,7 +16,7 @@ export function extractFileContentClassName(filesData: string[], excludeClassNam
         const vueClassContent = current.match(/(?<=:classN?a?m?e?="\{).*?(?=\}")/g) || [];
         if (vueClassContent.length === 0) return previous;
 
-        return previous.concat(removeDuplicates(vueClassContent.map(v => v.match(/(?<=')[a-z0-9-]+(?=')/g) || []).flat()));
+        return previous.concat(uniq(vueClassContent.map(v => v.match(/(?<=')[a-z0-9-]+(?=')/g) || []).flat()));
     }, []);
 
     const jsxClasses = filesData.reduce((previous: string[], current: string) => {
@@ -24,7 +24,7 @@ export function extractFileContentClassName(filesData: string[], excludeClassNam
         if (jsxClassContent.length === 0) return previous;
 
         return previous.concat(
-            removeDuplicates(
+            uniq(
                 jsxClassContent
                     .map(j => j.match(/(?<=')[a-z0-9-\s]+(?=')/g) || [])
                     .flat()
@@ -36,5 +36,5 @@ export function extractFileContentClassName(filesData: string[], excludeClassNam
 
     const AllClasses = [...nativeClasses, ...vueClasses, ...jsxClasses];
 
-    return removeDuplicates(AllClasses).filter(c => c && c.length > 1 && !c.includes(excludeClassNameKeywords));
+    return uniq(AllClasses).filter(c => c && c.length > 1 && !c.includes(excludeClassNameKeywords));
 }

@@ -14,5 +14,5 @@
         "target": "ESNext",
         "useDefineForClassFields": true
     },
-    "include": ["tools/**/*.ts", "plugin/**/*.ts", "config/**/*.ts", "types/**/*.ts", "other/**/*.ts", "vite.*.ts"]
+    "include": ["lodash-new-implementation-in-typescript/**/*.ts", "plugin/**/*.ts", "config/**/*.ts", "vite.config.ts"]
 }

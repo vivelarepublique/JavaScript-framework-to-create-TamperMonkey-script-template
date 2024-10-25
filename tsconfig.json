@@ -2,12 +2,6 @@
     "files": [],
     "references": [
         {
-            "path": "./tsconfig.app.json"
-        },
-        {
-            "path": "./tsconfig.node.json"
-        },
-        {
             "path": "./tsconfig.vue.json"
         },
         {
@@ -24,6 +18,12 @@
         },
         {
             "path": "./tsconfig.solid.json"
+        },
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.node.json"
         }
     ]
 }
