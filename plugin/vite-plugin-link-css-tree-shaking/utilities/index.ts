@@ -1,18 +1,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { isMinCssAndExists, isComponentsFile } from './judgement';
-import { removeCommentsAndCharset } from './replace';
+import { isComponentsFile } from './judgement';
 import { splitCssToArray, splitCssFile } from './split';
 import { extractFileContentClassName, extractFileContentTagName } from './extract';
 import { filterCssUsed } from './filter';
-import type { TreeShakingOptions } from '../interfaces';
+import { readLocalFile } from './preprocess';
+import { parseIndexHTML } from './parse';
+import type { TreeShakingOptions, CssRuleObjectArray } from '../interfaces';
 
 export { splitCssToArray };
 export { removeDuplicates } from './common';
 
-export default function treeShaking(option: TreeShakingOptions): string[] {
+export default async function treeShaking(option: TreeShakingOptions): Promise<string[]> {
     const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords } = option;
-    const cssArray = handlingCssFiles(manualEntry);
+    const cssArray = manualEntry ? manualHandlingCssFiles(manualEntry) : splitCssFile(await parseIndexHTML());
     const componentsArray = componentsAnalysis(componentsFilesPath || 'src/components');
 
     return filterCssUsed(cssArray, {
@@ -21,23 +22,9 @@ export default function treeShaking(option: TreeShakingOptions): string[] {
     });
 }
 
-function handlingCssFiles(filePath: string | string[]) {
-    const content = readCssFileAndPreprocess(filePath);
+function manualHandlingCssFiles(filePath: string | string[]): CssRuleObjectArray[] {
+    const content = readLocalFile(filePath);
     return splitCssFile(content);
-}
-
-function readCssFileAndPreprocess(filePath: string | string[]): string {
-    if (Array.isArray(filePath)) {
-        return filePath.reduce((previous, current) => {
-            if (!isMinCssAndExists(current)) return previous;
-            const content = fs.readFileSync(current, 'utf-8');
-            return previous + removeCommentsAndCharset(content);
-        }, '');
-    } else {
-        if (!isMinCssAndExists(filePath)) return '';
-        const content = fs.readFileSync(filePath, 'utf-8');
-        return removeCommentsAndCharset(content);
-    }
 }
 
 function componentsAnalysis(frameworkPath: string | string[]): string[] {

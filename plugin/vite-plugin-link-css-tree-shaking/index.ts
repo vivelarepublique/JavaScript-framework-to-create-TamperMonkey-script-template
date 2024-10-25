@@ -8,9 +8,9 @@ export default function linkCssTreeShakingPlugin(config: TreeShakingOptions): Pl
         name: 'vite-plugin-link-css-tree-shaking',
         apply: 'build',
         enforce: 'post',
-        generateBundle(_options, bundle) {
+        async generateBundle(_options, bundle) {
             try {
-                const minLinkCss = treeShaking({
+                const minLinkCss = await treeShaking({
                     manualEntry,
                     componentsFilesPath,
                     excludeTags: excludeTags || ['main', 'style', 'link', 'script', 'number', 'string', 'boolean', 'component', 'template', 'symbol', 'function', 'object', 'undefined'],
