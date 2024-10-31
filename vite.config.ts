@@ -17,7 +17,9 @@ import { bannerConfig, supportedFramework } from './config/getParameters';
 
 export default defineConfig(({ command, mode }) => {
     const isBuild = command === 'build';
-    const isProduction = mode === 'production';
+    const isPrimitive = mode === 'primitive';
+    const minify = mode === 'minify';
+    const analyze = mode === 'analyze';
 
     const buildPlugins: PluginOption[] = isBuild
         ? [
@@ -30,7 +32,7 @@ export default defineConfig(({ command, mode }) => {
                   bannerConfig,
               }),
           ].concat(
-              isProduction
+              analyze
                   ? [
                         visualizer({
                             emitFile: true,
@@ -58,9 +60,9 @@ export default defineConfig(({ command, mode }) => {
             chunkSizeWarningLimit: 2048,
             minify: 'terser',
             terserOptions: {
-                compress: true,
-                mangle: true,
-                format: { beautify: !isProduction },
+                compress: !isPrimitive,
+                mangle: !isPrimitive,
+                format: { beautify: !minify },
             },
             rollupOptions: {
                 input: './src/index.ts',
