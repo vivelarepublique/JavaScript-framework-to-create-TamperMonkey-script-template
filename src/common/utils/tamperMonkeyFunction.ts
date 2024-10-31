@@ -11,78 +11,81 @@ function responseOK(response: Response): boolean {
 }
 
 export async function httpRequest(request: TampermonkeyWebRequestParameters): Promise<any> {
-    const { url, method, headers, data, timeout, anonymous } = request;
-    const noCookie = typeof anonymous === 'undefined' || anonymous;
+    try {
+        const defaultTimeout = 30 * 1000;
+        const isBrowser = 'undefined' === typeof GM_xmlhttpRequest;
 
-    if (typeof GM_xmlhttpRequest === 'function') {
-        return new Promise(resolve => {
-            const context: TampermonkeyWebRequestParameters = { url, method };
+        const { url, method, headers, data, timeout, anonymous } = request;
+        const noCookie = typeof anonymous === 'undefined' || anonymous;
+
+        if (!isBrowser) {
+            return new Promise(resolve => {
+                const context: TampermonkeyWebRequestParameters = { url, method };
+                if (headers) {
+                    Object.assign(context, headers);
+                }
+                if (data && method != 'GET') {
+                    Object.assign(context, data);
+                }
+
+                GM_xmlhttpRequest({
+                    fetch: true,
+                    timeout: timeout || defaultTimeout,
+                    anonymous: noCookie,
+                    ...context,
+                    onload: response => {
+                        const contentType = getContentType(response.responseHeaders);
+
+                        if (contentType === 'application/json') {
+                            resolve(JSON.parse(response.responseText));
+                        } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
+                            resolve(response.responseXML);
+                        } else {
+                            resolve(response.responseText);
+                        }
+                    },
+                    onabort: () => resolve(null),
+                    onerror: _ => resolve(null),
+                });
+            });
+        } else {
+            const controller = new AbortController();
+
+            const timeoutId = setTimeout(() => {
+                controller.abort();
+            }, timeout || defaultTimeout);
+
+            const init: RequestInit = { method, signal: controller.signal, credentials: noCookie ? 'omit' : 'include' };
             if (headers) {
-                Object.assign(context, headers);
+                Object.assign(init, headers);
             }
             if (data && method != 'GET') {
-                Object.assign(context, data);
+                Object.assign(init, { body: data });
             }
 
-            GM_xmlhttpRequest({
-                fetch: true,
-                timeout: timeout || 60 * 1000,
-                anonymous: noCookie,
-                ...context,
-                onload: response => {
-                    const contentType = getContentType(response.responseHeaders);
-
-                    if (contentType === 'application/json') {
-                        resolve(JSON.parse(response.responseText));
-                    } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
-                        resolve(response.responseXML);
-                    } else {
-                        resolve(response.responseText);
-                    }
-                },
-                onabort: () => resolve(null),
-                onerror: _ => resolve(null),
-            });
-        });
-    } else {
-        const controller = new AbortController();
-        const { signal, abort } = controller;
-        const timeoutId = setTimeout(() => {
-            abort();
-        }, timeout || 60 * 1000);
-
-        const init: RequestInit = { method, signal, credentials: noCookie ? 'omit' : 'include' };
-        if (headers) {
-            Object.assign(init, headers);
-        }
-        if (data && method != 'GET') {
-            Object.assign(init, { body: data });
-        }
-
-        try {
             const response = await fetch(url, init);
             clearTimeout(timeoutId);
 
             const ok = responseOK(response);
+            if (!ok) return null;
 
-            if (ok) {
-                const contentType = getContentType(response.headers.get('content-type') || '');
+            const contentType = getContentType(response.headers.get('content-type') || '');
 
-                if (contentType === 'application/json') {
-                    return await response.json();
-                } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
-                    const xml = await response.text();
-                    return new DOMParser().parseFromString(xml, 'text/html');
-                } else {
-                    return await response.text();
-                }
+            if (contentType === 'application/json') {
+                return await response.json();
+            } else if (contentType === 'application/xml' || contentType === 'text/xml' || contentType === 'text/html') {
+                const xml = await response.text();
+                return new DOMParser().parseFromString(xml, 'text/html');
             } else {
-                return null;
+                return await response.text();
             }
-        } catch (error: any) {
-            if (error.name === 'AbortError') {
-                throw new Error(`Request timed out after ${timeout} ms`);
-            }
+        }
+    } catch (error: any) {
+        if (error.name === 'AbortError') {
+            throw new Error('Request timed out.');
+        } else if (error.name === 'ReferenceError') {
+            console.log(error);
+        } else {
             throw error;
         }
     }

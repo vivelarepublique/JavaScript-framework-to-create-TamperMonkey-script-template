@@ -7,19 +7,15 @@ async function getBackgroundImageURL() {
     const doc = await httpRequest({ url: 'https://www.bing.com/?toWww=1', method: 'GET' });
     if (!doc) return '';
 
-    const background = getElement(
-        {
-            tagName: 'div',
-            className: 'img_cont',
-        },
-        doc,
-    );
+    const background = getElement({ tagName: 'div', className: 'img_cont' }, doc);
+
     const url = background?.style.backgroundImage?.match(/(?<=").+?(?=")/g)?.[0];
     return url ? (urlRegex.test(url) ? url : `https://www.bing.com/${url}`) : '';
 }
 
 export async function updateBackgroundImage() {
     const backgroundImageURL = await getBackgroundImageURL();
+
     Object.assign(body.style, {
         backgroundImage: `url(${backgroundImageURL})`,
         backgroundRepeat: 'round',
