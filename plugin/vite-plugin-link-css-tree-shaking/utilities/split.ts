@@ -1,6 +1,16 @@
-import type { CssRuleObject, CssRuleObjectArrayBasic, CssRuleObjectArray } from '../interfaces';
+import type { KeyAndValueObject, CssRuleObject, CssRuleObjectArrayBasic, CssRuleObjectArray } from '../interfaces';
 
-export function splitRule(rule: string): CssRuleObject {
+function splitKeyAndValue(sentence: string): KeyAndValueObject {
+    const [key, value] = sentence.split(':');
+    return { key: key.trim(), value: value?.replace('}', '').trim() || '' };
+}
+
+export function splitKeyAndValueToArray(sentences: string): KeyAndValueObject[] {
+    const { contents } = splitRuleBasic(sentences);
+    return contents.map(c => splitKeyAndValue(c));
+}
+
+function splitRule(rule: string): CssRuleObject {
     const ruleArray = rule.split('{');
     const s = ruleArray.shift();
     const c = ruleArray.join('{');
@@ -10,7 +20,7 @@ export function splitRule(rule: string): CssRuleObject {
     return { selector, content };
 }
 
-function splitRuleBasic(rule: string): CssRuleObjectArrayBasic {
+export function splitRuleBasic(rule: string): CssRuleObjectArrayBasic {
     const { selector, content } = splitRule(rule);
     const selectors = (selector?.trim() || '').split(',').filter(s => s.trim() && s.length > 0);
     const contents = (content?.trim() || '').split(';').filter(c => c.trim() && c.length > 1);

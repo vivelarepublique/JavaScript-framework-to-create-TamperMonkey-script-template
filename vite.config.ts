@@ -26,6 +26,7 @@ export default defineConfig(({ command, mode }) => {
               linkCssTreeShaking({
                   //   manualEntry: 'path/to/your/custom.css',
                   componentsFilesPath: supportedFramework.map(framework => `src/${framework}/components`),
+                  replaceVariableDeclarations: true,
               }),
               tampermonkeyBannerAdditionAndCssInjection({
                   beautifulCss: true,

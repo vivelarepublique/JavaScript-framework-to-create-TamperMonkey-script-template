@@ -3,6 +3,12 @@ export interface TreeShakingOptions {
     componentsFilesPath?: string | string[];
     excludeTags?: string[];
     excludeClassNameKeywords?: string;
+    replaceVariableDeclarations?: boolean;
+}
+
+export interface KeyAndValueObject {
+    key: string;
+    value: string;
 }
 
 export interface CssRuleObject {

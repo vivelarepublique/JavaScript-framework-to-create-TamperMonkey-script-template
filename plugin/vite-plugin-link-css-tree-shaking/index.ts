@@ -3,7 +3,7 @@ import treeShaking from './utilities';
 import type { TreeShakingOptions } from './interfaces';
 
 export default function linkCssTreeShakingPlugin(config: TreeShakingOptions): Plugin {
-    const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords } = config;
+    const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords, replaceVariableDeclarations } = config;
     return {
         name: 'vite-plugin-link-css-tree-shaking',
         apply: 'build',
@@ -15,6 +15,7 @@ export default function linkCssTreeShakingPlugin(config: TreeShakingOptions): Pl
                     componentsFilesPath,
                     excludeTags: excludeTags || ['main', 'style', 'link', 'script', 'number', 'string', 'boolean', 'component', 'template', 'symbol', 'function', 'object', 'undefined'],
                     excludeClassNameKeywords: excludeClassNameKeywords || 'framework-test',
+                    replaceVariableDeclarations: replaceVariableDeclarations || false,
                 });
 
                 this.emitFile({

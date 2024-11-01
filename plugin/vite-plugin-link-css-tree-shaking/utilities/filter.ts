@@ -1,5 +1,6 @@
 import { simplifySelector } from './replace';
-import type { CssRuleObjectArrayBasic, CssRuleObjectArray, FiltrationCondition } from '../interfaces';
+import { splitKeyAndValueToArray } from './split';
+import type { KeyAndValueObject, CssRuleObjectArrayBasic, CssRuleObjectArray, FiltrationCondition } from '../interfaces';
 
 function classSelectorFilter(selectors: string[], target: string, classes: string[], tags: string[]): boolean {
     return selectors
@@ -67,4 +68,15 @@ export function filterCssUsed(cssContent: CssRuleObjectArray[], option: Filtrati
             return s + '{' + c;
         }
     });
+}
+
+export function pickupRootFromFiltered(filteredCss: string[]): KeyAndValueObject[] {
+    const roots = filteredCss.filter(i => i.startsWith(':root'));
+    return roots.reduce((previous, current) => {
+        return previous.concat(splitKeyAndValueToArray(current));
+    }, [] as KeyAndValueObject[]);
+}
+
+export function filterRegularCss(filteredCss: string[]): string[] {
+    return filteredCss.filter(i => !i.startsWith(':root'));
 }

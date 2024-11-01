@@ -3,20 +3,23 @@ import path from 'node:path';
 import { isComponentsFile } from './judgement';
 import { splitCssFile } from './split';
 import { extractFileContentClassName, extractFileContentTagName } from './extract';
-import { filterCssUsed } from './filter';
+import { filterCssUsed, pickupRootFromFiltered, filterRegularCss } from './filter';
 import { readLocalFile } from './preprocess';
 import { parseIndexHTML } from './parse';
+import { replaceValueUsed } from './replace';
 import type { TreeShakingOptions, CssRuleObjectArray } from '../interfaces';
 
 export default async function treeShaking(option: TreeShakingOptions): Promise<string[]> {
-    const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords } = option;
+    const { manualEntry, componentsFilesPath, excludeTags, excludeClassNameKeywords, replaceVariableDeclarations } = option;
     const cssArray = manualEntry ? manualHandlingCssFiles(manualEntry) : splitCssFile(await parseIndexHTML());
     const componentsArray = componentsAnalysis(componentsFilesPath || 'src/components');
 
-    return filterCssUsed(cssArray, {
+    const css = filterCssUsed(cssArray, {
         tags: extractFileContentTagName(componentsArray, excludeTags),
         classes: extractFileContentClassName(componentsArray, excludeClassNameKeywords),
     });
+
+    return replaceVariableDeclarations ? replaceValueUsed(pickupRootFromFiltered(css), filterRegularCss(css)) : css;
 }
 
 function manualHandlingCssFiles(filePath: string | string[]): CssRuleObjectArray[] {
