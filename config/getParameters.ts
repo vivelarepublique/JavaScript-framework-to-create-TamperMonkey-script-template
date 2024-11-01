@@ -1,7 +1,7 @@
 import YAML from 'yaml';
 import fs from 'node:fs';
 import pkg from '../package.json';
-import type { ScriptInformationParameters } from '../plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection/interfaces';
+import type { ScriptInformationParameters } from '../plugin/vite-plugin-tamper-banner-and-css-injection';
 
 const bannerFile = fs.readFileSync('./config/banner.yaml', 'utf8');
 const banner = YAML.parse(bannerFile);

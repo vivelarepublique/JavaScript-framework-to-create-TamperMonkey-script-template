@@ -9,7 +9,7 @@ import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import solid from 'vite-plugin-solid';
 
 import linkCssTreeShaking from './plugin/vite-plugin-link-css-tree-shaking';
-import tampermonkeyBannerAdditionAndCssInjection from './plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection';
+import tamperBannerAndCssInjection from './plugin/vite-plugin-tamper-banner-and-css-injection';
 
 import { visualizer } from 'rollup-plugin-visualizer';
 
@@ -28,7 +28,7 @@ export default defineConfig(({ command, mode }) => {
                   componentsFilesPath: supportedFramework.map(framework => `src/${framework}/components`),
                   replaceVariableDeclarations: true,
               }),
-              tampermonkeyBannerAdditionAndCssInjection({
+              tamperBannerAndCssInjection({
                   beautifulCss: true,
                   bannerConfig,
               }),

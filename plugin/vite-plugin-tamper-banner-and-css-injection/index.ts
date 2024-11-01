@@ -1,11 +1,12 @@
 import { Rollup, type Plugin } from 'vite';
 import { cssTemplate, bannerTemplate, jsTemplate, splitCssToArray } from './utilities';
 import type { PluginOption } from './interfaces';
+export type { ScriptInformationParameters } from './interfaces';
 
-export default function tampermonkeyBannerAdditionAndCssInjectionPlugin(config: PluginOption): Plugin {
+export default function tamperBannerAndCssInjectionPlugin(config: PluginOption): Plugin {
     const { bannerConfig, beautifulCss } = config;
     return {
-        name: 'vite-plugin-tampermonkey-banner-addition-and-css-injection',
+        name: 'vite-plugin-tamper-banner-and-css-injection',
         apply: 'build',
         enforce: 'post',
         async generateBundle(_options, bundle) {
@@ -20,7 +21,7 @@ export default function tampermonkeyBannerAdditionAndCssInjectionPlugin(config: 
                 return accumulator + cssSource;
             }, '');
 
-            const cssCode = allCss.length === 0 ? '' : await cssTemplate(beautifulCss ? splitCssToArray(allCss).join('\n') : allCss, 'tampermonkeyTemplateCssInjection');
+            const cssCode = allCss.length === 0 ? '' : await cssTemplate(beautifulCss ? splitCssToArray(allCss).join('\n') : allCss, 'tamperTemplateInjection');
             const banner = bannerTemplate(entry.code, bannerConfig);
             entry.code = jsTemplate(banner, cssCode, entry.code);
         },
