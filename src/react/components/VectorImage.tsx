@@ -14,6 +14,7 @@ import lessLogo from '../../assets/svg/less.svg';
 import sassLogo from '../../assets/svg/sass.svg';
 import stylusLogo from '../../assets/svg/stylus.svg';
 
+import nodejsLogo from '../../assets/svg/nodejs.svg';
 import typescriptLogo from '../../assets/svg/typescript.svg';
 import viteLogo from '../../assets/svg/vite.svg';
 
@@ -147,7 +148,17 @@ export default function VectorImage() {
                 </div>
                 <div className='box'>
                     <div className='columns'>
-                        <div className='column is-6'>
+                        <div className='column is-4'>
+                            <div>
+                                <img src={nodejsLogo} className='framework-test-logo' alt='Nodejs logo' />
+                            </div>
+                            <div>
+                                <a className='framework-test-a-nodejs' href='https://nodejs.org' target='_blank' rel='noopener'>
+                                    Nodejs
+                                </a>
+                            </div>
+                        </div>
+                        <div className='column is-4'>
                             <div>
                                 <img src={typescriptLogo} className='framework-test-logo' alt='Typescript logo' />
                             </div>
@@ -157,7 +168,7 @@ export default function VectorImage() {
                                 </a>
                             </div>
                         </div>
-                        <div className='column is-6'>
+                        <div className='column is-4'>
                             <div>
                                 <img src={viteLogo} className='framework-test-logo' alt='Vite logo' />
                             </div>

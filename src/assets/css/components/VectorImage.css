@@ -42,6 +42,10 @@ a.framework-test-a-stylus {
     color: var(--ft-color-stylus);
 }
 
+a.framework-test-a-nodejs {
+    color: var(--ft-color-nodejs);
+}
+
 a.framework-test-a-typescript {
     color: var(--ft-color-typescript);
 }

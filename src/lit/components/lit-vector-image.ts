@@ -16,6 +16,7 @@ import lessLogo from '../../assets/svg/less.svg';
 import sassLogo from '../../assets/svg/sass.svg';
 import stylusLogo from '../../assets/svg/stylus.svg';
 
+import nodejsLogo from '../../assets/svg/nodejs.svg';
 import typescriptLogo from '../../assets/svg/typescript.svg';
 import viteLogo from '../../assets/svg/vite.svg';
 
@@ -128,7 +129,15 @@ export class LitVectorImage extends BaseComponent {
                 </div>
                 <div class=" box">
                     <div class="columns">
-                        <div class="column is-6">
+                        <div class="column is-4">
+                            <div>
+                                <img src=${nodejsLogo} class="framework-test-logo" alt="Nodejs logo" />
+                            </div>
+                            <div>
+                                <a class="framework-test-a-nodejs" href="https://nodejs.org" target="_blank" rel="noopener"> Nodejs </a>
+                            </div>
+                        </div>
+                        <div class="column is-4">
                             <div>
                                 <img src=${typescriptLogo} class="framework-test-logo" alt="Typescript logo" />
                             </div>
@@ -136,7 +145,7 @@ export class LitVectorImage extends BaseComponent {
                                 <a class="framework-test-a-typescript" href="https://www.typescriptlang.org" target="_blank" rel="noopener"> Typescript </a>
                             </div>
                         </div>
-                        <div class="column is-6">
+                        <div class="column is-4">
                             <div>
                                 <img src=${viteLogo} class="framework-test-logo" alt="Vite logo" />
                             </div>

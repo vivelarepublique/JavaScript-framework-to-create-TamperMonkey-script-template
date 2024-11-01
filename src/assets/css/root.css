@@ -3,6 +3,7 @@
     --ft-color-astro: #7c4dea;
     --ft-color-less: #0277bd;
     --ft-color-lit: #1e78dd;
+    --ft-color-nodejs: #8bc34a;
     --ft-color-preact: #673ab8;
     --ft-color-react: #15d8ea;
     --ft-color-sass: #ec407a;
@@ -16,6 +17,7 @@
     --ft-background-color-astro: #6738d5;
     --ft-background-color-less: #0262a8;
     --ft-background-color-lit: #1e63c8;
+    --ft-background-color-nodejs: #76ae35;
     --ft-background-color-preact: #5225a3;
     --ft-background-color-react: #15c3d5;
     --ft-background-color-sass: #d72b65;
@@ -29,6 +31,7 @@
     --ft-border-color-astro: #5223c0;
     --ft-border-color-less: #024d93;
     --ft-border-color-lit: #1e4eb3;
+    --ft-border-color-nodejs: #619920;
     --ft-border-color-preact: #3d258e;
     --ft-border-color-react: #15aec0;
     --ft-border-color-sass: #c22b50;
@@ -42,6 +45,7 @@
     --ft-shadow-color-astro: #9162ea84;
     --ft-shadow-color-less: #178cd284;
     --ft-shadow-color-lit: #338ddd84;
+    --ft-shadow-color-nodejs: #a0d85f84;
     --ft-shadow-color-preact: #7c4fcd84;
     --ft-shadow-color-react: #2ad8ea84;
     --ft-shadow-color-sass: #ec558f84;
