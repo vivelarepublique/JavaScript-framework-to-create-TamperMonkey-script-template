@@ -4,7 +4,7 @@ import { body, head } from '../common/alias';
 import { urlRegex } from '../common/constant';
 
 async function getBackgroundImageURL() {
-    const doc = await httpRequest({ url: 'https://www.bing.com/?toWww=1', method: 'GET' });
+    const doc = await httpRequest({ url: 'https://www.bing.com/', method: 'GET' });
     if (!doc) return '';
 
     const background = getElement({ tagName: 'div', className: 'img_cont' }, doc);

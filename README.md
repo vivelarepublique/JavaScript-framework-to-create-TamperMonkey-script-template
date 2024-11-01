@@ -24,13 +24,13 @@
 
 - [Vite](https://github.com/vitejs/vite)
 - [Webpack](https://github.com/webpack/webpack)
-  > Deprecated, for more information please see [Legacy Build Support](https://github.com/vivelarepublique/JavaScript-framework-to-create-TamperMonkey-script-template/blob/main/archive/Legacy%20Build%20Support.md).
+  > Deprecated, for more information please see [Legacy Build Support](https://github.com/vivelarepublique/TamperBuilder/blob/main/archive/Legacy%20Build%20Support.md).
 
 ## Usage
 
 ```bash
-git clone https://github.com/vivelarepublique/JavaScript-framework-to-create-TamperMonkey-script-template
-cd JavaScript-framework-to-create-TamperMonkey-script-template
+git clone https://github.com/vivelarepublique/TamperBuilder
+cd TamperBuilder
 npm install
 npm run build
 ```

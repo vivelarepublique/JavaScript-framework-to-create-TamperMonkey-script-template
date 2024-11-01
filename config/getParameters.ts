@@ -1,16 +1,17 @@
 import YAML from 'yaml';
 import fs from 'node:fs';
+import pkg from '../package.json';
 import type { ScriptInformationParameters } from '../plugin/vite-plugin-tampermonkey-banner-addition-and-css-injection/interfaces';
 
 const bannerFile = fs.readFileSync('./config/banner.yaml', 'utf8');
 const banner = YAML.parse(bannerFile);
-const { name, namespace, version, description, author, match, runAt, runIn, sandbox, tag, noframes, grant, connect } = banner;
+const { name, namespace, version, description, author, match, runAt, runIn, sandbox, tag, noframes, grant, connect } = banner as ScriptInformationParameters;
 export const bannerConfig: ScriptInformationParameters = {
-    name: name || 'New-UserScript',
+    name: pkg.name || name || 'New-UserScript',
     namespace: namespace || 'http://tampermonkey.net/',
-    version: version || '',
-    description: description || 'try to take over the world!',
-    author: author || 'You',
+    version: (pkg.version && /[1-9]/.test(pkg.version) ? pkg.version : version) || '',
+    description: pkg.description || description || 'try to take over the world!',
+    author: pkg.author || author || 'You',
     match: match || ['*://*/*'],
     runAt: runAt || 'document-idle',
     runIn,

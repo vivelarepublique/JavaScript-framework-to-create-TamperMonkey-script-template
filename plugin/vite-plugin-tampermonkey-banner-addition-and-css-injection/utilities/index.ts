@@ -18,8 +18,8 @@ document.head.appendChild(${name}_${hashSub});`;
 
 export function bannerTemplate(code: string, details: ScriptInformationParameters) {
     const { name, namespace, version, description, author, match, runAt, runIn, sandbox, tag, noframes, grant, connect } = details;
-    const grants = grant ? uniq(countAllUniqueGrants(code).concat(grant)) : [];
-    const connects = connect ? (connect === '*' ? ['*'] : uniq(countAllUniqueHostnames(code).concat(connect))) : [];
+    const grants = grant ? uniq(countAllUniqueGrants(code).concat(grant)) : countAllUniqueGrants(code);
+    const connects = connect ? (connect === '*' ? ['*'] : uniq(countAllUniqueHostnames(code).concat(connect))) : countAllUniqueHostnames(code);
     return (
         '// ==UserScript==\n' +
         generalParameter('name', name) +

@@ -1,4 +1,4 @@
-name: JavaScript-framework-to-create-TamperMonkey-script-template
+name: tamper-builder
 namespace: http://tampermonkey.net/
 description: try to take over the world!
 author: vivelarepublique
@@ -8,7 +8,7 @@ match:
     - https://www.baidu.com/*
     - https://www.bing.com/*
     - https://www.google.com/*
-grant:
-    - GM_xmlhttpRequest
-    - unsafeWindow
-connect: '*'
+# grant:
+#     - GM_xmlhttpRequest
+#     - unsafeWindow
+# connect: '*'
