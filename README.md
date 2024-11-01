@@ -1,7 +1,7 @@
-# Javascript framework to create Tampermonkey script template
+# TamperBuilder
 
-- A Javascript framework to create Tampermonkey script template.
-- No longer need to use native JavaScript or jQuery to write Tampermonkey script.
+- Use any Javascript/Typescript framework to create Tampermonkey script example.
+- No longer need to use native JavaScript or jQuery.
 - Use TypeScript with any framework you like.
 
 ## Native JS Content
@@ -25,6 +25,11 @@
 - [Vite](https://github.com/vitejs/vite)
 - [Webpack](https://github.com/webpack/webpack)
   > Deprecated, for more information please see [Legacy Build Support](https://github.com/vivelarepublique/TamperBuilder/blob/main/archive/Legacy%20Build%20Support.md).
+
+## Prerequisite
+
+- [Node.js](https://nodejs.org/en/) (>= 22.0.0)
+  > Only tested under Node 22.*.0, older versions may not be compatible.
 
 ## Usage
 
