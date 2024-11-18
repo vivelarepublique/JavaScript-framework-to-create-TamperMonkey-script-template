@@ -1,7 +1,7 @@
 import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../common/utils/monitoringElement';
 import { updateCssRules, updateBackgroundImage } from './beforeMount';
 import { baidu, bing, google } from './afterMount';
-import { hostname } from '../common/alias';
+import { hostname, search } from '../common/alias';
 
 export async function beforeMountEvent() {
     const isLoaded = await DetermineWindowPropertyIsLoaded('$');
@@ -28,7 +28,7 @@ export async function beforeMountEvent() {
             }
             `);
     } else {
-        updateBackgroundImage();
+        if (!search) updateBackgroundImage();
     }
 
     if (hostname.includes('google.com')) {
