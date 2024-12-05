@@ -12,7 +12,10 @@
     border-radius: 10px !important;
     cursor: pointer !important;
     min-width: 120px !important;
+    min-height: 40px !important;
     max-width: 160px !important;
+    max-width: 60px !important;
+    font-size: medium !important;
 }
 
 .ft-button-logo {

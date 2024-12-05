@@ -11,11 +11,13 @@ export async function beforeMountEvent() {
 
     if (hostname.includes('baidu.com')) {
         updateCssRules(/*css*/ `
-            div#s_top_wrap, div#bottom_layer {
+            div#s_top_wrap,
+            div#bottom_layer {
                 background-color: rgba(0, 0, 0, 0) !important;
             }
 
-            div#s_wrap, div#s-hotsearch-wrapper {
+            div#s_wrap,
+            div#s-hotsearch-wrapper {
                 display: none !important;
             }
             `);
@@ -33,7 +35,8 @@ export async function beforeMountEvent() {
 
     if (hostname.includes('google.com')) {
         updateCssRules(/*css*/ `
-            div#gb, div[role="contentinfo"], input[type="submit"] {
+            div#gb,
+            div[role="contentinfo"], input[type="submit"] {
                 background-color: rgba(0, 0, 0, 0) !important;
             }
             `);

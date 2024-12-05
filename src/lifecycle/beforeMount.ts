@@ -19,6 +19,8 @@ export async function updateBackgroundImage() {
     Object.assign(body.style, {
         backgroundImage: `url(${backgroundImageURL})`,
         backgroundRepeat: 'round',
+        height: '100vh',
+        width: '100vw',
     });
 }
 
