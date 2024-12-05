@@ -1,13 +1,13 @@
-import { waitElementFinishLoading, DetermineWindowPropertyIsLoaded } from '../common/utils/monitoringElement';
+import { waitElementFinishLoading, determineWindowPropertyIsLoaded } from '../common/utils/monitoringElement';
 import { updateCssRules, updateBackgroundImage } from './beforeMount';
-import { baidu, bing, google } from './afterMount';
+import { baidu, bing, google, urlChangeEvent } from './afterMount';
 import { hostname, search } from '../common/alias';
 
 export async function beforeMountEvent() {
-    const isLoaded = await DetermineWindowPropertyIsLoaded('$');
-    const body = await waitElementFinishLoading({ tagName: 'body' });
+    const init = await Promise.race([determineWindowPropertyIsLoaded('$'), waitElementFinishLoading({ tagName: 'body' })]);
 
-    if (!isLoaded && !body) return;
+    console.log(init);
+    if (!init) return;
 
     if (hostname.includes('baidu.com')) {
         updateCssRules(/*css*/ `
@@ -44,6 +44,8 @@ export async function beforeMountEvent() {
 }
 
 export function afterMountEvent() {
+    urlChangeEvent();
+
     switch (hostname) {
         case 'www.baidu.com':
             baidu();

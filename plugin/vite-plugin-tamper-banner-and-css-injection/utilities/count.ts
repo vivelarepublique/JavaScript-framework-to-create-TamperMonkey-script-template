@@ -8,7 +8,7 @@ export function countAllUniqueHostnames(code: string): string[] {
 }
 
 export function countAllUniqueGrants(code: string): string[] {
-    const grantRegex = /(GM_[a-zA-Z]+)|unsafeWindow/g;
+    const grantRegex = /(GM_[a-zA-Z]+)|unsafeWindow|(window\.(onurlchange|close|focus))/g;
     const grants = code.match(grantRegex);
     return grants ? uniq(grants) : [];
 }

@@ -62,6 +62,6 @@ export function waitElementFinishLoading(selector: string | CommonSelectors, ref
     });
 }
 
-export function DetermineWindowPropertyIsLoaded(propertyName: string | string[]): Promise<boolean> {
+export function determineWindowPropertyIsLoaded(propertyName: string | string[]): Promise<boolean> {
     return new Promise(resolve => windowProxy.addEventListener('load', () => (Array.isArray(propertyName) ? resolve(propertyName.every(property => windowProxy.hasOwnProperty(property))) : resolve(windowProxy.hasOwnProperty(propertyName)))));
 }

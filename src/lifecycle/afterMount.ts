@@ -1,6 +1,7 @@
 import { windowProxy } from '../common/utils/tamperMonkeyFunction';
 import { listenElementChanges } from '../common/utils/monitoringElement';
 import type { CommonSelectors } from '../common/interface/element';
+import { body } from '../common/alias';
 
 export function baidu() {
     const selector: CommonSelectors = {
@@ -50,4 +51,17 @@ function searchInput(selector: CommonSelectors) {
         attributesConcern: 'value',
         immediateImplementation: true,
     });
+}
+
+export function urlChangeEvent() {
+    if (window.onurlchange === null) {
+        window.addEventListener('urlchange', () => {
+            console.log(location.search);
+            if (location.search) {
+                Object.assign(body.style, {
+                    backgroundImage: `url("")`,
+                });
+            }
+        });
+    }
 }
